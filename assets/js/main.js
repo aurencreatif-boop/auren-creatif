@@ -4,41 +4,134 @@
  */
 
 /* ==========================================================================
-   2. DONNÉES DE PRIX (Configuration unique pour Olivier)
-   Facile à modifier : toutes les valeurs tarifaires proviennent exclusivement
-   de cet objet. Aucune valeur de prix n'est codée en dur ailleurs.
+   1. BLOC DE CONFIGURATION UNIQUE (Annexe K du plan d'implémentation)
+   C'est le SEUL endroit à modifier pour brancher le formulaire et les paiements.
+   Tant qu'une valeur est vide, la page affiche un emplacement signalé et
+   propose WhatsApp à la place : aucun faux bouton.
    ========================================================================== */
-const PRICING = {
-  taux: 655.957,   // 1 € = 655,957 FCFA, taux fixe
-  delais: {
-    express:  { libelle: "Express 24 h",            coeff: 1.50, badge: "+50 %", notice: "Soumis à la disponibilité d'Olivier, confirmée avant tout paiement." },
-    rapide:   { libelle: "Rapide 48 h",             coeff: 1.25, badge: "+25 %", notice: "" },
-    standard: { libelle: "Standard 3 jours (3 à 5)", coeff: 1.00, badge: "Prix normal", notice: "" },
-    flexible: { libelle: "Flexible 7 jours ou plus", coeff: 0.90, badge: "−10 %", notice: "" }
+var CONFIG = {
+  WA_NUMBER: "22896990329",
+  EMAIL_CONTACT: "aurencreatif@gmail.com",
+  WA_MESSAGE: "Bonjour Olivier, j’ai découvert votre portfolio et je souhaite discuter d’un projet de création graphique.",
+  TAUX_EUR_FCFA: 655.957,
+
+  // Phase 1 : coller ici le lien prérempli du formulaire Google
+  // (ex. "https://docs.google.com/forms/d/e/XXXX/viewform?usp=pp_url&entry.111=...").
+  // Seule la partie avant « ? » est utilisée.
+  FORM_PREFILL_URL: "",
+
+  // Identifiants des champs du formulaire (« entry.123456789 »).
+  // reference, service, delai et prix sont prévus par le plan ; les autres
+  // sont facultatifs : un identifiant vide = champ non prérempli.
+  FORM_ENTRY_IDS: {
+    reference: "",
+    service:   "",
+    delai:     "",
+    prix:      "",
+    projet:    "",
+    format:    "",
+    style:     "",
+    brief:     "",
+    fichiers:  "",
+    options:   ""
   },
-  services: {
-    affiche_simple:   { nom: "Affiche simple",              fcfa: 15000,  eur: 50 },
-    affiche_premium:  { nom: "Affiche premium",             fcfa: 30000,  eur: 90 },
-    flyer_recto:      { nom: "Flyer recto",                 fcfa: 12000,  eur: 40 },
-    flyer_rectoverso: { nom: "Flyer recto-verso",           fcfa: 20000,  eur: 65 },
-    visuel_reseaux:   { nom: "Visuel réseaux sociaux",      fcfa: 7500,   eur: 25 },
-    pack_5_visuels:   { nom: "Pack 5 visuels réseaux",      fcfa: 30000,  eur: 100 },
-    carte_visite:     { nom: "Carte de visite",             fcfa: 10000,  eur: 35 },
-    logo_simple:      { nom: "Logo simple",                 fcfa: 35000,  eur: 120 },
-    identite_complete:{ nom: "Identité visuelle complète",  fcfa: 100000, eur: 300 },
-    motion_design:    { nom: "Animation motion design",     fcfa: 40000,  eur: 110 }
-  },
-  options: {
-    revision: { nom: "Révision supplémentaire", fcfa: 3000, eur: 5 },
-    format:   { nom: "Format supplémentaire",   fcfa: 5000, eur: 12 },
-    sources:  { nom: "Fichiers sources",        fcfa: 5000, eur: 15 }
+
+  // Phase 2 : un lien Chariow par service et par délai ("service|délai").
+  // Le montant de chaque variante Chariow = la moitié du total (indiquée en commentaire).
+  // Le même lien sert au paiement 1/2 (acompte) et au paiement 2/2 (solde).
+  PAYMENT_LINKS: {
+    "affiche_simple|express":    "", // total 22 500 → 11 250 FCFA
+    "affiche_simple|rapide":     "", // total 19 000 →  9 500 FCFA
+    "affiche_simple|standard":   "", // total 15 000 →  7 500 FCFA
+    "affiche_simple|flexible":   "", // total 13 500 →  6 750 FCFA
+    "affiche_premium|express":   "", // total 45 000 → 22 500 FCFA
+    "affiche_premium|rapide":    "", // total 37 500 → 18 750 FCFA
+    "affiche_premium|standard":  "", // total 30 000 → 15 000 FCFA
+    "affiche_premium|flexible":  "", // total 27 000 → 13 500 FCFA
+    "flyer_recto|express":       "", // total 18 000 →  9 000 FCFA
+    "flyer_recto|rapide":        "", // total 15 000 →  7 500 FCFA
+    "flyer_recto|standard":      "", // total 12 000 →  6 000 FCFA
+    "flyer_recto|flexible":      "", // total 11 000 →  5 500 FCFA
+    "flyer_rectoverso|express":  "", // total 30 000 → 15 000 FCFA
+    "flyer_rectoverso|rapide":   "", // total 25 000 → 12 500 FCFA
+    "flyer_rectoverso|standard": "", // total 20 000 → 10 000 FCFA
+    "flyer_rectoverso|flexible": "", // total 18 000 →  9 000 FCFA
+    "visuel_reseaux|express":    "", // total 11 500 →  5 750 FCFA
+    "visuel_reseaux|rapide":     "", // total  9 500 →  4 750 FCFA
+    "visuel_reseaux|standard":   "", // total  7 500 →  3 750 FCFA
+    "visuel_reseaux|flexible":   "", // total  7 000 →  3 500 FCFA
+    "pack_5_visuels|express":    "", // total 45 000 → 22 500 FCFA
+    "pack_5_visuels|rapide":     "", // total 37 500 → 18 750 FCFA
+    "pack_5_visuels|standard":   "", // total 30 000 → 15 000 FCFA
+    "pack_5_visuels|flexible":   "", // total 27 000 → 13 500 FCFA
+    "carte_visite|express":      "", // total 15 000 →  7 500 FCFA
+    "carte_visite|rapide":       "", // total 12 500 →  6 250 FCFA
+    "carte_visite|standard":     "", // total 10 000 →  5 000 FCFA
+    "carte_visite|flexible":     "", // total  9 000 →  4 500 FCFA
+    "logo_simple|express":       "", // total 52 500 → 26 250 FCFA
+    "logo_simple|rapide":        "", // total 44 000 → 22 000 FCFA
+    "logo_simple|standard":      "", // total 35 000 → 17 500 FCFA
+    "logo_simple|flexible":      "", // total 31 500 → 15 750 FCFA
+    "identite_complete|rapide":  "", // total 125 000 → 62 500 FCFA (délai long : 4 à 5 jours)
+    "identite_complete|standard":"", // total 100 000 → 50 000 FCFA (délai long : 7 jours)
+    "identite_complete|flexible":"", // total  90 000 → 45 000 FCFA (délai long : 12 jours ou plus)
+    "motion_design|express":     "", // total 60 000 → 30 000 FCFA
+    "motion_design|rapide":      "", // total 50 000 → 25 000 FCFA
+    "motion_design|standard":    "", // total 40 000 → 20 000 FCFA
+    "motion_design|flexible":    ""  // total 36 000 → 18 000 FCFA
   }
 };
 
+/* ==========================================================================
+   2. DONNÉES DE PRIX
+   Les prix sont saisis en FCFA uniquement (comme dans Chariow). L'équivalent
+   en euros est calculé au taux fixe et reste indicatif.
+   ========================================================================== */
+const PRICING = {
+  taux: CONFIG.TAUX_EUR_FCFA,   // 1 € = 655,957 FCFA, taux fixe
+  // Délais courts (la plupart des services)
+  delais: {
+    express:  { libelle: "Express 24 h",            coeff: 1.50, badge: "+50 %", timing: "Livraison en 24 heures", notice: "Soumis à la disponibilité d'Olivier, confirmée avant tout paiement." },
+    rapide:   { libelle: "Rapide 48 h",             coeff: 1.25, badge: "+25 %", timing: "Livraison en 48 heures", notice: "" },
+    standard: { libelle: "Standard 3 jours",        coeff: 1.00, badge: "Prix normal", timing: "3 à 5 jours", notice: "" },
+    flexible: { libelle: "Flexible 7 jours ou plus", coeff: 0.90, badge: "−10 %", timing: "7 jours ou plus", notice: "" }
+  },
+  // Délais longs (services marqués « long: true ») : pas d'Express
+  delaisLongs: {
+    rapide:   { libelle: "Rapide 4 à 5 jours",       coeff: 1.25, badge: "+25 %", timing: "Livraison en 4 à 5 jours", notice: "" },
+    standard: { libelle: "Standard 7 jours",         coeff: 1.00, badge: "Prix normal", timing: "7 jours", notice: "" },
+    flexible: { libelle: "Flexible 12 jours ou plus", coeff: 0.90, badge: "−10 %", timing: "12 jours ou plus", notice: "" }
+  },
+  services: {
+    affiche_simple:   { nom: "Affiche simple",              fcfa: 15000 },
+    affiche_premium:  { nom: "Affiche premium",             fcfa: 30000 },
+    flyer_recto:      { nom: "Flyer recto",                 fcfa: 12000 },
+    flyer_rectoverso: { nom: "Flyer recto-verso",           fcfa: 20000 },
+    visuel_reseaux:   { nom: "Visuel réseaux sociaux",      fcfa: 7500 },
+    pack_5_visuels:   { nom: "Pack 5 visuels réseaux",      fcfa: 30000 },
+    carte_visite:     { nom: "Carte de visite",             fcfa: 10000 },
+    logo_simple:      { nom: "Logo simple",                 fcfa: 35000 },
+    identite_complete:{ nom: "Identité visuelle complète",  fcfa: 100000, long: true },
+    motion_design:    { nom: "Animation motion design",     fcfa: 40000 }
+  },
+  // Options : réglées avant la livraison, en plus des deux paiements de 50 % (annexe I)
+  options: {
+    revision: { nom: "Révision supplémentaire", fcfa: 3000 },
+    format:   { nom: "Format supplémentaire",   fcfa: 5000 },
+    sources:  { nom: "Fichiers sources",        fcfa: 5000 }
+  }
+};
+
+// Délais applicables à un service (courts ou longs)
+function getDelaisFor(serviceKey) {
+  const srv = PRICING.services[serviceKey];
+  return (srv && srv.long) ? PRICING.delaisLongs : PRICING.delais;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Coordonnées officielles d'Olivier (Auren Créatif)
-  const WA_PHONE = "22896990329"; // +228 96 99 03 29
-  const CONTACT_EMAIL = "aurencreatif@gmail.com";
+  const WA_PHONE = CONFIG.WA_NUMBER; // +228 96 99 03 29
+  const CONTACT_EMAIL = CONFIG.EMAIL_CONTACT;
 
   /* ==========================================================================
      Navbar Scroll & Mobile Toggle
@@ -399,7 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
     serviceKey: 'affiche_simple', // clé dans PRICING.services ou 'sur_devis'
     delaiKey: 'standard',       // 'express' | 'rapide' | 'standard' | 'flexible'
     options: new Set(),         // Set de clés ('revision', 'format', 'sources')
-    files: []                   // Tableau d'objets fichiers { name, size, type, formattedSize, previewUrl }
+    files: [],                  // Conservé pour compatibilité (les fichiers passent par un lien de partage)
+    reference: null             // Référence AC-XXXXXX, générée à l'étape 4
   };
 
   // Arrondi FCFA au multiple de 500 le plus proche (au-dessus en cas d'égalité)
@@ -412,6 +506,40 @@ document.addEventListener('DOMContentLoaded', () => {
     return Math.round(amount);
   }
 
+  // Adapte les cartes de délai au service choisi (délais courts ou longs)
+  function updateDelaiCards() {
+    const delaisSet = getDelaisFor(orderState.serviceKey);
+    if (!delaisSet[orderState.delaiKey]) {
+      orderState.delaiKey = 'standard';
+    }
+    document.querySelectorAll('.delai-card').forEach(card => {
+      const radio = card.querySelector('input[type="radio"]');
+      if (!radio) return;
+      const d = delaisSet[radio.value];
+      card.style.display = d ? '' : 'none';
+      if (!d) return;
+      const isSelected = (radio.value === orderState.delaiKey);
+      radio.checked = isSelected;
+      card.classList.toggle('selected', isSelected);
+      const titleText = card.querySelector('.delai-title-text');
+      const timing = card.querySelector('.delai-timing');
+      const badge = card.querySelector('.delai-badge');
+      if (titleText) titleText.textContent = d.libelle;
+      if (timing) timing.textContent = d.timing;
+      if (badge) badge.textContent = d.badge;
+    });
+  }
+
+  // Référence de commande : « AC- » suivi de six caractères (sans 0/O ni 1/I)
+  function generateOrderReference() {
+    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const bytes = new Uint8Array(6);
+    (window.crypto || window.msCrypto).getRandomValues(bytes);
+    let ref = 'AC-';
+    bytes.forEach(b => { ref += alphabet[b % alphabet.length]; });
+    return ref;
+  }
+
   // Calcul dynamique complet de l'estimation selon la région, le service, le délai et les options
   function calculateOrderPricing() {
     const projectFormatInput = document.getElementById('projectFormat');
@@ -421,6 +549,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const primaryCurrency = isFcfa ? 'FCFA' : '€';
     const secondaryCurrency = isFcfa ? '€' : 'FCFA';
 
+    const delaisSet = getDelaisFor(orderState.serviceKey);
+
     if (isSurDevis) {
       return {
         isSurDevis: true,
@@ -429,13 +559,17 @@ document.addEventListener('DOMContentLoaded', () => {
         basePrice: null,
         baseFormatted: "Sur devis",
         delaiKey: orderState.delaiKey,
-        delaiLibelle: (PRICING.delais[orderState.delaiKey] || {}).libelle || "Standard",
-        delaiBadge: (PRICING.delais[orderState.delaiKey] || {}).badge || "",
-        delaiNotice: (PRICING.delais[orderState.delaiKey] || {}).notice || "",
+        delaiLibelle: (delaisSet[orderState.delaiKey] || {}).libelle || "Standard",
+        delaiBadge: (delaisSet[orderState.delaiKey] || {}).badge || "",
+        delaiNotice: (delaisSet[orderState.delaiKey] || {}).notice || "",
         optionsList: [],
         optionsTotal: 0,
         servicePrice: null,
+        servicePriceFcfa: null,
+        acompteFcfa: null,
+        acompteFormatted: "Sur devis",
         total: null,
+        totalFcfa: null,
         totalFormatted: "Sur devis",
         equivAmount: null,
         equivFormatted: "Devis personnalisé sous 2h",
@@ -445,45 +579,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const srv = PRICING.services[orderState.serviceKey] || PRICING.services.affiche_simple;
-    const delai = PRICING.delais[orderState.delaiKey] || PRICING.delais.standard;
-    const basePrice = isFcfa ? srv.fcfa : srv.eur;
-    const baseFormatted = isFcfa ? `${basePrice.toLocaleString('fr-FR')} FCFA` : `${basePrice} €`;
+    const delai = delaisSet[orderState.delaiKey] || delaisSet.standard;
 
-    // Prix du service = prix de base × coeff du délai, puis arrondi
-    const rawServicePrice = basePrice * delai.coeff;
-    const servicePrice = isFcfa ? roundFcfa(rawServicePrice) : roundEur(rawServicePrice);
+    // Tous les montants sont calculés en FCFA (devise de Chariow), puis affichés
+    // dans la devise choisie : FCFA en principal pour l'Afrique, € sinon.
+    const fmtFcfa = (v) => `${v.toLocaleString('fr-FR')} FCFA`;
+    const fmtEur = (v) => `${roundEur(v / PRICING.taux).toLocaleString('fr-FR')} €`;
+    const fmtMain = (v) => isFcfa ? fmtFcfa(v) : fmtEur(v);
+    const fmtEquiv = (v) => isFcfa ? `≈ ${fmtEur(v)}` : `≈ ${fmtFcfa(v)}`;
 
-    // Options : montants fixes de la devise principale, ajoutés sans coefficient
+    const basePrice = srv.fcfa;
+    const baseFormatted = fmtMain(basePrice);
+
+    // Prix du service = prix de base × coeff du délai, arrondi à 500 FCFA
+    const servicePriceFcfa = roundFcfa(basePrice * delai.coeff);
+    // Chaque paiement (1/2 et 2/2) vaut la moitié du prix du service
+    const acompteFcfa = servicePriceFcfa / 2;
+
+    // Options : montants fixes, sans coefficient, réglés avant la livraison
     let optionsTotal = 0;
     const optionsList = [];
     orderState.options.forEach(optKey => {
       const opt = PRICING.options[optKey];
       if (opt) {
-        const optVal = isFcfa ? opt.fcfa : opt.eur;
-        optionsTotal += optVal;
+        optionsTotal += opt.fcfa;
         optionsList.push({
           key: optKey,
           nom: opt.nom,
-          amount: optVal,
-          formatted: isFcfa ? `+${optVal.toLocaleString('fr-FR')} FCFA` : `+${optVal} €`
+          amount: opt.fcfa,
+          formatted: `+${fmtMain(opt.fcfa)}`
         });
       }
     });
 
     // Total = prix du service arrondi + somme des options
-    const total = servicePrice + optionsTotal;
-    const totalFormatted = isFcfa ? `${total.toLocaleString('fr-FR')} FCFA` : `${total} €`;
-
-    // Équivalent dans l'autre devise précédé de « ≈ »
-    let equivAmount = 0;
-    let equivFormatted = '';
-    if (isFcfa) {
-      equivAmount = roundEur(total / PRICING.taux);
-      equivFormatted = `≈ ${equivAmount} €`;
-    } else {
-      equivAmount = roundFcfa(total * PRICING.taux);
-      equivFormatted = `≈ ${equivAmount.toLocaleString('fr-FR')} FCFA`;
-    }
+    const totalFcfa = servicePriceFcfa + optionsTotal;
 
     return {
       isSurDevis: false,
@@ -497,11 +627,20 @@ document.addEventListener('DOMContentLoaded', () => {
       delaiNotice: delai.notice,
       optionsList,
       optionsTotal,
-      servicePrice,
-      total,
-      totalFormatted,
-      equivAmount,
-      equivFormatted,
+      optionsTotalFormatted: fmtMain(optionsTotal),
+      servicePrice: servicePriceFcfa,
+      servicePriceFcfa,
+      servicePriceFormatted: fmtMain(servicePriceFcfa),
+      acompteFcfa,
+      acompteFormatted: fmtMain(acompteFcfa),
+      acompteFcfaFormatted: fmtFcfa(acompteFcfa),
+      acompteEquivFormatted: fmtEquiv(acompteFcfa),
+      total: totalFcfa,
+      totalFcfa,
+      totalFcfaFormatted: fmtFcfa(totalFcfa),
+      totalFormatted: fmtMain(totalFcfa),
+      equivAmount: isFcfa ? roundEur(totalFcfa / PRICING.taux) : totalFcfa,
+      equivFormatted: fmtEquiv(totalFcfa),
       primaryCurrency,
       secondaryCurrency
     };
@@ -521,15 +660,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mise à jour de l'interface en temps réel
   function updateOrderPricingUI() {
+    updateDelaiCards();
     const calc = calculateOrderPricing();
     const isFcfa = (orderState.region === 'afrique');
+    const fmtMain = (v) => isFcfa ? `${v.toLocaleString('fr-FR')} FCFA` : `${roundEur(v / PRICING.taux)} €`;
 
     // 1. Mettre à jour les étiquettes de prix de base sur les cartes services (Étape 1)
     Object.keys(PRICING.services).forEach(srvKey => {
       const tag = document.querySelector(`[data-price-tag="${srvKey}"]`);
       if (tag) {
-        const item = PRICING.services[srvKey];
-        tag.textContent = isFcfa ? `${item.fcfa.toLocaleString('fr-FR')} FCFA` : `${item.eur} €`;
+        tag.textContent = fmtMain(PRICING.services[srvKey].fcfa);
       }
     });
 
@@ -537,10 +677,22 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(PRICING.options).forEach(optKey => {
       const pill = document.querySelector(`[data-option-price="${optKey}"]`);
       if (pill) {
-        const opt = PRICING.options[optKey];
-        pill.textContent = isFcfa ? `+${opt.fcfa.toLocaleString('fr-FR')} FCFA` : `+${opt.eur} €`;
+        pill.textContent = `+${fmtMain(PRICING.options[optKey].fcfa)}`;
       }
     });
+
+    // 2b. Détail des deux paiements de 50 % (carte d'estimation)
+    const estPaymentSplit = document.getElementById('estPaymentSplit');
+    if (estPaymentSplit) {
+      if (calc.isSurDevis) {
+        estPaymentSplit.innerHTML = '<div class="est-split-row"><span>Paiement</span><strong>Après devis d’Olivier</strong></div>';
+      } else {
+        estPaymentSplit.innerHTML =
+          `<div class="est-split-row"><span>Paiement 1/2 · acompte à la commande</span><strong>${calc.acompteFormatted}</strong></div>` +
+          `<div class="est-split-row"><span>Paiement 2/2 · solde après validation de l’aperçu</span><strong>${calc.acompteFormatted}</strong></div>` +
+          (calc.optionsTotal > 0 ? `<div class="est-split-row"><span>Options · à régler avant la livraison</span><strong>${calc.optionsTotalFormatted}</strong></div>` : '');
+      }
+    }
 
     // 3. Alerte délai Express 24h
     const expressAlert = document.getElementById('delaiExpressAlert');
@@ -607,7 +759,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. ENREGISTREMENT & SUIVI PRIVÉ DES COMMANDES
   function recordOrderData(orderPayload) {
     try {
-      const existingOrders = JSON.parse(localStorage.getItem('auren_orders_log') || '[]');
+      // Une seule entrée par référence (l'étape 4 peut être réaffichée)
+      const existingOrders = JSON.parse(localStorage.getItem('auren_orders_log') || '[]')
+        .filter(o => o.reference !== orderPayload.reference);
       existingOrders.push(orderPayload);
       localStorage.setItem('auren_orders_log', JSON.stringify(existingOrders));
       localStorage.setItem('auren_last_order', JSON.stringify(orderPayload));
@@ -805,14 +959,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Visibilité et libellé des boutons
     if (prevStepBtn) {
-      prevStepBtn.style.visibility = (currentStep === 1 || currentStep === 4) ? 'hidden' : 'visible';
+      prevStepBtn.style.visibility = (currentStep === 1) ? 'hidden' : 'visible';
     }
 
     if (nextStepBtn) {
       if (currentStep === 3) {
-        nextStepBtn.innerHTML = 'Confirmer et envoyer sur WhatsApp <i class="fa-brands fa-whatsapp"></i>';
-        nextStepBtn.classList.remove('btn-primary');
-        nextStepBtn.classList.add('btn-whatsapp');
+        nextStepBtn.innerHTML = 'Valider et passer à la commande <i class="fa-solid fa-arrow-right"></i>';
+        nextStepBtn.classList.add('btn-primary');
+        nextStepBtn.classList.remove('btn-whatsapp');
         nextStepBtn.style.display = 'inline-flex';
       } else if (currentStep === 4) {
         nextStepBtn.style.display = 'none';
@@ -861,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (currentStep === 4) {
-      prepareFinalWhatsAppAction();
+      prepareFinalOrderStep();
     }
 
     updateProgressBar();
@@ -943,6 +1097,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (sumTotalMain) sumTotalMain.textContent = calc.totalFormatted;
+    const sumPayments = document.getElementById('summaryPayments');
+    if (sumPayments) {
+      sumPayments.textContent = calc.isSurDevis
+        ? 'Montant communiqué par Olivier après étude de votre demande'
+        : `2 × ${calc.acompteFormatted} (acompte à la commande, solde après validation de l’aperçu)` +
+          (calc.optionsTotal > 0 ? ` + options ${calc.optionsTotalFormatted} avant la livraison` : '');
+    }
     if (sumTotalEquiv) {
       sumTotalEquiv.textContent = calc.equivFormatted;
       sumTotalEquiv.style.display = calc.isSurDevis ? 'none' : 'inline-block';
@@ -955,91 +1116,210 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sumFiles = document.getElementById('summaryFiles');
     if (sumFiles) {
-      if (orderState.files && orderState.files.length > 0) {
-        const fileNames = orderState.files.map(f => `${f.name} (${f.formattedSize})`).join(', ');
-        sumFiles.textContent = `📎 ${orderState.files.length} fichier(s) : ${fileNames}`;
-      } else {
-        sumFiles.textContent = 'Aucun fichier joint';
-      }
+      const filesLink = getFilesLink();
+      sumFiles.textContent = filesLink || 'Aucun lien de fichiers';
     }
   }
 
-  // 6. Préparer l'Étape 4, le message WhatsApp complet et l'enregistrement
-  function prepareFinalWhatsAppAction() {
+  // Lien de partage des fichiers du client (Drive, WeTransfer…)
+  function getFilesLink() {
+    const input = document.getElementById('projectFilesLink');
+    return input ? input.value.trim() : '';
+  }
+
+  // Valeur exacte de la question « Destination » du formulaire (choix unique)
+  function destinationFromFormat(format) {
+    if (/Mixte/i.test(format)) return 'Les deux';
+    if (/Impression/i.test(format)) return 'Impression';
+    if (/Digital/i.test(format)) return 'Réseaux sociaux';
+    return 'Personnalisé';
+  }
+
+  // Lien prérempli du formulaire Google (null tant que la phase 1 n'est pas faite)
+  function buildFormPrefillUrl(fields) {
+    const base = (CONFIG.FORM_PREFILL_URL || '').split('?')[0];
+    const ids = CONFIG.FORM_ENTRY_IDS || {};
+    if (!base || !ids.reference) return null;
+    const params = new URLSearchParams();
+    params.set('usp', 'pp_url');
+    Object.keys(fields).forEach(key => {
+      const id = (ids[key] || '').trim();
+      const value = fields[key];
+      if (id && value) {
+        params.set(id.startsWith('entry.') ? id : `entry.${id}`, value);
+      }
+    });
+    return `${base}?${params.toString()}`;
+  }
+
+  // Lien Chariow du service et du délai (null si absent ou « Sur devis »)
+  function getPaymentLink(calc) {
+    if (calc.isSurDevis) return null;
+    const link = (CONFIG.PAYMENT_LINKS || {})[`${calc.serviceKey}|${calc.delaiKey}`];
+    return link && link.trim() ? link.trim() : null;
+  }
+
+  // Lien WhatsApp avec message prérempli
+  function buildWaUrl(message) {
+    return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
+  }
+
+  // 6. Préparer l'Étape 4 : référence, brief (Google Forms), paiement 50 % (Chariow)
+  function prepareFinalOrderStep() {
     const calc = calculateOrderPricing();
     const regionNames = { afrique: "Afrique (FCFA)", europe: "Europe (€)", autre: "Autre (€)" };
     const projectName = document.getElementById('projectName').value.trim() || 'Mon Projet';
     const projectFormat = document.getElementById('projectFormat').value || 'Digital / Web';
     const projectStyle = document.getElementById('projectStyle').value.trim() || 'Style moderne et dynamique';
     const projectBrief = document.getElementById('projectBrief').value.trim() || 'Demande de devis et informations complémentaires.';
+    const filesLink = getFilesLink();
     const now = new Date();
     const dateFr = now.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
       ' à ' + now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+
+    if (!orderState.reference) {
+      orderState.reference = generateOrderReference();
+    }
+    const ref = orderState.reference;
+    const delaiTexte = calc.isSurDevis ? calc.delaiLibelle : `${calc.delaiLibelle} (${calc.delaiBadge})`;
+    // Nombre brut (ex. 52500) pour que le tableau de bord puisse additionner les montants
+    const prixTexte = calc.isSurDevis ? 'Sur devis' : String(calc.totalFcfa);
 
     const optionsStr = calc.optionsList.length > 0 ?
       calc.optionsList.map(o => `• ${o.nom} (${o.formatted})`).join('\n') :
       'Aucune option complémentaire';
 
-    const filesStr = orderState.files && orderState.files.length > 0 ?
-      `📎 *Fichiers / Logo prêts (${orderState.files.length}) :*\n` + orderState.files.map(f => `  • ${f.name} (${f.formattedSize})`).join('\n') +
-      `\n*(Je vous les transmets directement ici dans le chat)*\n\n` : '';
-
-    // Données structurées envoyées au service de collecte (tableau privé)
+    // Données de la demande conservées dans ce navigateur (page de remerciement)
     const orderPayload = {
+      reference: ref,
       region: orderState.region,
       region_libelle: regionNames[orderState.region],
       service_cle: calc.serviceKey,
       service: calc.serviceName,
       delai_cle: calc.delaiKey,
-      delai: `${calc.delaiLibelle} (${calc.delaiBadge})`,
+      delai: delaiTexte,
       options: calc.optionsList.map(o => o.nom),
-      options_detail: calc.optionsList,
-      prix_de_base: calc.isSurDevis ? 'Sur devis' : calc.basePrice,
-      prix_de_base_texte: calc.baseFormatted,
-      total_estime: calc.isSurDevis ? 'Sur devis' : calc.total,
-      total_estime_texte: calc.totalFormatted,
-      equivalent_estime: calc.isSurDevis ? 'Sur devis' : calc.equivFormatted,
-      devise: calc.primaryCurrency,
+      total_estime_fcfa: calc.isSurDevis ? 'Sur devis' : calc.totalFcfa,
+      acompte_fcfa: calc.isSurDevis ? 'Sur devis' : calc.acompteFcfa,
       date_de_la_demande: now.toISOString(),
-      date_fr: dateFr,
       nom_projet: projectName,
-      format_souhaite: projectFormat,
-      style_couleurs: projectStyle,
-      brief: projectBrief,
-      fichiers_joints: orderState.files.map(f => `${f.name} (${f.formattedSize})`),
-      nombre_fichiers: orderState.files.length,
+      lien_fichiers: filesLink,
       statut_prix: 'Estimation indicative (devis final confirmé par Olivier)'
     };
-
-    // Enregistrement dans les données de suivi sans supprimer les entrées existantes
     recordOrderData(orderPayload);
 
-    // Construction du message WhatsApp complet et structuré
-    const message = `Bonjour Olivier (Auren Créatif) ! 👋\n` +
-      `Je viens de compléter mon brief et mon estimation sur votre site internet :\n\n` +
-      `📊 *RÉSUMÉ DE LA DEMANDE :*\n` +
-      `🌍 *Région :* ${regionNames[orderState.region]}\n` +
+    // Référence affichée clairement au client
+    document.querySelectorAll('[data-order-ref]').forEach(el => { el.textContent = ref; });
+
+    // --- A. Envoyer mon brief (formulaire Google prérempli) ---
+    const formUrl = buildFormPrefillUrl({
+      reference: ref,
+      service: calc.serviceName,
+      delai: delaiTexte,
+      prix: prixTexte,
+      projet: projectName,
+      format: destinationFromFormat(projectFormat),
+      style: projectStyle,
+      brief: projectBrief,
+      fichiers: filesLink,
+      options: calc.optionsList.map(o => o.nom).join(', ')
+    });
+
+    const waBriefMessage = `Bonjour Olivier (Auren Créatif) ! 👋\n` +
+      `Voici mon brief depuis votre site.\n\n` +
+      `🔖 *Référence :* ${ref}\n` +
       `📌 *Service :* ${calc.serviceName}\n` +
-      `💵 *Prix de base :* ${calc.baseFormatted}\n` +
-      `⏱️ *Délai :* ${calc.delaiLibelle} (${calc.delaiBadge})\n` +
+      `⏱️ *Délai :* ${delaiTexte}\n` +
       `🧩 *Options :*\n${optionsStr}\n` +
       `💰 *Total estimé :* ${calc.totalFormatted} ${calc.isSurDevis ? '' : '(' + calc.equivFormatted + ')'}\n` +
-      `📅 *Date de la demande :* ${dateFr}\n\n` +
-      `📝 *DÉTAILS DU PROJET :*\n` +
+      (calc.isSurDevis ? '' : `💳 *Acompte 50 % :* ${calc.acompteFcfaFormatted}\n`) +
+      `📅 *Date :* ${dateFr}\n\n` +
       `🏷️ *Projet / Marque :* ${projectName}\n` +
       `📐 *Support / Format :* ${projectFormat}\n` +
       `🎨 *Style & Couleurs :* ${projectStyle}\n` +
-      `💬 *Texte & Brief :*\n${projectBrief}\n\n` +
-      filesStr +
-      `⚠️ *Note :* Cette estimation est indicative. Pourriez-vous me confirmer vos disponibilités ainsi que le devis final ? Merci beaucoup !`;
+      `💬 *Texte & Brief :*\n${projectBrief}\n` +
+      (filesLink ? `📎 *Lien des fichiers :* ${filesLink}\n` : '') +
+      `\n⚠️ Estimation indicative : pouvez-vous me confirmer le devis final et le délai ?`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${WA_PHONE}?text=${encodedMessage}`;
-
+    const briefFormBtn = document.getElementById('sendBriefFormBtn');
+    const briefPlaceholder = document.getElementById('briefFormPlaceholder');
     const sendWABtn = document.getElementById('sendWhatsAppBriefBtn');
-    if (sendWABtn) {
-      sendWABtn.href = waUrl;
+    if (sendWABtn) sendWABtn.href = buildWaUrl(waBriefMessage);
+    if (briefFormBtn) {
+      if (formUrl) {
+        briefFormBtn.href = formUrl;
+        briefFormBtn.hidden = false;
+        if (briefPlaceholder) briefPlaceholder.hidden = true;
+      } else {
+        briefFormBtn.removeAttribute('href');
+        briefFormBtn.hidden = true;
+        if (briefPlaceholder) briefPlaceholder.hidden = false;
+      }
     }
+
+    // --- B. Payer 50 % (lien Chariow du service + délai) ---
+    const payLink = getPaymentLink(calc);
+    const payBtn = document.getElementById('payAcompteBtn');
+    const payBtnLabel = document.getElementById('payAcompteLabel');
+    const payReminder = document.getElementById('payReminder');
+    const payPlaceholder = document.getElementById('payPlaceholder');
+    const payDevisNotice = document.getElementById('payDevisNotice');
+    const payWABtn = document.getElementById('payWhatsAppBtn');
+    const payAmount = document.getElementById('payAmount');
+
+    if (payAmount) {
+      payAmount.textContent = calc.isSurDevis ? '' : `${calc.acompteFcfaFormatted} (${calc.acompteEquivFormatted})`;
+    }
+    if (payWABtn) {
+      payWABtn.href = buildWaUrl(`Bonjour Olivier, j’ai envoyé mon brief (référence ${ref}, ${calc.serviceName}, ${delaiTexte}). Pouvez-vous m’envoyer le lien de paiement de l’acompte de 50 % (${calc.acompteFcfaFormatted}) ?`);
+    }
+    if (payDevisNotice) payDevisNotice.hidden = !calc.isSurDevis;
+    if (payBtn) {
+      if (payLink) {
+        payBtn.href = payLink;
+        payBtn.hidden = false;
+        if (payBtnLabel) payBtnLabel.textContent = `Payer 50 % · ${calc.acompteFcfaFormatted}`;
+      } else {
+        payBtn.removeAttribute('href');
+        payBtn.hidden = true;
+      }
+    }
+    if (payReminder) payReminder.hidden = !payLink;
+    if (payPlaceholder) payPlaceholder.hidden = !!payLink || calc.isSurDevis;
+
+    // Contact WhatsApp avec la référence
+    const contactBtn = document.getElementById('stepWhatsAppContactBtn');
+    if (contactBtn) {
+      contactBtn.href = buildWaUrl(`Bonjour Olivier, voici ma référence de commande : ${ref}.`);
+    }
+  }
+
+  // Après le clic sur « Envoyer mon brief », l'étape de paiement est révélée
+  function revealPaymentStep() {
+    const block = document.getElementById('paymentStepBlock');
+    if (block && block.hidden) {
+      block.hidden = false;
+      block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  ['sendBriefFormBtn', 'sendWhatsAppBriefBtn'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', () => setTimeout(revealPaymentStep, 300));
+  });
+
+  const copyRefBtn = document.getElementById('copyOrderRefBtn');
+  if (copyRefBtn) {
+    copyRefBtn.addEventListener('click', () => {
+      const ref = orderState.reference || '';
+      const done = () => {
+        copyRefBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copiée';
+        setTimeout(() => { copyRefBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copier'; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ref).then(done).catch(() => {});
+      }
+    });
   }
 
   // ==========================================================================

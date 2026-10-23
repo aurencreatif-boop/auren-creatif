@@ -4220,3 +4220,170 @@ textarea.form-control {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   Étape 4 : référence, brief Google Forms, paiement 50 % Chariow
+   ========================================================================== */
+[hidden] { display: none !important; }
+
+.btn-sm { padding: 0.5rem 0.9rem; font-size: 0.85rem; }
+
+.form-help {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.summary-break { overflow-wrap: anywhere; }
+
+.est-payment-split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.7rem 0.8rem;
+  background: var(--primary-50);
+  border: 1px solid var(--primary-100);
+  border-radius: var(--radius-sm);
+}
+.est-split-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.est-split-row strong { color: var(--primary-700); white-space: nowrap; }
+
+.order-ref-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  background: var(--gradient-card);
+  border: 2px dashed var(--primary-300);
+  border-radius: var(--radius-md);
+}
+.order-ref-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+.order-ref-value {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--primary-700);
+}
+
+.order-action-block {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.order-action-head {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.order-action-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--gradient-blue);
+  color: #fff;
+  font-weight: 800;
+}
+.order-action-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+.order-action-amount { color: var(--primary-700); font-weight: 800; }
+.order-action-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+.config-placeholder {
+  padding: 0.9rem 1rem;
+  background: #fffbeb;
+  border: 1px dashed var(--accent-gold);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: #78350f;
+}
+.config-placeholder p { margin-bottom: 0.75rem; line-height: 1.55; }
+.config-placeholder p:last-child { margin-bottom: 0; }
+
+.pay-reminder {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--primary-50);
+  border-left: 3px solid var(--primary-600);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.order-next-steps {
+  padding: 1.25rem;
+  background: var(--bg-page);
+  border-radius: var(--radius-md);
+}
+.order-next-steps ol {
+  margin: 0.75rem 0 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.order-next-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+.order-privacy-note { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+.order-privacy-note a { color: var(--primary-600); text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .order-action-block .btn-lg { width: 100%; justify-content: center; }
+  .order-ref-value { font-size: 1.35rem; }
+}
+
+/* Page de remerciement */
+.merci-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: var(--bg-page);
+}
+.merci-card {
+  max-width: 560px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.merci-card h1 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  margin: 1rem 0 0.75rem;
+  color: var(--text-main);
+}
+.merci-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+.merci-card .order-ref-box { justify-content: center; text-align: center; }
+.merci-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.25rem; }

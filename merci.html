@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci · AUREN CRÉATIF</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563EB'/><text x='50%' y='62%' font-size='50' font-weight='bold' fill='white' font-family='sans-serif' text-anchor='middle'>A</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="merci-page">
+    <div class="merci-card">
+      <div class="wizard-success-icon"><i class="fa-solid fa-heart"></i></div>
+      <h1>Merci pour votre confiance !</h1>
+      <!-- Jamais « Paiement reçu » : seule la confirmation manuelle d'Olivier fait foi -->
+      <p>Si vous venez d’effectuer un paiement, Olivier le vérifie et vous confirme sa réception sur WhatsApp. Gardez précieusement votre référence de commande.</p>
+
+      <div class="order-ref-box" id="merciRefBox" hidden>
+        <div>
+          <span class="order-ref-label">Votre référence de commande</span>
+          <strong class="order-ref-value" id="merciRef"></strong>
+        </div>
+      </div>
+
+      <p>Paiement 1 sur 2 : le travail démarre après confirmation de l’acompte. Paiement 2 sur 2 : vos fichiers finaux vous sont envoyés par lien Google Drive après confirmation du solde.</p>
+
+      <div class="merci-actions">
+        <a href="#" class="btn btn-whatsapp" id="merciWaBtn" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Écrire à Olivier sur WhatsApp
+        </a>
+        <a href="index.html" class="btn btn-outline">Retour au site</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var WA_NUMBER = "22896990329";
+      var ref = "";
+      try {
+        var last = JSON.parse(localStorage.getItem('auren_last_order') || 'null');
+        if (last && last.reference) ref = last.reference;
+      } catch (e) {}
+      var msg = ref
+        ? "Bonjour Olivier, je viens d’effectuer un paiement pour la commande " + ref + "."
+        : "Bonjour Olivier, je viens d’effectuer un paiement. Ma référence de commande est : ";
+      document.getElementById('merciWaBtn').href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+      if (ref) {
+        document.getElementById('merciRef').textContent = ref;
+        document.getElementById('merciRefBox').hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

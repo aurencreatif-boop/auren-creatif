@@ -356,9 +356,9 @@
             <div class="step-number">4</div>
             <div class="step-icon-subtle"><i class="fa-solid fa-comments"></i></div>
           </div>
-          <h4 class="step-title">Échangez</h4>
+          <h4 class="step-title">Payez en deux fois</h4>
           <p class="step-desc">
-            Olivier reçoit votre demande et vous répond rapidement pour confirmer le devis et démarrer la création.
+            50 % à la commande pour démarrer, 50 % après validation de l’aperçu. Vos fichiers finaux arrivent par lien Google Drive.
           </p>
         </div>
       </div>
@@ -804,7 +804,7 @@
         <span class="section-tag">Commander un projet</span>
         <h2 class="section-title">Décrivez votre projet</h2>
         <p class="section-subtitle">
-          Remplissez le formulaire guidé en quelques clics. Olivier reçoit votre brief complet et vous répond sur-le-champ pour confirmer les détails.
+          Choisissez votre service et votre délai, envoyez votre brief, puis réglez 50 % pour démarrer. Le solde de 50 % se règle après validation de l’aperçu.
         </p>
       </div>
 
@@ -832,7 +832,7 @@
 
             <div class="stepper-step" data-step-target="4">
               <div class="step-circle">4</div>
-              <span class="step-label">Finalisation</span>
+              <span class="step-label">Brief & paiement</span>
             </div>
           </div>
 
@@ -1008,7 +1008,7 @@
                     <input type="radio" name="orderDelai" value="express">
                     <div class="delai-card-content">
                       <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-bolt"></i> Express 24 h</span>
+                        <span class="delai-title"><i class="fa-solid fa-bolt"></i> <span class="delai-title-text">Express 24 h</span></span>
                         <span class="delai-badge badge-express">+50 %</span>
                       </div>
                       <span class="delai-timing">Livraison en 24 heures</span>
@@ -1019,7 +1019,7 @@
                     <input type="radio" name="orderDelai" value="rapide">
                     <div class="delai-card-content">
                       <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-gauge-high"></i> Rapide 48 h</span>
+                        <span class="delai-title"><i class="fa-solid fa-gauge-high"></i> <span class="delai-title-text">Rapide 48 h</span></span>
                         <span class="delai-badge badge-rapide">+25 %</span>
                       </div>
                       <span class="delai-timing">Livraison en 48 heures</span>
@@ -1030,7 +1030,7 @@
                     <input type="radio" name="orderDelai" value="standard" checked>
                     <div class="delai-card-content">
                       <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-check"></i> Standard 3 jours</span>
+                        <span class="delai-title"><i class="fa-solid fa-calendar-check"></i> <span class="delai-title-text">Standard 3 jours</span></span>
                         <span class="delai-badge badge-standard">Prix normal</span>
                       </div>
                       <span class="delai-timing">3 à 5 jours</span>
@@ -1041,7 +1041,7 @@
                     <input type="radio" name="orderDelai" value="flexible">
                     <div class="delai-card-content">
                       <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-days"></i> Flexible</span>
+                        <span class="delai-title"><i class="fa-solid fa-calendar-days"></i> <span class="delai-title-text">Flexible</span></span>
                         <span class="delai-badge badge-flexible">−10 %</span>
                       </div>
                       <span class="delai-timing">7 jours ou plus</span>
@@ -1121,62 +1121,17 @@
                 <input type="text" id="projectStyle" class="form-control" placeholder="Ex: Bleu OneSMS moderne, or luxueux, sombre épuré, dynamique...">
               </div>
 
-              <!-- Brief Text & File Import Area (En bas à droite) -->
+              <!-- Brief Text -->
               <div class="form-group brief-group">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                  <label for="projectBrief" style="margin-bottom: 0;">Texte à faire figurer & Détails du brief</label>
-                  <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 500;">
-                    <i class="fa-solid fa-paperclip"></i> Logo, images ou consignes
-                  </span>
-                </div>
+                <label for="projectBrief">Texte à faire figurer & Détails du brief</label>
+                <textarea id="projectBrief" class="form-control brief-textarea" placeholder="Indiquez ici les titres, dates, numéros de téléphone, slogans ou indications spécifiques à intégrer..."></textarea>
+              </div>
 
-                <div class="brief-box-wrapper" id="briefDropZone">
-                  <textarea id="projectBrief" class="form-control brief-textarea" placeholder="Indiquez ici les titres, dates, numéros de téléphone, slogans ou indications spécifiques à intégrer..."></textarea>
-                  
-                  <div class="brief-inner-bottom">
-                    <!-- Petit bouton PLUS dans la section même en bas -->
-                    <div class="brief-plus-container">
-                      <button type="button" class="brief-plus-btn" id="briefPlusBtn" title="Ajouter des photos ou fichiers" aria-haspopup="true" aria-expanded="false" aria-label="Ajouter des fichiers">
-                        <i class="fa-solid fa-plus"></i>
-                        <span class="brief-plus-badge" id="briefPlusBadge" style="display: none;">0</span>
-                      </button>
-
-                      <!-- Pop-up d'action inspiré de l'image -->
-                      <div class="brief-action-popover" id="briefActionPopover" role="menu">
-                        <button type="button" class="popover-action-row" id="popoverAddFilesBtn" role="menuitem">
-                          <div class="popover-action-icon">
-                            <i class="fa-solid fa-paperclip"></i>
-                          </div>
-                          <div class="popover-action-text">
-                            <span class="popover-action-title">Ajouter des photos et fichiers</span>
-                            <span class="popover-action-hint">Importez...</span>
-                          </div>
-                          <div class="popover-action-arrow">
-                            <i class="fa-solid fa-chevron-right"></i>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-
-                    <span class="brief-inner-hint">
-                      <i class="fa-solid fa-circle-info"></i> Cliquez sur le <strong>+</strong> pour ajouter vos logos ou images
-                    </span>
-
-                    <input type="file" id="clientFileUpload" multiple accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml,.pdf,.ai,.psd,.eps,.zip" style="display: none;">
-                  </div>
-                </div>
-
-                <!-- Aperçu dynamique des fichiers importés -->
-                <div class="uploaded-files-preview" id="uploadedFilesPreview" style="display: none;">
-                  <div class="uploaded-files-header">
-                    <span class="uploaded-files-count-text">
-                      <i class="fa-solid fa-check-circle" style="color: #2563EB;"></i>
-                      <strong id="uploadedCountLabel">0 fichier sélectionné</strong> pour Olivier
-                    </span>
-                    <button type="button" class="btn-clear-all-files" id="btnClearAllFiles">Tout retirer</button>
-                  </div>
-                  <div class="uploaded-files-list" id="uploadedFilesList"></div>
-                </div>
+              <!-- Lien de partage des fichiers (pas de téléversement direct) -->
+              <div class="form-group">
+                <label for="projectFilesLink"><i class="fa-solid fa-paperclip"></i> Lien vers votre logo, vos photos ou documents</label>
+                <input type="url" id="projectFilesLink" class="form-control" placeholder="Lien Google Drive, WeTransfer, Dropbox..." inputmode="url" autocomplete="off">
+                <small class="form-help">Facultatif. Déposez vos fichiers sur Google Drive ou WeTransfer, puis collez le lien de partage ici. Vous pouvez aussi les envoyer sur WhatsApp en rappelant votre référence.</small>
               </div>
             </div>
 
@@ -1217,9 +1172,13 @@
                     <span class="sum-total-equiv" id="summaryTotalEquiv">≈ 23 €</span>
                   </div>
                 </div>
+                <div class="summary-row">
+                  <div class="summary-label">Paiements :</div>
+                  <div class="summary-value" id="summaryPayments">-</div>
+                </div>
                 <div class="summary-disclaimer">
                   <i class="fa-solid fa-circle-info"></i>
-                  <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
+                  <span>Estimation, devis final confirmé par Olivier. Paiement en deux fois : 50 % à la commande, 50 % après validation de l’aperçu.</span>
                 </div>
 
                 <div class="summary-section-heading" style="margin-top: 1.75rem;">
@@ -1243,8 +1202,8 @@
                   <div class="summary-value" id="summaryBrief">-</div>
                 </div>
                 <div class="summary-row">
-                  <div class="summary-label">Logo / Fichiers joints :</div>
-                  <div class="summary-value" id="summaryFiles">Aucun fichier joint</div>
+                  <div class="summary-label">Lien des fichiers :</div>
+                  <div class="summary-value summary-break" id="summaryFiles">Aucun lien de fichiers</div>
                 </div>
               </div>
 
@@ -1258,26 +1217,84 @@
               </div>
             </div>
 
-            <!-- STEP 4: Confirmation & Instant WhatsApp -->
+            <!-- STEP 4: Référence, brief (Google Forms) et paiement 50 % (Chariow) -->
             <div class="wizard-step-pane" data-step="4">
-              <div class="wizard-success-box">
-                <div class="wizard-success-icon">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </div>
-                <h3 class="wizard-step-title" style="font-size: 1.6rem;">Votre brief & estimation sont prêts !</h3>
-                <p class="wizard-step-subtitle" style="max-width: 560px; margin: 0 auto 2rem;">
-                  Olivier reçoit directement votre demande avec l'ensemble des données structurées et le calcul estimatif pour vous confirmer le devis final et démarrer la création.
-                </p>
+              <h3 class="wizard-step-title">Étape 4 sur 4 — Envoyez votre brief, puis réglez l’acompte</h3>
+              <p class="wizard-step-subtitle">Gardez bien votre référence : elle relie votre brief, vos paiements et vos échanges avec Olivier.</p>
 
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                  <a href="#" class="btn btn-whatsapp btn-lg" id="sendWhatsAppBriefBtn" target="_blank">
-                    <i class="fa-brands fa-whatsapp fa-xl"></i>
-                    <span>Envoyer mon brief sur WhatsApp à Olivier</span>
+              <div class="order-ref-box">
+                <div>
+                  <span class="order-ref-label">Votre référence de commande</span>
+                  <strong class="order-ref-value" data-order-ref>AC-······</strong>
+                </div>
+                <button type="button" class="btn btn-outline btn-sm" id="copyOrderRefBtn"><i class="fa-regular fa-copy"></i> Copier</button>
+              </div>
+
+              <!-- A. Brief -->
+              <div class="order-action-block">
+                <div class="order-action-head">
+                  <span class="order-action-num">A</span>
+                  <div>
+                    <h4 class="order-action-title">Envoyer mon brief</h4>
+                    <p class="order-action-desc">Le formulaire s’ouvre dans un nouvel onglet, déjà rempli avec votre service, votre délai, le prix et la référence. Ajoutez vos coordonnées puis validez.</p>
+                  </div>
+                </div>
+                <a class="btn btn-primary btn-lg" id="sendBriefFormBtn" target="_blank" rel="noopener" hidden>
+                  <i class="fa-solid fa-file-pen"></i> <span>Envoyer mon brief</span>
+                </a>
+                <div class="config-placeholder" id="briefFormPlaceholder">
+                  <p><i class="fa-solid fa-screwdriver-wrench"></i> Formulaire de brief en cours de mise en place. En attendant, envoyez votre brief directement à Olivier sur WhatsApp :</p>
+                  <a href="#" class="btn btn-whatsapp" id="sendWhatsAppBriefBtn" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i> <span>Envoyer mon brief sur WhatsApp</span>
                   </a>
                 </div>
+              </div>
 
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.25rem;">
-                  <i class="fa-solid fa-lock"></i> Aucune inscription requise · Traitement direct, confidentiel et réponse rapide.
+              <!-- B. Paiement 1/2 (révélé après l'envoi du brief) -->
+              <div class="order-action-block" id="paymentStepBlock" hidden>
+                <div class="order-action-head">
+                  <span class="order-action-num">B</span>
+                  <div>
+                    <h4 class="order-action-title">Payer l’acompte de 50 % <span class="order-action-amount" id="payAmount"></span></h4>
+                    <p class="order-action-desc">Paiement sécurisé sur Chariow. Le travail démarre dès qu’Olivier a confirmé l’acompte et reçu un brief complet.</p>
+                  </div>
+                </div>
+                <a class="btn btn-primary btn-lg" id="payAcompteBtn" target="_blank" rel="noopener" hidden>
+                  <i class="fa-solid fa-lock"></i> <span id="payAcompteLabel">Payer 50 %</span>
+                </a>
+                <p class="pay-reminder" id="payReminder" hidden>
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  Sur la page de paiement, saisissez votre référence <strong data-order-ref>AC-······</strong> dans le champ « Référence de commande ».
+                </p>
+                <div class="config-placeholder" id="payPlaceholder" hidden>
+                  <p><i class="fa-solid fa-screwdriver-wrench"></i> Paiement en ligne en cours de mise en place pour ce service. Olivier vous envoie le lien de paiement sur WhatsApp :</p>
+                  <a href="#" class="btn btn-whatsapp" id="payWhatsAppBtn" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i> <span>Demander mon lien de paiement</span>
+                  </a>
+                </div>
+                <div class="config-placeholder" id="payDevisNotice" hidden>
+                  <p><i class="fa-solid fa-pen-ruler"></i> Demande sur devis : aucun paiement pour l’instant. Olivier étudie votre brief et vous envoie son devis sur WhatsApp.</p>
+                </div>
+              </div>
+
+              <!-- Et ensuite ? -->
+              <div class="order-next-steps">
+                <h4 class="order-action-title"><i class="fa-solid fa-route"></i> Et ensuite ?</h4>
+                <ol>
+                  <li>Olivier vérifie votre brief et votre acompte, puis vous confirme le démarrage sur WhatsApp.</li>
+                  <li>Vous recevez un aperçu en basse définition, avec filigrane. Deux tours de modifications sont inclus.</li>
+                  <li>Après votre validation, vous réglez le solde de 50 % avec le même lien de paiement et la même référence.</li>
+                  <li>Une fois le solde confirmé, vous recevez vos fichiers finaux en haute définition par lien Google Drive.</li>
+                </ol>
+                <div class="order-next-actions">
+                  <a href="#" class="btn btn-outline" id="stepWhatsAppContactBtn" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-whatsapp"></i> Écrire à Olivier
+                  </a>
+                </div>
+                <p class="order-privacy-note">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  Vos informations servent uniquement à traiter votre commande. Elles sont conservées dans un tableau privé et partagées seulement avec Google (formulaire), Chariow (paiement) et WhatsApp (échanges).
+                  <a href="#legalModal" class="open-legal-modal" data-legal-tab="confidentialite">Notice de confidentialité</a>
                 </p>
               </div>
             </div>
@@ -1336,9 +1353,10 @@
                 <span class="est-total-equiv" id="estTotalEquiv">≈ 23 €</span>
               </div>
             </div>
+            <div class="est-payment-split" id="estPaymentSplit"></div>
             <p class="estimation-disclaimer">
               <i class="fa-solid fa-circle-info"></i>
-              <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
+              <span>Estimation, devis final confirmé par Olivier. Équivalent en euros indicatif (1 € = 655,957 FCFA).</span>
             </p>
           </div>
         </aside>
@@ -1675,11 +1693,12 @@
             <li><strong>Étape 4 :</strong> Le solde de 50 % est exigible à la validation finale du projet, préalablement à la livraison des fichiers définitifs en haute définition sans filigrane.</li>
           </ul>
 
-          <h4>3. Grille Tarifaire & Devises</h4>
-          <p>Les tarifs sont clairs, transparents et appliqués selon la région de commande :</p>
+          <h4>3. Prix, devises & paiement</h4>
           <ul>
-            <li><strong>Zone Afrique (FCFA) :</strong> Devise principale en Francs CFA (XOF), arrondis au multiple de 500 FCFA le plus proche. Règlements acceptés par Mobile Money (T-Money, Moov Money, Wave, Orange Money) ou virement bancaire.</li>
-            <li><strong>Zone Europe & Reste du Monde (€) :</strong> Devise principale en Euros (€), arrondis à l'euro supérieur. Conversion appliquée au taux fixe institutionnel de 1 € = 655,957 FCFA. Règlements acceptés par virement SEPA, carte bancaire ou transfert international (Sendwave, TapTap Send, Ria, Western Union).</li>
+            <li>Les prix sont fixés en <strong>Francs CFA (FCFA)</strong>, arrondis à 500 FCFA. L’équivalent en euros affiché est indicatif (taux fixe 1 € = 655,957 FCFA) ; la conversion éventuelle est faite par la plateforme de paiement au moment du règlement.</li>
+            <li>Les paiements s’effectuent sur la plateforme sécurisée <strong>Chariow</strong>, avec les moyens de paiement qu’elle propose au moment du règlement. Aucune donnée bancaire n’est saisie sur ce site.</li>
+            <li>Chaque commande se règle en <strong>deux paiements de 50 %</strong> avec le même lien et la même référence de commande. Les options (révision supplémentaire, format supplémentaire, fichiers sources) se règlent avant la livraison, en plus des deux paiements.</li>
+            <li>Un paiement n’est considéré comme reçu qu’après confirmation par Olivier.</li>
           </ul>
 
           <h4>4. Délais de Livraison & Coefficients</h4>
@@ -1691,36 +1710,32 @@
           </ul>
           <p>Le décompte du délai débute à réception conjointe de l'acompte de 50 % et des éléments complets du brief (textes définitifs, logo vectoriel ou HD, photos sources).</p>
 
-          <h4>5. Politique de Révisions & Retouches</h4>
-          <p>Auren Créatif s'engage à une <strong>satisfaction garantie</strong>. Les prestations incluent des ajustements raisonnables (harmonisation des teintes, repositionnement d'éléments, calibrage des typographies). Toute refonte intégrale du concept postérieurement à la validation du brief ou toute révision supplémentaire au-delà du cycle standard fera l'objet de l'option « Révision supplémentaire ».</p>
+          <h4>5. Révisions, formats & livraison</h4>
+          <ul>
+            <li>Deux tours de modifications sont inclus. Au-delà, l’option « Révision supplémentaire » s’applique (3 000 FCFA).</li>
+            <li>Formats livrés : PNG ou JPG, et PDF pour l’impression. Format supplémentaire (5 000 FCFA) et fichiers sources (5 000 FCFA) en option.</li>
+            <li>Le solde de 50 % est dû à la validation de l’aperçu. Les fichiers finaux sont envoyés par lien Google Drive après confirmation du solde.</li>
+            <li>L’estimation de prix est valable 7 jours. Le devis final est confirmé par Olivier.</li>
+          </ul>
 
           <h4>6. Annulation & Rétractation</h4>
+          <p>Annulation avant le début du travail : l’acompte est remboursé. Annulation après le début du travail : l’acompte est conservé.</p>
           <p>Compte tenu de la nature personnalisée et sur-mesure des créations graphiques (art. L221-28 du Code de la consommation et dispositions équivalentes internationales), aucun droit de rétractation ne peut s'exercer une fois le travail de conception entamé. En cas d'annulation demandée par le client en cours de projet, l'acompte de 50 % demeure acquis à Auren Créatif à titre de dédommagement pour le temps consacré et la réservation du planning.</p>
         </div>
 
         <!-- 3. POLITIQUE DE CONFIDENTIALITÉ (RGPD & INTERNATIONAL) -->
         <div class="legal-tab-panel" id="panel-confidentialite">
-          <h4>1. Respect & Confidentialité Absolue</h4>
-          <p>Auren Créatif s'engage formellement à protéger la vie privée de ses utilisateurs conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> européen et aux législations applicables en Afrique (notamment les actes uniformes de l'UEMOA sur la cyber-sécurité et les données à caractère personnel).</p>
+          <h4>1. Utilisation de vos informations</h4>
+          <p>Les informations saisies (nom, coordonnées, détails du projet) servent uniquement à répondre à votre demande, établir un devis, réaliser et livrer la création.</p>
 
-          <h4>2. Données Traitées</h4>
-          <p>Dans le cadre strict du traitement des commandes, les données collectées sont limitées aux informations strictement nécessaires :</p>
-          <ul>
-            <li>Identité (nom complet ou nom commercial de la marque/entreprise).</li>
-            <li>Coordonnées de liaison (numéro WhatsApp, adresse email).</li>
-            <li>Éléments de brief (slogans, dates d'événements, coordonnées à insérer dans le visuel).</li>
-            <li>Fichiers importés (logos, photos de produits, maquettes, chartes graphiques).</li>
-          </ul>
-          <p><strong>Zéro donnée bancaire :</strong> Aucun numéro de carte bancaire n'est enregistré sur ce site. Les paiements s'effectuent exclusivement via les plateformes bancaires et opérateurs de paiement officiels.</p>
+          <h4>2. Conservation & accès</h4>
+          <p>Elles sont conservées dans un tableau privé auquel seul Olivier accède. Durée de conservation : à définir par Olivier.</p>
 
-          <h4>3. Finalité & Absence de Revente</h4>
-          <p>Ces données sont utilisées uniquement pour exécuter votre commande, vous transmettre vos livrables et communiquer sur l'avancement de votre projet. Vos informations personnelles et fichiers ne font <strong>l'objet d'aucune revente, cession ou échange avec des tiers publicitaires</strong>.</p>
+          <h4>3. Partage</h4>
+          <p>Elles ne sont ni vendues ni partagées, sauf avec les services nécessaires au traitement : <strong>Google</strong> (formulaire), <strong>Chariow</strong> (paiement) et <strong>WhatsApp</strong> (échanges). Aucune donnée bancaire n’est saisie ni conservée sur ce site.</p>
 
-          <h4>4. Sécurité des Fichiers & Archivage</h4>
-          <p>Vos fichiers (logos, photos, documents) sont traités sur des postes de travail professionnels sécurisés et sauvegardés de façon confidentielle. Ils ne sont jamais exploités à d'autres fins que votre commande.</p>
-
-          <h4>5. Droit d'Accès & de Suppression</h4>
-          <p>Vous conservez la maîtrise intégrale de vos données. Vous pouvez solliciter à tout moment la consultation, la modification ou l'effacement définitif de vos coordonnées sur simple demande par courriel à : <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
+          <h4>4. Vos droits</h4>
+          <p>Vous pouvez demander l’accès, la correction ou la suppression de vos données en écrivant à <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
         </div>
 
         <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
