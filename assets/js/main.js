@@ -40,45 +40,45 @@ var CONFIG = {
   // Le montant de chaque variante Chariow = la moitié du total (indiquée en commentaire).
   // Le même lien sert au paiement 1/2 (acompte) et au paiement 2/2 (solde).
   PAYMENT_LINKS: {
-    "affiche_simple|express":    "", // total 22 500 → 11 250 FCFA
-    "affiche_simple|rapide":     "", // total 19 000 →  9 500 FCFA
-    "affiche_simple|standard":   "", // total 15 000 →  7 500 FCFA
-    "affiche_simple|flexible":   "", // total 13 500 →  6 750 FCFA
-    "affiche_premium|express":   "", // total 45 000 → 22 500 FCFA
-    "affiche_premium|rapide":    "", // total 37 500 → 18 750 FCFA
-    "affiche_premium|standard":  "", // total 30 000 → 15 000 FCFA
-    "affiche_premium|flexible":  "", // total 27 000 → 13 500 FCFA
-    "flyer_recto|express":       "", // total 18 000 →  9 000 FCFA
-    "flyer_recto|rapide":        "", // total 15 000 →  7 500 FCFA
-    "flyer_recto|standard":      "", // total 12 000 →  6 000 FCFA
-    "flyer_recto|flexible":      "", // total 11 000 →  5 500 FCFA
-    "flyer_rectoverso|express":  "", // total 30 000 → 15 000 FCFA
-    "flyer_rectoverso|rapide":   "", // total 25 000 → 12 500 FCFA
-    "flyer_rectoverso|standard": "", // total 20 000 → 10 000 FCFA
-    "flyer_rectoverso|flexible": "", // total 18 000 →  9 000 FCFA
-    "visuel_reseaux|express":    "", // total 11 500 →  5 750 FCFA
-    "visuel_reseaux|rapide":     "", // total  9 500 →  4 750 FCFA
-    "visuel_reseaux|standard":   "", // total  7 500 →  3 750 FCFA
-    "visuel_reseaux|flexible":   "", // total  7 000 →  3 500 FCFA
-    "pack_5_visuels|express":    "", // total 45 000 → 22 500 FCFA
-    "pack_5_visuels|rapide":     "", // total 37 500 → 18 750 FCFA
-    "pack_5_visuels|standard":   "", // total 30 000 → 15 000 FCFA
-    "pack_5_visuels|flexible":   "", // total 27 000 → 13 500 FCFA
-    "carte_visite|express":      "", // total 15 000 →  7 500 FCFA
-    "carte_visite|rapide":       "", // total 12 500 →  6 250 FCFA
-    "carte_visite|standard":     "", // total 10 000 →  5 000 FCFA
-    "carte_visite|flexible":     "", // total  9 000 →  4 500 FCFA
-    "logo_simple|express":       "", // total 52 500 → 26 250 FCFA
-    "logo_simple|rapide":        "", // total 44 000 → 22 000 FCFA
-    "logo_simple|standard":      "", // total 35 000 → 17 500 FCFA
-    "logo_simple|flexible":      "", // total 31 500 → 15 750 FCFA
-    "identite_complete|rapide":  "", // total 125 000 → 62 500 FCFA (délai long : 4 à 5 jours)
-    "identite_complete|standard":"", // total 100 000 → 50 000 FCFA (délai long : 7 jours)
-    "identite_complete|flexible":"", // total  90 000 → 45 000 FCFA (délai long : 12 jours ou plus)
-    "motion_design|express":     "", // total 60 000 → 30 000 FCFA
-    "motion_design|rapide":      "", // total 50 000 → 25 000 FCFA
-    "motion_design|standard":    "", // total 40 000 → 20 000 FCFA
-    "motion_design|flexible":    ""  // total 36 000 → 18 000 FCFA
+    "affiche_simple|express":    "https://tuvdexdr.mychariow.store/prd_0vxq7t81?chw_pvar=GK6X2A", // total 22 500 → 11 250 FCFA
+    "affiche_simple|rapide":     "https://tuvdexdr.mychariow.store/prd_0vxq7t81?chw_pvar=26PI6L", // total 19 000 →  9 500 FCFA
+    "affiche_simple|standard":   "https://tuvdexdr.mychariow.store/prd_0vxq7t81?chw_pvar=CU4LPF", // total 15 000 →  7 500 FCFA
+    "affiche_simple|flexible":   "https://tuvdexdr.mychariow.store/prd_0vxq7t81?chw_pvar=0OWP7N", // total 13 500 →  6 750 FCFA
+    "affiche_premium|express":   "https://tuvdexdr.mychariow.store/prd_3270hdbo?chw_pvar=AREG3W", // total 45 000 → 22 500 FCFA
+    "affiche_premium|rapide":    "https://tuvdexdr.mychariow.store/prd_3270hdbo?chw_pvar=VK7WUU", // total 37 500 → 18 750 FCFA
+    "affiche_premium|standard":  "https://tuvdexdr.mychariow.store/prd_3270hdbo?chw_pvar=6S18A1", // total 30 000 → 15 000 FCFA
+    "affiche_premium|flexible":  "https://tuvdexdr.mychariow.store/prd_3270hdbo?chw_pvar=684B88", // total 27 000 → 13 500 FCFA
+    "flyer_recto|express":       "https://tuvdexdr.mychariow.store/prd_4qbbw49k?chw_pvar=F60WK4", // total 18 000 →  9 000 FCFA
+    "flyer_recto|rapide":        "https://tuvdexdr.mychariow.store/prd_4qbbw49k?chw_pvar=PFLPNF", // total 15 000 →  7 500 FCFA
+    "flyer_recto|standard":      "https://tuvdexdr.mychariow.store/prd_4qbbw49k?chw_pvar=4FZVXX", // total 12 000 →  6 000 FCFA
+    "flyer_recto|flexible":      "https://tuvdexdr.mychariow.store/prd_4qbbw49k?chw_pvar=HX9F1J", // total 11 000 →  5 500 FCFA
+    "flyer_rectoverso|express":  "https://tuvdexdr.mychariow.store/prd_x84kuw9b?chw_pvar=CUGX96", // total 30 000 → 15 000 FCFA
+    "flyer_rectoverso|rapide":   "https://tuvdexdr.mychariow.store/prd_x84kuw9b?chw_pvar=Z8WGPL", // total 25 000 → 12 500 FCFA
+    "flyer_rectoverso|standard": "https://tuvdexdr.mychariow.store/prd_x84kuw9b?chw_pvar=W4ZHEM", // total 20 000 → 10 000 FCFA
+    "flyer_rectoverso|flexible": "https://tuvdexdr.mychariow.store/prd_x84kuw9b?chw_pvar=OU85QZ", // total 18 000 →  9 000 FCFA
+    "visuel_reseaux|express":    "https://tuvdexdr.mychariow.store/prd_6fin0o6r?chw_pvar=JZUP7O", // total 11 500 →  5 750 FCFA
+    "visuel_reseaux|rapide":     "https://tuvdexdr.mychariow.store/prd_6fin0o6r?chw_pvar=OBRS3Q", // total  9 500 →  4 750 FCFA
+    "visuel_reseaux|standard":   "https://tuvdexdr.mychariow.store/prd_6fin0o6r?chw_pvar=9654OP", // total  7 500 →  3 750 FCFA
+    "visuel_reseaux|flexible":   "https://tuvdexdr.mychariow.store/prd_6fin0o6r?chw_pvar=J7GNUH", // total  7 000 →  3 500 FCFA
+    "pack_5_visuels|express":    "https://tuvdexdr.mychariow.store/prd_q8d7yz3c?chw_pvar=0AQMPC", // total 45 000 → 22 500 FCFA
+    "pack_5_visuels|rapide":     "https://tuvdexdr.mychariow.store/prd_q8d7yz3c?chw_pvar=KQHLZ1", // total 37 500 → 18 750 FCFA
+    "pack_5_visuels|standard":   "https://tuvdexdr.mychariow.store/prd_q8d7yz3c?chw_pvar=KZ7RAM", // total 30 000 → 15 000 FCFA
+    "pack_5_visuels|flexible":   "https://tuvdexdr.mychariow.store/prd_q8d7yz3c?chw_pvar=4LMHDT", // total 27 000 → 13 500 FCFA
+    "carte_visite|express":      "https://tuvdexdr.mychariow.store/prd_pvw032u3?chw_pvar=AHC9H5", // total 15 000 →  7 500 FCFA
+    "carte_visite|rapide":       "https://tuvdexdr.mychariow.store/prd_pvw032u3?chw_pvar=YLH3TS", // total 12 500 →  6 250 FCFA
+    "carte_visite|standard":     "https://tuvdexdr.mychariow.store/prd_pvw032u3?chw_pvar=JI7VYO", // total 10 000 →  5 000 FCFA
+    "carte_visite|flexible":     "https://tuvdexdr.mychariow.store/prd_pvw032u3?chw_pvar=32FZF6", // total  9 000 →  4 500 FCFA
+    "logo_simple|express":       "https://tuvdexdr.mychariow.store/prd_2f4asa7p?chw_pvar=S9B41W", // total 52 500 → 26 250 FCFA
+    "logo_simple|rapide":        "https://tuvdexdr.mychariow.store/prd_2f4asa7p?chw_pvar=W8EQVP", // total 44 000 → 22 000 FCFA
+    "logo_simple|standard":      "https://tuvdexdr.mychariow.store/prd_2f4asa7p?chw_pvar=CT860G", // total 35 000 → 17 500 FCFA
+    "logo_simple|flexible":      "https://tuvdexdr.mychariow.store/prd_2f4asa7p?chw_pvar=Y4QK6W", // total 31 500 → 15 750 FCFA
+    "identite_complete|rapide":  "https://tuvdexdr.mychariow.store/prd_ewy2p86s?chw_pvar=S5Z2S6", // total 125 000 → 62 500 FCFA (délai long : 4 à 5 jours)
+    "identite_complete|standard":"https://tuvdexdr.mychariow.store/prd_ewy2p86s?chw_pvar=6C2JA8", // total 100 000 → 50 000 FCFA (délai long : 7 jours)
+    "identite_complete|flexible":"https://tuvdexdr.mychariow.store/prd_ewy2p86s?chw_pvar=W8HAE7", // total  90 000 → 45 000 FCFA (délai long : 12 jours ou plus)
+    "motion_design|express":     "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=JVTOLT", // total 60 000 → 30 000 FCFA
+    "motion_design|rapide":      "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=5Y2N92", // total 50 000 → 25 000 FCFA
+    "motion_design|standard":    "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=V0GM14", // total 40 000 → 20 000 FCFA
+    "motion_design|flexible":    "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=ULIIL2"  // total 36 000 → 18 000 FCFA
   }
 };
 
