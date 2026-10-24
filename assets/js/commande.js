@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function update() {
     const c = calc();
     $('heroTitle').textContent = c.srv.nom;
-    $('heroDesc').textContent = `${c.srv.desc}. Remplissez votre brief, ajoutez vos fichiers et réglez 50 % pour lancer votre projet.`;
+    $('heroDesc').textContent = `${c.srv.desc}. Dites-nous ce que vous voulez, ajoutez vos photos et réglez 50 % pour lancer votre projet.`;
     $('heroIcon').innerHTML = `<i class="fa-solid ${c.srv.icon}"></i>`;
     document.title = `Commander · ${c.srv.nom} · AUREN CRÉATIF`;
 

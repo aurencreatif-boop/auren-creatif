@@ -30,12 +30,12 @@
       <div>
         <p class="order-hero-kicker">Commander</p>
         <h1 class="order-hero-title" id="heroTitle">Affiche simple</h1>
-        <p class="order-hero-desc" id="heroDesc">Remplissez votre brief, ajoutez vos fichiers et réglez 50 % pour lancer votre projet.</p>
+        <p class="order-hero-desc" id="heroDesc">Dites-nous ce que vous voulez, ajoutez vos photos et réglez 50 % pour lancer votre projet.</p>
       </div>
     </div>
 
     <ol class="order-steps" aria-label="Étapes de la commande">
-      <li class="is-active"><span>1</span> Votre brief</li>
+      <li class="is-active"><span>1</span> Vos informations</li>
       <li><span>2</span> Paiement 50 %</li>
       <li><span>3</span> Aperçu par e-mail</li>
       <li><span>4</span> Solde et fichiers finaux</li>
@@ -46,12 +46,12 @@
 
         <!-- 1. Projet -->
         <section class="order-card">
-          <h2 class="order-card-title"><span class="order-num">1</span> Votre projet</h2>
+          <h2 class="order-card-title"><span class="order-num">1</span> Votre commande</h2>
 
-          <label class="order-label" for="serviceSelect">Service</label>
+          <label class="order-label" for="serviceSelect">Ce que vous voulez</label>
           <select id="serviceSelect" class="form-control"></select>
 
-          <p class="order-label">Délai de livraison <span class="req">*</span></p>
+          <p class="order-label">Pour quand en avez-vous besoin ? <span class="req">*</span></p>
           <div class="order-delais" id="delaiGroup" role="radiogroup" aria-label="Délai de livraison"></div>
           <p class="order-hint" id="delaiNotice" hidden></p>
 
@@ -59,66 +59,67 @@
 
         <!-- 2. Brief -->
         <section class="order-card">
-          <h2 class="order-card-title"><span class="order-num">2</span> Votre brief</h2>
+          <h2 class="order-card-title"><span class="order-num">2</span> Décrivez ce que vous voulez</h2>
+          <p class="order-hint">Répondez simplement, comme si vous parliez à Olivier. Pas besoin de connaître le graphisme.</p>
 
           <div class="order-grid-2">
             <div>
-              <label class="order-label" for="fProjet">Titre du projet ou nom de la marque <span class="req">*</span></label>
-              <input id="fProjet" class="form-control" required maxlength="120" placeholder="Ex. Concert Live, SMG Plug, Mon Restaurant">
+              <label class="order-label" for="fProjet">Nom de votre projet, entreprise ou événement <span class="req">*</span></label>
+              <input id="fProjet" class="form-control" required maxlength="120" placeholder="Ex. : Concert de Noël, Boutique Ama, Restaurant Le Palmier">
             </div>
             <div>
-              <label class="order-label" for="fDestination">Utilisation <span class="req">*</span></label>
+              <label class="order-label" for="fDestination">Où allez-vous l’utiliser ? <span class="req">*</span></label>
               <select id="fDestination" class="form-control" required>
-                <option value="Réseaux sociaux">Réseaux sociaux</option>
-                <option value="Impression">Impression</option>
-                <option value="Les deux">Réseaux sociaux et impression</option>
-                <option value="Personnalisé">Autre / personnalisé</option>
+                <option value="Réseaux sociaux">Sur internet (WhatsApp, Facebook, Instagram…)</option>
+                <option value="Impression">À imprimer (papier, affiche, banderole…)</option>
+                <option value="Les deux">Les deux : sur internet et à imprimer</option>
+                <option value="Personnalisé">Je ne sais pas encore</option>
               </select>
             </div>
           </div>
 
-          <label class="order-label" for="fTextes">Textes et informations à intégrer <span class="req">*</span></label>
-          <textarea id="fTextes" class="form-control order-textarea" required maxlength="3000" placeholder="Titres, slogans, numéros, adresses… Pour un événement : date, heure et lieu. Pour une promotion : produit, prix et validité."></textarea>
+          <label class="order-label" for="fTextes">Quels textes doivent apparaître ? <span class="req">*</span></label>
+          <textarea id="fTextes" class="form-control order-textarea" required maxlength="3000" placeholder="Écrivez tout ce qu’on doit lire sur votre création. Ex. : Grand concert de Noël – samedi 14 décembre à 18 h – Palais des congrès – Entrée 2 000 F – Infos : 90 00 00 00"></textarea>
 
           <div class="order-grid-2">
             <div>
-              <label class="order-label" for="fStyle">Style et couleurs souhaités</label>
-              <input id="fStyle" class="form-control" maxlength="200" placeholder="Ex. bleu moderne, or luxueux, sombre épuré">
+              <label class="order-label" for="fStyle">Couleurs ou ambiance souhaitées</label>
+              <input id="fStyle" class="form-control" maxlength="200" placeholder="Ex. : bleu et blanc, couleurs de mon logo, élégant, joyeux…">
             </div>
             <div>
-              <label class="order-label" for="fDimensions">Dimensions ou format</label>
-              <input id="fDimensions" class="form-control" maxlength="120" placeholder="Ex. A3, story Instagram, 1080 × 1080">
+              <label class="order-label" for="fDimensions">Taille (si vous la connaissez)</label>
+              <input id="fDimensions" class="form-control" maxlength="120" placeholder="Ex. : format A4, statut WhatsApp… ou laissez vide">
             </div>
           </div>
 
-          <label class="order-label" for="fInfos">Informations complémentaires</label>
-          <textarea id="fInfos" class="form-control" rows="3" maxlength="1500" placeholder="Inspirations, éléments à éviter, remarques…"></textarea>
+          <label class="order-label" for="fInfos">Autre chose à nous dire ?</label>
+          <textarea id="fInfos" class="form-control" rows="3" maxlength="1500" placeholder="Ex. : un modèle que vous aimez, ce que vous ne voulez surtout pas…"></textarea>
         </section>
 
         <!-- 3. Fichiers -->
         <section class="order-card">
-          <h2 class="order-card-title"><span class="order-num">3</span> Vos fichiers <span class="order-hint-inline">(facultatif)</span></h2>
-          <p class="order-hint">Logo, photos, documents, inspirations… Jusqu’à 5 fichiers, 10 Mo maximum chacun.</p>
+          <h2 class="order-card-title"><span class="order-num">3</span> Vos photos et documents <span class="order-hint-inline">(facultatif)</span></h2>
+          <p class="order-hint">Votre logo, vos photos, un modèle que vous aimez… (5 fichiers maximum).</p>
 
           <label class="order-dropzone" id="dropZone" for="fFiles">
             <input type="file" id="fFiles" multiple accept="image/*,application/pdf,.pdf,.ai,.psd,.eps,.svg,.zip">
             <i class="fa-solid fa-cloud-arrow-up"></i>
-            <strong>Ajouter des fichiers</strong>
+            <strong>Ajouter des photos ou des fichiers</strong>
             <span>Depuis votre galerie, votre appareil photo ou vos documents</span>
           </label>
           <ul class="order-files" id="fileList"></ul>
 
-          <label class="order-label" for="fLien">Ou un lien de partage (Drive, WeTransfer…)</label>
+          <label class="order-label" for="fLien">Vos fichiers sont trop lourds ? Collez un lien (Google Drive, WeTransfer…)</label>
           <input id="fLien" type="url" class="form-control" inputmode="url" placeholder="https://">
         </section>
 
         <!-- 4. Coordonnées -->
         <section class="order-card">
-          <h2 class="order-card-title"><span class="order-num">4</span> Vos coordonnées</h2>
-          <p class="order-hint">Votre aperçu et vos fichiers finaux vous sont envoyés par e-mail.</p>
+          <h2 class="order-card-title"><span class="order-num">4</span> Comment vous joindre</h2>
+          <p class="order-hint">Votre création vous sera envoyée à votre adresse e-mail. Vérifiez-la bien.</p>
           <div class="order-grid-2">
             <div>
-              <label class="order-label" for="fNom">Nom ou entreprise <span class="req">*</span></label>
+              <label class="order-label" for="fNom">Votre nom <span class="req">*</span></label>
               <input id="fNom" class="form-control" required maxlength="100" autocomplete="name">
             </div>
             <div>
@@ -126,7 +127,7 @@
               <input id="fWhatsapp" type="tel" class="form-control" required maxlength="25" autocomplete="tel" placeholder="+228 90 00 00 00">
             </div>
           </div>
-          <label class="order-label" for="fEmail">Adresse e-mail <span class="req">*</span></label>
+          <label class="order-label" for="fEmail">Votre adresse e-mail <span class="req">*</span></label>
           <input id="fEmail" type="email" class="form-control" required maxlength="120" autocomplete="email" placeholder="vous@exemple.com">
 
           <!-- Champ piège anti-robots (invisible) -->
@@ -144,7 +145,7 @@
         <h2 class="order-summary-title">Récapitulatif</h2>
         <dl class="order-summary-list">
           <div><dt>Service</dt><dd id="sService">—</dd></div>
-          <div><dt>Délai</dt><dd id="sDelai">—</dd></div>
+          <div><dt>Pour quand</dt><dd id="sDelai">—</dd></div>
           <div><dt>Livraison prévue</dt><dd id="sDate">—</dd></div>
           <div id="sOptionsRow" hidden><dt>Options</dt><dd id="sOptions">—</dd></div>
         </dl>
@@ -159,7 +160,7 @@
             <small id="sNowEur"></small>
           </div>
           <div class="order-pay-later">
-            <span>À la livraison</span>
+            <span>À payer à la livraison</span>
             <strong id="sLater">—</strong>
           </div>
         </div>
