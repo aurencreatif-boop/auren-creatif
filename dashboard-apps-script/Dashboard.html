@@ -40,6 +40,7 @@
     aside select { width:auto; } aside textarea { min-height:70px; }
     .deliver { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:1rem; }
     .deliver label { display:block; font-weight:600; margin:.6rem 0 .3rem; }
+    .files { margin:0; padding-left:1.1rem; } .files li { margin:.25rem 0; } .files a { color:var(--primary); }
     .notice { font-size:.78rem; color:var(--muted); margin:.5rem 0 0; }
     .empty { padding:2rem; text-align:center; color:var(--muted); }
     @media (max-width:560px) { dl { grid-template-columns:1fr; } }
@@ -126,7 +127,9 @@
       const p = document.getElementById('detail');
       p.dataset.ref = ref;
       const tel = String(c['WhatsApp'] || '').replace(/\D/g, '');
-      const brief = ['Projet', 'Utilisation', 'Textes', 'Style', 'Dimensions', 'Infos', 'Options', 'Lien fichiers client'];
+      const brief = ['Projet', 'Utilisation', 'Textes', 'Style', 'Dimensions', 'Infos'];
+      const fichiers = String(c['Lien fichiers client'] || '').split('
+').filter(Boolean).map(l => { const [nom, url] = l.split(' | '); return { nom, url: url || nom }; });
       const livre = c['Statut'] === S()[4];
       p.innerHTML = `
         <div class="row" style="justify-content:space-between"><div><h3>${esc(ref)}</h3><div class="muted">${esc(c['Service'])} · reçue le ${dateFr(c['Date'])}</div></div><button class="btn" id="fermer" aria-label="Fermer">✕</button></div>
@@ -135,14 +138,17 @@
         <div class="row"><select id="statut">${S().map(s => `<option ${s === c['Statut'] ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select><button class="btn" id="saveStatut">Enregistrer</button></div>
         <p class="notice">Les paiements Chariow mettent ce statut à jour automatiquement. Vous pouvez aussi le changer à la main.</p>
 
-        <h4>Livrer le projet</h4>
+        <h4>📎 Fichiers envoyés par le client</h4>
+        ${fichiers.length ? `<ul class="files">${fichiers.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nom)}</a></li>`).join('')}</ul>` : '<p class="muted">Aucun fichier.</p>'}
+
+        <h4>📤 Envoyer le projet au client</h4>
         ${livre ? `<p>✅ Fichiers finaux livrés le ${dateFr(c['Date paiement 2/2'])}.</p>` : `
         <div class="deliver">
-          <label for="apercu">1. Aperçu (basse définition, filigrane)</label><input type="file" id="apercu" accept="image/*,application/pdf,video/*">
-          <label for="final">2. Fichier final (haute définition)</label><input type="file" id="final">
-          <label for="message">3. Message au client (facultatif)</label><textarea id="message" placeholder="Ex. Voici votre affiche, dites-moi si une retouche est nécessaire."></textarea>
-          <div class="row" style="margin-top:.8rem"><button class="btn btn-primary" id="envoyer">Envoyer l’aperçu et le lien du solde</button></div>
-          <p class="notice">Le client reçoit l’aperçu par e-mail avec le bouton « Payer le solde ». Dès que Chariow confirme le paiement, le fichier final lui est envoyé automatiquement.</p>
+          <label for="apercu">1. L’aperçu que le client va voir <span class="muted">(image avec filigrane)</span></label><input type="file" id="apercu" accept="image/*,application/pdf,video/*">
+          <label for="final">2. Le fichier final <span class="muted">(gardé de côté, envoyé après le paiement)</span></label><input type="file" id="final">
+          <label for="message">3. Un petit mot pour le client <span class="muted">(facultatif)</span></label><textarea id="message" placeholder="Ex. Voici votre affiche, dites-moi si une retouche est nécessaire."></textarea>
+          <div class="row" style="margin-top:.8rem"><button class="btn btn-primary" id="envoyer">Envoyer au client</button></div>
+          <p class="notice">Le client reçoit un e-mail avec l’aperçu et le bouton « Payer le solde ». Dès qu’il a payé, il reçoit automatiquement un second e-mail avec le fichier final.</p>
           ${c['ID fichier final'] ? `<div class="row" style="margin-top:.8rem"><button class="btn" id="livrer">Solde reçu → envoyer le fichier final maintenant</button></div>` : ''}
         </div>`}
 

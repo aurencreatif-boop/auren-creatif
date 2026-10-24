@@ -175,7 +175,7 @@ function enregistrerCommande_(d) {
     set('Total (FCFA)', Number(d.total) || ''); set('Acompte (FCFA)', Number(d.acompte) || ''); set('Solde (FCFA)', Number(d.solde) || '');
     set('Options', (d.options || []).join(', ')); set('Projet', d.projet); set('Utilisation', d.destination);
     set('Textes', d.textes); set('Style', d.style); set('Dimensions', d.dimensions); set('Infos', d.infos);
-    set('Lien fichiers client', d.lien); set('Dossier Drive', dossier.getUrl()); set('Lien paiement', d.payLink);
+    set('Lien fichiers client', recus.map(r => `${r.nom} | ${r.url}`).concat(d.lien ? [`Lien du client | ${d.lien}`] : []).join('\n')); set('Dossier Drive', dossier.getUrl()); set('Lien paiement', d.payLink);
     set('Liens options', liensOptions);
     sh.appendRow(ligne);
 
