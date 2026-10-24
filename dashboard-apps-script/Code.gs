@@ -113,7 +113,7 @@ function doGet(e) {
     const t = HtmlService.createTemplateFromFile('Dashboard');
     t.adminKey = e.parameter.k;
     t.apiUrl = ScriptApp.getService().getUrl();
-    t.data = JSON.stringify(getDashboardData(e.parameter.k)).replace(/</g, '\u003c');
+    t.data = JSON.stringify(getDashboardData(e.parameter.k)).replace(/</g, String.fromCharCode(92) + 'u003c'); // empêche une balise de fin de script dans les données
     return t.evaluate().setTitle('Tableau de bord · AUREN CRÉATIF').addMetaTag('viewport', 'width=device-width, initial-scale=1');
   }
   return HtmlService.createHtmlOutput('<p style="font-family:sans-serif">AUREN CRÉATIF</p>');
