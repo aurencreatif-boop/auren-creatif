@@ -24,6 +24,11 @@
     .btn:hover { border-color:var(--primary); }
     .btn-primary { background:var(--grad); border:0; color:#fff; padding:.75rem 1.2rem; box-shadow:0 6px 16px rgba(37,99,235,.25); }
     .btn[disabled] { opacity:.6; cursor:wait; }
+    .aide { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:.75rem 1rem; margin-bottom:1rem; font-size:.9rem; color:var(--muted); }
+    .aide summary { cursor:pointer; font-weight:700; color:var(--text); }
+    .aide ol { margin:.6rem 0 0; padding-left:1.2rem; } .aide li { margin:.3rem 0; }
+    .prochaine { background:var(--soft); border-left:4px solid var(--primary); border-radius:10px; padding:.7rem .9rem; margin:.6rem 0 0; }
+    .statut-main { margin-top:.6rem; font-size:.85rem; } .statut-main summary { cursor:pointer; color:var(--muted); }
     .guide { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.75rem; margin-bottom:1.25rem; }
     .guide div { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1rem; font-size:.88rem; color:var(--muted); }
     .guide strong { display:block; color:var(--text); margin-bottom:.15rem; }
@@ -99,13 +104,16 @@
     <button class="btn" id="refresh">↻ Actualiser</button>
   </header>
   <main>
-    <section class="guide">
-      <div><span>1</span><strong>Une commande arrive</strong>Vous recevez un e-mail avec le bon de commande PDF. Elle apparaît aussi dans la liste ci-dessous.</div>
-      <div><span>2</span><strong>Vous réalisez le travail</strong>Cliquez sur la commande pour voir le brief et les fichiers du client.</div>
-      <div><span>3</span><strong>Vous l’envoyez au client</strong>Dans la commande, ajoutez l’aperçu et le fichier final, puis « Envoyer maintenant » ou « Programmer » à l’heure de livraison prévue.</div>
-      <div><span>4</span><strong>Le client paie le solde</strong>Il reçoit automatiquement son fichier final par e-mail.</div>
-      <div><span>5</span><strong>Modifications et avis</strong>Le client demande ses modifications dans son espace (2 sur l’aperçu, 2 après la livraison) et donne son avis. Tout arrive ici.</div>
-    </section>
+    <details class="aide">
+      <summary>❔ Comment ça marche ?</summary>
+      <ol>
+        <li><strong>Une commande arrive</strong> : vous recevez un e-mail, et elle apparaît dans « Nouvelles commandes ».</li>
+        <li><strong>Vous ouvrez la commande</strong> : vous voyez ce que veut le client et ses fichiers.</li>
+        <li><strong>Vous envoyez le projet</strong> : aperçu + fichier final, puis « Envoyer maintenant » ou « Programmer ».</li>
+        <li><strong>Le client paie le solde</strong> : il reçoit tout seul son fichier final.</li>
+        <li><strong>Une modification ?</strong> Elle arrive dans « Modifications demandées ».</li>
+      </ol>
+    </details>
     <section class="tiles" id="tiles"></section>
     <section class="card">
       <h2>Mes commandes</h2>
@@ -117,7 +125,6 @@
       </div>
       <div class="filters">
         <input type="search" id="search" placeholder="Rechercher : référence, client, service…" aria-label="Rechercher">
-        <select id="filterStatut" aria-label="Filtrer par statut"><option value="">Tous les statuts</option></select>
       </div>
       <div class="table-wrap">
         <table>
@@ -161,6 +168,23 @@
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
     const pill = s => s === S()[6] || s === S()[7] ? 'retouche' : s === S()[8] ? 'prog' : (s === S()[0] ? 'warn' : (s === S()[3] || s === S()[4] ? 'ok' : ''));
     const SITE = 'https://aurencreatif-boop.github.io/auren-creatif/';
+    const libelle = s => ({
+      [S()[0]]: 'Acompte à vérifier', [S()[1]]: 'À réaliser', [S()[2]]: 'En création',
+      [S()[3]]: 'Livré · solde à recevoir', [S()[4]]: 'Terminé · tout payé', [S()[5]]: 'Archivé',
+      [S()[6]]: 'Retouche demandée', [S()[7]]: 'Modification demandée', [S()[8]]: 'Programmé'
+    })[s] || s;
+    // Ce qu'il faut faire maintenant, selon le statut
+    const prochaine = c => {
+      const s = c['Statut'];
+      if (s === S()[0]) return 'Attendre le paiement de l’acompte : il est confirmé tout seul par Chariow (vous pouvez aussi passer la commande en « À réaliser » à la main).';
+      if (s === S()[1] || s === S()[2]) return 'Réaliser le projet, puis envoyer l’aperçu et le fichier final juste en dessous.';
+      if (s === S()[8]) return `Rien à faire : l’aperçu partira tout seul le ${dateHeure(new Date(c['Envoi programmé']))}.`;
+      if (s === S()[3]) return 'Rien à faire : dès que le client paie le solde, son fichier final part tout seul.';
+      if (s === S()[4]) return 'Commande terminée. 🎉';
+      if (s === S()[6]) return 'Le client demande une retouche : envoyer le fichier corrigé dans « Après la livraison ».';
+      if (s === S()[7]) return 'Le client demande une modification de l’aperçu : envoyer le nouvel aperçu juste en dessous.';
+      return 'Commande archivée.';
+    };
     const RETOUCHES_OFFERTES = 2;
     const MODIFS_APERCU = 2;
     // Compteur « 1 / 2 utilisées » (+ demandes payantes au-delà)
@@ -184,18 +208,12 @@
     function afficher(data) {
       DATA = data;
       document.getElementById('maj').textContent = 'Mis à jour le ' + new Date(data.maj).toLocaleString('fr-FR');
-      const sel = document.getElementById('filterStatut');
-      if (sel.options.length === 1) data.statuts.forEach(s => sel.add(new Option(s, s)));
       const cs = data.commandes;
       const tuiles = [
-        ['À vérifier (paiement)', cs.filter(c => c['Statut'] === S()[0]).length],
-        ['À réaliser', cs.filter(c => c['Statut'] === S()[1] || c['Statut'] === S()[2]).length],
-        ['Solde en attente', cs.filter(c => c['Statut'] === S()[3]).length],
-        ['Envois programmés', cs.filter(c => c['Statut'] === S()[8]).length],
-        ['Livrées', cs.filter(c => partie(c) === 'livrees' || partie(c) === 'modifs').length],
-        ['Modifications à faire', cs.filter(c => c['Statut'] === S()[6] || c['Statut'] === S()[7]).length],
-        ['Note moyenne', (() => { const n = cs.filter(c => Number(c['Avis (note)'])); return n.length ? (n.reduce((t, c) => t + Number(c['Avis (note)']), 0) / n.length).toFixed(1).replace('.', ',') + ' ★ (' + n.length + ' avis)' : '—'; })()],
-        ['Acomptes encaissés', fcfa(cs.filter(c => c['Date paiement 1/2']).reduce((s, c) => s + (Number(c['Acompte (FCFA)']) || 0), 0))]
+        ['💳 Acompte à vérifier', cs.filter(c => c['Statut'] === S()[0]).length],
+        ['🎨 À réaliser', cs.filter(c => c['Statut'] === S()[1] || c['Statut'] === S()[2]).length],
+        ['✏️ Modifications à faire', cs.filter(c => partie(c) === 'demandes').length],
+        ['⏰ Programmés', cs.filter(c => c['Statut'] === S()[8]).length]
       ];
       document.getElementById('tiles').innerHTML = tuiles.map(t => `<div class="tile"><div class="label">${t[0]}</div><div class="value">${t[1]}</div></div>`).join('');
       tableau();
@@ -217,7 +235,7 @@
       const tb = document.getElementById('rows');
       tb.innerHTML = rows.length ? rows.map(c => `<tr data-ref="${esc(c['Référence'])}">
         <td><strong>${esc(c['Référence'])}</strong></td><td>${dateFr(c['Date'])}</td><td>${esc(c['Nom'])}</td><td>${esc(c['Service'])}</td>
-        <td>${livraison(c)}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(c['Statut'])}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
+        <td>${livraison(c)}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(libelle(c['Statut']))}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
         : `<tr><td colspan="8" class="empty">${filtre ? 'Aucune commande avec ce statut.' : {
             commandes: 'Aucune nouvelle commande. Les commandes du site apparaîtront ici.',
             demandes: 'Aucune modification demandée. Les demandes des clients apparaîtront ici.',
@@ -251,9 +269,12 @@
       p.innerHTML = `
         <div class="row" style="justify-content:space-between"><div><h3>${esc(ref)}</h3><div class="muted">${esc(c['Service'])} · reçue le ${dateFr(c['Date'])}</div></div><button class="btn" id="fermer" aria-label="Fermer">✕</button></div>
 
-        <h4>Statut</h4>
-        <div class="row"><select id="statut">${S().map(s => `<option ${s === c['Statut'] ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select><button class="btn" id="saveStatut">Enregistrer</button></div>
-        <p class="notice">Les paiements Chariow mettent ce statut à jour automatiquement. Vous pouvez aussi le changer à la main.</p>
+        <h4>Où en est la commande ?</h4>
+        <span class="pill ${pill(c['Statut'])}" style="font-size:.85rem">${esc(libelle(c['Statut']))}</span>
+        <p class="prochaine">👉 <strong>Prochaine étape :</strong> ${esc(prochaine(c))}</p>
+        <details class="statut-main"><summary>Changer le statut à la main</summary>
+          <div class="row" style="margin-top:.5rem"><select id="statut">${S().map(s => `<option value="${esc(s)}" ${s === c['Statut'] ? 'selected' : ''}>${esc(libelle(s))}</option>`).join('')}</select><button class="btn" id="saveStatut">Enregistrer</button></div>
+        </details>
 
         <h4>📎 Fichiers envoyés par le client</h4>
         ${fichiers.length ? `<ul class="files">${fichiers.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nom)}</a></li>`).join('')}</ul>` : '<p class="muted">Aucun fichier.</p>'}
@@ -367,11 +388,9 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fermer(); });
     document.getElementById('refresh').onclick = charger;
     document.getElementById('search').oninput = tableau;
-    document.getElementById('filterStatut').onchange = e => { filtre = e.target.value; tableau(); };
     document.querySelectorAll('.onglet').forEach(b => b.onclick = () => {
       onglet = b.dataset.onglet;
       document.querySelectorAll('.onglet').forEach(x => { x.classList.toggle('actif', x === b); x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
-      filtre = ''; document.getElementById('filterStatut').value = '';
       tableau();
     });
     // Lien sans clé ou clé refusée : on n'affiche rien de privé
