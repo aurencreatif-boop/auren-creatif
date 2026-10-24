@@ -4493,7 +4493,7 @@ textarea.form-control {
   .footer-links span { font-size: 0.875rem; }
 }
 
-/* Très petits téléphones : le menu reste visible (le Hero garde son bouton Commander) */
-@media (max-width: 380px) {
+/* Très petits téléphones (moins de 375 px) : le menu reste visible (le Hero garde son bouton Commander) */
+@media (max-width: 374px) {
   .nav-cta-btn { display: none; }
 }
