@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!el.value.trim()) { el.focus(); return 'Merci de remplir tous les champs marqués d’un astérisque.'; }
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('fEmail').value.trim())) { $('fEmail').focus(); return 'Adresse e-mail invalide : elle sert à vous envoyer votre projet.'; }
-    if ($('fWhatsapp').value.replace(/\D/g, '').length < 8) { $('fWhatsapp').focus(); return 'Numéro WhatsApp invalide.'; }
+    if ($('fWhatsapp').value.replace(/\D/g, '').length < 8) { $('fWhatsapp').focus(); return 'Numéro de téléphone invalide : ajoutez l’indicatif du pays.'; }
     if (!$('fConsent').checked) return 'Merci d’accepter les conditions pour continuer.';
     return '';
   }
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
       infos: $('fInfos').value.trim(),
       lien: $('fLien').value.trim(),
       nom: $('fNom').value.trim(),
-      whatsapp: $('fWhatsapp').value.trim(),
+      whatsapp: $('fWhatsapp').value.trim() + ($('fHasWhatsapp').checked ? '' : ' (pas de WhatsApp : appel ou SMS)'),
       email: $('fEmail').value.trim(),
       website: $('fWebsite').value // champ piège
     };

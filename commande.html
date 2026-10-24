@@ -128,8 +128,10 @@
               <input id="fNom" class="form-control" required maxlength="100" autocomplete="name">
             </div>
             <div>
-              <label class="order-label" for="fWhatsapp">Numéro WhatsApp <span class="req">*</span></label>
-              <input id="fWhatsapp" type="tel" class="form-control" required maxlength="25" autocomplete="tel" placeholder="+228 90 00 00 00">
+              <label class="order-label" for="fWhatsapp">Numéro de téléphone <span class="order-hint-inline">(WhatsApp de préférence)</span> <span class="req">*</span></label>
+              <input id="fWhatsapp" type="tel" class="form-control" required maxlength="25" autocomplete="tel" placeholder="+228 90 00 00 00" aria-describedby="telHint">
+              <small class="order-field-hint" id="telHint">Avec l’indicatif du pays, ex. +228 90 00 00 00 ou +33 6 12 34 56 78</small>
+              <label class="order-check-inline"><input type="checkbox" id="fHasWhatsapp" checked> Ce numéro est joignable sur WhatsApp</label>
             </div>
           </div>
           <label class="order-label" for="fEmail">Votre adresse e-mail <span class="req">*</span></label>
