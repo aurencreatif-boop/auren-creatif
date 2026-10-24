@@ -237,94 +237,33 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const tabButtons = document.querySelectorAll('.tab-btn');
-  const portfolioItems = [...document.querySelectorAll('.portfolio-item')];
-  const portfolioGrid = document.querySelector('.portfolio-grid');
-
-  // « Tous les visuels » : les visuels sont regroupés par catégorie, une rangée
-  // par catégorie, et « Voir plus » affiche le reste de la catégorie.
-  const nomsCategories = {};
-  tabButtons.forEach(b => { if (b.dataset.filter !== 'all') nomsCategories[b.dataset.filter] = b.textContent.trim(); });
-  const groupes = {};
-  portfolioItems.forEach(item => { (groupes[item.dataset.category] = groupes[item.dataset.category] || []).push(item); });
-  const ouverts = new Set();
-  const enTetes = {}, boutonsPlus = {};
-
-  if (portfolioGrid) {
-    Object.entries(groupes).forEach(([cat, items]) => {
-      // Les visuels d'une même catégorie se suivent : titre avant le premier, bouton après le dernier
-      const titre = document.createElement('h3');
-      titre.className = 'portfolio-groupe-titre';
-      titre.innerHTML = `${nomsCategories[cat] || cat} <span>${items.length} visuel${items.length > 1 ? 's' : ''}</span>`;
-      items.forEach(it => portfolioGrid.insertBefore(it, null));
-      portfolioGrid.insertBefore(titre, items[0]);
-      const plus = document.createElement('button');
-      plus.type = 'button';
-      plus.className = 'portfolio-voir-plus';
-      plus.addEventListener('click', () => {
-        if (ouverts.has(cat)) {
-          ouverts.delete(cat);
-          titre.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          ouverts.add(cat);
-        }
-        afficherPortfolio(filtreActif);
-      });
-      items[items.length - 1].after(plus);
-      enTetes[cat] = titre;
-      boutonsPlus[cat] = plus;
-    });
-  }
-
-  // Nombre de visuels par rangée (3 sur ordinateur, 2 sur téléphone…)
-  const parRangee = () => portfolioGrid ? Math.max(1, getComputedStyle(portfolioGrid).gridTemplateColumns.split(' ').length) : 3;
-
-  const montrer = (el, visible) => {
-    if (visible) {
-      el.style.display = 'flex';
-      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 50);
-    } else {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      setTimeout(() => { el.style.display = 'none'; }, 250);
-    }
-  };
-
-  let filtreActif = 'all';
-  function afficherPortfolio(filter) {
-    filtreActif = filter;
-    const n = parRangee();
-    Object.entries(groupes).forEach(([cat, items]) => {
-      const tous = filter === 'all';
-      enTetes[cat].style.display = tous ? '' : 'none';
-      items.forEach((item, i) => {
-        const visible = tous ? (i < n || ouverts.has(cat)) : cat === filter;
-        if (visible !== (item.style.display !== 'none')) montrer(item, visible);
-        else if (visible) { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }
-      });
-      const reste = items.length - n;
-      const bouton = boutonsPlus[cat];
-      bouton.style.display = tous && reste > 0 ? '' : 'none';
-      bouton.innerHTML = ouverts.has(cat)
-        ? 'Voir moins <i class="fa-solid fa-chevron-up"></i>'
-        : `Voir plus (${reste}) <i class="fa-solid fa-chevron-down"></i>`;
-    });
-  }
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      afficherPortfolio(btn.getAttribute('data-filter'));
+
+      const filter = btn.getAttribute('data-filter');
+
+      portfolioItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (filter === 'all' || itemCategory === filter) {
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 50);
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 250);
+        }
+      });
     });
   });
-
-  if (portfolioGrid) {
-    afficherPortfolio('all');
-    let largeur = window.innerWidth;
-    window.addEventListener('resize', () => {
-      if (window.innerWidth !== largeur) { largeur = window.innerWidth; afficherPortfolio(filtreActif); }
-    });
-  }
 
   /* ==========================================================================
      Lightbox Modal
