@@ -4550,3 +4550,43 @@ textarea.form-control {
   .portfolio-groupes { gap: 1.75rem; }
   .portfolio-groupe-tete h3 { font-size: 1.05rem; }
 }
+
+/* ==========================================================================
+   Réalisations : « Tous les visuels » regroupés par catégorie
+   ========================================================================== */
+.portfolio-groupe-titre {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 1.25rem 0 -0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-light);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-main);
+  scroll-margin-top: 90px;
+}
+.portfolio-groupe-titre:first-child { margin-top: 0; }
+.portfolio-groupe-titre span { font-family: var(--font-body, inherit); font-size: 0.8rem; font-weight: 600; color: var(--primary-600); }
+.portfolio-voir-plus {
+  grid-column: 1 / -1;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.3rem;
+  border: 1.5px solid var(--primary-600);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--primary-700, #1d4ed8);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.portfolio-voir-plus:hover { background: var(--primary-600); color: #fff; }
+@media (max-width: 600px) {
+  .portfolio-groupe-titre { font-size: 1.02rem; margin-top: 0.75rem; }
+  .portfolio-voir-plus { font-size: 0.85rem; padding: 0.55rem 1.1rem; }
+}

@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024x">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261025a">
   <link rel="stylesheet" href="assets/css/commande.css?v=20261024u">
 </head>
 <body>
@@ -79,6 +79,10 @@
               <i class="fa-solid fa-images"></i>
               <span>Voir mes réalisations</span>
             </a>
+            <button type="button" class="btn btn-outline btn-lg open-contact-modal">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Signaler un problème</span>
+            </button>
           </div>
         </div>
 
@@ -373,11 +377,22 @@
         </p>
       </div>
 
-      <!-- Réalisations regroupées par catégorie (assets/js/realisations.js) -->
-      <div class="portfolio-grid" id="portfolioSource">
+      <!-- Filter Tabs -->
+      <div class="portfolio-tabs">
+        <button class="tab-btn active" data-filter="all">Tous les visuels (14)</button>
+        <button class="tab-btn" data-filter="affiches">Affiches & Publicité</button>
+        <button class="tab-btn" data-filter="flyers">Flyers & Promotions</button>
+        <button class="tab-btn" data-filter="branding">Branding & Logos</button>
+        <button class="tab-btn" data-filter="print">Carte de visite & Print</button>
+        <button class="tab-btn" data-filter="motion">Motion & 3D</button>
+        <button class="tab-btn" data-filter="social">Réseaux Sociaux</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
         
         <!-- Item 1: SMG Plug -->
-        <div class="portfolio-item" data-id="1" data-category="affiches-pub">
+        <div class="portfolio-item" data-id="1" data-category="affiches">
           <div class="portfolio-thumb open-lightbox-trigger">
             <img src="assets/images/affiche-smg-plug.png" alt="Affiche SMG Plug - Libre de faire votre choix" loading="lazy">
             <div class="portfolio-overlay">
@@ -395,7 +410,7 @@
         </div>
 
         <!-- Item 2: Joh Production Vidéas -->
-        <div class="portfolio-item" data-id="2" data-category="affiches-evenements">
+        <div class="portfolio-item" data-id="2" data-category="affiches">
           <div class="portfolio-thumb open-lightbox-trigger">
             <img src="assets/images/affiche-joh-production-videas.png" alt="Affiche Joh Production - Votre Vidéas" loading="lazy">
             <div class="portfolio-overlay">
@@ -413,7 +428,7 @@
         </div>
 
         <!-- Item 3: Ten Over Ten Store -->
-        <div class="portfolio-item" data-id="3" data-category="affiches-pub">
+        <div class="portfolio-item" data-id="3" data-category="affiches">
           <div class="portfolio-thumb open-lightbox-trigger">
             <img src="assets/images/affiche-ten-over-ten.png" alt="Affiche Ten Over Ten Store" loading="lazy">
             <div class="portfolio-overlay">
@@ -431,7 +446,7 @@
         </div>
 
         <!-- Item 4: Transformez Vos Souvenirs -->
-        <div class="portfolio-item" data-id="4" data-category="affiches-pub">
+        <div class="portfolio-item" data-id="4" data-category="affiches">
           <div class="portfolio-thumb open-lightbox-trigger">
             <img src="assets/images/affiche-transformez-vos-souvenirs.jpg" alt="Affiche Transformez vos souvenirs" loading="lazy">
             <div class="portfolio-overlay">
@@ -439,7 +454,7 @@
             </div>
           </div>
           <div class="portfolio-body">
-            <span class="portfolio-cat-badge">Affiches & Publicité</span>
+            <span class="portfolio-cat-badge">Affiches & Photographie</span>
             <h4 class="portfolio-name">Transformez Vos Souvenirs — Studio Pro</h4>
             <p class="portfolio-desc-short">Montage vidéo créatif, shooting photo et réalisation de clips en chef-d'œuvre visuel.</p>
             <div class="portfolio-footer-action">
@@ -1170,8 +1185,7 @@
 
   <!-- Main JavaScript File -->
   <script src="assets/js/config.js?v=20261024u"></script>
-  <script src="assets/js/main.js?v=20261024v"></script>
-  <script src="assets/js/realisations.js?v=20261024x"></script>
+  <script src="assets/js/main.js?v=20261025a"></script>
   <script src="assets/js/carrousel.js?v=20261024w"></script>
 </body>
 </html>
