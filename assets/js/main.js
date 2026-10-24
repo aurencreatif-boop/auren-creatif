@@ -219,6 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
       description: "Carte de visite haut de gamme recto-verso pour salon de coiffure afro. Recto avec présentation des services (Tresse, Perruque, Locks) et photos réelles, verso épuré avec slogan 'La beauté sans compromis'."
     },
     {
+      id: 15,
+      title: "Glow Esthétique — Carte de Visite & Print",
+      category: "print",
+      categoryName: "Carte de Visite Recto-Verso",
+      image: "assets/images/carte-visite-glow-esthetique.webp",
+      description: "Carte de visite recto-verso noir et or pour un institut de beauté. Recto avec le logo et le slogan « Activer votre beauté », verso avec les prestations (pédicure, manucure, extension de cils, make-up, soins du visage, perruques, locks), photos et contacts."
+    },
+    {
       id: 10,
       title: "Team Joh Production — Showcase 3D Écrans",
       category: "motion",
