@@ -94,6 +94,50 @@ var CONFIG = {
     "motion_design|rapide":      "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=5Y2N92", // total 50 000 → 25 000 FCFA
     "motion_design|standard":    "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=V0GM14", // total 40 000 → 20 000 FCFA
     "motion_design|flexible":    "https://tuvdexdr.mychariow.store/prd_iqtafpis?chw_pvar=ULIIL2"  // total 36 000 → 18 000 FCFA
+  },
+
+  // Liens du SOLDE (50 % restants) : produits « Solde 50 % – … » sur Chariow.
+  // Envoyés au client avec l'aperçu ; ce paiement déclenche la livraison du fichier final.
+  SOLDE_LINKS: {
+    "affiche_simple|express":    "https://tuvdexdr.mychariow.store/prd_fwuxf0yw?chw_pvar=1XTVJN",
+    "affiche_simple|rapide":     "https://tuvdexdr.mychariow.store/prd_fwuxf0yw?chw_pvar=TIGL60",
+    "affiche_simple|standard":   "https://tuvdexdr.mychariow.store/prd_fwuxf0yw?chw_pvar=QTKDNQ",
+    "affiche_simple|flexible":   "https://tuvdexdr.mychariow.store/prd_fwuxf0yw?chw_pvar=UNNZNY",
+    "affiche_premium|express":   "https://tuvdexdr.mychariow.store/prd_bxzfc36e?chw_pvar=D10NCW",
+    "affiche_premium|rapide":    "https://tuvdexdr.mychariow.store/prd_bxzfc36e?chw_pvar=BXW2PG",
+    "affiche_premium|standard":  "https://tuvdexdr.mychariow.store/prd_bxzfc36e?chw_pvar=AOKYOZ",
+    "affiche_premium|flexible":  "https://tuvdexdr.mychariow.store/prd_bxzfc36e?chw_pvar=I9SXLU",
+    "flyer_recto|express":       "https://tuvdexdr.mychariow.store/prd_rfr6dls9?chw_pvar=SW1F1K",
+    "flyer_recto|rapide":        "https://tuvdexdr.mychariow.store/prd_rfr6dls9?chw_pvar=RFS7L3",
+    "flyer_recto|standard":      "https://tuvdexdr.mychariow.store/prd_rfr6dls9?chw_pvar=EOHIQR",
+    "flyer_recto|flexible":      "https://tuvdexdr.mychariow.store/prd_rfr6dls9?chw_pvar=QRH7LA",
+    "flyer_rectoverso|express":  "https://tuvdexdr.mychariow.store/prd_q48hy322?chw_pvar=3XXH3C",
+    "flyer_rectoverso|rapide":   "https://tuvdexdr.mychariow.store/prd_q48hy322?chw_pvar=7JA23S",
+    "flyer_rectoverso|standard": "https://tuvdexdr.mychariow.store/prd_q48hy322?chw_pvar=8J5DWI",
+    "flyer_rectoverso|flexible": "https://tuvdexdr.mychariow.store/prd_q48hy322?chw_pvar=WU4NTU",
+    "visuel_reseaux|express":    "https://tuvdexdr.mychariow.store/prd_o4393nbo?chw_pvar=B2IBDD",
+    "visuel_reseaux|rapide":     "https://tuvdexdr.mychariow.store/prd_o4393nbo?chw_pvar=VYA30G",
+    "visuel_reseaux|standard":   "https://tuvdexdr.mychariow.store/prd_o4393nbo?chw_pvar=4N1PJ1",
+    "visuel_reseaux|flexible":   "https://tuvdexdr.mychariow.store/prd_o4393nbo?chw_pvar=46UCPS",
+    "pack_5_visuels|express":    "https://tuvdexdr.mychariow.store/prd_xdy4djzd?chw_pvar=DVH5RH",
+    "pack_5_visuels|rapide":     "https://tuvdexdr.mychariow.store/prd_xdy4djzd?chw_pvar=4PMQIN",
+    "pack_5_visuels|standard":   "https://tuvdexdr.mychariow.store/prd_xdy4djzd?chw_pvar=YWHAOB",
+    "pack_5_visuels|flexible":   "https://tuvdexdr.mychariow.store/prd_xdy4djzd?chw_pvar=12ANAY",
+    "carte_visite|express":      "https://tuvdexdr.mychariow.store/prd_rj9nqs8b?chw_pvar=X2AY5X",
+    "carte_visite|rapide":       "https://tuvdexdr.mychariow.store/prd_rj9nqs8b?chw_pvar=L96558",
+    "carte_visite|standard":     "https://tuvdexdr.mychariow.store/prd_rj9nqs8b?chw_pvar=EHW9YA",
+    "carte_visite|flexible":     "https://tuvdexdr.mychariow.store/prd_rj9nqs8b?chw_pvar=K0E4K3",
+    "logo_simple|express":       "https://tuvdexdr.mychariow.store/prd_fjq6uhaz?chw_pvar=NB6JRN",
+    "logo_simple|rapide":        "https://tuvdexdr.mychariow.store/prd_fjq6uhaz?chw_pvar=AXPNU0",
+    "logo_simple|standard":      "https://tuvdexdr.mychariow.store/prd_fjq6uhaz?chw_pvar=COUJBW",
+    "logo_simple|flexible":      "https://tuvdexdr.mychariow.store/prd_fjq6uhaz?chw_pvar=833B2R",
+    "motion_design|express":     "https://tuvdexdr.mychariow.store/prd_eueb223o?chw_pvar=F2E6DK",
+    "motion_design|rapide":      "https://tuvdexdr.mychariow.store/prd_eueb223o?chw_pvar=B5UQO6",
+    "motion_design|standard":    "https://tuvdexdr.mychariow.store/prd_eueb223o?chw_pvar=LSAIT8",
+    "motion_design|flexible":    "https://tuvdexdr.mychariow.store/prd_eueb223o?chw_pvar=CY8Q0U",
+    "identite_complete|rapide":  "https://tuvdexdr.mychariow.store/prd_3n5rqqpn?chw_pvar=FBGF7K",
+    "identite_complete|standard":"https://tuvdexdr.mychariow.store/prd_3n5rqqpn?chw_pvar=YJBLIR",
+    "identite_complete|flexible":"https://tuvdexdr.mychariow.store/prd_3n5rqqpn?chw_pvar=W0INXZ"
   }
 };
 

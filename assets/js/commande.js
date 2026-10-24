@@ -179,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
       later: acompte + optionsTotal,
       date,
       dateText: date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
-      payLink: (CONFIG.PAYMENT_LINKS || {})[`${state.serviceKey}|${state.delaiKey}`] || ''
+      payLink: (CONFIG.PAYMENT_LINKS || {})[`${state.serviceKey}|${state.delaiKey}`] || '',
+      soldeLink: (CONFIG.SOLDE_LINKS || {})[`${state.serviceKey}|${state.delaiKey}`] || ''
     };
   }
 
@@ -308,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
       options: c.options.map(o => o.nom),
       optionKeys: c.options.map(o => o.key),
       payLink: lienPaiement(c.payLink),
+      soldeLink: lienPaiement(c.soldeLink),
       projet: $('fProjet').value.trim(),
       destination: $('fDestination').value,
       textes: $('fTextes').value.trim(),
