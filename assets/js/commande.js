@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     state.serviceKey = serviceSelect.value;
     history.replaceState(null, '', `?service=${state.serviceKey}`);
     renderDelais();
+    majFormat();
     update();
   });
 
@@ -56,6 +57,106 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  /* ---------- Choix de la taille (dessins adaptés à chaque service) ---------- */
+  const FORMATS = {
+    affiche: { label: 'Taille de l’affiche', titre: 'Quelle taille pour votre affiche ?', items: [
+      { nom: 'A4', desc: '21 × 29,7 cm · feuille classique', w: 21, h: 29.7, s: 44 },
+      { nom: 'A3', desc: '29,7 × 42 cm · affiche murale', w: 29.7, h: 42, s: 56 },
+      { nom: 'A2', desc: '42 × 59,4 cm · grande affiche', w: 42, h: 59.4, s: 70 },
+      { nom: 'Panneau 4 × 3 m', desc: 'publicité en extérieur', w: 4, h: 3 },
+      { nom: 'Statut WhatsApp', desc: 'à partager sur téléphone', w: 9, h: 16 },
+      { nom: 'Carré', desc: 'publication Facebook, Instagram', w: 1, h: 1 }] },
+    flyer: { label: 'Taille du flyer', titre: 'Quelle taille pour votre flyer ?', items: [
+      { nom: 'A6', desc: '10,5 × 14,8 cm · petit flyer', w: 10.5, h: 14.8, s: 38 },
+      { nom: 'A5', desc: '14,8 × 21 cm · flyer classique', w: 14.8, h: 21, s: 50 },
+      { nom: 'A4', desc: '21 × 29,7 cm · grand flyer', w: 21, h: 29.7, s: 64 },
+      { nom: 'Format long', desc: '10 × 21 cm · menu, programme', w: 10, h: 21 },
+      { nom: 'Statut WhatsApp', desc: 'version téléphone', w: 9, h: 16 },
+      { nom: 'Carré', desc: 'publication Facebook, Instagram', w: 1, h: 1 }] },
+    reseaux: { label: 'Format', titre: 'Où sera publié votre visuel ?', items: [
+      { nom: 'Carré', desc: 'publication Facebook, Instagram', w: 1, h: 1 },
+      { nom: 'Portrait', desc: 'publication Instagram plus haute', w: 4, h: 5 },
+      { nom: 'Statut / story', desc: 'statut WhatsApp, story Instagram', w: 9, h: 16 },
+      { nom: 'Paysage', desc: 'couverture Facebook, YouTube', w: 16, h: 9 }] },
+    carte: { label: 'Sens de la carte', titre: 'Quel modèle de carte de visite ?', items: [
+      { nom: 'Horizontale', desc: '8,5 × 5,5 cm · la plus courante', w: 8.5, h: 5.5 },
+      { nom: 'Verticale', desc: '5,5 × 8,5 cm · originale', w: 5.5, h: 8.5 },
+      { nom: 'Carrée', desc: '6,5 × 6,5 cm · moderne', w: 6.5, h: 6.5 }] },
+    logo: { label: 'Forme du logo', titre: 'Quelle forme pour votre logo ?', items: [
+      { nom: 'Carré ou rond', desc: 'photo de profil, tampon', w: 1, h: 1 },
+      { nom: 'Horizontal', desc: 'enseigne, en-tête, site', w: 3, h: 1 },
+      { nom: 'Vertical', desc: 'symbole au-dessus du nom', w: 3, h: 4 }] },
+    video: { label: 'Format de la vidéo', titre: 'Où sera diffusée votre animation ?', items: [
+      { nom: 'Statut / story', desc: 'WhatsApp, Instagram, TikTok', w: 9, h: 16 },
+      { nom: 'Carré', desc: 'publication Facebook, Instagram', w: 1, h: 1 },
+      { nom: 'Paysage', desc: 'YouTube, écran, présentation', w: 16, h: 9 }] }
+  };
+  const GROUPE = {
+    affiche_simple: 'affiche', affiche_premium: 'affiche', flyer_recto: 'flyer', flyer_rectoverso: 'flyer',
+    visuel_reseaux: 'reseaux', pack_5_visuels: 'reseaux', carte_visite: 'carte',
+    logo_simple: 'logo', identite_complete: 'logo', motion_design: 'video'
+  };
+  const JE_NE_SAIS_PAS = 'Je ne sais pas · Olivier me conseillera';
+
+  function forme(w, h, max) {
+    const ratio = w / h;
+    const width = ratio >= 1 ? max : Math.round(max * ratio);
+    const height = ratio >= 1 ? Math.round(max / ratio) : max;
+    return `<span class="fmt-paper" style="width:${width}px;height:${height}px"></span>`;
+  }
+
+  function choisirFormat(item) {
+    $('fDimensions').value = item ? `${item.nom} (${item.desc})` : JE_NE_SAIS_PAS;
+    $('formatName').textContent = item ? item.nom : 'Je ne sais pas';
+    $('formatDesc').textContent = item ? item.desc : 'Olivier vous conseillera';
+    $('formatPreview').innerHTML = item ? forme(item.w, item.h, 28) : '<i class="fa-solid fa-circle-question"></i>';
+    $('formatBtn').classList.add('is-chosen');
+  }
+
+  function majFormat() {
+    const g = FORMATS[GROUPE[state.serviceKey]];
+    $('formatLabel').textContent = g.label;
+    $('fDimensions').value = '';
+    $('formatName').textContent = 'Choisir';
+    $('formatDesc').textContent = 'Touchez pour voir les tailles possibles';
+    $('formatPreview').innerHTML = '<i class="fa-solid fa-ruler-combined"></i>';
+    $('formatBtn').classList.remove('is-chosen');
+  }
+
+  function ouvrirFormats() {
+    const g = FORMATS[GROUPE[state.serviceKey]];
+    $('fmtTitle').textContent = g.titre;
+    $('formatGrid').innerHTML = g.items.map((it, i) => `
+      <button type="button" class="fmt-tile" data-i="${i}">
+        <span class="fmt-shape">${forme(it.w, it.h, it.s || 64)}</span>
+        <strong>${it.nom}</strong><small>${it.desc}</small>
+      </button>`).join('') + `
+      <button type="button" class="fmt-tile fmt-tile-unknown" data-i="-1">
+        <span class="fmt-shape"><i class="fa-solid fa-circle-question"></i></span>
+        <strong>Je ne sais pas</strong><small>Olivier vous conseillera</small>
+      </button>`;
+    $('formatGrid').querySelectorAll('.fmt-tile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = +btn.dataset.i;
+        choisirFormat(i >= 0 ? g.items[i] : null);
+        fermerFormats();
+      });
+    });
+    $('formatModal').hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('formatGrid').querySelector('.fmt-tile').focus();
+  }
+
+  function fermerFormats() {
+    $('formatModal').hidden = true;
+    document.body.style.overflow = '';
+    $('formatBtn').focus();
+  }
+
+  $('formatBtn').addEventListener('click', ouvrirFormats);
+  $('formatModal').addEventListener('click', e => { if (e.target.closest('[data-fmt-close]')) fermerFormats(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('formatModal').hidden) fermerFormats(); });
 
   /* ---------- Calcul du prix ---------- */
   function addDays(days) {
@@ -297,5 +398,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderDelais();
+  majFormat();
   update();
 });

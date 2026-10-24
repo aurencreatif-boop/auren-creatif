@@ -87,8 +87,13 @@
               <input id="fStyle" class="form-control" maxlength="200" placeholder="Ex. : bleu et blanc, couleurs de mon logo, élégant, joyeux…">
             </div>
             <div>
-              <label class="order-label" for="fDimensions">Taille (si vous la connaissez)</label>
-              <input id="fDimensions" class="form-control" maxlength="120" placeholder="Ex. : format A4, statut WhatsApp… ou laissez vide">
+              <span class="order-label" id="formatLabel">Taille</span>
+              <button type="button" class="order-format-btn" id="formatBtn" aria-haspopup="dialog" aria-labelledby="formatLabel formatName">
+                <span class="order-format-preview" id="formatPreview"><i class="fa-solid fa-ruler-combined"></i></span>
+                <span class="order-format-text"><strong id="formatName">Choisir une taille</strong><small id="formatDesc">Touchez pour voir les tailles possibles</small></span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <input type="hidden" id="fDimensions">
             </div>
           </div>
 
@@ -179,6 +184,19 @@
       </aside>
     </form>
   </main>
+
+  <!-- Fenêtre de choix de la taille -->
+  <div class="fmt-modal" id="formatModal" hidden>
+    <div class="fmt-backdrop" data-fmt-close></div>
+    <div class="fmt-sheet" role="dialog" aria-modal="true" aria-labelledby="fmtTitle">
+      <div class="fmt-head">
+        <h2 id="fmtTitle">Choisissez une taille</h2>
+        <button type="button" class="fmt-close" data-fmt-close aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="fmt-sub">Touchez la taille qui vous convient. Vous ne savez pas ? Choisissez « Je ne sais pas » : Olivier vous conseillera.</p>
+      <div class="fmt-grid" id="formatGrid"></div>
+    </div>
+  </div>
 
   <!-- Fenêtre d'envoi -->
   <div class="order-overlay" id="overlay" hidden>
