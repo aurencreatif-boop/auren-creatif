@@ -3,7 +3,7 @@
  * Le client remplit son brief, ajoute ses fichiers, puis :
  *   1. la commande est enregistrée (script Google : Sheet + Drive + e-mails) ;
  *   2. il est redirigé vers le lien Chariow de son service et de son délai (50 %).
- * Sans script Google configuré, la page bascule sur WhatsApp (aucun faux envoi).
+ * Sans script Google configuré, la page propose d’écrire par e-mail (aucun faux envoi).
  */
 document.addEventListener('DOMContentLoaded', () => {
   const MAX_FILES = 5;
@@ -264,8 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return 'AC-' + [...bytes].map(b => alphabet[b % alphabet.length]).join('');
   }
 
-  const waUrl = (msg) => `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-
   function overlay({ icon, title, text, ref, actions = '' }) {
     $('overlay').hidden = false;
     $('ovIcon').innerHTML = icon;
@@ -370,15 +368,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const order = buildOrder(c);
     saveLocally(order);
 
-    // Sans script Google : WhatsApp puis paiement (aucun faux envoi)
+    // Sans script Google : on ne fait pas semblant d'envoyer
     if (!CONFIG.ORDER_ENDPOINT) {
       overlay({
-        icon: '<i class="fa-brands fa-whatsapp"></i>',
-        title: 'Dernière étape',
-        text: '1. Envoyez votre brief à Olivier sur WhatsApp. 2. Réglez 50 % sur la page de paiement sécurisée, en indiquant votre référence.',
+        icon: '<i class="fa-solid fa-triangle-exclamation"></i>',
+        title: 'Service momentanément indisponible',
+        text: `La commande en ligne est indisponible pour le moment. Écrivez à Olivier à ${CONFIG.EMAIL_CONTACT}, en indiquant votre référence.`,
         ref: order.reference,
-        actions: `<a class="btn btn-whatsapp" href="${waUrl(waBriefMessage(order))}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Envoyer mon brief</a>` +
-          (order.payLink ? `<a class="btn btn-primary" href="${order.payLink}"><i class="fa-solid fa-lock"></i> Payer 50 % · ${fmtFcfa(c.acompte)}</a>` : '') +
+        actions: `<a class="btn btn-primary" href="mailto:${CONFIG.EMAIL_CONTACT}?subject=${encodeURIComponent('Commande ' + order.reference)}"><i class="fa-solid fa-envelope"></i> Écrire par e-mail</a>` +
           `<button type="button" class="order-link-btn" data-close>Modifier ma commande</button>`
       });
       return;

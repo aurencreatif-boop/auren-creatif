@@ -1,23 +1,22 @@
 /**
  * AUREN CRÉATIF · OLIVIER, GRAPHISTE DESIGNER
- * Interactive Script for Portfolio, Stepper Wizard, Lightbox & WhatsApp Integration
+ * Interactive Script for Portfolio, Stepper Wizard & Lightbox
  */
 
 /* ==========================================================================
    1. BLOC DE CONFIGURATION UNIQUE (Annexe K du plan d'implémentation)
    C'est le SEUL endroit à modifier pour brancher le formulaire et les paiements.
    Tant qu'une valeur est vide, la page affiche un emplacement signalé et
-   propose WhatsApp à la place : aucun faux bouton.
+   propose d’écrire par e-mail à la place : aucun faux bouton.
    ========================================================================== */
 var CONFIG = {
-  WA_NUMBER: "22896990329",
   EMAIL_CONTACT: "aurencreatif@gmail.com",
   WA_MESSAGE: "Bonjour Olivier, j’ai découvert votre portfolio et je souhaite discuter d’un projet de création graphique.",
   TAUX_EUR_FCFA: 655.957,
 
   // Adresse de l'application Web Google Apps Script (« Déployer > Application Web »).
   // Reçoit les commandes, les fichiers des clients et envoie les e-mails.
-  // Vide = la page de commande bascule sur WhatsApp.
+  // Vide = la page de commande propose d’écrire par e-mail.
   ORDER_ENDPOINT: "https://script.google.com/macros/s/AKfycbwzeRoB1HC9I71L_usZSpIEd6tv6pRYyo8h7QbnoFwgXWSpzell7IQQPVuQrV40v-4/exec",
 
   // Lien Chariow de la consultation « Projet sur mesure » (10 000 FCFA)

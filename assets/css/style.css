@@ -2983,7 +2983,7 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   Floating WhatsApp Button (OneSMS style)
+   Bouton flottant « Me contacter » (aux couleurs du site)
    ========================================================================== */
 .floating-whatsapp {
   position: fixed;
@@ -2993,11 +2993,11 @@ textarea.form-control {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: #25d366;
+  background: var(--gradient-blue, linear-gradient(135deg, #1d4ed8, #3b82f6));
   color: #ffffff;
   padding: 0.75rem 1.25rem 0.75rem 1rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
   font-weight: 700;
   font-size: 0.95rem;
   transition: var(--transition);
@@ -3006,8 +3006,7 @@ textarea.form-control {
 
 .floating-whatsapp:hover {
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
-  background: #20ba59;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
 }
 
 .floating-whatsapp-icon {

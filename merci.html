@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024s">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024u">
 </head>
 <body>
   <main class="merci-page">
@@ -19,7 +19,7 @@
       <div class="wizard-success-icon"><i class="fa-solid fa-heart"></i></div>
       <h1>Merci pour votre confiance !</h1>
       <!-- Jamais « Paiement reçu » : seule la confirmation manuelle d'Olivier fait foi -->
-      <p>Si vous venez d’effectuer un paiement, Olivier le vérifie et vous confirme sa réception sur WhatsApp. Gardez précieusement votre référence de commande.</p>
+      <p>Si vous venez d’effectuer un paiement, vous recevez sa confirmation par e-mail. Gardez précieusement votre référence de commande.</p>
 
       <div class="order-ref-box" id="merciRefBox" hidden>
         <div>
@@ -28,11 +28,11 @@
         </div>
       </div>
 
-      <p>Paiement 1 sur 2 : le travail démarre après confirmation de l’acompte. Paiement 2 sur 2 : vos fichiers finaux vous sont envoyés par lien Google Drive après confirmation du solde.</p>
+      <p>Paiement 1 sur 2 : le travail démarre après confirmation de l’acompte. Paiement 2 sur 2 : vos fichiers finaux vous sont envoyés automatiquement par e-mail.</p>
 
       <div class="merci-actions">
-        <a href="#" class="btn btn-whatsapp" id="merciWaBtn" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Écrire à Olivier sur WhatsApp
+        <a href="mailto:aurencreatif@gmail.com" class="btn btn-primary" id="merciMailBtn">
+          <i class="fa-solid fa-envelope"></i> Écrire à Olivier par e-mail
         </a>
         <a href="index.html" class="btn btn-outline">Retour au site</a>
       </div>
@@ -41,16 +41,13 @@
 
   <script>
     (function () {
-      var WA_NUMBER = "22896990329";
       var ref = "";
       try {
         var last = JSON.parse(localStorage.getItem('auren_last_order') || 'null');
         if (last && last.reference) ref = last.reference;
       } catch (e) {}
-      var msg = ref
-        ? "Bonjour Olivier, je viens d’effectuer un paiement pour la commande " + ref + "."
-        : "Bonjour Olivier, je viens d’effectuer un paiement. Ma référence de commande est : ";
-      document.getElementById('merciWaBtn').href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+      var sujet = ref ? "Commande " + ref : "Ma commande AUREN CRÉATIF";
+      document.getElementById('merciMailBtn').href = "mailto:aurencreatif@gmail.com?subject=" + encodeURIComponent(sujet);
       if (ref) {
         document.getElementById('merciRef').textContent = ref;
         document.getElementById('merciRefBox').hidden = false;

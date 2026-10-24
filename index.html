@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024s">
-  <link rel="stylesheet" href="assets/css/commande.css?v=20261024q">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024u">
+  <link rel="stylesheet" href="assets/css/commande.css?v=20261024u">
 </head>
 <body>
 
@@ -888,7 +888,7 @@
     </div>
   </section>
 
-  <!-- Contact Choice Modal (WhatsApp or Email) -->
+  <!-- Fenêtre « Me contacter » : signaler un problème par e-mail -->
   <div id="contactChoiceModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="contact-modal-backdrop" id="contactModalBackdrop"></div>
     <div class="contact-modal-dialog">
@@ -898,45 +898,27 @@
 
       <div class="contact-modal-header">
         <div class="contact-modal-badge">
-          <i class="fa-solid fa-headset"></i> Contact direct
+          <i class="fa-solid fa-triangle-exclamation"></i> Assistance
         </div>
-        <h3 id="contactModalTitle" class="contact-modal-title">Comment souhaitez-vous échanger ?</h3>
+        <h3 id="contactModalTitle" class="contact-modal-title">Signaler un problème</h3>
         <p class="contact-modal-subtitle">
-          Choisissez votre moyen de communication préféré avec Olivier :
+          Un souci avec une commande, un paiement, un fichier ou le site ? Décrivez-le par e-mail, Olivier vous répond rapidement.
         </p>
       </div>
 
       <div class="contact-modal-options">
-        
-        <!-- Choice 1: WhatsApp -->
-        <a href="https://wa.me/22896990329?text=Bonjour%20Olivier%20!%20Je%20vous%20contacte%20depuis%20votre%20site%20internet%20Auren%20Cr%C3%A9atif%20pour%20un%20projet%20de%20design." target="_blank" class="contact-choice-card contact-choice-whatsapp" id="modalWhatsAppBtn">
-          <div class="choice-icon-wrap icon-wa">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <div class="choice-content">
-            <div class="choice-top">
-              <span class="choice-title">WhatsApp Direct</span>
-              <span class="choice-badge badge-wa">Recommandé · &lt; 2h</span>
-            </div>
-            <p class="choice-desc">Échange rapide, partage d'idées et confirmation immédiate.</p>
-            <span class="choice-val"><i class="fa-brands fa-whatsapp"></i> Messagerie WhatsApp directe</span>
-          </div>
-          <div class="choice-arrow">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
 
-        <!-- Choice 2: Email (Nouveau message Gmail) -->
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif&body=Bonjour%20Olivier,%0A%0AJe%20souhaite%20vous%20contacter%20concernant%20un%20projet%20de%20design%20graphique.%0A%0AMes%20coordonn%C3%A9es%20:%0A" target="_blank" rel="noopener noreferrer" class="contact-choice-card contact-choice-email" id="modalEmailBtn">
+        <!-- Signalement par e-mail (nouveau message Gmail prérempli) -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Signalement%20d%27un%20probl%C3%A8me%20-%20Auren%20Cr%C3%A9atif&body=Bonjour%20Olivier,%0A%0AJe%20souhaite%20signaler%20un%20probl%C3%A8me.%0A%0ARéférence%20de%20commande%20(si%20vous%20en%20avez%20une)%20:%20AC-%0AProbl%C3%A8me%20rencontr%C3%A9%20:%20%0A%0AMerci%20!" target="_blank" rel="noopener noreferrer" class="contact-choice-card contact-choice-email" id="modalEmailBtn">
           <div class="choice-icon-wrap icon-email">
             <i class="fa-solid fa-envelope"></i>
           </div>
           <div class="choice-content">
             <div class="choice-top">
-              <span class="choice-title">Envoyer un Email (Gmail)</span>
-              <span class="choice-badge badge-email">Nouveau message</span>
+              <span class="choice-title">Signaler un problème par e-mail</span>
+              <span class="choice-badge badge-email">Réponse rapide</span>
             </div>
-            <p class="choice-desc">Rédigez directement un nouveau message Gmail pré-rempli à destination d'Olivier.</p>
+            <p class="choice-desc">Un message Gmail s’ouvre, déjà adressé à Olivier : indiquez votre référence de commande et décrivez le problème.</p>
             <span class="choice-val"><i class="fa-solid fa-at"></i> aurencreatif@gmail.com</span>
           </div>
           <div class="choice-arrow">
@@ -1034,7 +1016,6 @@
         <div class="footer-col">
           <h5>Contact Direct</h5>
           <ul class="footer-links">
-            <li><a href="#" class="open-contact-modal"><i class="fa-brands fa-whatsapp"></i> Échanger sur WhatsApp</a></li>
             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1;"><i class="fa-solid fa-envelope"></i> aurencreatif@gmail.com</a></li>
             <li><span style="color: #cbd5e1;"><i class="fa-solid fa-clock"></i> 7j / 7, 24h / 24 — Devis en &lt; 2h</span></li>
             <li><span style="color: #cbd5e1;"><i class="fa-solid fa-location-dot"></i> Disponible partout à distance</span></li>
@@ -1097,7 +1078,6 @@
             <li><strong>Marque commerciale :</strong> AUREN CRÉATIF</li>
             <li><strong>Fondateur & Directeur Artistique :</strong> Olivier, Graphiste Designer indépendant (+5 ans d’expérience professionnelle)</li>
             <li><strong>Contact électronique officiel :</strong> <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a></li>
-            <li><strong>Canal de messagerie directe :</strong> Ligne WhatsApp officielle Auren Créatif (+228 96 99 03 29)</li>
             <li><strong>Champ d'activité :</strong> Conception de supports de communication visuelle (affiches, flyers, logos, identités visuelles complètes, chartes graphiques, visuels pour réseaux sociaux, supports print, bannières et animations motion design).</li>
             <li><strong>Rayonnement géographique :</strong> Prestations délivrées à distance à l'international (Togo, Afrique de l'Ouest, zone UEMOA / OHADA, France, Europe, diaspora et clients internationaux).</li>
           </ul>
@@ -1161,7 +1141,7 @@
           <p>Elles sont conservées dans un tableau privé auquel seul Olivier accède. Durée de conservation : à définir par Olivier.</p>
 
           <h4>3. Partage</h4>
-          <p>Elles ne sont ni vendues ni partagées, sauf avec les services nécessaires au traitement : <strong>Google</strong> (formulaire), <strong>Chariow</strong> (paiement) et <strong>WhatsApp</strong> (échanges). Aucune donnée bancaire n’est saisie ni conservée sur ce site.</p>
+          <p>Elles ne sont ni vendues ni partagées, sauf avec les services nécessaires au traitement : <strong>Google</strong> (formulaire) et <strong>Chariow</strong> (paiement). Aucune donnée bancaire n’est saisie ni conservée sur ce site.</p>
 
           <h4>4. Vos droits</h4>
           <p>Vous pouvez demander l’accès, la correction ou la suppression de vos données en écrivant à <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
@@ -1204,8 +1184,8 @@
   </div>
 
   <!-- Main JavaScript File -->
-  <script src="assets/js/config.js?v=20261024"></script>
-  <script src="assets/js/main.js?v=20261024"></script>
+  <script src="assets/js/config.js?v=20261024u"></script>
+  <script src="assets/js/main.js?v=20261024u"></script>
   <script src="assets/js/carrousel.js?v=20261024t"></script>
 </body>
 </html>

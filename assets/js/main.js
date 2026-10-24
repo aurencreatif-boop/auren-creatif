@@ -5,7 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Coordonnées officielles d'Olivier (Auren Créatif)
-  const WA_PHONE = CONFIG.WA_NUMBER; // +228 96 99 03 29
   const CONTACT_EMAIL = CONFIG.EMAIL_CONTACT;
 
   /* ==========================================================================
@@ -1040,9 +1039,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return link && link.trim() ? link.trim() : null;
   }
 
-  // Lien WhatsApp avec message prérempli
+  // Ancien lien de contact (plus de WhatsApp) : message prérempli par e-mail
   function buildWaUrl(message) {
-    return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
+    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Ma commande AUREN CRÉATIF')}&body=${encodeURIComponent(message)}`;
   }
 
   // 6. Préparer l'Étape 4 : référence, brief (Google Forms), paiement 50 % (Chariow)
@@ -1436,7 +1435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateOrderPricingUI();
 
   /* ==========================================================================
-     Contact Choice Modal (Pop-up WhatsApp & Email)
+     Fenêtre « Me contacter » (e-mail)
      ========================================================================== */
   const contactChoiceModal = document.getElementById('contactChoiceModal');
   const contactModalClose = document.getElementById('contactModalClose');
@@ -1507,40 +1506,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const coords = document.getElementById('contactCoords').value.trim();
       const message = document.getElementById('contactMessage').value.trim();
 
-      if (channel === 'Email') {
-        const emailSubject = `Nouveau message de ${name} (Site Auren Créatif)`;
-        const emailBody = `Bonjour Olivier,\n\n` +
-          `Nom : ${name}\n` +
-          `Coordonnées : ${coords}\n` +
-          `Canal préféré : Email\n\n` +
-          `Message :\n${message}\n`;
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        window.open(gmailUrl, '_blank');
-        alert("La rédaction d'un nouveau message Gmail s'ouvre pour envoyer votre message directement à Olivier (aurencreatif@gmail.com).");
-      } else {
-        const waText = `Bonjour Olivier (Auren Créatif) !\n` +
-          `Nouveau message depuis le formulaire du site :\n` +
-          `👤 *Nom :* ${name}\n` +
-          `📞 *Contact (${channel}) :* ${coords}\n` +
-          `💬 *Message :*\n${message}`;
-
-        const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
-        window.open(waUrl, '_blank');
-        alert("Merci pour votre message ! La conversation WhatsApp s'ouvre pour échanger directement avec Olivier.");
-      }
+      const emailSubject = `Nouveau message de ${name} (Site Auren Créatif)`;
+      const emailBody = `Bonjour Olivier,\n\n` +
+        `Nom : ${name}\n` +
+        `Coordonnées : ${coords}\n\n` +
+        `Message :\n${message}\n`;
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`, '_blank');
 
       fastContactForm.reset();
     });
   }
 
-  // Anciens liens directs WhatsApp (ex: footer)
-  document.querySelectorAll('.open-wa-direct').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const defaultText = "Bonjour Olivier ! Je vous contacte via votre site internet Auren Créatif pour un projet de design graphique.";
-      window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(defaultText)}`, '_blank');
-    });
-  });
 
   /* ==========================================================================
      Interactive Animations: Stats Counter, Services & Processus Scroll Reveal
