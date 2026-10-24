@@ -154,10 +154,13 @@ function enregistrerCommande_(d) {
     AUREN.SOUS_DOSSIERS.forEach(n => { sous[n] = dossier.createFolder(n); });
 
     const fichiers = (d.files || []).slice(0, AUREN.MAX_FICHIERS);
+    const recus = []; // fichiers du client : rangés dans Drive, joints à l'e-mail d'Olivier, cliquables dans le PDF
     fichiers.forEach(f => {
       const octets = Utilities.base64Decode(f.data || '');
       if (octets.length > AUREN.MAX_OCTETS_FICHIER) return;
-      sous['01 Fichiers reçus'].createFile(Utilities.newBlob(octets, f.type || 'application/octet-stream', String(f.name || 'fichier').slice(0, 120)));
+      const blob = Utilities.newBlob(octets, f.type || 'application/octet-stream', String(f.name || 'fichier').slice(0, 120));
+      const fichier = sous['01 Fichiers reçus'].createFile(blob);
+      recus.push({ nom: fichier.getName(), url: fichier.getUrl(), blob: blob, taille: octets.length });
     });
 
     const liensOptions = (d.optionKeys || []).map(k => k).join(',');
@@ -173,10 +176,10 @@ function enregistrerCommande_(d) {
     set('Liens options', liensOptions);
     sh.appendRow(ligne);
 
-    const pdf = bonDeCommandePdf_(d, fichiers.length);
+    const pdf = bonDeCommandePdf_(d, recus);
     dossier.createFile(pdf); // copie du bon de commande dans le dossier du client
-    mailClientCommande_(d, fichiers.length, pdf);
-    mailOlivierCommande_(d, dossier.getUrl(), fichiers.length, pdf);
+    mailClientCommande_(d, recus.length, pdf);
+    mailOlivierCommande_(d, dossier.getUrl(), recus, pdf);
     return { ok: true, reference: ref };
   } finally {
     lock.releaseLock();
@@ -320,7 +323,7 @@ function mailClientCommande_(d, nbFichiers, pdf) {
 }
 
 // Bon de commande en PDF : une page claire, facile à lire et à imprimer
-function bonDeCommandePdf_(d, nbFichiers) {
+function bonDeCommandePdf_(d, recus) {
   const bloc = (titre, lignes) => `
     <h2 style="font-size:13pt;color:#1d4ed8;margin:18px 0 6px;border-bottom:1px solid #cbd5e1;padding-bottom:4px">${titre}</h2>
     <table style="width:100%;border-collapse:collapse;font-size:11pt">
@@ -338,18 +341,23 @@ function bonDeCommandePdf_(d, nbFichiers) {
       ['Total', fcfa(d.total)], ['Acompte (50 %)', fcfa(d.acompte)], ['Solde à la livraison', fcfa(d.solde)]])}
     ${bloc('Ce que veut le client', [['Projet', d.projet], ['Utilisation', d.destination], ['Textes à mettre', d.textes],
       ['Couleurs / ambiance', d.style], ['Taille', d.dimensions], ['Autres remarques', d.infos]])}
-    ${bloc('Fichiers', [['Fichiers déposés', nbFichiers ? `${nbFichiers} fichier(s) dans le dossier Drive` : 'Aucun'], ['Lien du client', d.lien]])}
+    <h2 style="font-size:13pt;color:#1d4ed8;margin:18px 0 6px;border-bottom:1px solid #cbd5e1;padding-bottom:4px">Fichiers du client</h2>
+    <p style="font-size:11pt;margin:4px 0">${recus.length ? recus.map(r => `• <a href="${r.url}" style="color:#1d4ed8">${esc_(r.nom)}</a>`).join('<br>') + '<br><span style="color:#64748b;font-size:9pt">Cliquez sur un nom pour ouvrir le fichier. Ils sont aussi joints à l’e-mail.</span>' : 'Aucun fichier déposé'}
+    ${d.lien ? `<br>Lien envoyé par le client : <a href="${esc_(d.lien)}" style="color:#1d4ed8">${esc_(d.lien)}</a>` : ''}</p>
     <p style="margin-top:22px;font-size:9pt;color:#64748b">Le paiement de l’acompte apparaît dans Chariow avec la référence ${d.reference}.</p>
   </body></html>`;
   return Utilities.newBlob(html, 'text/html', 'commande.html').getAs('application/pdf').setName(`Commande ${d.reference} - ${String(d.nom).slice(0, 40)}.pdf`);
 }
 
-function mailOlivierCommande_(d, dossierUrl, nbFichiers, pdf) {
+function mailOlivierCommande_(d, dossierUrl, recus, pdf) {
+  // Les fichiers du client sont joints s'ils tiennent dans la limite de Gmail (environ 20 Mo au total)
+  let total = 0;
+  const joints = recus.filter(r => (total += r.taille) < 18 * 1024 * 1024).map(r => r.blob);
   mail_(AUREN.EMAIL, `🆕 Commande ${d.reference} · ${d.service} · ${d.nom}`,
     `<p>Nouvelle commande depuis le site : <strong>${esc_(d.service)}</strong> pour <strong>${esc_(d.nom)}</strong>, livraison prévue le ${esc_(d.livraisonTexte)}.</p>
-     <p>📄 Le bon de commande complet est en <strong>pièce jointe (PDF)</strong>.</p>
+     <p>📄 Le bon de commande complet est en <strong>pièce jointe (PDF)</strong>${joints.length ? `, avec les <strong>${joints.length} fichier(s) du client</strong>` : ''}.</p>
      ${bouton_(dossierUrl, 'Ouvrir le dossier du client')}
-     <p><a href="https://wa.me/${String(d.whatsapp).replace(/\D/g, '')}">Écrire au client sur WhatsApp</a></p>`, [pdf]);
+     <p><a href="https://wa.me/${String(d.whatsapp).replace(/\D/g, '')}">Écrire au client sur WhatsApp</a></p>`, [pdf].concat(joints));
 }
 
 function mailClientAcompte_(n) {
