@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const MAX_OCTETS = 8 * 1024 * 1024;
   let reference = '';
 
-  $('rtWa').href = `https://wa.me/${CONFIG.WA_NUMBER}`;
 
   const appel = async (donnees) => {
     const res = await fetch(CONFIG.ORDER_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(donnees) });
