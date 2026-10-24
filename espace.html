@@ -34,6 +34,14 @@
     .card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:1.1rem; box-shadow:0 1px 3px rgba(15,23,42,.05); }
     .card h2 { font:700 1.05rem "Outfit",sans-serif; margin:0 0 .8rem; }
     .filters { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:.75rem; }
+    .onglets { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:.9rem; border-bottom:1px solid var(--border); }
+    .onglet { border:0; background:none; padding:.6rem .9rem; font-weight:700; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-1px; display:inline-flex; align-items:center; gap:.45rem; }
+    .onglet:hover { color:var(--text); }
+    .onglet.actif { color:var(--primary-dark); border-bottom-color:var(--primary); }
+    .onglet .nb { min-width:22px; padding:.05rem .45rem; border-radius:999px; background:var(--soft); color:var(--primary-dark); font-size:.75rem; text-align:center; }
+    .onglet[data-onglet="livrees"].actif { color:var(--ok); border-bottom-color:var(--ok); } .onglet[data-onglet="livrees"] .nb { background:var(--ok-soft); color:var(--ok); }
+    .onglet[data-onglet="demandes"].actif { color:#b45309; border-bottom-color:#f59e0b; } .onglet[data-onglet="demandes"] .nb { background:#fef3c7; color:#b45309; }
+    .onglet[data-onglet="modifs"].actif { color:#c2410c; border-bottom-color:#ea580c; } .onglet[data-onglet="modifs"] .nb { background:#ffedd5; color:#c2410c; }
     .filters input, .filters select { border:1px solid var(--border); background:var(--surface); border-radius:10px; padding:.55rem .8rem; }
     .filters input { flex:1 1 220px; }
     .table-wrap { overflow-x:auto; }
@@ -101,6 +109,12 @@
     <section class="tiles" id="tiles"></section>
     <section class="card">
       <h2>Mes commandes</h2>
+      <div class="onglets" role="tablist" aria-label="Parties des commandes">
+        <button class="onglet actif" role="tab" data-onglet="commandes">📥 Nouvelles commandes <span class="nb" id="nbCommandes">0</span></button>
+        <button class="onglet" role="tab" data-onglet="demandes">✏️ Modifications demandées <span class="nb" id="nbDemandes">0</span></button>
+        <button class="onglet" role="tab" data-onglet="livrees">✅ Livrées <span class="nb" id="nbLivrees">0</span></button>
+        <button class="onglet" role="tab" data-onglet="modifs">🔁 Modifications livrées <span class="nb" id="nbModifs">0</span></button>
+      </div>
       <div class="filters">
         <input type="search" id="search" placeholder="Rechercher : référence, client, service…" aria-label="Rechercher">
         <select id="filterStatut" aria-label="Filtrer par statut"><option value="">Tous les statuts</option></select>
@@ -122,6 +136,15 @@
     const KEY = new URLSearchParams(location.hash.slice(1)).get('k') || '';
     let DATA = { commandes: [], statuts: [] };
     let filtre = '';
+    let onglet = 'commandes';
+    // Partie de la liste : Commandes (nouveaux clients), Modifications demandées, Livrées, Modifications livrées
+    const aEuModif = c => (Number(c['Retouches demandées']) || 0) + (Number(c['Modifications aperçu']) || 0) > 0;
+    const partie = c => {
+      const s = c['Statut'];
+      if (s === S()[6] || s === S()[7]) return 'demandes';
+      if (s === S()[3] || s === S()[4] || s === S()[5]) return aEuModif(c) ? 'modifs' : 'livrees';
+      return 'commandes';
+    };
     const S = () => DATA.statuts;
     const fcfa = n => (Number(n) || 0).toLocaleString('fr-FR') + ' FCFA';
     const dateFr = v => v ? new Date(v).toLocaleDateString('fr-FR') : '—';
@@ -169,7 +192,7 @@
         ['À réaliser', cs.filter(c => c['Statut'] === S()[1] || c['Statut'] === S()[2]).length],
         ['Solde en attente', cs.filter(c => c['Statut'] === S()[3]).length],
         ['Envois programmés', cs.filter(c => c['Statut'] === S()[8]).length],
-        ['Livrées', cs.filter(c => [S()[3], S()[4], S()[6]].includes(c['Statut'])).length],
+        ['Livrées', cs.filter(c => partie(c) === 'livrees' || partie(c) === 'modifs').length],
         ['Modifications à faire', cs.filter(c => c['Statut'] === S()[6] || c['Statut'] === S()[7]).length],
         ['Note moyenne', (() => { const n = cs.filter(c => Number(c['Avis (note)'])); return n.length ? (n.reduce((t, c) => t + Number(c['Avis (note)']), 0) / n.length).toFixed(1).replace('.', ',') + ' ★ (' + n.length + ' avis)' : '—'; })()],
         ['Acomptes encaissés', fcfa(cs.filter(c => c['Date paiement 1/2']).reduce((s, c) => s + (Number(c['Acompte (FCFA)']) || 0), 0))]
@@ -182,15 +205,25 @@
 
     function tableau() {
       const q = document.getElementById('search').value.trim().toLowerCase();
+      const compte = k => DATA.commandes.filter(c => partie(c) === k).length;
+      document.getElementById('nbCommandes').textContent = compte('commandes');
+      document.getElementById('nbDemandes').textContent = compte('demandes');
+      document.getElementById('nbLivrees').textContent = compte('livrees');
+      document.getElementById('nbModifs').textContent = compte('modifs');
       const rows = DATA.commandes
-        .filter(c => !filtre || c['Statut'] === filtre)
+        .filter(c => filtre ? c['Statut'] === filtre : partie(c) === onglet)
         .filter(c => !q || [c['Référence'], c['Nom'], c['Service'], c['E-mail'], c['WhatsApp']].join(' ').toLowerCase().includes(q))
         .sort((a, b) => new Date(b['Date']) - new Date(a['Date']));
       const tb = document.getElementById('rows');
       tb.innerHTML = rows.length ? rows.map(c => `<tr data-ref="${esc(c['Référence'])}">
         <td><strong>${esc(c['Référence'])}</strong></td><td>${dateFr(c['Date'])}</td><td>${esc(c['Nom'])}</td><td>${esc(c['Service'])}</td>
         <td>${livraison(c)}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(c['Statut'])}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
-        : '<tr><td colspan="8" class="empty">Aucune commande pour l’instant. Les nouvelles commandes du site apparaîtront ici.</td></tr>';
+        : `<tr><td colspan="8" class="empty">${filtre ? 'Aucune commande avec ce statut.' : {
+            commandes: 'Aucune nouvelle commande. Les commandes du site apparaîtront ici.',
+            demandes: 'Aucune modification demandée. Les demandes des clients apparaîtront ici.',
+            livrees: 'Aucune commande livrée pour l’instant.',
+            modifs: 'Aucune modification livrée pour l’instant.'
+          }[onglet]}</td></tr>`;
       tb.querySelectorAll('tr[data-ref]').forEach(tr => tr.onclick = () => ouvrir(tr.dataset.ref));
     }
 
@@ -335,6 +368,12 @@
     document.getElementById('refresh').onclick = charger;
     document.getElementById('search').oninput = tableau;
     document.getElementById('filterStatut').onchange = e => { filtre = e.target.value; tableau(); };
+    document.querySelectorAll('.onglet').forEach(b => b.onclick = () => {
+      onglet = b.dataset.onglet;
+      document.querySelectorAll('.onglet').forEach(x => { x.classList.toggle('actif', x === b); x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      filtre = ''; document.getElementById('filterStatut').value = '';
+      tableau();
+    });
     // Lien sans clé ou clé refusée : on n'affiche rien de privé
     function accesImpossible(raison) {
       const refus = /refus/i.test(raison || '');
