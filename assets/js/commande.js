@@ -271,7 +271,11 @@ document.addEventListener('DOMContentLoaded', () => {
     $('ovTitle').textContent = title;
     $('ovText').textContent = text;
     $('ovRef').hidden = !ref;
-    $('ovRef').innerHTML = ref ? `Votre référence : <strong>${ref}</strong>` : '';
+    $('ovRef').innerHTML = ref ? `
+      <span class="order-ref-label">Votre référence de commande</span>
+      <span class="order-ref-code"><strong>${ref}</strong>
+        <button type="button" class="order-ref-copy" data-copy="${ref}"><i class="fa-regular fa-copy"></i> Copier</button></span>
+      <span class="order-ref-note"><i class="fa-solid fa-camera"></i> Gardez-la précieusement (faites une capture d’écran) : elle sert à suivre votre commande et à régler le solde.</span>` : '';
     $('ovActions').innerHTML = actions;
   }
 
@@ -303,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
       solde: c.later,
       options: c.options.map(o => o.nom),
       optionKeys: c.options.map(o => o.key),
-      payLink: c.payLink,
+      payLink: lienPaiement(c.payLink),
       projet: $('fProjet').value.trim(),
       destination: $('fDestination').value,
       textes: $('fTextes').value.trim(),
@@ -330,6 +334,25 @@ document.addEventListener('DOMContentLoaded', () => {
       (state.files.length ? `\n\nJe vous envoie mes fichiers ici dans la discussion.` : '');
   }
 
+  // Lien Chariow avec la référence déjà remplie dans le champ « Référence »
+  function lienPaiement(lien) {
+    if (!lien) return '';
+    return `${lien}${lien.includes('?') ? '&' : '?'}reference=${encodeURIComponent(state.reference)}`;
+  }
+
+  // Écran final : la référence et un seul bouton de paiement
+  function ecranPaiement(order, c, texte) {
+    overlay({
+      icon: '<i class="fa-solid fa-circle-check"></i>',
+      title: 'Plus qu’une étape !',
+      text: texte,
+      ref: order.reference,
+      actions: (order.payLink ? `<a class="btn btn-primary btn-lg" href="${order.payLink}"><i class="fa-solid fa-lock"></i> Payer 50 % · ${fmtFcfa(c.acompte)}</a>
+        <p class="order-pay-note">Paiement sécurisé par Chariow · votre référence est déjà remplie</p>` : '') +
+        `<button type="button" class="order-link-btn" data-close>Modifier ma commande</button>`
+    });
+  }
+
   function saveLocally(order) {
     try { localStorage.setItem('auren_last_order', JSON.stringify({ reference: order.reference, service: order.service, date: new Date().toISOString() })); } catch (e) { /* stockage indisponible */ }
   }
@@ -353,8 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
         text: '1. Envoyez votre brief à Olivier sur WhatsApp. 2. Réglez 50 % sur la page de paiement sécurisée, en indiquant votre référence.',
         ref: order.reference,
         actions: `<a class="btn btn-whatsapp" href="${waUrl(waBriefMessage(order))}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Envoyer mon brief</a>` +
-          (c.payLink ? `<a class="btn btn-primary" href="${c.payLink}"><i class="fa-solid fa-lock"></i> Payer 50 % · ${fmtFcfa(c.acompte)}</a>` : '') +
-          `<button type="button" class="btn btn-outline" data-close>Modifier ma commande</button>`
+          (order.payLink ? `<a class="btn btn-primary" href="${order.payLink}"><i class="fa-solid fa-lock"></i> Payer 50 % · ${fmtFcfa(c.acompte)}</a>` : '') +
+          `<button type="button" class="order-link-btn" data-close>Modifier ma commande</button>`
       });
       return;
     }
@@ -372,28 +395,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || 'Erreur inconnue');
 
-      overlay({
-        icon: '<i class="fa-solid fa-circle-check"></i>',
-        title: 'Commande enregistrée',
-        text: `Un e-mail de confirmation a été envoyé à ${order.email}. Redirection vers le paiement sécurisé de 50 %…`,
-        ref: order.reference,
-        actions: c.payLink ? `<a class="btn btn-primary" href="${c.payLink}"><i class="fa-solid fa-lock"></i> Payer 50 % · ${fmtFcfa(c.acompte)}</a>` : ''
-      });
-      if (c.payLink) setTimeout(() => { location.href = c.payLink; }, 2500);
+      ecranPaiement(order, c, `Votre commande est enregistrée et un récapitulatif a été envoyé à ${order.email}. Réglez 50 % pour lancer la création.`);
     } catch (error) {
       $('submitBtn').disabled = false;
       overlay({
         icon: '<i class="fa-solid fa-triangle-exclamation"></i>',
         title: 'La commande n’a pas pu être envoyée',
-        text: 'Vérifiez votre connexion et réessayez, ou envoyez votre brief directement à Olivier sur WhatsApp.',
-        ref: order.reference,
-        actions: `<button type="button" class="btn btn-primary" data-close>Réessayer</button>` +
-          `<a class="btn btn-whatsapp" href="${waUrl(waBriefMessage(order))}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Envoyer sur WhatsApp</a>`
+        text: 'Vérifiez votre connexion internet, puis réessayez. Vos informations sont conservées.',
+        ref: '',
+        actions: `<button type="button" class="btn btn-primary" data-close>Réessayer</button>`
       });
     }
   });
 
   $('overlay').addEventListener('click', (e) => {
+    const copie = e.target.closest('[data-copy]');
+    if (copie && navigator.clipboard) {
+      navigator.clipboard.writeText(copie.dataset.copy).then(() => { copie.innerHTML = '<i class="fa-solid fa-check"></i> Copiée'; });
+    }
     if (e.target.closest('[data-close]')) $('overlay').hidden = true;
   });
 
