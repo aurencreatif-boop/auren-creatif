@@ -18,7 +18,7 @@ var CONFIG = {
   // Adresse de l'application Web Google Apps Script (« Déployer > Application Web »).
   // Reçoit les commandes, les fichiers des clients et envoie les e-mails.
   // Vide = la page de commande bascule sur WhatsApp.
-  ORDER_ENDPOINT: "",
+  ORDER_ENDPOINT: "https://script.google.com/macros/s/AKfycbwzeRoB1HC9I71L_usZSpIEd6tv6pRYyo8h7QbnoFwgXWSpzell7IQQPVuQrV40v-4/exec",
 
   // Liens Chariow des options (réglées avec le solde). Vide = lien envoyé par Olivier.
   OPTION_LINKS: {
