@@ -307,3 +307,8 @@
   .order-layout { grid-template-columns: minmax(0, 1fr); }
   .order-layout > * { min-width: 0; }
 }
+
+/* Rappel : vérifier la référence dans Chariow (Chariow peut proposer une ancienne référence) */
+.order-ref-rappel { margin: 0.5rem 0 0; padding: 0.55rem 0.75rem; border-radius: 10px; background: #fff7ed; color: #9a3412; font-size: 0.8rem; line-height: 1.45; text-align: left; }
+.order-ref-rappel i { margin-right: 0.3rem; }
+.vip-page .order-ref-rappel { background: rgba(251, 191, 36, 0.12); color: #fde68a; }

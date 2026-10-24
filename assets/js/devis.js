@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         text: `Votre demande est enregistrée et un récapitulatif a été envoyé à ${demande.email}. Réservez votre consultation VIP : Olivier vous contacte en priorité sous 24 h ouvrées.`,
         ref: reference,
         actions: (demande.payLink ? `<a class="btn btn-primary btn-lg" href="${demande.payLink}"><i class="fa-solid fa-lock"></i> Réserver ma consultation VIP · 10 000 FCFA</a>
-          <p class="order-pay-note">Paiement sécurisé par Chariow · votre référence est déjà remplie</p>` : '') +
+          <p class="order-pay-note">Paiement sécurisé par Chariow</p>
+          <p class="order-ref-rappel"><i class="fa-solid fa-circle-exclamation"></i> Dans Chariow, vérifiez que le champ « Référence » indique bien <strong>${reference}</strong>. Sinon, corrigez-le avant de payer.</p>` : '') +
           `<button type="button" class="order-link-btn" data-close>Modifier ma demande</button>`
       });
     } catch (error) {
