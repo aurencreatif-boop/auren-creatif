@@ -1,7 +1,7 @@
 /**
  * AUREN CRÉATIF · Carrousels mobiles (chiffres clés et témoignages)
- * Sur téléphone, les cartes défilent toutes seules. Dès que le client touche
- * ou fait glisser le carrousel, le défilement automatique s'arrête, puis
+ * Sur téléphone, les cartes défilent toutes seules. Le client peut aussi les
+ * faire glisser au doigt : le défilement automatique s'arrête alors, puis
  * reprend quelques secondes après sa dernière action.
  */
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Points de position sous le carrousel (cliquables)
     const points = document.createElement('div');
     points.className = 'carrousel-points';
-    points.setAttribute('role', 'tablist');
     points.setAttribute('aria-label', nom);
     cartes.forEach((_, i) => {
       const b = document.createElement('button');
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     piste.after(points);
 
-    let minuteur = null, reprise = null, visible = false;
+    let enPauseJusqua = 0;
 
     // Carte la plus proche du centre de la piste
     const actuelle = () => {
@@ -44,50 +43,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const majPoints = () => {
       const i = actuelle();
-      [...points.children].forEach((b, j) => {
-        b.classList.toggle('actif', j === i);
-        b.setAttribute('aria-selected', j === i ? 'true' : 'false');
-      });
+      [...points.children].forEach((b, j) => b.classList.toggle('actif', j === i));
     };
 
     function aller(i) {
       const c = cartes[i];
       const decalage = c.getBoundingClientRect().left - piste.getBoundingClientRect().left;
-      piste.scrollTo({ left: piste.scrollLeft + decalage - (piste.clientWidth - c.offsetWidth) / 2, behavior: mouvementReduit.matches ? 'auto' : 'smooth' });
+      piste.scrollTo({
+        left: piste.scrollLeft + decalage - (piste.clientWidth - c.offsetWidth) / 2,
+        behavior: mouvementReduit.matches ? 'auto' : 'smooth'
+      });
     }
 
-    const actif = () => mobile.matches && !mouvementReduit.matches && visible && !document.hidden;
+    // Le carrousel est-il à l'écran ? (mesuré directement, sans dépendre du navigateur)
+    const aLEcran = () => {
+      const r = piste.getBoundingClientRect();
+      return r.bottom > 0 && r.top < window.innerHeight && r.height > 0;
+    };
 
-    function demarrer() {
-      clearInterval(minuteur);
-      minuteur = null;
-      if (!actif()) return;
-      minuteur = setInterval(() => aller((actuelle() + 1) % cartes.length), INTERVALLE);
-    }
-
-    // Le client prend la main : on arrête, puis on reprend plus tard
-    function pause() {
-      clearInterval(minuteur);
-      minuteur = null;
-      clearTimeout(reprise);
-      reprise = setTimeout(demarrer, REPRISE);
-    }
-
-    // Seul un geste du client met en pause (le défilement automatique, lui, ne compte pas)
-    ['pointerdown', 'touchstart', 'wheel', 'keydown', 'focusin'].forEach(ev => piste.addEventListener(ev, pause, { passive: true }));
+    // Le client touche ou fait glisser : on le laisse faire, puis on reprend
+    const pause = () => { enPauseJusqua = Date.now() + REPRISE; };
+    ['pointerdown', 'touchstart', 'touchmove', 'wheel', 'keydown'].forEach(ev => piste.addEventListener(ev, pause, { passive: true }));
     piste.addEventListener('scroll', majPoints, { passive: true });
-
-    // Défile seulement quand le carrousel est à l'écran
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => { visible = e.isIntersecting; demarrer(); }, { threshold: 0.4 }).observe(piste);
-    } else {
-      visible = true;
-    }
-    document.addEventListener('visibilitychange', demarrer);
-    mobile.addEventListener('change', demarrer);
     window.addEventListener('resize', majPoints);
+
+    // Un seul minuteur, toujours actif : il avance quand c'est le moment
+    setInterval(() => {
+      if (!mobile.matches || Date.now() < enPauseJusqua || !aLEcran()) return;
+      aller((actuelle() + 1) % cartes.length);
+    }, INTERVALLE);
+
     majPoints();
-    demarrer();
   }
 
   const stats = document.querySelector('.stats-grid');
