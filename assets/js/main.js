@@ -1435,7 +1435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateOrderPricingUI();
 
   /* ==========================================================================
-     Fenêtre « Me contacter » (e-mail)
+     Fenêtre « Signaler un problème » (e-mail)
      ========================================================================== */
   const contactChoiceModal = document.getElementById('contactChoiceModal');
   const contactModalClose = document.getElementById('contactModalClose');
@@ -1455,12 +1455,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('modal-open');
   }
 
-  // Ouvrir la pop-up sur tous les boutons "Me contacter"
+  // Ouvrir la pop-up sur tous les boutons « Signaler un problème »
   document.querySelectorAll('.open-contact-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       openContactModal();
     });
+    // Le bouton flottant n'est pas un vrai <button> : on l'ouvre aussi au clavier
+    if (btn.tagName !== 'BUTTON' && btn.tagName !== 'A') {
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openContactModal(); }
+      });
+    }
   });
 
   if (contactModalClose) {
