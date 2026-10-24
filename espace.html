@@ -46,6 +46,20 @@
     .onglet .nb { min-width:22px; padding:.05rem .45rem; border-radius:999px; background:var(--soft); color:var(--primary-dark); font-size:.75rem; text-align:center; }
     .onglet[data-onglet="livrees"].actif { color:var(--ok); border-bottom-color:var(--ok); } .onglet[data-onglet="livrees"] .nb { background:var(--ok-soft); color:var(--ok); }
     .onglet[data-onglet="demandes"].actif { color:#b45309; border-bottom-color:#f59e0b; } .onglet[data-onglet="demandes"] .nb { background:#fef3c7; color:#b45309; }
+    .onglet[data-onglet="vip"] { color:#a16207; }
+    .onglet[data-onglet="vip"].actif { color:#92400e; border-bottom-color:#d97706; } .onglet[data-onglet="vip"] .nb { background:#fef3c7; color:#92400e; }
+    tr.vip { background:linear-gradient(90deg,#fffbeb,#fff); } tr.vip td:first-child { border-left:4px solid #d97706; }
+    tr.vip:hover { background:#fef3c7; }
+    .ref-vip { color:#92400e; }
+    .pill.vip { background:linear-gradient(135deg,#fde68a,#f59e0b); color:#451a03; }
+    .vip-bandeau { margin:-1.25rem -18px 1rem; padding:1.1rem 18px; background:radial-gradient(circle at 20% 0%,#1e3a8a,#0f172a 70%); color:#fde68a; }
+    .vip-bandeau h3 { color:#fff; } .vip-bandeau .muted { color:#cbd5e1; }
+    .vip-bandeau .couronne { display:inline-block; padding:.2rem .7rem; border:1px solid rgba(251,191,36,.6); border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.05em; color:#fbbf24; margin-bottom:.4rem; }
+    .vip-bandeau .btn { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); color:#fff; }
+    .vip-contact { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; }
+    .vip-contact .btn { justify-content:center; }
+    .vip-carte { background:#fffbeb; border:1px solid #fde68a; border-radius:16px; padding:1rem 1.1rem; }
+    @media (max-width:560px) { .vip-contact { grid-template-columns:1fr; } }
     .onglet[data-onglet="modifs"].actif { color:#c2410c; border-bottom-color:#ea580c; } .onglet[data-onglet="modifs"] .nb { background:#ffedd5; color:#c2410c; }
     .filters input, .filters select { border:1px solid var(--border); background:var(--surface); border-radius:10px; padding:.55rem .8rem; }
     .filters input { flex:1 1 220px; }
@@ -122,6 +136,7 @@
         <button class="onglet" role="tab" data-onglet="demandes">✏️ Modifications demandées <span class="nb" id="nbDemandes">0</span></button>
         <button class="onglet" role="tab" data-onglet="livrees">✅ Livrées <span class="nb" id="nbLivrees">0</span></button>
         <button class="onglet" role="tab" data-onglet="modifs">🔁 Modifications livrées <span class="nb" id="nbModifs">0</span></button>
+        <button class="onglet" role="tab" data-onglet="vip">👑 Commandes VIP <span class="nb" id="nbVip">0</span></button>
       </div>
       <div class="filters">
         <input type="search" id="search" placeholder="Rechercher : référence, client, service…" aria-label="Rechercher">
@@ -146,7 +161,9 @@
     let onglet = 'commandes';
     // Partie de la liste : Commandes (nouveaux clients), Modifications demandées, Livrées, Modifications livrées
     const aEuModif = c => (Number(c['Retouches demandées']) || 0) + (Number(c['Modifications aperçu']) || 0) > 0;
+    const estVip = c => String(c['Référence'] || '').indexOf('SM-') === 0;
     const partie = c => {
+      if (estVip(c)) return 'vip';
       const s = c['Statut'];
       if (s === S()[6] || s === S()[7]) return 'demandes';
       if (s === S()[3] || s === S()[4] || s === S()[5]) return aEuModif(c) ? 'modifs' : 'livrees';
@@ -173,9 +190,19 @@
       [S()[3]]: 'Livré · solde à recevoir', [S()[4]]: 'Terminé · tout payé', [S()[5]]: 'Archivé',
       [S()[6]]: 'Retouche demandée', [S()[7]]: 'Modification demandée', [S()[8]]: 'Programmé'
     })[s] || s;
+    const libelleVip = s => ({ [S()[0]]: 'Consultation à régler', [S()[1]]: 'Consultation payée', [S()[2]]: 'Projet VIP en cours', [S()[4]]: 'Projet VIP terminé', [S()[5]]: 'Archivé' })[s] || libelle(s);
+    const libelleDe = c => estVip(c) ? libelleVip(c['Statut']) : libelle(c['Statut']);
+    const pillDe = c => estVip(c) && c['Statut'] !== S()[0] ? 'vip' : pill(c['Statut']);
     // Ce qu'il faut faire maintenant, selon le statut
     const prochaine = c => {
       const s = c['Statut'];
+      if (estVip(c)) {
+        if (s === S()[0]) return 'Attendre le paiement de la consultation VIP (10 000 FCFA) : il est confirmé tout seul par Chariow. Vous pouvez déjà contacter le client.';
+        if (s === S()[1]) return 'Contacter le client rapidement pour fixer le rendez-vous : Google Meet, WhatsApp ou e-mail (boutons ci-dessous).';
+        if (s === S()[2]) return 'Projet VIP en cours : suivez-le avec le client et notez les étapes dans les notes.';
+        if (s === S()[4]) return 'Projet VIP terminé. 🎉';
+        return 'Demande archivée.';
+      }
       if (s === S()[0]) return 'Attendre le paiement de l’acompte : il est confirmé tout seul par Chariow (vous pouvez aussi passer la commande en « À réaliser » à la main).';
       if (s === S()[1] || s === S()[2]) return 'Réaliser le projet, puis envoyer l’aperçu et le fichier final juste en dessous.';
       if (s === S()[8]) return `Rien à faire : l’aperçu partira tout seul le ${dateHeure(new Date(c['Envoi programmé']))}.`;
@@ -208,12 +235,14 @@
     function afficher(data) {
       DATA = data;
       document.getElementById('maj').textContent = 'Mis à jour le ' + new Date(data.maj).toLocaleString('fr-FR');
-      const cs = data.commandes;
+      const tout = data.commandes;
+      const cs = tout.filter(c => !estVip(c)); // les demandes VIP ont leur propre compteur
       const tuiles = [
         ['💳 Acompte à vérifier', cs.filter(c => c['Statut'] === S()[0]).length],
         ['🎨 À réaliser', cs.filter(c => c['Statut'] === S()[1] || c['Statut'] === S()[2]).length],
         ['✏️ Modifications à faire', cs.filter(c => partie(c) === 'demandes').length],
-        ['⏰ Programmés', cs.filter(c => c['Statut'] === S()[8]).length]
+        ['⏰ Programmés', cs.filter(c => c['Statut'] === S()[8]).length],
+        ['👑 Demandes VIP', tout.filter(c => estVip(c) && c['Statut'] !== S()[5] && c['Statut'] !== S()[4]).length]
       ];
       document.getElementById('tiles').innerHTML = tuiles.map(t => `<div class="tile"><div class="label">${t[0]}</div><div class="value">${t[1]}</div></div>`).join('');
       tableau();
@@ -228,19 +257,24 @@
       document.getElementById('nbDemandes').textContent = compte('demandes');
       document.getElementById('nbLivrees').textContent = compte('livrees');
       document.getElementById('nbModifs').textContent = compte('modifs');
+      document.getElementById('nbVip').textContent = compte('vip');
       const rows = DATA.commandes
         .filter(c => filtre ? c['Statut'] === filtre : partie(c) === onglet)
         .filter(c => !q || [c['Référence'], c['Nom'], c['Service'], c['E-mail'], c['WhatsApp']].join(' ').toLowerCase().includes(q))
         .sort((a, b) => new Date(b['Date']) - new Date(a['Date']));
       const tb = document.getElementById('rows');
-      tb.innerHTML = rows.length ? rows.map(c => `<tr data-ref="${esc(c['Référence'])}">
+      tb.innerHTML = rows.length ? rows.map(c => estVip(c) ? `<tr data-ref="${esc(c['Référence'])}" class="vip">
+        <td><strong class="ref-vip">👑 ${esc(c['Référence'])}</strong></td><td>${dateFr(c['Date'])}</td><td><strong>${esc(c['Nom'])}</strong></td><td>${esc(String(c['Service']).replace(/^Service VIP · /, ''))}</td>
+        <td><span class="liv" style="color:#92400e">${esc(c['Délai'] || '—')}</span></td><td class="num">${esc(String(c['Utilisation'] || '').replace(/^Budget : /, '')) || fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pillDe(c)}">${esc(libelleDe(c))}</span></td><td class="open-btn">Ouvrir →</td></tr>`
+        : `<tr data-ref="${esc(c['Référence'])}">
         <td><strong>${esc(c['Référence'])}</strong></td><td>${dateFr(c['Date'])}</td><td>${esc(c['Nom'])}</td><td>${esc(c['Service'])}</td>
         <td>${livraison(c)}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(libelle(c['Statut']))}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
         : `<tr><td colspan="8" class="empty">${filtre ? 'Aucune commande avec ce statut.' : {
             commandes: 'Aucune nouvelle commande. Les commandes du site apparaîtront ici.',
             demandes: 'Aucune modification demandée. Les demandes des clients apparaîtront ici.',
             livrees: 'Aucune commande livrée pour l’instant.',
-            modifs: 'Aucune modification livrée pour l’instant.'
+            modifs: 'Aucune modification livrée pour l’instant.',
+            vip: 'Aucune demande VIP pour l’instant. Les demandes du Service VIP apparaîtront ici.'
           }[onglet]}</td></tr>`;
       tb.querySelectorAll('tr[data-ref]').forEach(tr => tr.onclick = () => ouvrir(tr.dataset.ref));
     }
@@ -266,6 +300,54 @@
       const derniere = histo.filter(l => / demandée : /.test(l)).pop();
       const lienClient = SITE + 'retouche.html?ref=' + encodeURIComponent(ref);
       const ligneHisto = l => { const m = l.match(/^(.*(?:: |📎 ))([^|]*) \| (https:\S+)(.*)$/); return m ? `${esc(m[1])}<a href="${esc(m[3])}" target="_blank" rel="noopener">${esc(m[2].trim())}</a>${esc(m[4])}` : esc(l); };
+      if (estVip(c)) {
+        const prenom = String(c['Nom'] || '').split(' ')[0];
+        const sujet = `Votre projet VIP ${ref} · AUREN CRÉATIF`;
+        p.innerHTML = `
+        <div class="vip-bandeau">
+          <div class="row" style="justify-content:space-between;align-items:flex-start"><div><span class="couronne">👑 SERVICE VIP</span><h3>${esc(ref)}</h3><div class="muted">${esc(String(c['Service']).replace(/^Service VIP · /, ''))} · reçue le ${dateFr(c['Date'])}</div></div><button class="btn" id="fermer" aria-label="Fermer">✕</button></div>
+        </div>
+
+        <h4>Où en est la demande ?</h4>
+        <span class="pill ${pillDe(c)}" style="font-size:.85rem">${esc(libelleDe(c))}</span>
+        <p class="prochaine" style="border-left-color:#d97706;background:#fffbeb">👉 <strong>Prochaine étape :</strong> ${esc(prochaine(c))}</p>
+        <details class="statut-main"><summary>Changer le statut à la main</summary>
+          <div class="row" style="margin-top:.5rem"><select id="statut">${S().map(s => `<option value="${esc(s)}" ${s === c['Statut'] ? 'selected' : ''}>${esc(libelleVip(s))}</option>`).join('')}</select><button class="btn" id="saveStatut">Enregistrer</button></div>
+        </details>
+
+        <h4>📞 Contacter le client</h4>
+        <div class="vip-contact">
+          <a class="btn" href="https://meet.google.com/new" target="_blank" rel="noopener">🎥 Créer un Google Meet</a>
+          ${tel ? `<a class="btn" href="https://wa.me/${tel}?text=${encodeURIComponent(`Bonjour ${prenom}, c’est Olivier d’AUREN CRÉATIF (Service VIP). Merci pour votre demande ${ref} ! Quand êtes-vous disponible pour en parler ?`)}" target="_blank" rel="noopener">💬 WhatsApp</a>` : '<span class="btn" style="opacity:.5">💬 Pas de numéro</span>'}
+          <a class="btn" href="mailto:${esc(c['E-mail'])}?subject=${encodeURIComponent(sujet)}">✉️ E-mail</a>
+        </div>
+        <p class="notice">Google Meet : créez la réunion, puis envoyez son lien au client par WhatsApp ou par e-mail.</p>
+
+        <h4>💡 Sa demande</h4>
+        <div class="vip-carte"><dl>
+          <dt>Type de projet</dt><dd>${esc(String(c['Service']).replace(/^Service VIP · /, ''))}</dd>
+          <dt>Entreprise / projet</dt><dd>${esc(c['Projet'])}</dd>
+          <dt>Budget</dt><dd>${esc(String(c['Utilisation'] || '').replace(/^Budget : /, '')) || '—'}</dd>
+          <dt>Pour quand</dt><dd>${esc(c['Délai'] || '—')}</dd>
+          <dt>Description</dt><dd>${esc(c['Textes'] || '—')}</dd>
+          ${fichiers.length ? `<dt>Lien envoyé</dt><dd>${fichiers.map(f => `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nom)}</a>`).join('<br>')}</dd>` : ''}
+        </dl></div>
+
+        <h4>Client</h4>
+        <dl><dt>Nom</dt><dd>${esc(c['Nom'])}</dd><dt>E-mail</dt><dd>${esc(c['E-mail'])}</dd><dt>Téléphone</dt><dd>${esc(c['WhatsApp'])}</dd>
+          <dt>Consultation</dt><dd>${fcfa(c['Acompte (FCFA)'])} ${c['Date paiement 1/2'] ? '· payée le ' + dateFr(c['Date paiement 1/2']) : '· pas encore payée'}</dd></dl>
+
+        <h4>Notes internes</h4>
+        <textarea id="notes" placeholder="Ex. RDV Google Meet le 28/10 à 15h · devis envoyé · …">${esc(c['Notes'])}</textarea>
+        <div class="row" style="margin-top:.4rem"><button class="btn" id="saveNotes">Enregistrer les notes</button></div>`;
+        p.classList.add('open');
+        document.getElementById('overlay').classList.add('open');
+        const actVip = async (btn, fn, ...args) => { btn.disabled = true; try { afficher(await run(fn, ...args)); } catch (e) { alert(e.message); btn.disabled = false; } };
+        document.getElementById('fermer').onclick = fermer;
+        document.getElementById('saveStatut').onclick = e => actVip(e.target, 'setStatut', ref, document.getElementById('statut').value);
+        document.getElementById('saveNotes').onclick = e => actVip(e.target, 'setNotes', ref, document.getElementById('notes').value);
+        return;
+      }
       p.innerHTML = `
         <div class="row" style="justify-content:space-between"><div><h3>${esc(ref)}</h3><div class="muted">${esc(c['Service'])} · reçue le ${dateFr(c['Date'])}</div></div><button class="btn" id="fermer" aria-label="Fermer">✕</button></div>
 
