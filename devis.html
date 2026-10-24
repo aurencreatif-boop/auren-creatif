@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service VIP · AUREN CRÉATIF</title>
+  <meta name="description" content="Projets graphiques de plus de 100 000 FCFA : un interlocuteur dédié, un devis détaillé et un contrat clair. Réservez votre consultation.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563EB'/><text x='50%' y='62%' font-size='50' font-weight='bold' fill='white' font-family='sans-serif' text-anchor='middle'>A</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/commande.css">
+</head>
+<body class="order-page">
+
+  <header class="order-topbar">
+    <div class="container order-topbar-inner">
+      <a href="index.html#commander" class="order-back"><i class="fa-solid fa-arrow-left"></i> <span>Retour</span></a>
+      <a href="index.html" class="order-brand"><span class="order-brand-mark">A</span> AUREN CRÉATIF</a>
+      <span class="order-secure"><i class="fa-solid fa-lock"></i> <span>Paiement sécurisé</span></span>
+    </div>
+  </header>
+
+  <main class="container order-main">
+
+    <!-- Accroche -->
+    <section class="sm-hero sm-vip">
+      <p class="sm-vip-kicker"><i class="fa-solid fa-crown"></i> Service VIP · projets de plus de 100 000 FCFA</p>
+      <h1 class="sm-title">Votre marque mérite<br>un traitement <span class="sm-gold">VIP</span>.</h1>
+      <p class="sm-lead">Identité de marque complète, campagne, packaging, lancement de produit, accompagnement mensuel… Avec le Service VIP, Olivier devient votre directeur artistique personnel : il vous écoute, construit votre projet avec vous et le suit jusqu’à la livraison.</p>
+      <div class="sm-hero-badges">
+        <span><i class="fa-solid fa-user-tie"></i> Directeur artistique dédié</span>
+        <span><i class="fa-solid fa-bolt"></i> Réponse prioritaire sous 24 h</span>
+        <span><i class="fa-solid fa-file-signature"></i> Devis et contrat sur mesure</span>
+        <span><i class="fa-solid fa-gift"></i> Consultation offerte si le projet est lancé</span>
+      </div>
+      <a href="#devisForm" class="btn btn-lg sm-vip-cta"><i class="fa-solid fa-crown"></i> Réserver ma consultation VIP</a>
+      <p class="sm-vip-note">Pour garantir un suivi d’exception, le nombre de projets VIP est limité chaque mois.</p>
+    </section>
+
+    <!-- Ce que comprend la consultation -->
+    <section class="sm-offer">
+      <div class="sm-offer-text">
+        <h2><i class="fa-solid fa-crown sm-gold"></i> Votre consultation VIP</h2>
+        <p class="sm-offer-price"><strong>10 000 FCFA</strong> <span>déduits de votre facture si vous lancez le projet</span></p>
+        <ul class="sm-list">
+          <li><i class="fa-solid fa-check"></i> <span><strong>Un rendez-vous privé</strong> avec Olivier (appel ou visio d’environ 45 min)</span></li>
+          <li><i class="fa-solid fa-check"></i> <span><strong>L’analyse de vos besoins</strong>, de votre cible et de vos objectifs</span></li>
+          <li><i class="fa-solid fa-check"></i> <span><strong>Un devis détaillé</strong> et un calendrier, sous 48 h</span></li>
+          <li><i class="fa-solid fa-check"></i> <span><strong>Un contrat clair</strong> avant le moindre démarrage</span></li>
+          <li><i class="fa-solid fa-check"></i> <span><strong>Des recommandations stratégiques</strong> que vous gardez, même si vous ne lancez pas le projet</span></li>
+          <li><i class="fa-solid fa-check"></i> <span><strong>Un suivi prioritaire</strong> sur WhatsApp pendant tout le projet</span></li>
+        </ul>
+      </div>
+      <ol class="sm-steps">
+        <li><span>1</span><div><strong>Décrivez votre projet</strong>2 minutes, ci-dessous.</div></li>
+        <li><span>2</span><div><strong>Réservez votre consultation VIP</strong>10 000 FCFA, paiement sécurisé.</div></li>
+        <li><span>3</span><div><strong>Olivier vous contacte en priorité</strong>Sous 24 h ouvrées.</div></li>
+        <li><span>4</span><div><strong>Devis, contrat, création</strong>Vous validez, on démarre.</div></li>
+      </ol>
+    </section>
+
+    <!-- Formulaire -->
+    <form id="devisForm" class="order-layout" novalidate>
+      <div class="order-form-col">
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">1</span> Votre projet</h2>
+
+          <label class="order-label" for="dType">Quel type de projet ? <span class="req">*</span></label>
+          <select id="dType" class="form-control" required>
+            <option value="">Choisissez…</option>
+            <option>Identité de marque complète</option>
+            <option>Campagne publicitaire</option>
+            <option>Packaging, étiquettes</option>
+            <option>Supports pour un événement</option>
+            <option>Accompagnement mensuel (réseaux sociaux)</option>
+            <option>Autre projet</option>
+          </select>
+
+          <div class="order-grid-2">
+            <div>
+              <label class="order-label" for="dBudget">Budget envisagé <span class="req">*</span></label>
+              <select id="dBudget" class="form-control" required>
+                <option value="">Choisissez…</option>
+                <option>Plus de 100 000, jusqu’à 250 000 FCFA</option>
+                <option>250 000 à 500 000 FCFA</option>
+                <option>Plus de 500 000 FCFA</option>
+                <option>À définir ensemble</option>
+              </select>
+            </div>
+            <div>
+              <label class="order-label" for="dQuand">Pour quand ? <span class="req">*</span></label>
+              <select id="dQuand" class="form-control" required>
+                <option value="">Choisissez…</option>
+                <option>Dès que possible</option>
+                <option>Dans le mois</option>
+                <option>Dans 2 à 3 mois</option>
+                <option>Pas pressé</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="order-label" for="dProjet">Nom de votre entreprise ou de votre projet <span class="req">*</span></label>
+          <input id="dProjet" class="form-control" required maxlength="120" placeholder="Ex. : Boutique Ama, Festival Lomé Live">
+
+          <label class="order-label" for="dDescription">Décrivez votre projet en quelques lignes <span class="req">*</span></label>
+          <textarea id="dDescription" class="form-control order-textarea" required maxlength="3000" placeholder="Ex. : je lance une marque de jus naturels et j’ai besoin d’un logo, des étiquettes de bouteilles et des visuels pour Facebook…"></textarea>
+
+          <label class="order-label" for="dLien">Un lien utile ? <span class="order-hint-inline">(site, page Facebook, documents, inspirations)</span></label>
+          <input id="dLien" type="url" class="form-control" inputmode="url" placeholder="https://">
+        </section>
+
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">2</span> Comment vous joindre</h2>
+          <div class="order-grid-2">
+            <div>
+              <label class="order-label" for="dNom">Votre nom <span class="req">*</span></label>
+              <input id="dNom" class="form-control" required maxlength="100" autocomplete="name">
+            </div>
+            <div>
+              <label class="order-label" for="dTel">Numéro de téléphone <span class="order-hint-inline">(WhatsApp de préférence)</span> <span class="req">*</span></label>
+              <input id="dTel" type="tel" class="form-control" required maxlength="25" autocomplete="tel" placeholder="+228 90 00 00 00">
+              <small class="order-field-hint">Avec l’indicatif du pays</small>
+            </div>
+          </div>
+          <label class="order-label" for="dEmail">Votre adresse e-mail <span class="req">*</span></label>
+          <input id="dEmail" type="email" class="form-control" required maxlength="120" autocomplete="email" placeholder="vous@exemple.com">
+          <input type="text" id="dWebsite" class="order-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="order-consent">
+            <input type="checkbox" id="dConsent" required>
+            <span>J’accepte que mes informations servent uniquement à étudier mon projet. La consultation (10 000 FCFA) est déduite de ma facture si je lance le projet.</span>
+          </label>
+        </section>
+      </div>
+
+      <aside class="order-summary">
+        <h2 class="order-summary-title"><i class="fa-solid fa-crown sm-gold"></i> Consultation VIP</h2>
+        <ul class="order-trust" style="margin-top:0">
+          <li><i class="fa-solid fa-user-tie"></i> Directeur artistique dédié : Olivier</li>
+          <li><i class="fa-solid fa-bolt"></i> Contact prioritaire sous 24 h ouvrées</li>
+          <li><i class="fa-solid fa-file-signature"></i> Devis détaillé et contrat</li>
+        </ul>
+        <div class="order-pay-split" style="margin-top:1rem">
+          <div class="order-pay-now">
+            <span>À régler aujourd’hui</span>
+            <strong>10 000 FCFA</strong>
+            <small>déduits de votre facture si le projet est lancé</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg order-submit" id="dSubmit">
+          <i class="fa-solid fa-calendar-check"></i> <span>Réserver ma consultation VIP</span>
+        </button>
+        <p class="order-error" id="dError" role="alert" hidden></p>
+        <p class="sm-small"><i class="fa-solid fa-shield-halved"></i> Paiement sécurisé par Chariow (Mobile Money, carte…)</p>
+      </aside>
+    </form>
+
+    <!-- Questions fréquentes -->
+    <section class="sm-faq">
+      <h2>Questions fréquentes</h2>
+      <details><summary>Pourquoi la consultation VIP est-elle payante ?</summary><p>Elle réserve un vrai temps de travail sur votre projet : écoute, analyse, conseils et devis détaillé. Elle vous est entièrement offerte (déduite de votre facture) si vous lancez le projet.</p></details>
+      <details><summary>Et si je ne lance pas le projet ?</summary><p>Vous gardez les conseils et le devis pour avancer à votre rythme, avec ou sans nous.</p></details>
+      <details><summary>Mon projet fait 100 000 FCFA ou moins.</summary><p>Choisissez directement un service sur la page d’accueil (affiche, flyer, logo…) : vous commandez en ligne en quelques minutes.</p></details>
+    </section>
+  </main>
+
+  <div class="order-overlay" id="overlay" hidden>
+    <div class="order-overlay-card" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+      <div class="order-overlay-icon" id="ovIcon"></div>
+      <h2 id="ovTitle"></h2>
+      <p id="ovText"></p>
+      <div class="order-overlay-ref" id="ovRef" hidden></div>
+      <div class="order-overlay-actions" id="ovActions"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/devis.js"></script>
+</body>
+</html>

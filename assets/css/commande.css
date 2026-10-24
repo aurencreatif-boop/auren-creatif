@@ -203,3 +203,55 @@
 @media (max-width: 600px) {
   .order-form-col { padding: 0.25rem 1.1rem 1rem; border-radius: 0; border-left: 0; border-right: 0; }
 }
+
+/* Page Projet sur mesure */
+.sm-hero { text-align: center; max-width: 760px; margin: 1rem auto 2rem; }
+.sm-title { font-family: var(--font-heading); font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.15; margin: 0.4rem 0 0.9rem; color: var(--text-main); }
+.sm-lead { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 0 1.25rem; }
+.sm-hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.sm-hero-badges span { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 999px; font-size: 0.85rem; color: var(--text-main); }
+.sm-hero-badges i { color: var(--primary-600); }
+.sm-offer { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; align-items: start; margin-bottom: 2rem; padding: 1.75rem; background: #fff; border: 1px solid var(--border-light); border-radius: 6px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06); }
+.sm-offer h2 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; color: var(--text-main); }
+.sm-offer-price { margin: 0 0 1rem; color: var(--text-muted); }
+.sm-offer-price strong { display: block; font-family: var(--font-heading); font-size: 2rem; color: var(--primary-700); }
+.sm-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.sm-list li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--text-muted); line-height: 1.5; }
+.sm-list i { color: #059669; margin-top: 0.25rem; }
+.sm-list strong { color: var(--text-main); }
+.sm-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.sm-steps li { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.85rem; background: var(--primary-50); border-radius: 6px; font-size: 0.88rem; color: var(--text-muted); }
+.sm-steps li > span { display: grid; place-items: center; width: 28px; height: 28px; flex: 0 0 auto; border-radius: 50%; background: var(--primary-600); color: #fff; font-weight: 700; }
+.sm-steps strong { display: block; color: var(--text-main); font-size: 0.95rem; }
+.sm-small { margin: 0.75rem 0 0; font-size: 0.78rem; color: var(--text-muted); text-align: center; }
+.sm-faq { max-width: 760px; margin: 2.5rem auto 0; }
+.sm-faq h2 { font-family: var(--font-heading); font-size: 1.3rem; margin: 0 0 0.75rem; color: var(--text-main); }
+.sm-faq details { padding: 0.9rem 1rem; background: #fff; border: 1px solid var(--border-light); border-radius: 6px; margin-bottom: 0.5rem; }
+.sm-faq summary { cursor: pointer; font-weight: 600; color: var(--text-main); }
+.sm-faq p { margin: 0.6rem 0 0; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 860px) { .sm-offer { grid-template-columns: 1fr; padding: 1.25rem; } }
+.order-service-premium { background: linear-gradient(135deg, #0f172a, #1e3a8a); border-color: transparent; }
+.order-service-premium i, .order-service-premium em { color: #fbbf24; }
+.order-service-premium strong { color: #fff; }
+.order-service-premium span { color: #cbd5e1; }
+
+/* Habillage VIP */
+.sm-vip { max-width: none; margin: 0 0 2rem; padding: 3rem 1.25rem 2.5rem; border-radius: 6px; background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #0f172a 65%); color: #e2e8f0; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25); }
+.sm-vip .sm-title { color: #fff; }
+.sm-vip .sm-lead { color: #cbd5e1; max-width: 720px; margin-left: auto; margin-right: auto; }
+.sm-vip-kicker { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0; padding: 0.35rem 0.9rem; border: 1px solid rgba(251, 191, 36, 0.5); border-radius: 999px; color: #fbbf24; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.sm-gold { color: #f59e0b; }
+.sm-vip .sm-gold { background: linear-gradient(135deg, #fde68a, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sm-vip .sm-hero-badges span { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); color: #e2e8f0; }
+.sm-vip .sm-hero-badges i { color: #fbbf24; }
+.sm-vip-cta { margin-top: 1.5rem; background: linear-gradient(135deg, #fde68a, #f59e0b); color: #0f172a; border: 0; font-weight: 800; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35); }
+.sm-vip-note { margin: 0.9rem 0 0; font-size: 0.8rem; color: #94a3b8; }
+
+/* Garantie (accueil) */
+.garantie-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.garantie-item { padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-lg); }
+.garantie-item i { font-size: 1.6rem; color: var(--primary-600); margin-bottom: 0.75rem; }
+.garantie-item h3 { font-family: var(--font-heading); font-size: 1.05rem; margin: 0 0 0.4rem; color: var(--text-main); }
+.garantie-item p { margin: 0; color: var(--text-muted); line-height: 1.6; font-size: 0.92rem; }
+.garantie-note { margin: 1.25rem 0 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+.garantie-note a { color: var(--primary-600); }
