@@ -20,6 +20,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/commande.css">
 </head>
 <body>
 
@@ -797,569 +798,83 @@
     </div>
   </section>
 
-  <!-- Interactive Order Wizard ("COMMANDER - Décrivez votre projet") -->
+  <!-- Commander : chaque service ouvre sa page de commande -->
   <section id="commander" class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Commander un projet</span>
-        <h2 class="section-title">Décrivez votre projet</h2>
+        <h2 class="section-title">Choisissez votre projet</h2>
         <p class="section-subtitle">
-          Choisissez votre service et votre délai, envoyez votre brief, puis réglez 50 % pour démarrer. Le solde de 50 % se règle après validation de l’aperçu.
+          Cliquez sur un service : vous remplissez votre brief, ajoutez vos fichiers, puis réglez 50 % pour lancer la création. Le solde se règle à la livraison, par e-mail.
         </p>
       </div>
-
-      <div class="order-wizard-wrapper">
-        <!-- Main Form Wizard Column -->
-        <div class="order-wizard-container">
-          <!-- Wizard Stepper Header -->
-          <div class="wizard-stepper-header">
-            <div class="stepper-progress-bar" id="stepperProgressBar" style="width: 0%;"></div>
-            
-            <div class="stepper-step active" data-step-target="1">
-              <div class="step-circle">1</div>
-              <span class="step-label">Service</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="2">
-              <div class="step-circle">2</div>
-              <span class="step-label">Brief & Options</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="3">
-              <div class="step-circle">3</div>
-              <span class="step-label">Vérification</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="4">
-              <div class="step-circle">4</div>
-              <span class="step-label">Brief & paiement</span>
-            </div>
-          </div>
-
-          <!-- Wizard Form Body -->
-          <div class="wizard-form-body">
-            
-            <!-- STEP 1: Région & Service Selection -->
-            <div class="wizard-step-pane active" data-step="1">
-              
-              <!-- 1a. Région de commande -->
-              <div class="form-region-section">
-                <label class="form-region-heading">
-                  <i class="fa-solid fa-earth-africa"></i>
-                  <span>Je commande depuis : <span class="req">*</span></span>
-                </label>
-                <div class="region-radio-group" role="radiogroup" aria-label="Région de commande">
-                  <label class="region-pill selected">
-                    <input type="radio" name="orderRegion" value="afrique" checked>
-                    <span class="region-flag">🌍</span>
-                    <span class="region-title">Afrique</span>
-                    <span class="region-curr">(FCFA)</span>
-                  </label>
-                  <label class="region-pill">
-                    <input type="radio" name="orderRegion" value="europe">
-                    <span class="region-flag">🇪🇺</span>
-                    <span class="region-title">Europe</span>
-                    <span class="region-curr">(€)</span>
-                  </label>
-                  <label class="region-pill">
-                    <input type="radio" name="orderRegion" value="autre">
-                    <span class="region-flag">🌐</span>
-                    <span class="region-title">Autre</span>
-                    <span class="region-curr">(€)</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="wizard-step-header-text">
-                <h3 class="wizard-step-title">Étape 1 sur 4 — Quel service souhaitez-vous ? <span class="req">*</span></h3>
-                <p class="wizard-step-subtitle">Sélectionnez la prestation graphique correspondant à votre projet :</p>
-              </div>
-
-              <!-- 1b. Services Grid (10 services + 1 sur devis) -->
-              <div class="services-radio-grid" role="radiogroup" aria-label="Services disponibles">
-                
-                <!-- 1. Affiche simple -->
-                <label class="service-option-card selected">
-                  <input type="radio" name="serviceType" value="affiche_simple" data-label="Affiche simple" checked>
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-panorama"></i></div>
-                  <div class="service-option-name">Affiche simple</div>
-                  <div class="service-option-desc">Événement, concert, culte, promo</div>
-                  <div class="service-option-price-tag" data-price-tag="affiche_simple">15 000 FCFA</div>
-                </label>
-
-                <!-- 2. Affiche premium -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="affiche_premium" data-label="Affiche premium (illustration ou photomontage)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                  <div class="service-option-name">Affiche premium</div>
-                  <div class="service-option-desc">Illustration poussée ou photomontage</div>
-                  <div class="service-option-price-tag" data-price-tag="affiche_premium">30 000 FCFA</div>
-                </label>
-
-                <!-- 3. Flyer recto -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="flyer_recto" data-label="Flyer recto">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-file"></i></div>
-                  <div class="service-option-name">Flyer recto</div>
-                  <div class="service-option-desc">Support imprimé ou digital, 1 face</div>
-                  <div class="service-option-price-tag" data-price-tag="flyer_recto">12 000 FCFA</div>
-                </label>
-
-                <!-- 4. Flyer recto-verso -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="flyer_rectoverso" data-label="Flyer recto-verso">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                  <div class="service-option-name">Flyer recto-verso</div>
-                  <div class="service-option-desc">Support imprimé ou digital, 2 faces</div>
-                  <div class="service-option-price-tag" data-price-tag="flyer_rectoverso">20 000 FCFA</div>
-                </label>
-
-                <!-- 5. Visuel réseaux sociaux -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="visuel_reseaux" data-label="Visuel réseaux sociaux (1 visuel)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                  <div class="service-option-name">Visuel réseaux</div>
-                  <div class="service-option-desc">1 visuel pour post ou story</div>
-                  <div class="service-option-price-tag" data-price-tag="visuel_reseaux">7 500 FCFA</div>
-                </label>
-
-                <!-- 6. Pack 5 visuels réseaux -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="pack_5_visuels" data-label="Pack 5 visuels réseaux sociaux">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-layer-group"></i></div>
-                  <div class="service-option-name">Pack 5 visuels</div>
-                  <div class="service-option-desc">Pack cohérent de 5 publications</div>
-                  <div class="service-option-price-tag" data-price-tag="pack_5_visuels">30 000 FCFA</div>
-                </label>
-
-                <!-- 7. Carte de visite -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="carte_visite" data-label="Carte de visite">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-address-card"></i></div>
-                  <div class="service-option-name">Carte de visite</div>
-                  <div class="service-option-desc">Design professionnel prêt à imprimer</div>
-                  <div class="service-option-price-tag" data-price-tag="carte_visite">10 000 FCFA</div>
-                </label>
-
-                <!-- 8. Logo simple -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="logo_simple" data-label="Logo simple">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-bullseye"></i></div>
-                  <div class="service-option-name">Logo simple</div>
-                  <div class="service-option-desc">Création de logo sur-mesure</div>
-                  <div class="service-option-price-tag" data-price-tag="logo_simple">35 000 FCFA</div>
-                </label>
-
-                <!-- 9. Identité visuelle complète -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="identite_complete" data-label="Identité visuelle complète (logo + charte)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-gem"></i></div>
-                  <div class="service-option-name">Identité complète</div>
-                  <div class="service-option-desc">Logo, typographies & charte de marque</div>
-                  <div class="service-option-price-tag" data-price-tag="identite_complete">100 000 FCFA</div>
-                </label>
-
-                <!-- 10. Animation motion design -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="motion_design" data-label="Animation motion design (logo ou visuel)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-film"></i></div>
-                  <div class="service-option-name">Motion design</div>
-                  <div class="service-option-desc">Animation de logo ou teaser vidéo</div>
-                  <div class="service-option-price-tag" data-price-tag="motion_design">40 000 FCFA</div>
-                </label>
-
-                <!-- 11. Format personnalisé / Sur devis -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="sur_devis" data-label="Format personnalisé / Autre demande">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-                  <div class="service-option-name">Sur devis</div>
-                  <div class="service-option-desc">Format personnalisé ou demande spéciale</div>
-                  <div class="service-option-price-tag service-tag-devis">Sur devis</div>
-                </label>
-
-              </div>
-            </div>
-
-            <!-- STEP 2: Description, Délai & Options -->
-            <div class="wizard-step-pane" data-step="2">
-              <h3 class="wizard-step-title">Étape 2 sur 4 — Décrivez votre besoin</h3>
-              <p class="wizard-step-subtitle">Ajustez votre délai, vos options et précisez votre brief créatif :</p>
-
-              <!-- 1c. Délai souhaité (4 clickable cards) -->
-              <div class="form-group wizard-field-group">
-                <label class="form-section-label">
-                  <i class="fa-solid fa-stopwatch"></i>
-                  <span>Délai de livraison souhaité <span class="req">*</span></span>
-                </label>
-                <div class="delai-cards-grid" role="radiogroup" aria-label="Délai de réalisation souhaité">
-                  
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="express">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-bolt"></i> <span class="delai-title-text">Express 24 h</span></span>
-                        <span class="delai-badge badge-express">+50 %</span>
-                      </div>
-                      <span class="delai-timing">Livraison en 24 heures</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="rapide">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-gauge-high"></i> <span class="delai-title-text">Rapide 48 h</span></span>
-                        <span class="delai-badge badge-rapide">+25 %</span>
-                      </div>
-                      <span class="delai-timing">Livraison en 48 heures</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card selected">
-                    <input type="radio" name="orderDelai" value="standard" checked>
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-check"></i> <span class="delai-title-text">Standard 3 jours</span></span>
-                        <span class="delai-badge badge-standard">Prix normal</span>
-                      </div>
-                      <span class="delai-timing">3 à 5 jours</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="flexible">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-days"></i> <span class="delai-title-text">Flexible</span></span>
-                        <span class="delai-badge badge-flexible">−10 %</span>
-                      </div>
-                      <span class="delai-timing">7 jours ou plus</span>
-                    </div>
-                  </label>
-
-                </div>
-
-                <!-- Express 24h Notice -->
-                <div class="delai-express-alert" id="delaiExpressAlert" style="display: none;" role="alert">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  <span>Soumis à la disponibilité d'Olivier, confirmée avant tout paiement.</span>
-                </div>
-              </div>
-
-              <!-- 1d. Options complémentaires (montants fixes) -->
-              <div class="form-group wizard-field-group">
-                <label class="form-section-label">
-                  <i class="fa-solid fa-sliders"></i>
-                  <span>Options complémentaires (montants fixes, non soumis au délai)</span>
-                </label>
-                <div class="options-checkboxes-grid">
-                  
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="revision">
-                    <input type="checkbox" name="orderOption" value="revision" id="optRevision">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Révision supplémentaire</span>
-                      <span class="opt-desc">Cycle d'ajustements & retouches additionnel</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="revision">+3 000 FCFA</span>
-                  </div>
-
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="format">
-                    <input type="checkbox" name="orderOption" value="format" id="optFormat">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Format supplémentaire</span>
-                      <span class="opt-desc">Déclinaison pour story, A3, etc.</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="format">+5 000 FCFA</span>
-                  </div>
-
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="sources">
-                    <input type="checkbox" name="orderOption" value="sources" id="optSources">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Fichiers sources</span>
-                      <span class="opt-desc">Fichiers éditables ouverts PSD, AI ou vectoriels</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="sources">+5 000 FCFA</span>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- Project Information Details -->
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="projectName">Nom de votre projet ou marque <span class="req">*</span></label>
-                  <input type="text" id="projectName" class="form-control" placeholder="Ex: SMG Plug, Mon Restaurant, Concert Live..." required>
-                </div>
-
-                <div class="form-group">
-                  <label for="projectFormat">Support ou Format souhaité</label>
-                  <select id="projectFormat" class="form-control">
-                    <option value="Format Digital / Réseaux sociaux (Instagram, WhatsApp, Facebook)">Format Digital / Réseaux sociaux</option>
-                    <option value="Format Impression Print (A3, A4, A5, Roll-up, Bâche)">Format Impression Print Haute Définition</option>
-                    <option value="Format Mixte (Digital + Fichiers d'Impression)">Format Mixte (Web + Impression)</option>
-                    <option value="Format personnalisé / Autre demande">Format personnalisé / Autre demande</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="projectStyle">Style visuel & Couleurs préférées</label>
-                <input type="text" id="projectStyle" class="form-control" placeholder="Ex: Bleu OneSMS moderne, or luxueux, sombre épuré, dynamique...">
-              </div>
-
-              <!-- Brief Text -->
-              <div class="form-group brief-group">
-                <label for="projectBrief">Texte à faire figurer & Détails du brief</label>
-                <textarea id="projectBrief" class="form-control brief-textarea" placeholder="Indiquez ici les titres, dates, numéros de téléphone, slogans ou indications spécifiques à intégrer..."></textarea>
-              </div>
-
-              <!-- Lien de partage des fichiers (pas de téléversement direct) -->
-              <div class="form-group">
-                <label for="projectFilesLink"><i class="fa-solid fa-paperclip"></i> Lien vers votre logo, vos photos ou documents</label>
-                <input type="url" id="projectFilesLink" class="form-control" placeholder="Lien Google Drive, WeTransfer, Dropbox..." inputmode="url" autocomplete="off">
-                <small class="form-help">Facultatif. Déposez vos fichiers sur Google Drive ou WeTransfer, puis collez le lien de partage ici. Vous pouvez aussi les envoyer sur WhatsApp en rappelant votre référence.</small>
-              </div>
-            </div>
-
-            <!-- STEP 3: Verification & Summary -->
-            <div class="wizard-step-pane" data-step="3">
-              <h3 class="wizard-step-title">Étape 3 sur 4 — Vérifiez vos informations</h3>
-              <p class="wizard-step-subtitle">Vérifiez le résumé complet et l'estimation de votre demande avant confirmation :</p>
-
-              <div class="summary-box">
-                <div class="summary-section-heading">
-                  <i class="fa-solid fa-receipt"></i>
-                  <span>Estimation indicative du projet</span>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Région de commande :</div>
-                  <div class="summary-value" id="summaryRegion">Afrique (FCFA)</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Service sélectionné :</div>
-                  <div class="summary-value" id="summaryService">Affiche simple</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Prix de base :</div>
-                  <div class="summary-value" id="summaryPrixBase">15 000 FCFA</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Délai souhaité :</div>
-                  <div class="summary-value" id="summaryDeadline">Standard 3 jours (Prix normal)</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Options complémentaires :</div>
-                  <div class="summary-value" id="summaryOptions">Aucune</div>
-                </div>
-                <div class="summary-row summary-total-row">
-                  <div class="summary-label">Total estimé :</div>
-                  <div class="summary-value summary-total-val" id="summaryTotal">
-                    <span class="sum-total-main" id="summaryTotalMain">15 000 FCFA</span>
-                    <span class="sum-total-equiv" id="summaryTotalEquiv">≈ 23 €</span>
-                  </div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Paiements :</div>
-                  <div class="summary-value" id="summaryPayments">-</div>
-                </div>
-                <div class="summary-disclaimer">
-                  <i class="fa-solid fa-circle-info"></i>
-                  <span>Estimation, devis final confirmé par Olivier. Paiement en deux fois : 50 % à la commande, 50 % après validation de l’aperçu.</span>
-                </div>
-
-                <div class="summary-section-heading" style="margin-top: 1.75rem;">
-                  <i class="fa-solid fa-pen-nib"></i>
-                  <span>Détails du brief créatif</span>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Nom du projet / Marque :</div>
-                  <div class="summary-value" id="summaryProject">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Format / Utilisation :</div>
-                  <div class="summary-value" id="summaryFormat">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Style & Couleurs :</div>
-                  <div class="summary-value" id="summaryStyle">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Détails du brief :</div>
-                  <div class="summary-value" id="summaryBrief">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Lien des fichiers :</div>
-                  <div class="summary-value summary-break" id="summaryFiles">Aucun lien de fichiers</div>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn btn-outline" id="editServiceBtn">
-                  <i class="fa-solid fa-rotate-left"></i> Modifier le service
-                </button>
-                <button type="button" class="btn btn-outline" id="editSummaryBtn">
-                  <i class="fa-solid fa-pen-to-square"></i> Modifier mon brief
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 4: Référence, brief (Google Forms) et paiement 50 % (Chariow) -->
-            <div class="wizard-step-pane" data-step="4">
-              <h3 class="wizard-step-title">Étape 4 sur 4 — Envoyez votre brief, puis réglez l’acompte</h3>
-              <p class="wizard-step-subtitle">Gardez bien votre référence : elle relie votre brief, vos paiements et vos échanges avec Olivier.</p>
-
-              <div class="order-ref-box">
-                <div>
-                  <span class="order-ref-label">Votre référence de commande</span>
-                  <strong class="order-ref-value" data-order-ref>AC-······</strong>
-                </div>
-                <button type="button" class="btn btn-outline btn-sm" id="copyOrderRefBtn"><i class="fa-regular fa-copy"></i> Copier</button>
-              </div>
-
-              <!-- A. Brief -->
-              <div class="order-action-block">
-                <div class="order-action-head">
-                  <span class="order-action-num">A</span>
-                  <div>
-                    <h4 class="order-action-title">Envoyer mon brief</h4>
-                    <p class="order-action-desc">Le formulaire s’ouvre dans un nouvel onglet, déjà rempli avec votre service, votre délai, le prix et la référence. Ajoutez vos coordonnées puis validez.</p>
-                  </div>
-                </div>
-                <a class="btn btn-primary btn-lg" id="sendBriefFormBtn" target="_blank" rel="noopener" hidden>
-                  <i class="fa-solid fa-file-pen"></i> <span>Envoyer mon brief</span>
-                </a>
-                <div class="config-placeholder" id="briefFormPlaceholder">
-                  <p><i class="fa-solid fa-screwdriver-wrench"></i> Formulaire de brief en cours de mise en place. En attendant, envoyez votre brief directement à Olivier sur WhatsApp :</p>
-                  <a href="#" class="btn btn-whatsapp" id="sendWhatsAppBriefBtn" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> <span>Envoyer mon brief sur WhatsApp</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- B. Paiement 1/2 (révélé après l'envoi du brief) -->
-              <div class="order-action-block" id="paymentStepBlock" hidden>
-                <div class="order-action-head">
-                  <span class="order-action-num">B</span>
-                  <div>
-                    <h4 class="order-action-title">Payer l’acompte de 50 % <span class="order-action-amount" id="payAmount"></span></h4>
-                    <p class="order-action-desc">Paiement sécurisé sur Chariow. Le travail démarre dès qu’Olivier a confirmé l’acompte et reçu un brief complet.</p>
-                  </div>
-                </div>
-                <a class="btn btn-primary btn-lg" id="payAcompteBtn" target="_blank" rel="noopener" hidden>
-                  <i class="fa-solid fa-lock"></i> <span id="payAcompteLabel">Payer 50 %</span>
-                </a>
-                <p class="pay-reminder" id="payReminder" hidden>
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  Sur la page de paiement, saisissez votre référence <strong data-order-ref>AC-······</strong> dans le champ « Référence de commande ».
-                </p>
-                <div class="config-placeholder" id="payPlaceholder" hidden>
-                  <p><i class="fa-solid fa-screwdriver-wrench"></i> Paiement en ligne en cours de mise en place pour ce service. Olivier vous envoie le lien de paiement sur WhatsApp :</p>
-                  <a href="#" class="btn btn-whatsapp" id="payWhatsAppBtn" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> <span>Demander mon lien de paiement</span>
-                  </a>
-                </div>
-                <div class="config-placeholder" id="payDevisNotice" hidden>
-                  <p><i class="fa-solid fa-pen-ruler"></i> Demande sur devis : aucun paiement pour l’instant. Olivier étudie votre brief et vous envoie son devis sur WhatsApp.</p>
-                </div>
-              </div>
-
-              <!-- Et ensuite ? -->
-              <div class="order-next-steps">
-                <h4 class="order-action-title"><i class="fa-solid fa-route"></i> Et ensuite ?</h4>
-                <ol>
-                  <li>Olivier vérifie votre brief et votre acompte, puis vous confirme le démarrage sur WhatsApp.</li>
-                  <li>Vous recevez un aperçu en basse définition, avec filigrane. Deux tours de modifications sont inclus.</li>
-                  <li>Après votre validation, vous réglez le solde de 50 % avec le même lien de paiement et la même référence.</li>
-                  <li>Une fois le solde confirmé, vous recevez vos fichiers finaux en haute définition par lien Google Drive.</li>
-                </ol>
-                <div class="order-next-actions">
-                  <a href="#" class="btn btn-outline" id="stepWhatsAppContactBtn" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i> Écrire à Olivier
-                  </a>
-                </div>
-                <p class="order-privacy-note">
-                  <i class="fa-solid fa-shield-halved"></i>
-                  Vos informations servent uniquement à traiter votre commande. Elles sont conservées dans un tableau privé et partagées seulement avec Google (formulaire), Chariow (paiement) et WhatsApp (échanges).
-                  <a href="#legalModal" class="open-legal-modal" data-legal-tab="confidentialite">Notice de confidentialité</a>
-                </p>
-              </div>
-            </div>
-
-            <!-- Wizard Navigation Buttons Bar -->
-            <div class="wizard-buttons-bar">
-              <button type="button" class="btn btn-outline" id="prevStepBtn" style="visibility: hidden;">
-                <i class="fa-solid fa-arrow-left"></i> Précédent
-              </button>
-              <button type="button" class="btn btn-primary" id="nextStepBtn">
-                Continuer <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Sticky Estimation Card (Desktop Sidebar & Mobile Sticky Bottom Drawer) -->
-        <aside class="order-estimation-card" id="orderEstimationCard" aria-live="polite">
-          <div class="estimation-card-header">
-            <div class="estimation-badge">
-              <i class="fa-solid fa-calculator"></i>
-              <span>Votre estimation</span>
-            </div>
-            <button type="button" class="estimation-toggle-mobile" id="estimationToggleMobile" aria-expanded="false" aria-label="Afficher le détail de l'estimation">
-              <span class="est-mobile-total" id="estMobileTotal">15 000 FCFA</span>
-              <i class="fa-solid fa-chevron-up"></i>
-            </button>
-          </div>
-
-          <div class="estimation-card-body" id="estimationCardBody">
-            <div class="estimation-row">
-              <span class="est-label">Service choisi :</span>
-              <span class="est-val" id="estServiceNom">Affiche simple</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Prix de base :</span>
-              <span class="est-val" id="estPrixBase">15 000 FCFA</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Délai souhaité :</span>
-              <span class="est-val" id="estDelaiLigne">Standard 3 jours (Prix normal)</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Options :</span>
-              <span class="est-val" id="estOptionsLigne">Aucune</span>
-            </div>
-            <div class="estimation-options-list" id="estOptionsList"></div>
-          </div>
-
-          <div class="estimation-card-footer">
-            <div class="estimation-total-row">
-              <span class="est-total-label">Total estimé</span>
-              <div class="est-total-wrapper">
-                <span class="est-total-main" id="estTotalMain">15 000 FCFA</span>
-                <span class="est-total-equiv" id="estTotalEquiv">≈ 23 €</span>
-              </div>
-            </div>
-            <div class="est-payment-split" id="estPaymentSplit"></div>
-            <p class="estimation-disclaimer">
-              <i class="fa-solid fa-circle-info"></i>
-              <span>Estimation, devis final confirmé par Olivier. Équivalent en euros indicatif (1 € = 655,957 FCFA).</span>
-            </p>
-          </div>
-        </aside>
+      <div class="order-services-grid">
+        <a class="order-service-link" href="commande.html?service=affiche_simple">
+          <i class="fa-solid fa-panorama"></i>
+          <strong>Affiche simple</strong>
+          <span>Événement  concert  culte  promo</span>
+          <em>15 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=affiche_premium">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <strong>Affiche premium</strong>
+          <span>Illustration poussée ou photomontage</span>
+          <em>30 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=flyer_recto">
+          <i class="fa-solid fa-file"></i>
+          <strong>Flyer recto</strong>
+          <span>Support imprimé ou digital  1 face</span>
+          <em>12 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=flyer_rectoverso">
+          <i class="fa-solid fa-file-invoice"></i>
+          <strong>Flyer recto-verso</strong>
+          <span>Support imprimé ou digital  2 faces</span>
+          <em>20 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=visuel_reseaux">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <strong>Visuel réseaux sociaux</strong>
+          <span>1 visuel pour post ou story</span>
+          <em>7 500 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=pack_5_visuels">
+          <i class="fa-solid fa-layer-group"></i>
+          <strong>Pack 5 visuels réseaux</strong>
+          <span>Pack cohérent de 5 publications</span>
+          <em>30 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=carte_visite">
+          <i class="fa-solid fa-address-card"></i>
+          <strong>Carte de visite</strong>
+          <span>Design professionnel prêt à imprimer</span>
+          <em>10 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=logo_simple">
+          <i class="fa-solid fa-bullseye"></i>
+          <strong>Logo simple</strong>
+          <span>Création de logo sur mesure</span>
+          <em>35 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=identite_complete">
+          <i class="fa-solid fa-gem"></i>
+          <strong>Identité visuelle complète</strong>
+          <span>Logo  typographies et charte de marque</span>
+          <em>100 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=motion_design">
+          <i class="fa-solid fa-film"></i>
+          <strong>Animation motion design</strong>
+          <span>Animation de logo ou teaser vidéo</span>
+          <em>40 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="https://wa.me/22896990329?text=Bonjour%20Olivier%2C%20j%E2%80%99ai%20un%20projet%20sur%20devis." target="_blank" rel="noopener">
+          <i class="fa-solid fa-pen-ruler"></i>
+          <strong>Autre projet</strong>
+          <span>Format personnalisé ou demande spéciale</span>
+          <em>Sur devis</em>
+        </a>
       </div>
     </div>
   </section>
@@ -1775,6 +1290,7 @@
   </div>
 
   <!-- Main JavaScript File -->
+  <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

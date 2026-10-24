@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commander · AUREN CRÉATIF</title>
+  <meta name="description" content="Commandez votre création graphique AUREN CRÉATIF : brief, fichiers, délai et paiement sécurisé de 50 % à la commande.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563EB'/><text x='50%' y='62%' font-size='50' font-weight='bold' fill='white' font-family='sans-serif' text-anchor='middle'>A</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/commande.css">
+</head>
+<body class="order-page">
+
+  <header class="order-topbar">
+    <div class="container order-topbar-inner">
+      <a href="index.html" class="order-back"><i class="fa-solid fa-arrow-left"></i> <span>Retour</span></a>
+      <a href="index.html" class="order-brand"><span class="order-brand-mark">A</span> AUREN CRÉATIF</a>
+      <span class="order-secure"><i class="fa-solid fa-lock"></i> <span>Paiement sécurisé</span></span>
+    </div>
+  </header>
+
+  <main class="container order-main">
+    <div class="order-hero">
+      <span class="order-hero-icon" id="heroIcon"><i class="fa-solid fa-panorama"></i></span>
+      <div>
+        <p class="order-hero-kicker">Commander</p>
+        <h1 class="order-hero-title" id="heroTitle">Affiche simple</h1>
+        <p class="order-hero-desc" id="heroDesc">Remplissez votre brief, ajoutez vos fichiers et réglez 50 % pour lancer votre projet.</p>
+      </div>
+    </div>
+
+    <ol class="order-steps" aria-label="Étapes de la commande">
+      <li class="is-active"><span>1</span> Votre brief</li>
+      <li><span>2</span> Paiement 50 %</li>
+      <li><span>3</span> Aperçu par e-mail</li>
+      <li><span>4</span> Solde et fichiers finaux</li>
+    </ol>
+
+    <form id="orderForm" class="order-layout" novalidate>
+      <div class="order-form-col">
+
+        <!-- 1. Projet -->
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">1</span> Votre projet</h2>
+
+          <label class="order-label" for="serviceSelect">Service</label>
+          <select id="serviceSelect" class="form-control"></select>
+
+          <p class="order-label">Délai de livraison <span class="req">*</span></p>
+          <div class="order-delais" id="delaiGroup" role="radiogroup" aria-label="Délai de livraison"></div>
+          <p class="order-hint" id="delaiNotice" hidden></p>
+
+          <p class="order-label">Options <span class="order-hint-inline">(réglées avec le solde)</span></p>
+          <div class="order-options" id="optionGroup"></div>
+        </section>
+
+        <!-- 2. Brief -->
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">2</span> Votre brief</h2>
+
+          <div class="order-grid-2">
+            <div>
+              <label class="order-label" for="fProjet">Titre du projet ou nom de la marque <span class="req">*</span></label>
+              <input id="fProjet" class="form-control" required maxlength="120" placeholder="Ex. Concert Live, SMG Plug, Mon Restaurant">
+            </div>
+            <div>
+              <label class="order-label" for="fDestination">Utilisation <span class="req">*</span></label>
+              <select id="fDestination" class="form-control" required>
+                <option value="Réseaux sociaux">Réseaux sociaux</option>
+                <option value="Impression">Impression</option>
+                <option value="Les deux">Réseaux sociaux et impression</option>
+                <option value="Personnalisé">Autre / personnalisé</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="order-label" for="fTextes">Textes et informations à intégrer <span class="req">*</span></label>
+          <textarea id="fTextes" class="form-control order-textarea" required maxlength="3000" placeholder="Titres, slogans, numéros, adresses… Pour un événement : date, heure et lieu. Pour une promotion : produit, prix et validité."></textarea>
+
+          <div class="order-grid-2">
+            <div>
+              <label class="order-label" for="fStyle">Style et couleurs souhaités</label>
+              <input id="fStyle" class="form-control" maxlength="200" placeholder="Ex. bleu moderne, or luxueux, sombre épuré">
+            </div>
+            <div>
+              <label class="order-label" for="fDimensions">Dimensions ou format</label>
+              <input id="fDimensions" class="form-control" maxlength="120" placeholder="Ex. A3, story Instagram, 1080 × 1080">
+            </div>
+          </div>
+
+          <label class="order-label" for="fInfos">Informations complémentaires</label>
+          <textarea id="fInfos" class="form-control" rows="3" maxlength="1500" placeholder="Inspirations, éléments à éviter, remarques…"></textarea>
+        </section>
+
+        <!-- 3. Fichiers -->
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">3</span> Vos fichiers <span class="order-hint-inline">(facultatif)</span></h2>
+          <p class="order-hint">Logo, photos, documents, inspirations… Jusqu’à 5 fichiers, 10 Mo maximum chacun.</p>
+
+          <label class="order-dropzone" id="dropZone" for="fFiles">
+            <input type="file" id="fFiles" multiple accept="image/*,application/pdf,.pdf,.ai,.psd,.eps,.svg,.zip">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <strong>Ajouter des fichiers</strong>
+            <span>Depuis votre galerie, votre appareil photo ou vos documents</span>
+          </label>
+          <ul class="order-files" id="fileList"></ul>
+
+          <label class="order-label" for="fLien">Ou un lien de partage (Drive, WeTransfer…)</label>
+          <input id="fLien" type="url" class="form-control" inputmode="url" placeholder="https://">
+        </section>
+
+        <!-- 4. Coordonnées -->
+        <section class="order-card">
+          <h2 class="order-card-title"><span class="order-num">4</span> Vos coordonnées</h2>
+          <p class="order-hint">Votre aperçu et vos fichiers finaux vous sont envoyés par e-mail.</p>
+          <div class="order-grid-2">
+            <div>
+              <label class="order-label" for="fNom">Nom ou entreprise <span class="req">*</span></label>
+              <input id="fNom" class="form-control" required maxlength="100" autocomplete="name">
+            </div>
+            <div>
+              <label class="order-label" for="fWhatsapp">Numéro WhatsApp <span class="req">*</span></label>
+              <input id="fWhatsapp" type="tel" class="form-control" required maxlength="25" autocomplete="tel" placeholder="+228 90 00 00 00">
+            </div>
+          </div>
+          <label class="order-label" for="fEmail">Adresse e-mail <span class="req">*</span></label>
+          <input id="fEmail" type="email" class="form-control" required maxlength="120" autocomplete="email" placeholder="vous@exemple.com">
+
+          <!-- Champ piège anti-robots (invisible) -->
+          <input type="text" id="fWebsite" class="order-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="order-consent">
+            <input type="checkbox" id="fConsent" required>
+            <span>J’accepte que mes informations servent uniquement à traiter ma commande, et j’ai lu les <a href="index.html#contact" target="_blank" rel="noopener">conditions</a> : 50 % à la commande, 50 % à la livraison.</span>
+          </label>
+        </section>
+      </div>
+
+      <!-- Récapitulatif -->
+      <aside class="order-summary" aria-live="polite">
+        <h2 class="order-summary-title">Récapitulatif</h2>
+        <dl class="order-summary-list">
+          <div><dt>Service</dt><dd id="sService">—</dd></div>
+          <div><dt>Délai</dt><dd id="sDelai">—</dd></div>
+          <div><dt>Livraison prévue</dt><dd id="sDate">—</dd></div>
+          <div id="sOptionsRow" hidden><dt>Options</dt><dd id="sOptions">—</dd></div>
+        </dl>
+        <div class="order-summary-total">
+          <span>Total</span>
+          <strong id="sTotal">—</strong>
+        </div>
+        <div class="order-pay-split">
+          <div class="order-pay-now">
+            <span>À régler aujourd’hui · 50 %</span>
+            <strong id="sNow">—</strong>
+            <small id="sNowEur"></small>
+          </div>
+          <div class="order-pay-later">
+            <span>À la livraison</span>
+            <strong id="sLater">—</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg order-submit" id="submitBtn">
+          <i class="fa-solid fa-lock"></i> <span id="submitLabel">Commander et payer 50 %</span>
+        </button>
+        <p class="order-error" id="formError" role="alert" hidden></p>
+
+        <ul class="order-trust">
+          <li><i class="fa-solid fa-shield-halved"></i> Paiement sécurisé par Chariow (Mobile Money, carte…)</li>
+          <li><i class="fa-solid fa-envelope-open-text"></i> Confirmation et aperçu envoyés par e-mail</li>
+          <li><i class="fa-solid fa-rotate"></i> 2 tours de modifications inclus</li>
+          <li><i class="fa-solid fa-file-arrow-down"></i> Fichiers finaux dès le solde réglé</li>
+        </ul>
+      </aside>
+    </form>
+  </main>
+
+  <!-- Fenêtre d'envoi -->
+  <div class="order-overlay" id="overlay" hidden>
+    <div class="order-overlay-card" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+      <div class="order-overlay-icon" id="ovIcon"><i class="fa-solid fa-spinner fa-spin"></i></div>
+      <h2 id="ovTitle">Envoi de votre commande…</h2>
+      <p id="ovText">Merci de patienter, vos fichiers sont en cours d’envoi.</p>
+      <div class="order-overlay-ref" id="ovRef" hidden></div>
+      <div class="order-overlay-actions" id="ovActions"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/commande.js"></script>
+</body>
+</html>
