@@ -27,11 +27,42 @@ document.addEventListener('DOMContentLoaded', () => {
     r.readAsDataURL(f);
   });
 
+  let etape = 'livre', offertes = 2;
+  // Textes selon l'étape : modification de l'aperçu (avant le solde) ou retouche (après la livraison)
+  const mot = () => etape === 'apercu' ? 'modification' : 'retouche';
+  const boutonTexte = () => `<i class="fa-solid fa-pen-ruler"></i> Envoyer ma demande de ${mot()}`;
+
   function afficherQuota(restantes) {
+    const quand = etape === 'apercu' ? 'sur l’aperçu, avant le paiement du solde' : 'après la livraison';
     $('rtQuota').innerHTML = restantes > 0
-      ? `<i class="fa-solid fa-gift"></i> <strong>${restantes} retouche${restantes > 1 ? 's' : ''} offerte${restantes > 1 ? 's' : ''}</strong> sur 2 après la livraison.`
-      : '<i class="fa-solid fa-circle-info"></i> Vos 2 retouches offertes sont utilisées. Pour une nouvelle modification, écrivez à Olivier sur WhatsApp : il vous propose un petit tarif.';
-    $('rtRetoucheChamps').hidden = restantes <= 0;
+      ? `<i class="fa-solid fa-gift"></i> <strong>${restantes} ${mot()}${restantes > 1 ? 's' : ''} incluse${restantes > 1 ? 's' : ''}</strong> sur ${offertes} ${quand}.`
+      : `<i class="fa-solid fa-circle-info"></i> Vos ${offertes} ${mot()}s incluses sont utilisées. Vous pouvez quand même en demander une autre ici : elle est payante, et Olivier vous envoie le tarif par e-mail avant de commencer.`;
+    $('rtQuota').classList.toggle('rt-quota-plus', restantes <= 0);
+  }
+
+  function preparerEtape(info) {
+    etape = info.etape || (info.livre ? 'livre' : 'attente');
+    offertes = info.offertes || 2;
+    const titre = $('rtForm').querySelector('h2');
+    if (etape === 'apercu') {
+      document.querySelector('.rt-hero h1').textContent = 'Votre aperçu est prêt 👀';
+      document.querySelector('.rt-hero p').textContent = 'Quelque chose à changer avant la version finale ? Dites-le ici.';
+      titre.innerHTML = '<span class="order-num">1</span> Demander une modification de l’aperçu';
+      $('rtTexte').placeholder = 'Ex. : changer la couleur du titre en rouge, corriger l’adresse, agrandir le logo…';
+    } else if (etape === 'attente') {
+      document.querySelector('.rt-hero h1').textContent = 'Votre projet AUREN CRÉATIF';
+      document.querySelector('.rt-hero p').textContent = 'Olivier travaille sur votre création.';
+      titre.innerHTML = '<span class="order-num">1</span> Demander une modification';
+    }
+    $('rtEnvoyer').innerHTML = boutonTexte();
+    $('rtRetoucheChamps').hidden = etape === 'attente';
+    if (etape === 'attente') {
+      $('rtQuota').innerHTML = '<i class="fa-solid fa-hourglass-half"></i> Votre aperçu n’est pas encore prêt. Dès que vous le recevez par e-mail, revenez ici pour demander une modification (2 incluses).';
+    } else {
+      afficherQuota(info.restantes);
+    }
+    // L'avis se donne une fois le projet livré
+    $('avForm').hidden = etape !== 'livre';
   }
 
   // Avis envoyé : on ne garde que le titre et le remerciement
@@ -49,13 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
       $('rtContenu').hidden = false;
       $('rtProjet').hidden = false;
       $('rtProjet').textContent = `${ref} · ${info.service}`;
-      afficherQuota(info.restantes);
+      preparerEtape(info);
       if (info.avis) avisTermine('Merci, votre avis a bien été reçu !');
-      if (!info.livre) {
-        document.querySelector('.rt-hero h1').textContent = 'Votre projet AUREN CRÉATIF';
-        $('rtRetoucheChamps').hidden = true;
-        $('rtQuota').textContent = 'Votre projet n’est pas encore livré : pour une modification sur l’aperçu, répondez à Olivier sur WhatsApp (deux tours inclus).';
-      }
     } catch (e) {
       $('rtRefCard').hidden = false;
       message('rtRefError', e.message === 'Commande introuvable'
@@ -81,12 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const r = await appel({ action: 'retour', type: 'retouche', reference, texte, files: await Promise.all(choisis.map(lireFichier)), website: $('rtWebsite').value });
       $('rtTexte').value = ''; $('rtFichiers').value = '';
       afficherQuota(r.restantes);
-      message('rtOk', 'C’est noté ! Olivier a reçu votre demande et vous renvoie votre fichier corrigé par e-mail.');
+      message('rtOk', r.enPlus
+        ? 'C’est noté ! Cette demande dépasse les modifications incluses : Olivier vous envoie le tarif par e-mail avant de commencer.'
+        : `C’est noté ! Olivier a reçu votre demande et vous renvoie ${etape === 'apercu' ? 'un nouvel aperçu' : 'votre fichier corrigé'} par e-mail.`);
     } catch (err) {
       message('rtError', err.message && !/Failed to fetch/i.test(err.message) ? err.message : 'L’envoi n’a pas abouti. Vérifiez votre connexion puis réessayez.');
     }
     bouton.disabled = false;
-    bouton.innerHTML = '<i class="fa-solid fa-pen-ruler"></i> Envoyer ma demande de retouche';
+    bouton.innerHTML = boutonTexte();
   });
 
   // Avis
