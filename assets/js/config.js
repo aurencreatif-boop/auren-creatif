@@ -21,7 +21,7 @@ var CONFIG = {
   ORDER_ENDPOINT: "https://script.google.com/macros/s/AKfycbwzeRoB1HC9I71L_usZSpIEd6tv6pRYyo8h7QbnoFwgXWSpzell7IQQPVuQrV40v-4/exec",
 
   // Lien Chariow de la consultation « Projet sur mesure » (10 000 FCFA)
-  CONSULTATION_LINK: "",
+  CONSULTATION_LINK: "https://tuvdexdr.mychariow.store/prd_sy8rvars",
 
   // Liens Chariow des options (réglées avec le solde). Vide = lien envoyé par Olivier.
   OPTION_LINKS: {
