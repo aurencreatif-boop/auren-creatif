@@ -178,7 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
       total: servicePrice + optionsTotal,
       later: acompte + optionsTotal,
       date,
-      dateText: date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+      // Date et heure de livraison : heure de la commande + délai choisi (ex. « lundi 27 octobre 2026 à 10h15 »)
+      dateText: date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) +
+        ` à ${date.getHours()}h${String(date.getMinutes()).padStart(2, '0')}`,
       payLink: (CONFIG.PAYMENT_LINKS || {})[`${state.serviceKey}|${state.delaiKey}`] || '',
       soldeLink: (CONFIG.SOLDE_LINKS || {})[`${state.serviceKey}|${state.delaiKey}`] || ''
     };
@@ -299,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
       service: c.srv.nom,
       delaiKey: state.delaiKey,
       delai: c.delai.libelle,
-      livraisonPrevue: c.date.toISOString().slice(0, 10),
+      livraisonPrevue: c.date.toISOString(),
       livraisonTexte: c.dateText,
       total: c.total,
       acompte: c.acompte,

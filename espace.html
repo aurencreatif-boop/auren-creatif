@@ -70,6 +70,17 @@
     .etoiles { color:#f59e0b; font-size:1.35rem; letter-spacing:.1rem; } .etoiles span { color:#e2e8f0; }
     .avis-texte { background:#fff; border-radius:10px; padding:.8rem .9rem; white-space:pre-wrap; margin:.5rem 0; font-style:italic; }
     .pill.retouche { background:#ffedd5; color:#c2410c; }
+    .pill.prog { background:#ede9fe; color:#6d28d9; }
+    .liv { font-weight:700; color:var(--primary-dark); white-space:nowrap; }
+    .liv-etat { font-weight:700; font-size:.82rem; }
+    .liv-etat.encours { color:#ea580c; } .liv-etat.livre { color:var(--ok); } .liv-etat.prog { color:#6d28d9; } .liv-etat.archive { color:var(--muted); }
+    .envoi-choix { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.9rem; }
+    .envoi-choix .btn { justify-content:center; padding:.75rem .8rem; }
+    .btn-prog { background:#fff; border:2px solid #7c3aed; color:#6d28d9; }
+    .btn-prog:hover { border-color:#6d28d9; background:#f5f3ff; }
+    .programme { background:#f5f3ff; border:1px solid #ddd6fe; border-radius:16px; padding:1.1rem; }
+    .programme strong { color:#6d28d9; }
+    @media (max-width:560px) { .envoi-choix { grid-template-columns:1fr; } }
     @media (max-width:560px) { dl { grid-template-columns:1fr; } .brand h1 { font-size:1rem; } }
     @media (prefers-reduced-motion: reduce) { aside { transition:none; } }
   </style>
@@ -83,7 +94,7 @@
     <section class="guide">
       <div><span>1</span><strong>Une commande arrive</strong>Vous recevez un e-mail avec le bon de commande PDF. Elle apparaît aussi dans la liste ci-dessous.</div>
       <div><span>2</span><strong>Vous réalisez le travail</strong>Cliquez sur la commande pour voir le brief et les fichiers du client.</div>
-      <div><span>3</span><strong>Vous l’envoyez au client</strong>Dans la commande, ajoutez l’aperçu et le fichier final, puis « Envoyer au client ».</div>
+      <div><span>3</span><strong>Vous l’envoyez au client</strong>Dans la commande, ajoutez l’aperçu et le fichier final, puis « Envoyer maintenant » ou « Programmer » à l’heure de livraison prévue.</div>
       <div><span>4</span><strong>Le client paie le solde</strong>Il reçoit automatiquement son fichier final par e-mail.</div>
       <div><span>5</span><strong>Modifications et avis</strong>Le client demande ses modifications dans son espace (2 sur l’aperçu, 2 après la livraison) et donne son avis. Tout arrive ici.</div>
     </section>
@@ -114,8 +125,18 @@
     const S = () => DATA.statuts;
     const fcfa = n => (Number(n) || 0).toLocaleString('fr-FR') + ' FCFA';
     const dateFr = v => v ? new Date(v).toLocaleDateString('fr-FR') : '—';
+    const heureLiv = c => {
+      if (!c['Livraison prévue']) return null;
+      const d = new Date(c['Livraison prévue']);
+      if (d.getUTCHours() === 0 && d.getUTCMinutes() === 0 && c['Date']) { const o = new Date(c['Date']); d.setUTCHours(o.getUTCHours(), o.getUTCMinutes(), 0, 0); }
+      return d;
+    };
+    const dateHeure = d => d ? `${d.toLocaleDateString('fr-FR')} à ${d.getHours()}h${String(d.getMinutes()).padStart(2, '0')}` : '—';
+    // État de la livraison affiché entre parenthèses, en couleur
+    const etatLiv = s => s === S()[3] || s === S()[4] || s === S()[6] ? ['livre', 'livré'] : s === S()[8] ? ['prog', 'programmé'] : s === S()[5] ? ['archive', 'archivé'] : ['encours', 'en cours'];
+    const livraison = c => { const [cl, txt] = etatLiv(c['Statut']); return `<span class="liv">${dateHeure(heureLiv(c))}</span> <span class="liv-etat ${cl}">(${txt})</span>`; };
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
-    const pill = s => s === S()[6] || s === S()[7] ? 'retouche' : (s === S()[0] || s === S()[3] ? 'warn' : (s === S()[4] ? 'ok' : ''));
+    const pill = s => s === S()[6] || s === S()[7] ? 'retouche' : s === S()[8] ? 'prog' : (s === S()[0] ? 'warn' : (s === S()[3] || s === S()[4] ? 'ok' : ''));
     const SITE = 'https://aurencreatif-boop.github.io/auren-creatif/';
     const RETOUCHES_OFFERTES = 2;
     const MODIFS_APERCU = 2;
@@ -147,7 +168,8 @@
         ['À vérifier (paiement)', cs.filter(c => c['Statut'] === S()[0]).length],
         ['À réaliser', cs.filter(c => c['Statut'] === S()[1] || c['Statut'] === S()[2]).length],
         ['Solde en attente', cs.filter(c => c['Statut'] === S()[3]).length],
-        ['Livrées', cs.filter(c => c['Statut'] === S()[4]).length],
+        ['Envois programmés', cs.filter(c => c['Statut'] === S()[8]).length],
+        ['Livrées', cs.filter(c => [S()[3], S()[4], S()[6]].includes(c['Statut'])).length],
         ['Modifications à faire', cs.filter(c => c['Statut'] === S()[6] || c['Statut'] === S()[7]).length],
         ['Note moyenne', (() => { const n = cs.filter(c => Number(c['Avis (note)'])); return n.length ? (n.reduce((t, c) => t + Number(c['Avis (note)']), 0) / n.length).toFixed(1).replace('.', ',') + ' ★ (' + n.length + ' avis)' : '—'; })()],
         ['Acomptes encaissés', fcfa(cs.filter(c => c['Date paiement 1/2']).reduce((s, c) => s + (Number(c['Acompte (FCFA)']) || 0), 0))]
@@ -167,7 +189,7 @@
       const tb = document.getElementById('rows');
       tb.innerHTML = rows.length ? rows.map(c => `<tr data-ref="${esc(c['Référence'])}">
         <td><strong>${esc(c['Référence'])}</strong></td><td>${dateFr(c['Date'])}</td><td>${esc(c['Nom'])}</td><td>${esc(c['Service'])}</td>
-        <td>${dateFr(c['Livraison prévue'])}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(c['Statut'])}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
+        <td>${livraison(c)}</td><td class="num">${fcfa(c['Total (FCFA)'])}</td><td><span class="pill ${pill(c['Statut'])}">${esc(c['Statut'])}</span></td><td class="open-btn">Ouvrir →</td></tr>`).join('')
         : '<tr><td colspan="8" class="empty">Aucune commande pour l’instant. Les nouvelles commandes du site apparaîtront ici.</td></tr>';
       tb.querySelectorAll('tr[data-ref]').forEach(tr => tr.onclick = () => ouvrir(tr.dataset.ref));
     }
@@ -236,19 +258,28 @@
           <p class="notice" style="margin-top:.3rem">👇 Faites la modification, puis envoyez le nouvel aperçu et le nouveau fichier final ci-dessous.</p>` : ''}
           ${histo.length ? `<details><summary class="muted" style="cursor:pointer">Historique (${histo.length})</summary><ul class="histo">${histo.map(l => `<li>${ligneHisto(l)}</li>`).join('')}</ul></details>` : ''}
         </div>` : ''}
+        ${c['Statut'] === S()[8] ? `
+        <div class="programme">
+          <p style="margin-top:0">⏰ <strong>Envoi programmé le ${dateHeure(new Date(c['Envoi programmé']))}</strong></p>
+          <p class="notice" style="margin:.2rem 0 .9rem">L’aperçu et le fichier final sont prêts. Le client recevra l’aperçu automatiquement à cette heure (à 5 minutes près), puis le fichier final après le paiement du solde.</p>
+          <button class="btn btn-primary" id="envoyerProgramme">Envoyer maintenant sans attendre</button>
+        </div>` : `
         <div class="deliver">
           <label class="step">1. ${modifApercu ? 'Le nouvel aperçu (modifié)' : 'L’aperçu que le client va voir'} <span class="muted">(image avec filigrane)</span></label><label class="drop">Choisir l’aperçu<input type="file" id="apercu" accept="image/*,application/pdf,video/*"></label>
           <label class="step">2. Le fichier final <span class="muted">(gardé de côté, envoyé après le paiement)</span></label><label class="drop">Choisir le fichier final<input type="file" id="final"></label>
           <label class="step" for="message">3. Un petit mot pour le client <span class="muted">(facultatif)</span></label><textarea id="message" placeholder="Ex. Voici votre affiche. Une modification ? Demandez-la avec le bouton de l’e-mail."></textarea>
-          <div class="row" style="margin-top:.8rem"><button class="btn btn-primary" id="envoyer">${modifApercu ? 'Envoyer le nouvel aperçu au client' : 'Envoyer au client'}</button></div>
-          <p class="notice">Le client reçoit un e-mail avec l’aperçu, le bouton « Demander une modification » et le bouton « Payer le solde ». Dès qu’il a payé, il reçoit automatiquement un second e-mail avec le fichier final.</p>
+          <div class="envoi-choix">
+            <button class="btn btn-primary" id="envoyer">📤 Envoyer maintenant</button>
+            <button class="btn btn-prog" id="programmer">⏰ Programmer · ${dateHeure(heureLiv(c))}</button>
+          </div>
+          <p class="notice"><strong>Envoyer maintenant</strong> : le client reçoit l’aperçu tout de suite et la commande passe en « Livré ».<br><strong>Programmer</strong> : la commande passe en « Vérifié · envoi programmé » et l’aperçu part tout seul le ${dateHeure(heureLiv(c))}.<br>Dans les deux cas, le client reçoit l’aperçu avec les boutons « Demander une modification » et « Payer le solde », puis le fichier final automatiquement après son paiement.</p>
           ${c['ID fichier final'] ? `<div class="row" style="margin-top:.8rem"><button class="btn" id="livrer">Solde reçu → envoyer le fichier final maintenant</button></div>` : ''}
-        </div>`}
+        </div>`}`}
 
         <h4>Client</h4>
         <dl><dt>Nom</dt><dd>${esc(c['Nom'])}</dd><dt>E-mail</dt><dd>${esc(c['E-mail'])}</dd><dt>WhatsApp</dt><dd>${esc(c['WhatsApp'])}</dd>
           <dt>Total</dt><dd>${fcfa(c['Total (FCFA)'])}</dd><dt>Acompte</dt><dd>${fcfa(c['Acompte (FCFA)'])} ${c['Date paiement 1/2'] ? '· payé le ' + dateFr(c['Date paiement 1/2']) : '· à vérifier'}</dd>
-          <dt>Solde</dt><dd>${fcfa(c['Solde (FCFA)'])}</dd><dt>Livraison prévue</dt><dd>${dateFr(c['Livraison prévue'])} · ${esc(c['Délai'])}</dd></dl>
+          <dt>Solde</dt><dd>${fcfa(c['Solde (FCFA)'])}</dd><dt>Livraison prévue</dt><dd>${livraison(c)} · ${esc(c['Délai'])}</dd></dl>
         <div class="row" style="margin-top:.7rem">${tel ? `<a class="btn" href="https://wa.me/${tel}" target="_blank" rel="noopener">WhatsApp</a>` : ''}${c['Dossier Drive'] ? `<a class="btn" href="${esc(c['Dossier Drive'])}" target="_blank" rel="noopener">Dossier Drive (fichiers du client)</a>` : ''}</div>
 
         <h4>Brief</h4>
@@ -264,14 +295,26 @@
       document.getElementById('fermer').onclick = fermer;
       document.getElementById('saveStatut').onclick = e => act(e.target, 'setStatut', ref, document.getElementById('statut').value);
       document.getElementById('saveNotes').onclick = e => act(e.target, 'setNotes', ref, document.getElementById('notes').value);
-      const envoyer = document.getElementById('envoyer');
-      if (envoyer) envoyer.onclick = async () => {
+      const envoi = async (btn, mode) => {
         const a = document.getElementById('apercu').files[0], f = document.getElementById('final').files[0];
         if (!a || !f) { alert('Ajoutez l’aperçu et le fichier final.'); return; }
-        if (!confirm(`Envoyer l’aperçu à ${c['E-mail']} avec le lien du solde ?`)) return;
-        envoyer.textContent = 'Envoi en cours…';
-        act(envoyer, 'envoyerApercu', ref, await lireFichier(a), await lireFichier(f), document.getElementById('message').value);
+        const quand = heureLiv(c);
+        if (mode === 'programmer' && (!quand || quand.getTime() <= Date.now())) {
+          if (!confirm('L’heure de livraison prévue est déjà passée : l’aperçu partira tout de suite. Continuer ?')) return;
+        } else if (!confirm(mode === 'programmer'
+          ? `Programmer l’envoi de l’aperçu à ${c['E-mail']} le ${dateHeure(quand)} ?`
+          : `Envoyer maintenant l’aperçu à ${c['E-mail']} avec le lien du solde ?`)) return;
+        document.querySelectorAll('.envoi-choix .btn').forEach(b => { b.disabled = true; });
+        btn.textContent = 'Envoi en cours…';
+        try { afficher(await run('envoyerApercu', ref, await lireFichier(a), await lireFichier(f), document.getElementById('message').value, mode)); }
+        catch (e) { alert(e.message); ouvrir(ref); }
       };
+      const envoyer = document.getElementById('envoyer');
+      if (envoyer) envoyer.onclick = () => envoi(envoyer, 'maintenant');
+      const programmer = document.getElementById('programmer');
+      if (programmer) programmer.onclick = () => envoi(programmer, 'programmer');
+      const envoyerProgramme = document.getElementById('envoyerProgramme');
+      if (envoyerProgramme) envoyerProgramme.onclick = () => confirm(`Envoyer l’aperçu à ${c['E-mail']} maintenant, sans attendre l’heure programmée ?`) && act(envoyerProgramme, 'envoyerProgrammeMaintenant', ref);
       const btnRetouche = document.getElementById('envoyerRetouche');
       if (btnRetouche) btnRetouche.onclick = async () => {
         const f = document.getElementById('retouche').files[0];
