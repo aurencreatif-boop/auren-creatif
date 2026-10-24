@@ -278,3 +278,25 @@
 
 .garantie-slogan { text-align: center; }
 .garantie-slogan .section-title i { color: var(--primary-600); margin-right: 0.4rem; }
+
+/* Page « Retouche et avis » (après la livraison) */
+.rt-main { max-width: 720px; }
+.rt-hero { text-align: center; margin: 0.5rem 0 1.5rem; }
+.rt-hero h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.1rem); margin: 0 0 0.4rem; color: var(--text-main); }
+.rt-hero p { margin: 0; color: var(--text-muted); }
+.rt-hero .rt-projet { display: inline-block; margin-top: 0.9rem; padding: 0.35rem 0.9rem; border-radius: 999px; background: var(--primary-50, #eff6ff); color: var(--primary-700, #1d4ed8); font-weight: 700; font-size: 0.9rem; }
+.rt-inline { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.rt-inline .form-control { flex: 1 1 180px; text-transform: uppercase; letter-spacing: 0.05em; }
+.rt-quota { margin: 0 0 0.5rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: #f0fdf4; color: #166534; font-size: 0.92rem; }
+.rt-quota i { margin-right: 0.3rem; }
+.rt-btn { width: 100%; margin-top: 1.1rem; justify-content: center; }
+.rt-ok { margin: 0.9rem 0 0; padding: 0.7rem 0.9rem; border-radius: 10px; background: #ecfdf5; color: #047857; font-weight: 600; }
+.rt-etoiles { border: 0; padding: 0; margin: 0; display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 0.25rem; flex-wrap: wrap; }
+.rt-etoiles legend { width: 100%; margin-top: 0; }
+.rt-etoiles input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rt-etoiles label { font-size: 2rem; color: #cbd5e1; cursor: pointer; transition: color 0.15s, transform 0.15s; }
+.rt-etoiles label:hover, .rt-etoiles label:hover ~ label, .rt-etoiles input:checked ~ label { color: #f59e0b; }
+.rt-etoiles label:hover { transform: scale(1.12); }
+.rt-etoiles input:focus-visible + label { outline: 2px solid var(--primary-600, #2563eb); outline-offset: 3px; border-radius: 4px; }
+.rt-aide { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: 1.5rem 0 0; }
+.rt-aide a { color: var(--primary-600, #2563eb); font-weight: 600; }

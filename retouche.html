@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retouche et avis · AUREN CRÉATIF</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563EB'/><text x='50%' y='62%' font-size='50' font-weight='bold' fill='white' font-family='sans-serif' text-anchor='middle'>A</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024">
+  <link rel="stylesheet" href="assets/css/commande.css?v=20261024b">
+</head>
+<body class="order-page">
+
+  <header class="order-topbar">
+    <div class="container order-topbar-inner">
+      <a href="index.html" class="order-back"><i class="fa-solid fa-arrow-left"></i> <span>Retour au site</span></a>
+      <a href="index.html" class="order-brand"><span class="order-brand-mark">A</span> AUREN CRÉATIF</a>
+      <span class="order-secure"><i class="fa-solid fa-lock"></i> <span>Espace client</span></span>
+    </div>
+  </header>
+
+  <main class="container order-main rt-main">
+    <section class="rt-hero">
+      <h1>Votre projet est livré 🎉</h1>
+      <p>Une petite retouche à faire ? Envie de dire ce que vous en pensez ? C’est ici.</p>
+      <p class="rt-projet" id="rtProjet" hidden></p>
+    </section>
+
+    <!-- Référence (si le client arrive sans le lien de l'e-mail) -->
+    <section class="order-card" id="rtRefCard" hidden>
+      <h2 class="order-card-title"><i class="fa-solid fa-hashtag"></i> Votre référence</h2>
+      <label class="order-label" for="rtRef">Elle est dans vos e-mails (ex. AC-7K2P9M)</label>
+      <div class="rt-inline">
+        <input id="rtRef" class="form-control" maxlength="9" placeholder="AC-XXXXXX" autocomplete="off">
+        <button type="button" class="btn btn-primary" id="rtRefOk">Continuer</button>
+      </div>
+      <p class="order-error" id="rtRefError" role="alert" hidden></p>
+    </section>
+
+    <div id="rtContenu" hidden>
+      <!-- Retouche -->
+      <form class="order-card" id="rtForm" novalidate>
+        <h2 class="order-card-title"><span class="order-num">1</span> Demander une retouche</h2>
+        <p class="rt-quota" id="rtQuota"></p>
+        <div id="rtRetoucheChamps">
+          <label class="order-label" for="rtTexte">Que faut-il changer ? <span class="req">*</span></label>
+          <textarea id="rtTexte" class="form-control order-textarea" maxlength="2000" placeholder="Ex. : remplacer le numéro de téléphone par 90 00 00 00, mettre le titre un peu plus grand…"></textarea>
+          <label class="order-label" for="rtFichiers">Un fichier pour aider ? <span class="order-hint-inline">(facultatif : photo, capture, nouveau logo… 3 maximum)</span></label>
+          <input id="rtFichiers" type="file" class="form-control" multiple accept="image/*,application/pdf">
+          <input type="text" id="rtWebsite" class="order-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary btn-lg rt-btn" id="rtEnvoyer"><i class="fa-solid fa-pen-ruler"></i> Envoyer ma demande de retouche</button>
+        </div>
+        <p class="order-error" id="rtError" role="alert" hidden></p>
+        <p class="rt-ok" id="rtOk" hidden></p>
+      </form>
+
+      <!-- Avis -->
+      <form class="order-card" id="avForm" novalidate>
+        <h2 class="order-card-title"><span class="order-num">2</span> Donner mon avis</h2>
+        <fieldset class="rt-etoiles" id="avEtoiles">
+          <legend class="order-label">Votre note <span class="req">*</span></legend>
+          <input type="radio" name="note" id="n5" value="5"><label for="n5" title="Excellent"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="note" id="n4" value="4"><label for="n4" title="Très bien"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="note" id="n3" value="3"><label for="n3" title="Bien"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="note" id="n2" value="2"><label for="n2" title="Moyen"><i class="fa-solid fa-star"></i></label>
+          <input type="radio" name="note" id="n1" value="1"><label for="n1" title="Décevant"><i class="fa-solid fa-star"></i></label>
+        </fieldset>
+        <label class="order-label" for="avTexte">Votre commentaire <span class="order-hint-inline">(facultatif)</span></label>
+        <textarea id="avTexte" class="form-control order-textarea" maxlength="1500" placeholder="Ex. : travail rapide et soigné, je recommande !"></textarea>
+        <label class="order-consent">
+          <input type="checkbox" id="avPublier">
+          <span>J’accepte que mon avis (prénom et commentaire) soit publié sur le site d’AUREN CRÉATIF.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-lg rt-btn" id="avEnvoyer"><i class="fa-solid fa-heart"></i> Envoyer mon avis</button>
+        <p class="order-error" id="avError" role="alert" hidden></p>
+        <p class="rt-ok" id="avOk" hidden></p>
+      </form>
+    </div>
+
+    <p class="rt-aide"><i class="fa-brands fa-whatsapp"></i> Une question ? Écrivez à Olivier sur <a href="#" id="rtWa" target="_blank" rel="noopener">WhatsApp</a>.</p>
+  </main>
+
+  <script src="assets/js/config.js?v=20261024b"></script>
+  <script src="assets/js/retouche.js?v=20261024d"></script>
+</body>
+</html>
