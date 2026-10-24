@@ -4532,3 +4532,21 @@ textarea.form-control {
   .carrousel-points button.actif { width: 22px; background: var(--primary-600); }
   .carrousel-points button:focus-visible { outline: 2px solid var(--primary-600); outline-offset: 2px; }
 }
+
+/* ==========================================================================
+   Réalisations regroupées par catégorie, avec « Voir plus »
+   ========================================================================== */
+.portfolio-groupes { display: flex; flex-direction: column; gap: 2.5rem; }
+.portfolio-groupe-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border-light); }
+.portfolio-groupe-tete h3 { margin: 0; font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-main); display: flex; align-items: center; gap: 0.55rem; }
+.portfolio-groupe-tete h3 i { color: var(--primary-600); font-size: 1.05rem; }
+.portfolio-groupe-nb { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.portfolio-groupe:not(.ouvert) .portfolio-item.en-plus { display: none !important; }
+.portfolio-voir-plus { display: flex; align-items: center; justify-content: center; gap: 0.45rem; margin: 1.1rem auto 0; padding: 0.65rem 1.4rem; border: 1.5px solid var(--primary-600); border-radius: var(--radius-full); background: #fff; color: var(--primary-700); font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.portfolio-voir-plus:hover { background: var(--primary-600); color: #fff; }
+.portfolio-voir-plus span { font-weight: 500; opacity: 0.8; }
+.portfolio-voir-plus[hidden] { display: none; }
+@media (max-width: 600px) {
+  .portfolio-groupes { gap: 1.75rem; }
+  .portfolio-groupe-tete h3 { font-size: 1.05rem; }
+}
