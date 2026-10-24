@@ -128,8 +128,7 @@
       p.dataset.ref = ref;
       const tel = String(c['WhatsApp'] || '').replace(/\D/g, '');
       const brief = ['Projet', 'Utilisation', 'Textes', 'Style', 'Dimensions', 'Infos'];
-      const fichiers = String(c['Lien fichiers client'] || '').split('
-').filter(Boolean).map(l => { const [nom, url] = l.split(' | '); return { nom, url: url || nom }; });
+      const fichiers = String(c['Lien fichiers client'] || '').split('\n').filter(Boolean).map(l => { const [nom, url] = l.split(' | '); return { nom, url: url || nom }; });
       const livre = c['Statut'] === S()[4];
       p.innerHTML = `
         <div class="row" style="justify-content:space-between"><div><h3>${esc(ref)}</h3><div class="muted">${esc(c['Service'])} · reçue le ${dateFr(c['Date'])}</div></div><button class="btn" id="fermer" aria-label="Fermer">✕</button></div>
