@@ -255,3 +255,23 @@
 .garantie-item p { margin: 0; color: var(--text-muted); line-height: 1.6; font-size: 0.92rem; }
 .garantie-note { margin: 1.25rem 0 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
 .garantie-note a { color: var(--primary-600); }
+
+/* Page VIP : zone de paiement et fenêtre finale aux couleurs premium */
+.vip-page .order-summary { background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #0f172a 70%); border: 1px solid rgba(251, 191, 36, 0.35); color: #e2e8f0; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.3); }
+.vip-page .order-summary-title { color: #fff; }
+.vip-page .order-summary .order-trust li { color: #cbd5e1; }
+.vip-page .order-summary .order-trust i { color: #fbbf24; }
+.vip-page .order-pay-now { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(251, 191, 36, 0.4); color: #e2e8f0; }
+.vip-page .order-pay-now strong { background: linear-gradient(135deg, #fde68a, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 1.6rem; }
+.vip-page .order-submit, .vip-page .order-overlay-actions .btn-primary { background: linear-gradient(135deg, #fde68a, #f59e0b); color: #0f172a; border: 0; font-weight: 800; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35); }
+.vip-page .sm-small { color: #94a3b8; }
+.vip-page .order-error { background: rgba(254, 242, 242, 0.95); }
+.vip-page .order-overlay-card { background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #0f172a 70%); border: 1px solid rgba(251, 191, 36, 0.35); }
+.vip-page .order-overlay-card h2 { color: #fff; }
+.vip-page .order-overlay-card p, .vip-page .order-pay-note, .vip-page .order-link-btn { color: #cbd5e1; }
+.vip-page .order-overlay-icon, .vip-page .order-overlay-icon .fa-circle-check { color: #fbbf24; }
+.vip-page .order-overlay-ref { background: rgba(255, 255, 255, 0.06); border-color: rgba(251, 191, 36, 0.5); }
+.vip-page .order-ref-label, .vip-page .order-ref-note { color: #cbd5e1; }
+.vip-page .order-ref-note i { color: #fbbf24; }
+.vip-page .order-ref-code strong { color: #fbbf24; }
+.vip-page .order-ref-copy { background: transparent; border-color: rgba(251, 191, 36, 0.6); color: #fde68a; }
