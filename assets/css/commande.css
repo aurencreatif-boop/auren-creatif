@@ -177,3 +177,29 @@
 .order-ref-note i { color: var(--primary-600); }
 .order-pay-note { margin: -0.2rem 0 0; font-size: 0.75rem; color: var(--text-muted); }
 .order-link-btn { border: 0; background: none; color: var(--text-muted); font: inherit; font-size: 0.85rem; text-decoration: underline; cursor: pointer; padding: 0.3rem; }
+
+/* Formulaire façon feuille de papier : une seule page blanche, sections séparées par un trait fin */
+.order-form-col {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.06);
+  padding: 0.5rem 2rem 1.5rem;
+}
+.order-form-col .order-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 1.6rem 0;
+}
+.order-form-col .order-card:last-child { border-bottom: 0; }
+.order-form-col .order-num { background: none; color: var(--primary-700); border: 1.5px solid var(--primary-600); width: 26px; height: 26px; }
+.order-form-col .form-control { border-radius: 4px; background: #fff; }
+.order-delai, .order-dropzone, .order-format-btn { border-radius: 6px; }
+.order-summary { border-radius: 6px; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.06); }
+@media (max-width: 600px) {
+  .order-form-col { padding: 0.25rem 1.1rem 1rem; border-radius: 0; border-left: 0; border-right: 0; }
+}
