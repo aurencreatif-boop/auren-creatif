@@ -57,20 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  $('optionGroup').innerHTML = Object.entries(PRICING.options).map(([key, opt]) => `
-    <label class="order-option">
-      <input type="checkbox" value="${key}">
-      <span>${opt.nom}</span>
-      <strong>+${fmtFcfa(opt.fcfa)}</strong>
-    </label>`).join('');
-  $('optionGroup').querySelectorAll('input').forEach(input => {
-    input.addEventListener('change', () => {
-      input.checked ? state.options.add(input.value) : state.options.delete(input.value);
-      input.closest('.order-option').classList.toggle('is-selected', input.checked);
-      update();
-    });
-  });
-
   /* ---------- Calcul du prix ---------- */
   function addDays(days) {
     const d = new Date();
