@@ -4387,3 +4387,113 @@ textarea.form-control {
 .merci-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
 .merci-card .order-ref-box { justify-content: center; text-align: center; }
 .merci-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.25rem; }
+
+/* ==========================================================================
+   Hero sur tablette et mobile : titre, texte, image (badges posés dessus), boutons
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid { gap: 0; }
+  .hero-content { display: contents; }
+  .hero-title { order: 1; }
+  .hero-desc { order: 2; }
+  .hero-media-wrapper { order: 3; width: 100%; margin: 0.5rem auto 2rem; }
+  .hero-cta-group { order: 4; margin-bottom: 0; }
+}
+
+@media (max-width: 768px) {
+  .hero-media-wrapper {
+    flex-direction: row;
+    padding: 2.75rem 0 2.5rem;
+    margin: 0 auto 1.75rem;
+    gap: 0;
+  }
+  .hero-laptop-card { max-width: 440px; }
+  .floating-badge {
+    position: absolute !important;
+    animation: float 4s ease-in-out infinite !important;
+    width: auto;
+    max-width: none;
+    padding: 0.5rem 0.75rem;
+    gap: 0.55rem;
+    box-shadow: 0 10px 24px -6px rgba(15, 23, 42, 0.18);
+    text-align: left;
+  }
+  .floating-badge.badge-top-left { top: 0; left: 0; margin: 0; order: 0; }
+  .floating-badge.badge-bottom-right { bottom: 0; right: 0; margin: 0; order: 0; animation-delay: 2s !important; }
+  .floating-icon { width: 30px; height: 30px; font-size: 0.95rem; flex-shrink: 0; }
+  .floating-badge .floating-text-sm { font-size: 0.65rem !important; }
+  .floating-badge .floating-text-lg { font-size: 0.78rem !important; }
+}
+
+@media (max-width: 380px) {
+  .floating-badge { padding: 0.4rem 0.6rem; }
+  .floating-icon { width: 26px; height: 26px; font-size: 0.85rem; }
+  .floating-badge .floating-text-sm { font-size: 0.6rem !important; }
+  .floating-badge .floating-text-lg { font-size: 0.72rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-badge, .hero-laptop-img { animation: none !important; }
+}
+
+/* ==========================================================================
+   Mobile : page plus courte, mieux rangée, rien ne dépasse de l'écran
+   ========================================================================== */
+@media (max-width: 600px) {
+  html, body { overflow-x: hidden; }
+
+  /* En-tête : logo, bouton Commander et menu tiennent sur une ligne */
+  .navbar { gap: 0.5rem; }
+  .nav-actions { gap: 0.4rem; flex-shrink: 0; }
+  .nav-cta-btn { padding: 0.45rem 0.75rem; font-size: 0.8rem; }
+  .menu-toggle { width: 40px; height: 40px; }
+
+  /* Services : cartes plus compactes, icône à côté du titre */
+  .services-grid { gap: 1rem; }
+  .service-card { padding: 1.25rem; }
+  .service-card-top { display: grid; grid-template-columns: 44px 1fr; column-gap: 0.85rem; align-items: center; align-content: start; }
+  .service-features { margin-bottom: 0.4rem !important; }
+  .service-card-action { margin-top: 0.25rem !important; padding-top: 0.5rem; }
+  .service-icon-box { width: 44px; height: 44px; font-size: 1.15rem; margin: 0; }
+  .service-title { font-size: 1.05rem; margin: 0; }
+  .service-desc, .service-features { grid-column: 1 / -1; }
+  .service-desc { font-size: 0.88rem; margin: 0.65rem 0 0.5rem; }
+  .service-features li { font-size: 0.82rem; margin-bottom: 0.3rem; }
+
+  /* Étapes : 2 par ligne */
+  .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .step-card { padding: 1rem 0.9rem; }
+  .step-icon-subtle { display: none; }
+  .step-number { width: 34px; height: 34px; font-size: 0.95rem; }
+  .step-title { font-size: 0.98rem; margin: 0.6rem 0 0.3rem; }
+  .step-desc { font-size: 0.8rem; line-height: 1.45; }
+
+  /* Réalisations : 2 visuels par ligne */
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .portfolio-body { padding: 0.6rem 0.7rem 0.75rem; }
+  .portfolio-cat-badge { font-size: 0.6rem; padding: 0.15rem 0.45rem; }
+  .portfolio-name { font-size: 0.82rem; line-height: 1.3; margin: 0.35rem 0 0; }
+  .portfolio-desc-short, .portfolio-footer-action { display: none; }
+
+  /* Avis : on fait défiler les cartes de côté */
+  .testimonials-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.85rem; margin: 0 -1.15rem; padding: 0.25rem 1.15rem 0.75rem; scrollbar-width: none; }
+  .testimonials-grid::-webkit-scrollbar { display: none; }
+  .testimonial-card { flex: 0 0 86%; scroll-snap-align: center; }
+
+  /* Choisissez votre projet : 2 par ligne, Service VIP sur toute la largeur */
+  #commander .order-services-grid { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+  #commander .order-service-link { padding: 0.9rem 0.8rem; gap: 0.25rem; }
+  #commander .order-service-link i { font-size: 1.2rem; margin-bottom: 0.1rem; }
+  #commander .order-service-link strong { font-size: 0.92rem; line-height: 1.25; }
+  #commander .order-service-link span { font-size: 0.75rem; line-height: 1.35; }
+  #commander .order-service-link em { font-size: 0.82rem; padding-top: 0.35rem; }
+  #commander .order-service-premium { grid-column: 1 / -1; }
+
+  /* Pied de page : toutes les lignes de contact à la même taille */
+  .footer-links span { font-size: 0.875rem; }
+}
+
+/* Très petits téléphones : le menu reste visible (le Hero garde son bouton Commander) */
+@media (max-width: 380px) {
+  .nav-cta-btn { display: none; }
+}

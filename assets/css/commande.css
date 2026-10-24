@@ -301,3 +301,9 @@
 .rt-aide { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: 1.5rem 0 0; }
 .rt-aide a { color: var(--primary-600, #2563eb); font-weight: 600; }
 .rt-quota.rt-quota-plus { background: #fff7ed; color: #9a3412; }
+
+/* Petits écrans : la colonne du formulaire peut rétrécir (rien ne dépasse) */
+@media (max-width: 860px) {
+  .order-layout { grid-template-columns: minmax(0, 1fr); }
+  .order-layout > * { min-width: 0; }
+}
