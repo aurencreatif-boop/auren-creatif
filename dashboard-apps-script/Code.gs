@@ -112,6 +112,8 @@ function doGet(e) {
   if ((e.parameter.k || '') === props().getProperty('ADMIN_KEY')) {
     const t = HtmlService.createTemplateFromFile('Dashboard');
     t.adminKey = e.parameter.k;
+    t.apiUrl = ScriptApp.getService().getUrl();
+    t.data = JSON.stringify(getDashboardData(e.parameter.k)).replace(/</g, '\u003c');
     return t.evaluate().setTitle('Tableau de bord · AUREN CRÉATIF').addMetaTag('viewport', 'width=device-width, initial-scale=1');
   }
   return HtmlService.createHtmlOutput('<p style="font-family:sans-serif">AUREN CRÉATIF</p>');
@@ -125,10 +127,22 @@ function doPost(e) {
     }
     const data = JSON.parse(body);
     if (data.action === 'order') return json_(enregistrerCommande_(data));
+    if (data.action === 'admin') return json_(actionAdmin_(data));
     return json_({ ok: false, error: 'Action inconnue' });
   } catch (err) {
     console.error(err);
     return json_({ ok: false, error: 'Erreur serveur' });
+  }
+}
+
+// Actions de l'espace privé (appelées par fetch, protégées par la clé)
+function actionAdmin_(d) {
+  const permises = { getDashboardData, setStatut, setNotes, envoyerApercu, livrerManuellement };
+  if (!permises[d.fn]) return { ok: false, error: 'Action inconnue' };
+  try {
+    return { ok: true, data: permises[d.fn].apply(null, [d.key].concat(d.args || [])) };
+  } catch (err) {
+    return { ok: false, error: err.message };
   }
 }
 

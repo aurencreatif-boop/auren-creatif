@@ -79,11 +79,19 @@
     const dateFr = v => v ? new Date(v).toLocaleDateString('fr-FR') : '—';
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
     const pill = s => s === S()[0] || s === S()[3] ? 'warn' : (s === S()[4] ? 'ok' : '');
-    const run = (fn, ...args) => new Promise((ok, ko) => google.script.run.withSuccessHandler(ok).withFailureHandler(ko)[fn](KEY, ...args));
+    const API = <?!= JSON.stringify(apiUrl) ?>;
+    const INITIAL = <?!= data ?>;
+    // Appels au script par fetch (fonctionne aussi en fenêtre privée et sur téléphone)
+    async function run(fn, ...args) {
+      const res = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'admin', key: KEY, fn, args }) });
+      const j = await res.json();
+      if (!j.ok) throw new Error(j.error || 'Erreur');
+      return j.data;
+    }
 
     async function charger() {
       document.getElementById('maj').textContent = 'Chargement…';
-      try { afficher(await run('getDashboardData')); } catch (e) { alert(e.message); }
+      try { afficher(await run('getDashboardData')); } catch (e) { alert('Erreur : ' + e.message); }
     }
 
     function afficher(data) {
@@ -188,7 +196,7 @@
     document.getElementById('refresh').onclick = charger;
     document.getElementById('search').oninput = tableau;
     document.getElementById('filterStatut').onchange = e => { filtre = e.target.value; tableau(); };
-    charger();
+    afficher(INITIAL);
   </script>
 </body>
 </html>
