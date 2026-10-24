@@ -17,6 +17,9 @@
  *     automatiquement au client dès que le solde est payé.
  */
 
+// Lancée en premier : sélectionnée par défaut dans l'éditeur (bouton « Exécuter »)
+function installerAuren() { installer(); }
+
 const AUREN = {
   EMAIL: 'aurencreatif@gmail.com',
   NOM: 'AUREN CRÉATIF',
