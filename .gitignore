@@ -1,3 +1,10 @@
-dashboard-apps-script/
-GUIDE-MISE-EN-PLACE.md
-chariow-variantes.csv
+# Fichiers de test et captures temporaires
+*.png
+*.ps1
+*.bat
+*.log
+*.html
+!index.html
+crop-*
+screenshot-*
+find-overflow*

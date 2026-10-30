@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 60" width="100%" height="100%">
+  <!-- T-Money Badge -->
+  <g transform="translate(10, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#FBBF24" />
+    <text x="42" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="900" fill="#1E293B" text-anchor="middle">T-Money</text>
+  </g>
+
+  <!-- Flooz Badge -->
+  <g transform="translate(106, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#0284C7" />
+    <text x="42" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="middle">Flooz</text>
+  </g>
+
+  <!-- Wave Badge -->
+  <g transform="translate(202, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#1D9BF0" />
+    <text x="42" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#FFFFFF" text-anchor="middle">wave</text>
+  </g>
+
+  <!-- Orange Money Badge -->
+  <g transform="translate(298, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#EA580C" />
+    <text x="42" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" fill="#FFFFFF" text-anchor="middle">Orange</text>
+  </g>
+
+  <!-- Visa Badge -->
+  <g transform="translate(394, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#1A1F71" />
+    <text x="42" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="900" font-style="italic" fill="#FFFFFF" text-anchor="middle">VISA</text>
+  </g>
+
+  <!-- Mastercard Badge -->
+  <g transform="translate(490, 8)">
+    <rect width="84" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="6" y="6" width="72" height="32" rx="6" fill="#222" />
+    <circle cx="36" cy="22" r="11" fill="#EB001B" />
+    <circle cx="48" cy="22" r="11" fill="#F79E1B" fill-opacity="0.85" />
+  </g>
+</svg>
