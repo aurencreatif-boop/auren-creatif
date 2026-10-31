@@ -1730,4 +1730,210 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial step setup
   updateProgressBar();
+
+  // Social Proof Testimonial Toast (Popup bas gauche)
+  initSocialProofToast();
 });
+
+/* ==========================================================================
+   DRAPEAUX OFFICIELS VECTORIELS (AFRIQUE & EUROPE)
+   ========================================================================== */
+const FLAG_SVGS = {
+  TG: `<svg class="flag-svg" viewBox="0 0 500 300" width="18" height="12" aria-label="Drapeau Togo"><rect width="500" height="300" fill="#006A4E"/><rect y="60" width="500" height="60" fill="#FFCE00"/><rect y="180" width="500" height="60" fill="#FFCE00"/><rect width="180" height="180" fill="#D21034"/><polygon points="90,30 108,86 166,86 119,120 137,176 90,142 43,176 61,120 14,86 72,86" fill="#FFFFFF"/></svg>`,
+  FR: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau France"><rect width="150" height="300" fill="#002395"/><rect x="150" width="150" height="300" fill="#FFFFFF"/><rect x="300" width="150" height="300" fill="#ED2939"/></svg>`,
+  CI: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau Côte d'Ivoire"><rect width="150" height="300" fill="#F77F00"/><rect x="150" width="150" height="300" fill="#FFFFFF"/><rect x="300" width="150" height="300" fill="#009E60"/></svg>`,
+  BJ: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau Bénin"><rect width="180" height="300" fill="#008751"/><rect x="180" width="270" height="150" fill="#FCD116"/><rect x="180" y="150" width="270" height="150" fill="#E8112D"/></svg>`,
+  BE: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau Belgique"><rect width="150" height="300" fill="#2D2926"/><rect x="150" width="150" height="300" fill="#FDDA24"/><rect x="300" width="150" height="300" fill="#EF3340"/></svg>`,
+  SN: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau Sénégal"><rect width="150" height="300" fill="#00853F"/><rect x="150" width="150" height="300" fill="#FDEF42"/><rect x="300" width="150" height="300" fill="#E31B23"/><polygon points="225,100 234,128 263,128 240,145 249,173 225,156 201,173 210,145 187,128 216,128" fill="#00853F"/></svg>`,
+  CH: `<svg class="flag-svg" viewBox="0 0 300 300" width="13" height="13" aria-label="Drapeau Suisse"><rect width="300" height="300" fill="#D52B1E" rx="3"/><rect x="125" y="50" width="50" height="200" fill="#FFFFFF"/><rect x="50" y="125" width="200" height="50" fill="#FFFFFF"/></svg>`,
+  CM: `<svg class="flag-svg" viewBox="0 0 450 300" width="18" height="12" aria-label="Drapeau Cameroun"><rect width="150" height="300" fill="#007A3D"/><rect x="150" width="150" height="300" fill="#CE1126"/><rect x="300" width="150" height="300" fill="#FCD116"/><polygon points="225,100 234,128 263,128 240,145 249,173 225,156 201,173 210,145 187,128 216,128" fill="#FCD116"/></svg>`
+};
+
+/* ==========================================================================
+   DONNÉES DU POPUP TÉMOIGNAGES (Clients Réels d'Olivier, Retours Graphisme)
+   ========================================================================== */
+const TESTIMONIALS_DATA = [
+  {
+    name: "Joh Production",
+    country: "Togo",
+    flagCode: "TG",
+    flagEmoji: "🇹🇬",
+    initials: "JP",
+    bgGrad: "linear-gradient(135deg, #2563EB, #00D2FF)",
+    quote: "« Affiches vidéo percutantes, retours au top ! »",
+    timeframes: ["il y a 30 min", "il y a 1h", "il y a 2h", "il y a 1 jour"]
+  },
+  {
+    name: "Ten Over Ten Store",
+    country: "France",
+    flagCode: "FR",
+    flagEmoji: "🇫🇷",
+    initials: "TT",
+    bgGrad: "linear-gradient(135deg, #102A56, #2563EB)",
+    quote: "« Affiche commerciale ultra-lisible, ventes en hausse. »",
+    timeframes: ["il y a 45 min", "il y a 2h", "il y a 1 jour", "il y a 3 jours"]
+  },
+  {
+    name: "Salon Geny Braid",
+    country: "Côte d'Ivoire",
+    flagCode: "CI",
+    flagEmoji: "🇨🇮",
+    initials: "GB",
+    bgGrad: "linear-gradient(135deg, #059669, #10B981)",
+    quote: "« Cartes de visite élégantes qui font l'unanimité ! »",
+    timeframes: ["il y a 1h", "il y a 3h", "il y a 1 jour", "en 2 sem."]
+  },
+  {
+    name: "Winner Spa",
+    country: "Bénin",
+    flagCode: "BJ",
+    flagEmoji: "🇧🇯",
+    initials: "WS",
+    bgGrad: "linear-gradient(135deg, #D97706, #F59E0B)",
+    quote: "« Identité visuelle et carte de soins très soignées. »",
+    timeframes: ["il y a 2h", "il y a 4h", "il y a 2 jours", "en 1 mois"]
+  },
+  {
+    name: "LPGT Togo",
+    country: "Togo",
+    flagCode: "TG",
+    flagEmoji: "🇹🇬",
+    initials: "LP",
+    bgGrad: "linear-gradient(135deg, #7C3AED, #A855F7)",
+    quote: "« Affiche livrée en moins de 24h, super réactif ! »",
+    timeframes: ["il y a 20 min", "il y a 1h", "il y a 1 jour", "il y a 3 jours"]
+  },
+  {
+    name: "Marc Vandamme",
+    country: "Belgique",
+    flagCode: "BE",
+    flagEmoji: "🇧🇪",
+    initials: "MV",
+    bgGrad: "linear-gradient(135deg, #0284C7, #06B6D4)",
+    quote: "« Retouches photo et roll-up impeccables. Merci Olivier ! »",
+    timeframes: ["il y a 3h", "il y a 5h", "il y a 2 jours", "en 2 sem."]
+  },
+  {
+    name: "Sarah Diallo",
+    country: "Sénégal",
+    flagCode: "SN",
+    flagEmoji: "🇸🇳",
+    initials: "SD",
+    bgGrad: "linear-gradient(135deg, #0D9488, #14B8A6)",
+    quote: "« Visuels réseaux sociaux au top, travail rapide et soigné. »",
+    timeframes: ["il y a 1h", "il y a 4h", "il y a 1 jour", "en 1 mois"]
+  },
+  {
+    name: "Lucas Favre",
+    country: "Suisse",
+    flagCode: "CH",
+    flagEmoji: "🇨🇭",
+    initials: "LF",
+    bgGrad: "linear-gradient(135deg, #DC2626, #EF4444)",
+    quote: "« Pack de visuels cohérent et livré dans les délais. »",
+    timeframes: ["il y a 4h", "il y a 1 jour", "il y a 3 jours", "en 2 sem."]
+  }
+];
+
+/* ==========================================================================
+   INITIALISATION DU TOAST TÉMOIGNAGES (Bas Gauche)
+   ========================================================================== */
+function initSocialProofToast() {
+  const toast = document.getElementById('social-proof-toast');
+  if (!toast) return;
+
+  const closeBtn = document.getElementById('toast-close-btn');
+  const avatarEl = document.getElementById('toast-avatar');
+  const nameEl = document.getElementById('toast-name');
+  const countryNameEl = document.getElementById('toast-country-name');
+  const flagBoxEl = document.getElementById('toast-flag-box');
+  const timeEl = document.getElementById('toast-time');
+  const quoteEl = document.getElementById('toast-quote');
+
+  let currentIndex = 0;
+  let isClosed = false;
+  let isPaused = false;
+  let timeoutId = null;
+  const appearanceCounts = {};
+
+  function updateToastContent(index) {
+    const item = TESTIMONIALS_DATA[index];
+    if (!item) return;
+
+    appearanceCounts[index] = (appearanceCounts[index] || 0) + 1;
+    const timeIndex = (appearanceCounts[index] - 1) % item.timeframes.length;
+    const currentTime = item.timeframes[timeIndex];
+
+    if (avatarEl) {
+      avatarEl.textContent = item.initials;
+      avatarEl.style.background = item.bgGrad;
+    }
+    if (nameEl) nameEl.textContent = item.name;
+    if (countryNameEl) countryNameEl.textContent = item.country;
+    if (flagBoxEl) {
+      flagBoxEl.innerHTML = FLAG_SVGS[item.flagCode] || item.flagEmoji || '';
+    }
+    if (timeEl) timeEl.textContent = currentTime;
+    if (quoteEl) quoteEl.textContent = item.quote;
+  }
+
+  function scheduleNext(delayMs) {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      if (isClosed || isPaused) return;
+
+      toast.classList.remove('show');
+
+      // Pause courte de transition avant le témoignage suivant
+      setTimeout(() => {
+        if (!isClosed && !isPaused) {
+          currentIndex = (currentIndex + 1) % TESTIMONIALS_DATA.length;
+          showToast();
+        }
+      }, 1200);
+    }, delayMs);
+  }
+
+  function showToast() {
+    if (isClosed) return;
+
+    updateToastContent(currentIndex);
+    toast.classList.add('show');
+    scheduleNext(5000); // Durée d'affichage : 5 secondes
+  }
+
+  // Premier affichage 2 secondes après chargement de la page
+  setTimeout(showToast, 2000);
+
+  // Pause au survol (souris / tactile)
+  toast.addEventListener('mouseenter', () => {
+    isPaused = true;
+    if (timeoutId) clearTimeout(timeoutId);
+  });
+
+  toast.addEventListener('mouseleave', () => {
+    if (isClosed) return;
+    isPaused = false;
+    scheduleNext(2500);
+  });
+
+  toast.addEventListener('touchstart', () => {
+    isPaused = true;
+    if (timeoutId) clearTimeout(timeoutId);
+  }, { passive: true });
+
+  toast.addEventListener('touchend', () => {
+    if (isClosed) return;
+    isPaused = false;
+    scheduleNext(2500);
+  }, { passive: true });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isClosed = true;
+      toast.classList.remove('show');
+      if (timeoutId) clearTimeout(timeoutId);
+    });
+  }
+}

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261025a">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261031c">
   <link rel="stylesheet" href="assets/css/commande.css?v=20261025c">
 </head>
 <body>
@@ -29,7 +29,7 @@
     <div class="container">
       <nav class="navbar">
         <a href="#accueil" class="brand-logo" aria-label="Auren Créatif Accueil">
-          <img src="assets/images/logo.png" alt="AUREN CRÃ‰ATIF" class="brand-icon" style="object-fit:cover; display:block;">
+          <img src="assets/images/logo.png" alt="AUREN CRÉATIF" class="brand-icon" style="object-fit:cover; display:block;">
           <span class="brand-title">AUREN CRÉATIF</span>
         </a>
 
@@ -1197,9 +1197,45 @@
     </div>
   </div>
 
+  <!-- ==========================================================================
+       POPUP TOAST TÉMOIGNAGES (Format Rectangle Compact & Discret, Bas Gauche)
+       ========================================================================== -->
+  <aside class="social-proof-toast" id="social-proof-toast" role="status" aria-live="polite">
+    <button class="toast-close-btn" id="toast-close-btn" aria-label="Fermer la notification">
+      <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="toast-avatar-box">
+      <div class="toast-avatar" id="toast-avatar">JP</div>
+      <span class="toast-live-dot" title="Avis vérifié"></span>
+    </div>
+
+    <div class="toast-content">
+      <!-- Ligne 1 : Nom + Pays avec Drapeau + Temps variable -->
+      <div class="toast-top-row">
+        <span class="toast-name" id="toast-name">Joh Production</span>
+        <span class="toast-country-badge" id="toast-country-wrapper">
+          <span class="toast-country-label" id="toast-country-name">Togo</span>
+          <span class="toast-flag-box" id="toast-flag-box"></span>
+        </span>
+        <span class="toast-sep">·</span>
+        <span class="toast-time-badge" id="toast-time">il y a 30 min</span>
+      </div>
+
+      <!-- Ligne 2 : Étoiles dorées + Témoignage client compact -->
+      <div class="toast-quote-row">
+        <span class="toast-stars" aria-label="5 étoiles">★★★★★</span>
+        <p class="toast-quote" id="toast-quote">« Affiches vidéo percutantes, retours au top ! »</p>
+      </div>
+    </div>
+  </aside>
+
   <!-- Main JavaScript File -->
   <script src="assets/js/config.js?v=20261024u"></script>
-  <script src="assets/js/main.js?v=20261025b"></script>
+  <script src="assets/js/main.js?v=20261031c"></script>
   <script src="assets/js/carrousel.js?v=20261024w"></script>
 </body>
 </html>
