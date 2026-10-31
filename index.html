@@ -1,759 +1,1765 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AUREN CRÉATIF · Olivier, Graphiste Designer | Visuels Percutants & Branding</title>
   
-  <title>AUREN CRÉATIF — Formation &amp; Ressources Créatives</title>
-  <meta name="description" content="Apprends à monter des vidéos captivantes sur smartphone avec CapCut et accélère tes créations avec nos packs de templates et polices professionnels.">
-  <meta name="theme-color" content="#102A56">
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="Auren Créatif par Olivier, graphiste designer avec +5 ans d’expérience. Affiches publicitaires, flyers, identité visuelle, logos, réseaux sociaux et motion design. Devis rapide et contact direct.">
+  <meta name="theme-color" content="#2563EB">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="AUREN CRÉATIF — Donne une nouvelle dimension à tes créations">
-  <meta property="og:description" content="Formation montage vidéo mobile et ressources créatives professionnelles. Paiement sécurisé via Chariow.">
-  <meta property="og:image" content="assets/images/logo.png?v=2">
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png?v=3">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/logo.png?v=2">
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans (OneSMS Typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ==========================================================================
-       HEADER & NAVIGATION (Logo A + AUREN CRÉATIF parfaitement alignés)
-       ========================================================================== -->
-  <header class="site-header" id="header">
-    <div class="container header-inner">
-      <a href="#header" class="logo-wrapper" aria-label="Accueil AUREN CRÉATIF" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-        <img src="assets/images/logo.png?v=2" alt="Logo AUREN CRÉATIF" class="logo-img" width="44" height="44">
-        <span class="brand-name-header">AUREN CRÉATIF</span>
-      </a>
+  <!-- Header & Sticky Navbar -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#accueil" class="brand-logo" aria-label="Auren Créatif Accueil">
+          <img src="assets/images/logo.png?v=3" alt="Logo AUREN CRÃ‰ATIF" class="brand-icon" style="padding:0; border:none; object-fit:cover;">
+          <span class="brand-title">AUREN CRÉATIF</span>
+        </a>
 
-      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
-        <ul class="nav-list">
-          <li><a href="#formation" class="nav-link">Formation CapCut</a></li>
-          <li><a href="#produits" class="nav-link">Packs Graphiques</a></li>
-          <li><a href="#temoignages" class="nav-link">Témoignages</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#comment-ca-marche" class="nav-link">Processus</a></li>
+          <li><a href="#realisations" class="nav-link">Réalisations</a></li>
+          <li><a href="#a-propos" class="nav-link">À propos</a></li>
+          <li><a href="#avis" class="nav-link">Avis</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+
+        <div class="nav-actions">
+          <a href="#commander" class="btn btn-primary nav-cta-btn">
+            <span>Commander un projet</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Menu principal" aria-expanded="false">
+            <i class="fa-solid fa-bars fa-lg"></i>
+          </button>
+        </div>
       </nav>
-
-      <div class="header-action">
-        <button class="btn btn-primary" data-product="formation">
-          <span>Obtenir la formation</span>
-        </button>
-      </div>
-
-      <button class="mobile-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
     </div>
   </header>
+  <div class="nav-backdrop" id="navBackdrop"></div>
 
-  <main>
-    <!-- ==========================================================================
-         HERO SECTION (Clair, Percutant, Sans saturation)
-         ========================================================================== -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-tagline">
-            <span class="badge badge-hero">✨ Formation &amp; Ressources Créatives</span>
-          </div>
-          
-          <h1 class="hero-title">
-            Donne une <span class="gradient-text-animated">nouvelle dimension</span> à tes créations.
-          </h1>
-          
-          <p class="hero-subtitle">
-            Apprends à monter des vidéos dynamiques directement sur ton téléphone et gagne des heures sur tes designs avec nos templates et polices prêts à l'emploi.
-          </p>
-
-          <div class="hero-actions">
-            <button class="btn btn-primary btn-lg" data-product="formation">
-              <span>Obtenir la formation</span>
-              <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-            <a href="#produits" class="btn btn-secondary btn-lg">Découvrir les packs</a>
-          </div>
-
-          <div class="hero-social-proof">
-            <span class="stars-gold">★★★★★</span>
-            <span><strong>4.9/5</strong> · Approuvé par plus de 150 créateurs et monteurs</span>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-showcase-box">
-            <img src="assets/images/mockups/hero-showcase.svg" alt="Showcase des ressources et formation AUREN CRÉATIF" width="940" height="480" loading="eager">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         OFFRE PHARE : FORMATION CAPCUT SUR TÉLÉPHONE (VRAIE PHOTO SMARTPHONE)
-         ========================================================================== -->
-    <section class="section" id="formation">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge badge-primary section-tag">Offre Principale</span>
-          <h2 class="section-title">Maîtrise le montage vidéo mobile</h2>
-          <p class="section-desc">
-            Pas besoin d'ordinateur puissant pour faire des vidéos virales. Découvre la méthode pas-à-pas pour monter comme un pro directement depuis ton smartphone.
-          </p>
-        </div>
-
-        <article class="product-row" id="offre-capcut">
-          <div class="product-visual">
-            <div class="capcut-real-phone-wrapper">
-              <div class="capcut-phone-container">
-                <img src="assets/images/mockups/capcut-phone-transparent.png" alt="Interface réelle de montage CapCut sur smartphone" class="capcut-phone-img" width="576" height="1024" loading="lazy">
-                <div class="capcut-float-badge badge-float-top">
-                  <span>📱</span> 100% sur Smartphone
-                </div>
-                <div class="capcut-float-badge badge-float-bottom">
-                  <span>⚡</span> Timeline &amp; Cuts Pro
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-details">
-            <div class="product-meta">
-              <span class="badge badge-dark">Formation Vidéo</span>
-              <span class="badge badge-highlight">100% Smartphone</span>
-            </div>
-
-            <h3 class="product-headline">Formation CapCut sur téléphone</h3>
-            <p class="product-hook">« Apprends à monter tes vidéos directement sur ton téléphone. »</p>
-
-            <p class="product-description">
-              Idéal pour les créateurs de contenu, débutants et entrepreneurs qui veulent produire des Reels, TikToks et vidéos percutantes sans investissement lourd en matériel.
-            </p>
-
-            <ul class="product-points">
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span><strong>Prise en main complète :</strong> Maîtrise de l'interface CapCut, découpe propre et gestion des formats 9:16.</span>
-              </li>
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span><strong>Rythme &amp; Cuts dynamiques :</strong> Synchronisation des coupes sur le beat musical et transitions percutantes.</span>
-              </li>
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span><strong>Textes animés &amp; Sous-titres :</strong> Création de sous-titres tendance automatiques et habillage graphique.</span>
-              </li>
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span><strong>Sound design &amp; Export propre :</strong> Bruitages immersifs et réglages d'export haute qualité sans perte.</span>
-              </li>
-            </ul>
-
-            <!-- Bonus Offert CapCut -->
-            <div class="product-bonus-card">
-              <div class="bonus-card-top">
-                <span class="bonus-pill-badge">🎁 BONUS OFFERT</span>
-                <span class="bonus-value-tag">Valeur 100% offerte</span>
-              </div>
-              <div class="bonus-card-content">
-                <div class="bonus-icon-box bonus-capcut">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                  </svg>
-                </div>
-                <div class="bonus-text-group">
-                  <h4 class="bonus-title">Pack d’effets sonores + CapCut Pro</h4>
-                  <p class="bonus-desc">Bruitages immersifs (whooshes, transitions, impacts) pour dynamiser chaque cut + astuces pour exploiter le plein potentiel des fonctionnalités pro.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="price-cta-box">
-              <div class="price-display">
-                <span class="price-label">Tarif de lancement</span>
-                <span class="price-main">7 500 FCFA</span>
-                <span class="price-euro">(≈ 11,43 €)</span>
-              </div>
-              <button class="btn btn-primary btn-lg" data-product="formation">
-                <span>Obtenir la formation</span>
-                <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         RESSOURCES COMPLÉMENTAIRES (MOCKUP POLICES REPOSITIONNÉ & BUNDLE)
-         ========================================================================== -->
-    <section class="section section-alt" id="produits">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge badge-primary section-tag">Ressources Professionnelles</span>
-          <h2 class="section-title">Accélère ta production visuelle</h2>
-          <p class="section-desc">
-            Des polices qui se remarquent et des templates prêts à personnaliser pour ne plus jamais partir d'une page blanche.
-          </p>
-        </div>
-
-        <!-- Offre 2 : Pack Polices (Nouveau Mockup 3D Rééquilibré) -->
-        <article class="product-row" id="offre-polices">
-          <div class="product-visual">
-            <div class="mockup-frame font-mockup-container">
-              <img src="assets/images/mockups/mockup-fonts.svg" alt="Pack de polices AUREN CRÉATIF" width="520" height="540" loading="lazy">
-              <div class="font-float-badge">
-                <div class="font-float-badge-icon">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <div class="font-float-badge-text">
-                  <span class="font-float-badge-title">Prêt à utiliser</span>
-                  <span class="font-float-badge-sub">Formats .OTF &amp; .TTF universels</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-details">
-            <div class="product-meta">
-              <span class="badge badge-dark">Pack 1</span>
-              <span class="badge badge-primary">Typographie Pro</span>
-            </div>
-
-            <h3 class="product-headline">Pack de polices (+ 3600 polices)</h3>
-            <p class="product-hook">« Donne du caractère à tes visuels grâce à + 3600 typographies qui se remarquent. »</p>
-
-            <p class="product-description">
-              Une collection massive de + 3600 polices élégantes, audacieuses et modernes pour concevoir des affiches, carrousels et visuels de marques à fort impact.
-            </p>
-
-            <ul class="product-points">
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span>+ 3600 styles variés : Serif d'exception, Display percutant, Sans-serif moderne.</span>
-              </li>
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span>Compatible PC, Mac et applications mobiles compatibles.</span>
-              </li>
-            </ul>
-
-            <!-- Bonus Offert Polices (2 Bonus Gratuits) -->
-            <div class="product-bonus-card">
-              <div class="bonus-card-top">
-                <span class="bonus-pill-badge">🎁 2 BONUS OFFERTS</span>
-                <span class="bonus-value-tag">Valeur 100% offerte</span>
-              </div>
-              <div class="bonus-card-content">
-                <div class="bonus-icon-box bonus-fonts">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                  </svg>
-                </div>
-                <div class="bonus-text-group">
-                  <h4 class="bonus-title">1. Fonds et textures créatives</h4>
-                  <p class="bonus-desc">Arrière-plans haute résolution, grains et textures modernes pour donner du relief et de la profondeur immédiate à tes typographies.</p>
-                  <h4 class="bonus-title" style="margin-top: 0.65rem;">2. Palette de couleurs</h4>
-                  <p class="bonus-desc">Harmonies chromatiques et combinaisons tendance prêtes à appliquer pour sublimer tes designs.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="price-cta-box">
-              <div class="price-display">
-                <span class="price-label">Tarif conseillé</span>
-                <span class="price-main">2 500 FCFA</span>
-                <span class="price-euro">(≈ 3,81 €)</span>
-              </div>
-              <button class="btn btn-primary btn-lg" data-product="fonts">
-                <span>Obtenir le pack de polices</span>
-                <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Offre 3 : Templates AE & PS (Laptops 3D Flottants) -->
-        <article class="product-row reverse" id="offre-templates">
-          <div class="product-visual">
-            <div class="ae-ps-showcase">
-              <div class="ae-ps-ambient-glow"></div>
-              
-              <!-- Laptop After Effects (Flottant haut droit) -->
-              <div class="laptop-floating-item laptop-ae-wrap">
-                <img src="assets/images/mockups/laptop-ae-transparent.png" alt="Templates After Effects sur ordinateur portable" width="1024" height="682" loading="lazy">
-                <div class="laptop-badge-tag badge-ae">
-                  <span style="background:#1A002E;color:#9999FF;padding:2px 7px;border-radius:4px;font-weight:900;">Ae</span>
-                  <span>After Effects (.AEP)</span>
-                </div>
-              </div>
-
-              <!-- Laptop Photoshop (Flottant bas gauche) -->
-              <div class="laptop-floating-item laptop-ps-wrap">
-                <img src="assets/images/mockups/laptop-ps-transparent.png" alt="Templates Photoshop sur ordinateur portable" width="1024" height="682" loading="lazy">
-                <div class="laptop-badge-tag badge-ps">
-                  <span style="background:#001E36;color:#31A8FF;padding:2px 7px;border-radius:4px;font-weight:900;">Ps</span>
-                  <span>Photoshop (.PSD)</span>
-                </div>
-              </div>
-
-              <div class="ae-ps-floor-shadow"></div>
-            </div>
-          </div>
-
-          <div class="product-details">
-            <div class="product-meta">
-              <span class="badge badge-dark">Pack 2</span>
-              <span class="badge badge-primary">Design &amp; Motion</span>
-            </div>
-
-            <h3 class="product-headline">Templates After Effects &amp; Photoshop</h3>
-            <p class="product-hook">« + 5000 templates After Effects et + 5000 templates Photoshop prêts à personnaliser. »</p>
-
-            <p class="product-description">
-              Gagne des heures de travail sur tes projets clients grâce à nos maquettes Photoshop organisées et nos compositions After Effects animées.
-            </p>
-
-            <div class="caution-box">
-              <span>⚠️</span>
-              <span><strong>Note :</strong> Fichiers modèles prêts à modifier. Logiciels Adobe Photoshop et After Effects non fournis.</span>
-            </div>
-
-            <ul class="product-points">
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span>+ 5000 modèles Photoshop (.PSD) : Affiches, bannières et posts réseaux sociaux.</span>
-              </li>
-              <li>
-                <span class="check-icon-svg">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </span>
-                <span>+ 5000 projets After Effects (.AEP) : Intros dynamiques, titrages et motion design.</span>
-              </li>
-            </ul>
-
-            <!-- Bonus Offert Templates AE & PS -->
-            <div class="product-bonus-card">
-              <div class="bonus-card-top">
-                <span class="bonus-pill-badge">🎁 BONUS OFFERT</span>
-                <span class="bonus-value-tag">Valeur 100% offerte</span>
-              </div>
-              <div class="bonus-card-content">
-                <div class="bonus-icon-box bonus-templates">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                </div>
-                <div class="bonus-text-group">
-                  <h4 class="bonus-title">Pack d’effets et d’overlays</h4>
-                  <p class="bonus-desc">Fuites de lumière (light leaks), particules et calques d'ambiance prêts à glisser sur vos montages pour un rendu cinéma immédiat.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="price-cta-box">
-              <div class="price-display">
-                <span class="price-label">Tarif conseillé</span>
-                <span class="price-main">5 000 FCFA</span>
-                <span class="price-euro">(≈ 7,62 €)</span>
-              </div>
-              <button class="btn btn-primary btn-lg" data-product="templates_ae_ps">
-                <span>Obtenir les templates</span>
-                <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Option Groupée : Pack Complet 3-en-1 -->
-        <div class="bundle-highlight-card" id="bundle">
-          <div class="bundle-grid">
-            <div class="bundle-content">
-              <span class="badge badge-highlight">Option Groupée Avantageuse</span>
-              <h3>Pack Complet Créateur (3 en 1)</h3>
-              <p class="bundle-desc">
-                Regroupe la formation CapCut mobile et l'ensemble des packs graphiques pour équiper totalement ton activité créative.
-              </p>
-
-              <div class="bundle-inclusions">
-                <div class="bundle-inclusion-item">
-                  <span class="check-icon-svg" style="background:#2563EB;color:#FFF;">✓</span>
-                  <span>Formation complète CapCut sur smartphone (Valeur : 7 500 FCFA)</span>
-                </div>
-                <div class="bundle-inclusion-item">
-                  <span class="check-icon-svg" style="background:#2563EB;color:#FFF;">✓</span>
-                  <span>+ 5000 templates After Effects &amp; + 5000 templates Photoshop (Valeur : 5 000 FCFA)</span>
-                </div>
-                <div class="bundle-inclusion-item">
-                  <span class="check-icon-svg" style="background:#2563EB;color:#FFF;">✓</span>
-                  <span>Pack de + 3600 polices typographiques (Valeur : 2 500 FCFA)</span>
-                </div>
-                <div class="bundle-inclusion-item bundle-bonus-item">
-                  <span class="check-icon-svg" style="background:#F59E0B;color:#FFF;">🎁</span>
-                  <span><strong>Tous les bonus offerts inclus :</strong> Fonds &amp; textures créatives, Palette de couleurs, Pack d’effets &amp; overlays, Sound design &amp; CapCut Pro.</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="bundle-pricing-action">
-              <span class="savings-tag">ÉCONOMISEZ + 3000 FCFA</span>
-              <span class="bundle-old-price">15 000 FCFA séparément</span>
-              <div class="bundle-main-price">12 000 FCFA</div>
-              <div class="bundle-euro-price">(≈ 18,29 €)</div>
-
-              <button class="btn btn-primary btn-lg btn-block" data-product="bundle">
-                <span>Obtenir le Pack Complet</span>
-                <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION TÉMOIGNAGES (3 AVIS CLIENTS DISTINCTS & CONCRETS)
-         ========================================================================== -->
-    <section class="section" id="temoignages">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge badge-primary section-tag">Retours d'expérience</span>
-          <h2 class="section-title">Ce que disent nos clients</h2>
-          <p class="section-desc">
-            Des créateurs et freelances qui ont transformé leur contenu grâce à la méthode et aux ressources AUREN CRÉATIF.
-          </p>
-        </div>
-
-        <div class="testimonials-grid">
-          <!-- Témoignage 1 -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <span class="badge-verified" style="align-self:flex-start; margin-bottom:1rem;">Achat vérifié · Formation CapCut</span>
-            <p class="testimonial-text">
-              « Je n'avais pas d'ordinateur pour faire du montage et je pensais être limité. Grâce à la formation CapCut, j'ai appris à caler mes cuts sur la musique et à faire des sous-titres animés très propres. Mes vidéos TikTok ont doublé de vues en seulement deux semaines ! »
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar avatar-km">KM</div>
-              <div class="author-info">
-                <h4>Koffi Mensah</h4>
-                <p>Créateur de contenu &amp; Vidéaste mobile · Lomé</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Témoignage 2 -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <span class="badge-verified" style="align-self:flex-start; margin-bottom:1rem;">Achat vérifié · Templates AE &amp; PS</span>
-            <p class="testimonial-text">
-              « Ces templates Photoshop et After Effects m'ont fait gagner un temps précieux avec mes clients. Les calques sont parfaitement organisés et faciles à adapter. Je livre des visuels et animations pro en 20 minutes au lieu de 2 heures. »
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar avatar-ad">AD</div>
-              <div class="author-info">
-                <h4>Amina Diallo</h4>
-                <p>Community Manager &amp; Graphiste freelance · Abidjan</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Témoignage 3 -->
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <span class="badge-verified" style="align-self:flex-start; margin-bottom:1rem;">Achat vérifié · Pack Complet 3-en-1</span>
-            <p class="testimonial-text">
-              « J'ai pris le pack complet pour lancer la communication de ma boutique en ligne. Les typographies donnent une vraie personnalité à mes affiches, et la formation mobile me permet de produire mes vidéos de promo n'importe où. Rentabilisé immédiatement ! »
-            </p>
-            <div class="testimonial-author">
-              <div class="author-avatar avatar-ml">ML</div>
-              <div class="author-info">
-                <h4>Marc Lawson</h4>
-                <p>Entrepreneur &amp; E-commerçant · Cotonou</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         FAQ (Foire Aux Questions Épurée)
-         ========================================================================== -->
-    <section class="section section-alt" id="faq">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge badge-primary section-tag">Questions Fréquentes</span>
-          <h2 class="section-title">Tout ce que tu dois savoir avant de commander</h2>
-          <p class="section-desc">
-            Des réponses claires et précises pour passer commande en toute tranquillité.
-          </p>
-        </div>
-
-        <div class="faq-container">
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Comment se déroule la formation CapCut et comment y accéder ?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Dès la validation de ton règlement sur Chariow, tu reçois immédiatement tes accès vidéo par email. Tu peux suivre les cours directement depuis ton smartphone, à ton propre rythme, quand et où tu le souhaites.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Quels moyens de paiement sont acceptés sur Chariow ?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                La passerelle sécurisée Chariow prend en charge le <strong>Mobile Money</strong> (T-Money, Flooz, Wave, Orange Money, MTN...) selon ton pays ainsi que les <strong>Cartes bancaires</strong> (Visa &amp; Mastercard).
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Puis-je suivre la formation sans ordinateur ?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>Oui, absolument.</strong> La formation est conçue pour être suivie et mise en pratique à 100% avec un simple smartphone (Android ou iPhone) et l'application CapCut. Cependant, toutes les compétences et techniques apprises s'appliquent également sur ordinateur si vous en possédez un (CapCut PC / Mac).
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span>Les logiciels Adobe sont-ils inclus avec les templates ?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Non, les logiciels Photoshop et After Effects ne sont pas fournis. Nous fournissons des templates de travail professionnels (.PSD et .AEP) prêts à être personnalisés dans vos propres logiciels installés.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         CTA FINAL
-         ========================================================================== -->
-    <section class="final-cta-section">
-      <div class="container final-cta-content">
-        <span class="badge badge-highlight" style="margin-bottom: 1.25rem;">Passer à l'action</span>
-        <h2 class="final-cta-title">Prêt à transformer la qualité de tes vidéos et designs ?</h2>
-        <p class="final-cta-desc">
-          Rejoins les créateurs qui boostent leur audience et gagnent du temps grâce à nos méthodes et ressources prêtes à l'emploi.
-        </p>
-
-        <div class="final-cta-buttons">
-          <button class="btn btn-primary btn-lg" data-product="formation">
-            <span>Obtenir la formation</span>
-            <svg class="btn-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-          <a href="#produits" class="btn btn-secondary btn-lg">Voir tous les packs</a>
-        </div>
-
-        <div class="trust-badge-pill">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <span>Paiement 100% sécurisé via Chariow · Accès immédiat</span>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ==========================================================================
-       FOOTER ÉPURÉ (Sans placeholders, sans saturation)
-       ========================================================================== -->
-  <footer class="site-footer">
+  <!-- Hero Section -->
+  <section id="accueil" class="hero">
     <div class="container">
-      <div class="footer-inner-clean">
-        <div class="footer-brand">
-          <a href="#header" class="logo-wrapper" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-            <img src="assets/images/logo.png?v=2" alt="AUREN CRÉATIF" class="logo-img" width="38" height="38">
-            <span class="brand-name-header">AUREN CRÉATIF</span>
-          </a>
-          <p>
-            Formation et ressources créatives
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Des visuels qui <span class="text-gradient">font parler</span> de votre projet.
+          </h1>
+
+          <p class="hero-desc">
+            Affiches, flyers, identité visuelle, réseaux sociaux et motion design. Choisissez votre service, décrivez votre besoin en quelques étapes : Olivier revient vers vous avec une création sur-mesure d'un impact maximal.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#commander" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Commander une affiche</span>
+            </a>
+            <a href="#realisations" class="btn btn-outline btn-lg">
+              <i class="fa-solid fa-images"></i>
+              <span>Voir mes réalisations</span>
+            </a>
+            <button type="button" class="btn btn-outline btn-lg open-contact-modal">
+              <i class="fa-solid fa-comments"></i>
+              <span>Me contacter</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-media-wrapper">
+          <!-- Ambient Glow Effect -->
+          <div class="hero-glow"></div>
+
+          <!-- Floating Badge 1 -->
+          <div class="floating-badge badge-top-left">
+            <div class="floating-icon icon-blue">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+              <div class="floating-text-sm">Studio de Conception</div>
+              <div class="floating-text-lg">Photoshop & Illustrator</div>
+            </div>
+          </div>
+
+          <!-- Hero Media Showcase: 3D Laptop Mockup -->
+          <div class="hero-laptop-card">
+            <img src="assets/images/hero-laptop-mockup.png" alt="Conception graphique sur MacBook - Auren Créatif" class="hero-laptop-img" loading="eager">
+          </div>
+
+          <!-- Floating Badge 2: Fichiers & Livraison 24h ou 48h -->
+          <div class="floating-badge badge-bottom-right">
+            <div class="floating-icon icon-blue">
+              <i class="fa-solid fa-file-zipper"></i>
+            </div>
+            <div>
+              <div class="floating-text-sm" style="color: #64748b; font-weight: 500; font-size: 0.75rem;">Fichiers HD prêts à l'emploi</div>
+              <div class="floating-text-lg" style="color: #0f172a; font-size: 0.875rem; font-weight: 500;">
+                Livraison en <strong style="color: #2563eb; font-weight: 800;">24h ou 48h</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip (OneSMS style) -->
+  <section class="stats-section" id="statsSection">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-counter="true" data-target="5" data-prefix="+" data-suffix=" ans">
+          <div class="stat-number">+<span class="counter-number">5</span> ans</div>
+          <div class="stat-label">D’expérience en conception graphique</div>
+        </div>
+        <div class="stat-item" data-counter="true" data-target="750" data-prefix="+" data-suffix="">
+          <div class="stat-number">+<span class="counter-number">750</span></div>
+          <div class="stat-label">Visuels créés avec succès</div>
+        </div>
+        <div class="stat-item" data-counter="true" data-target="100" data-prefix="" data-suffix="%">
+          <div class="stat-number"><span class="counter-number">100</span>%</div>
+          <div class="stat-label">Retouches & satisfaction client garantie</div>
+        </div>
+        <div class="stat-item" data-counter="true" data-target="2" data-prefix="< " data-suffix="h">
+          <div class="stat-number">&lt; <span class="counter-number">2</span>h</div>
+          <div class="stat-label">Délai moyen de confirmation & devis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Marketplace Grid ("De quoi avez-vous besoin ?") -->
+  <section id="services" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Services</span>
+        <h2 class="section-title">De quoi avez-vous besoin ?</h2>
+        <p class="section-subtitle">
+          Parcourez les catégories, comme sur une place de marché : cliquez sur un service et le formulaire de commande s’ouvre déjà configuré pour votre projet.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1: Affiche -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-panorama"></i>
+            </div>
+            <h3 class="service-title">Affiche publicitaire / événementielle</h3>
+            <p class="service-desc">
+              Événements, soirées, concerts, cultes & églises, lancements de produit, promotions et annonces d'envergure.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Formats print A3, A2, 4x3 & web HD</li>
+              <li><i class="fa-solid fa-circle-check"></i> Hiérarchie visuelle percutante</li>
+              <li><i class="fa-solid fa-circle-check"></i> Fichiers prêts pour l'impression</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="affiche">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 2: Flyer -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <h3 class="service-title">Flyer & Prospectus</h3>
+            <p class="service-desc">
+              Support imprimé ou numérique, recto simple ou recto-verso. Idéal pour présenter vos offres commerciales et services.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Formats A5, A6, DL ou carré</li>
+              <li><i class="fa-solid fa-circle-check"></i> Déclinaisons réseaux sociaux offertes</li>
+              <li><i class="fa-solid fa-circle-check"></i> Typographie et couleurs harmonieuses</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="flyer">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 3: Logo & Identité Visuelle -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <h3 class="service-title">Logo & Identité visuelle</h3>
+            <p class="service-desc">
+              Création de logo sur-mesure, choix des palettes de couleurs, typographies maîtresses et charte de cohérence de marque.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Fichiers vectoriels AI, EPS, SVG, PNG</li>
+              <li><i class="fa-solid fa-circle-check"></i> Déclinaisons fond clair & sombre</li>
+              <li><i class="fa-solid fa-circle-check"></i> Guide d'utilisation de la marque</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="logo">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 4: Visuels Réseaux Sociaux -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="service-title">Visuels réseaux sociaux</h3>
+            <p class="service-desc">
+              Posts Instagram/Facebook, stories interactives, carrousels éducatifs et bannières optimisées pour maximiser votre engagement.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Formats adaptés 1:1, 9:16 et 16:9</li>
+              <li><i class="fa-solid fa-circle-check"></i> Style graphique moderne & attractif</li>
+              <li><i class="fa-solid fa-circle-check"></i> Packs de publications disponibles</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="reseaux">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 5: Carte de visite & Print -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="service-title">Carte de visite & print</h3>
+            <p class="service-desc">
+              Cartes de visite de prestige, brochures d'entreprise, menus de restaurant, dépliants et supports de communication imprimés.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Résolution 300 DPI CMJN avec traits de coupe</li>
+              <li><i class="fa-solid fa-circle-check"></i> Finitions vernis sélectif ou gaufrage adaptables</li>
+              <li><i class="fa-solid fa-circle-check"></i> Design épuré, mémorable et professionnel</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="print">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 6: Motion Design -->
+        <div class="service-card">
+          <div class="service-card-top">
+            <div class="service-icon-box">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <h3 class="service-title">Motion design & 3D</h3>
+            <p class="service-desc">
+              Animations de logo captivantes, animations de textes percutants, bannières vidéo et visuels animés pour dynamiser votre présence.
+            </p>
+            <ul class="service-features">
+              <li><i class="fa-solid fa-circle-check"></i> Formats MP4 haute définition & GIF</li>
+              <li><i class="fa-solid fa-circle-check"></i> Transitions fluides et modernes</li>
+              <li><i class="fa-solid fa-circle-check"></i> Intégration sonore & effets spéciaux</li>
+            </ul>
+          </div>
+          <div class="service-card-action">
+            <button class="service-btn" data-service="motion">
+              <span>Demander un devis</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment Ça Marche - 4 Étapes -->
+  <section id="comment-ca-marche" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Comment ça marche</span>
+        <h2 class="section-title">Une commande en 4 étapes simples</h2>
+        <p class="section-subtitle">
+          Un processus fluide, transparent et conçu pour vous faire gagner du temps de la première idée jusqu'à la livraison finale.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="steps-track"><div class="steps-track-beam"></div></div>
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <div class="step-icon-subtle"><i class="fa-solid fa-hand-pointer"></i></div>
+          </div>
+          <h4 class="step-title">Choisissez</h4>
+          <p class="step-desc">
+            Sélectionnez le service graphique qui correspond parfaitement à vos besoins actuels.
           </p>
         </div>
 
-        <ul class="footer-nav-clean">
-          <li><a href="#formation">Formation CapCut</a></li>
-          <li><a href="#produits">Packs Graphiques</a></li>
-          <li><a href="#temoignages">Témoignages</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <div class="step-icon-subtle"><i class="fa-solid fa-pen-nib"></i></div>
+          </div>
+          <h4 class="step-title">Décrivez</h4>
+          <p class="step-desc">
+            Texte, style souhaité, format d'utilisation, couleurs et délai : tout votre brief au même endroit.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <div class="step-icon-subtle"><i class="fa-solid fa-list-check"></i></div>
+          </div>
+          <h4 class="step-title">Vérifiez</h4>
+          <p class="step-desc">
+            Un résumé complet et structuré avant l’envoi, avec la possibilité de corriger ou ajuster.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <div class="step-icon-subtle"><i class="fa-solid fa-comments"></i></div>
+          </div>
+          <h4 class="step-title">Échangez</h4>
+          <p class="step-desc">
+            Olivier reçoit votre demande et vous répond rapidement pour confirmer le devis et démarrer la création.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réalisations / Portfolio ("Mon travail") -->
+  <section id="realisations" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Réalisations</span>
+        <h2 class="section-title">Mon travail</h2>
+        <p class="section-subtitle">
+          Découvrez une sélection de conceptions graphiques signées Auren Créatif. Cliquez sur un visuel pour l'agrandir et voir les détails.
+        </p>
       </div>
 
-      <div class="footer-bottom-clean">
+      <!-- Filter Tabs -->
+      <div class="portfolio-tabs">
+        <button class="tab-btn active" data-filter="all">Tous les visuels (14)</button>
+        <button class="tab-btn" data-filter="affiches">Affiches & Publicité</button>
+        <button class="tab-btn" data-filter="flyers">Flyers & Promotions</button>
+        <button class="tab-btn" data-filter="branding">Branding & Logos</button>
+        <button class="tab-btn" data-filter="print">Carte de visite & Print</button>
+        <button class="tab-btn" data-filter="motion">Motion & 3D</button>
+        <button class="tab-btn" data-filter="social">Réseaux Sociaux</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+        
+        <!-- Item 1: SMG Plug -->
+        <div class="portfolio-item" data-id="1" data-category="affiches">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/affiche-smg-plug.png" alt="Affiche SMG Plug - Libre de faire votre choix" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Affiches & Publicité</span>
+            <h4 class="portfolio-name">Libre de Faire Votre Choix — SMG Plug</h4>
+            <p class="portfolio-desc-short">Affiche commerciale high-tech pour smartphones, iPad & écouteurs avec livraison partout.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Joh Production Vidéas -->
+        <div class="portfolio-item" data-id="2" data-category="affiches">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/affiche-joh-production-videas.png" alt="Affiche Joh Production - Votre Vidéas" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Affiches & Événements</span>
+            <h4 class="portfolio-name">Votre Vidéas — Joh Production</h4>
+            <p class="portfolio-desc-short">Visuel de promotion événementielle pour mariages, anniversaires, clips & concerts.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Ten Over Ten Store -->
+        <div class="portfolio-item" data-id="3" data-category="affiches">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/affiche-ten-over-ten.png" alt="Affiche Ten Over Ten Store" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Affiches & Publicité</span>
+            <h4 class="portfolio-name">Ten Over Ten Store — Boutique en Ligne</h4>
+            <p class="portfolio-desc-short">Affiche publicitaire tout-en-un pour catalogue de mode, sneakers, montres & parfums.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Transformez Vos Souvenirs -->
+        <div class="portfolio-item" data-id="4" data-category="affiches">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/affiche-transformez-vos-souvenirs.jpg" alt="Affiche Transformez vos souvenirs" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Affiches & Photographie</span>
+            <h4 class="portfolio-name">Transformez Vos Souvenirs — Studio Pro</h4>
+            <p class="portfolio-desc-short">Montage vidéo créatif, shooting photo et réalisation de clips en chef-d'œuvre visuel.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: The Winner Spa -->
+        <div class="portfolio-item" data-id="5" data-category="flyers">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/flyer-winner-spa-massage.jpg" alt="Flyer The Winner Spa & Massage" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Flyers & Promotions</span>
+            <h4 class="portfolio-name">The Winner — Spa & Massage</h4>
+            <p class="portfolio-desc-short">Flyer apaisant et soigné pour soins bien-être, réflexologie et thérapie corporelle.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Glow Esthétique -->
+        <div class="portfolio-item" data-id="6" data-category="flyers">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/flyer-glow-esthetique-anniversaire.png" alt="Flyer Glow Esthétique - Offre Anniversaire" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Flyers & Promotions</span>
+            <h4 class="portfolio-name">Maison de Beauté Glow Esthétique — -50%</h4>
+            <p class="portfolio-desc-short">Conception publicitaire pour anniversaire 2 ans : cils, perruques, soins et maquillage.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7: La Passion Mockup -->
+        <div class="portfolio-item" data-id="7" data-category="branding">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/branding-la-passion-mockup.png" alt="Mockup Branding La Passion" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Branding & Identité</span>
+            <h4 class="portfolio-name">La Passion — Déclinaison de Marque</h4>
+            <p class="portfolio-desc-short">Mockups réalistes sur sac kraft, casquette, polo corporate, tablier et carte de visite.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: Logo La Passion -->
+        <div class="portfolio-item" data-id="8" data-category="branding">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/logo-la-passion.png" alt="Logo La Passion" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Branding & Logos</span>
+            <h4 class="portfolio-name">La Passion — Logo Officiel Épuré</h4>
+            <p class="portfolio-desc-short">Création d'un emblème royal avec silhouette féminine, couronne dorée et typographie élégante.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 12: Joh Production Logo Signature -->
+        <div class="portfolio-item" data-id="12" data-category="branding">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/logo-joh-production.png" alt="Logo Joh Production - Signature Dorée" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Branding & Logos</span>
+            <h4 class="portfolio-name">Joh Production — Logo Signature Doré</h4>
+            <p class="portfolio-desc-short">Logo signature de prestige avec typographie calligraphiée dorée et silhouette reflex intégrée.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 13: Ten Over Ten Store Logo -->
+        <div class="portfolio-item" data-id="13" data-category="branding">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/logo-ten-over-ten.png" alt="Logo Ten Over Ten Store - Emblème E-commerce" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Branding & Logos</span>
+            <h4 class="portfolio-name">Ten Over Ten Store — Emblème E-commerce</h4>
+            <p class="portfolio-desc-short">Identité de marque moderne combinant chariot d'achat, badge '10' et icône d'interaction mobile.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 14: Light Paint Group Togo (LPGT) Logo -->
+        <div class="portfolio-item" data-id="14" data-category="branding">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/logo-lpgt-togo.jpg" alt="Logo Light Paint Group Togo - Relief 3D" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Branding & Logos</span>
+            <h4 class="portfolio-name">Light Paint Group Togo — Logo 3D Relief</h4>
+            <p class="portfolio-desc-short">Conception de logo 3D en haut-relief avec dôme géodésique lumineux, rouleau et typographie sculptée.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 9: Geny Braid Carte de Visite -->
+        <div class="portfolio-item" data-id="9" data-category="print">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/carte-visite-geny-braid.png" alt="Carte de Visite Geny Braid" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Carte de Visite & Print</span>
+            <h4 class="portfolio-name">Geny Braid — Carte de Visite Recto-Verso</h4>
+            <p class="portfolio-desc-short">Support de communication imprimé haut de gamme pour salon de coiffure & tresses afro.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 10: Showcase Team Joh 3D -->
+        <div class="portfolio-item" data-id="10" data-category="motion">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/showcase-team-joh-3d.jpg" alt="Showcase 3D Team Joh Production" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Motion Design & 3D</span>
+            <h4 class="portfolio-name">Team Joh Production — Vitrine 3D</h4>
+            <p class="portfolio-desc-short">Scène 3D sur podium avec écrans en lévitation pour photographie, vidéo et design graphique.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 11: Auren Design Vœux 2026 -->
+        <div class="portfolio-item" data-id="11" data-category="social">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/carte-voeux-auren-design-2026.jpg" alt="Carte de Vœux 2026 Auren Design" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Visuels Réseaux Sociaux</span>
+            <h4 class="portfolio-name">Bonne & Heureuse Année 2026</h4>
+            <p class="portfolio-desc-short">Composition de vœux officielle : Créativité, Qualité et Engagement au service de vos ambitions.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section À Propos ("Olivier, graphiste designer") -->
+  <section id="a-propos" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo-wrapper">
+          <div class="about-photo-card">
+            <div class="about-photo-frame">
+              <img src="assets/images/olivier-portrait.jpg" alt="Olivier - Graphiste Designer Auren Créatif" loading="lazy">
+            </div>
+            <div class="about-badge-exp">
+              <div class="num">+5 Ans</div>
+              <div class="txt">D'expérience</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text-content">
+          <span class="section-tag">À propos de moi</span>
+          <h2 class="section-title">Olivier, graphiste designer</h2>
+          
+          <p class="about-bio">
+            Olivier conçoit des supports de communication visuelle d'exception sous la marque <strong>AUREN CRÉATIF</strong>, avec +5 ans d’expérience solide en conception graphique. Passionné par l’impact des images, il accompagne les marques, créateurs et entreprises pour traduire leurs idées en créations remarquables et mémorables.
+          </p>
+
+          <div class="about-values-grid">
+            <div class="about-value-item">
+              <div class="about-value-icon"><i class="fa-solid fa-eye"></i></div>
+              <div>
+                <h5>Sens du détail & Rigueur</h5>
+                <p>Chaque pixel, contraste et typographie est calibré pour captiver votre audience.</p>
+              </div>
+            </div>
+            <div class="about-value-item">
+              <div class="about-value-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <h5>Réactivité & Délais respectés</h5>
+                <p>Livraison rapide 24h/48h sans aucun compromis sur l'excellence du rendu.</p>
+              </div>
+            </div>
+            <div class="about-value-item">
+              <div class="about-value-icon"><i class="fa-solid fa-handshake"></i></div>
+              <div>
+                <h5>Accompagnement sur-mesure</h5>
+                <p>Échange direct sur WhatsApp pour affiner chaque retouche jusqu'à satisfaction totale.</p>
+              </div>
+            </div>
+            <div class="about-value-item">
+              <div class="about-value-icon"><i class="fa-solid fa-gem"></i></div>
+              <div>
+                <h5>Qualité haute définition</h5>
+                <p>Fichiers calibrés pour l'impression haute fidélité (CMJN 300 DPI) et les écrans 4K.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-tools-label">Outils & Logiciels maîtrisés :</div>
+          <div class="about-tools-list">
+            <span class="tool-pill"><img src="assets/images/tools/tool-photoshop.png" alt="Adobe Photoshop" class="tool-logo-img"> Adobe Photoshop</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-illustrator.png" alt="Adobe Illustrator" class="tool-logo-img"> Adobe Illustrator</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-indesign.png" alt="Adobe InDesign" class="tool-logo-img"> Adobe InDesign</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-premiere.png" alt="Adobe Premiere Pro" class="tool-logo-img"> Adobe Premiere Pro</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-capcut.png" alt="CapCut Pro" class="tool-logo-img"> CapCut Pro</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-canva.png" alt="Canva" class="tool-logo-img"> Canva</span>
+            <span class="tool-pill"><img src="assets/images/tools/tool-pixellab.png" alt="PixelLab" class="tool-logo-img"> PixelLab</span>
+            <span class="tool-pill"><i class="fa-solid fa-cube" style="color: var(--primary-600); font-size: 1rem;"></i> Motion & 3D Tools</span>
+          </div>
+
+          <a href="#commander" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Commander une création avec Olivier</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis Clients ("Ils m'ont fait confiance") -->
+  <section id="avis" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Témoignages</span>
+        <h2 class="section-title">Ils m’ont fait confiance</h2>
+        <p class="section-subtitle">
+          Retours d'expérience authentiques des marques et entreprises qui collaborent avec Auren Créatif.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars-row">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            « Olivier a su capter exactement l'essence de nos événements vidéo pour Joh Production. Ses visuels et affiches ont immédiatement attiré l'attention sur nos réseaux ! »
+          </p>
+          <div class="testimonial-client">
+            <div class="client-avatar-monogram">JP</div>
+            <div class="client-info">
+              <h5>Joh Production</h5>
+              <p>Couverture Événementielle & Vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars-row">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            « Pour notre boutique Ten Over Ten, nous avions besoin d'une affiche commerciale dense mais ultra-lisible. Le résultat est tout simplement parfait et nos ventes ont bondi. »
+          </p>
+          <div class="testimonial-client">
+            <div class="client-avatar-monogram">TT</div>
+            <div class="client-info">
+              <h5>Ten Over Ten Store</h5>
+              <p>E-commerce & Mode Urbaine</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars-row">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">
+            « Nos cartes de visite Geny Braid font l'unanimité auprès de nos clientes ! Une finition très soignée et un accompagnement bienveillant tout au long de la commande. »
+          </p>
+          <div class="testimonial-client">
+            <div class="client-avatar-monogram">GB</div>
+            <div class="client-info">
+              <h5>Salon Geny Braid</h5>
+              <p>Beauté & Coiffure Afro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Order Wizard ("COMMANDER - Décrivez votre projet") -->
+  <section id="commander" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Commander un projet</span>
+        <h2 class="section-title">Décrivez votre projet</h2>
+        <p class="section-subtitle">
+          Remplissez le formulaire guidé en quelques clics. Olivier reçoit votre brief complet et vous répond sur-le-champ pour confirmer les détails.
+        </p>
+      </div>
+
+      <div class="order-wizard-wrapper">
+        <!-- Main Form Wizard Column -->
+        <div class="order-wizard-container">
+          <!-- Wizard Stepper Header -->
+          <div class="wizard-stepper-header">
+            <div class="stepper-progress-bar" id="stepperProgressBar" style="width: 0%;"></div>
+            
+            <div class="stepper-step active" data-step-target="1">
+              <div class="step-circle">1</div>
+              <span class="step-label">Service</span>
+            </div>
+
+            <div class="stepper-step" data-step-target="2">
+              <div class="step-circle">2</div>
+              <span class="step-label">Brief & Options</span>
+            </div>
+
+            <div class="stepper-step" data-step-target="3">
+              <div class="step-circle">3</div>
+              <span class="step-label">Vérification</span>
+            </div>
+
+            <div class="stepper-step" data-step-target="4">
+              <div class="step-circle">4</div>
+              <span class="step-label">Finalisation</span>
+            </div>
+          </div>
+
+          <!-- Wizard Form Body -->
+          <div class="wizard-form-body">
+            
+            <!-- STEP 1: Région & Service Selection -->
+            <div class="wizard-step-pane active" data-step="1">
+              
+              <!-- 1a. Région de commande -->
+              <div class="form-region-section">
+                <label class="form-region-heading">
+                  <i class="fa-solid fa-earth-africa"></i>
+                  <span>Je commande depuis : <span class="req">*</span></span>
+                </label>
+                <div class="region-radio-group" role="radiogroup" aria-label="Région de commande">
+                  <label class="region-pill selected">
+                    <input type="radio" name="orderRegion" value="afrique" checked>
+                    <span class="region-flag">🌍</span>
+                    <span class="region-title">Afrique</span>
+                    <span class="region-curr">(FCFA)</span>
+                  </label>
+                  <label class="region-pill">
+                    <input type="radio" name="orderRegion" value="europe">
+                    <span class="region-flag">🇪🇺</span>
+                    <span class="region-title">Europe</span>
+                    <span class="region-curr">(€)</span>
+                  </label>
+                  <label class="region-pill">
+                    <input type="radio" name="orderRegion" value="autre">
+                    <span class="region-flag">🌐</span>
+                    <span class="region-title">Autre</span>
+                    <span class="region-curr">(€)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="wizard-step-header-text">
+                <h3 class="wizard-step-title">Étape 1 sur 4 — Quel service souhaitez-vous ? <span class="req">*</span></h3>
+                <p class="wizard-step-subtitle">Sélectionnez la prestation graphique correspondant à votre projet :</p>
+              </div>
+
+              <!-- 1b. Services Grid (10 services + 1 sur devis) -->
+              <div class="services-radio-grid" role="radiogroup" aria-label="Services disponibles">
+                
+                <!-- 1. Affiche simple -->
+                <label class="service-option-card selected">
+                  <input type="radio" name="serviceType" value="affiche_simple" data-label="Affiche simple" checked>
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-panorama"></i></div>
+                  <div class="service-option-name">Affiche simple</div>
+                  <div class="service-option-desc">Événement, concert, culte, promo</div>
+                  <div class="service-option-price-tag" data-price-tag="affiche_simple">15 000 FCFA</div>
+                </label>
+
+                <!-- 2. Affiche premium -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="affiche_premium" data-label="Affiche premium (illustration ou photomontage)">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                  <div class="service-option-name">Affiche premium</div>
+                  <div class="service-option-desc">Illustration poussée ou photomontage</div>
+                  <div class="service-option-price-tag" data-price-tag="affiche_premium">30 000 FCFA</div>
+                </label>
+
+                <!-- 3. Flyer recto -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="flyer_recto" data-label="Flyer recto">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-file"></i></div>
+                  <div class="service-option-name">Flyer recto</div>
+                  <div class="service-option-desc">Support imprimé ou digital, 1 face</div>
+                  <div class="service-option-price-tag" data-price-tag="flyer_recto">12 000 FCFA</div>
+                </label>
+
+                <!-- 4. Flyer recto-verso -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="flyer_rectoverso" data-label="Flyer recto-verso">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                  <div class="service-option-name">Flyer recto-verso</div>
+                  <div class="service-option-desc">Support imprimé ou digital, 2 faces</div>
+                  <div class="service-option-price-tag" data-price-tag="flyer_rectoverso">20 000 FCFA</div>
+                </label>
+
+                <!-- 5. Visuel réseaux sociaux -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="visuel_reseaux" data-label="Visuel réseaux sociaux (1 visuel)">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                  <div class="service-option-name">Visuel réseaux</div>
+                  <div class="service-option-desc">1 visuel pour post ou story</div>
+                  <div class="service-option-price-tag" data-price-tag="visuel_reseaux">7 500 FCFA</div>
+                </label>
+
+                <!-- 6. Pack 5 visuels réseaux -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="pack_5_visuels" data-label="Pack 5 visuels réseaux sociaux">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-layer-group"></i></div>
+                  <div class="service-option-name">Pack 5 visuels</div>
+                  <div class="service-option-desc">Pack cohérent de 5 publications</div>
+                  <div class="service-option-price-tag" data-price-tag="pack_5_visuels">30 000 FCFA</div>
+                </label>
+
+                <!-- 7. Carte de visite -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="carte_visite" data-label="Carte de visite">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-address-card"></i></div>
+                  <div class="service-option-name">Carte de visite</div>
+                  <div class="service-option-desc">Design professionnel prêt à imprimer</div>
+                  <div class="service-option-price-tag" data-price-tag="carte_visite">10 000 FCFA</div>
+                </label>
+
+                <!-- 8. Logo simple -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="logo_simple" data-label="Logo simple">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-bullseye"></i></div>
+                  <div class="service-option-name">Logo simple</div>
+                  <div class="service-option-desc">Création de logo sur-mesure</div>
+                  <div class="service-option-price-tag" data-price-tag="logo_simple">35 000 FCFA</div>
+                </label>
+
+                <!-- 9. Identité visuelle complète -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="identite_complete" data-label="Identité visuelle complète (logo + charte)">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-gem"></i></div>
+                  <div class="service-option-name">Identité complète</div>
+                  <div class="service-option-desc">Logo, typographies & charte de marque</div>
+                  <div class="service-option-price-tag" data-price-tag="identite_complete">100 000 FCFA</div>
+                </label>
+
+                <!-- 10. Animation motion design -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="motion_design" data-label="Animation motion design (logo ou visuel)">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-film"></i></div>
+                  <div class="service-option-name">Motion design</div>
+                  <div class="service-option-desc">Animation de logo ou teaser vidéo</div>
+                  <div class="service-option-price-tag" data-price-tag="motion_design">40 000 FCFA</div>
+                </label>
+
+                <!-- 11. Format personnalisé / Sur devis -->
+                <label class="service-option-card">
+                  <input type="radio" name="serviceType" value="sur_devis" data-label="Format personnalisé / Autre demande">
+                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="service-option-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                  <div class="service-option-name">Sur devis</div>
+                  <div class="service-option-desc">Format personnalisé ou demande spéciale</div>
+                  <div class="service-option-price-tag service-tag-devis">Sur devis</div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- STEP 2: Description, Délai & Options -->
+            <div class="wizard-step-pane" data-step="2">
+              <h3 class="wizard-step-title">Étape 2 sur 4 — Décrivez votre besoin</h3>
+              <p class="wizard-step-subtitle">Ajustez votre délai, vos options et précisez votre brief créatif :</p>
+
+              <!-- 1c. Délai souhaité (4 clickable cards) -->
+              <div class="form-group wizard-field-group">
+                <label class="form-section-label">
+                  <i class="fa-solid fa-stopwatch"></i>
+                  <span>Délai de livraison souhaité <span class="req">*</span></span>
+                </label>
+                <div class="delai-cards-grid" role="radiogroup" aria-label="Délai de réalisation souhaité">
+                  
+                  <label class="delai-card">
+                    <input type="radio" name="orderDelai" value="express">
+                    <div class="delai-card-content">
+                      <div class="delai-header">
+                        <span class="delai-title"><i class="fa-solid fa-bolt"></i> Express 24 h</span>
+                        <span class="delai-badge badge-express">+50 %</span>
+                      </div>
+                      <span class="delai-timing">Livraison en 24 heures</span>
+                    </div>
+                  </label>
+
+                  <label class="delai-card">
+                    <input type="radio" name="orderDelai" value="rapide">
+                    <div class="delai-card-content">
+                      <div class="delai-header">
+                        <span class="delai-title"><i class="fa-solid fa-gauge-high"></i> Rapide 48 h</span>
+                        <span class="delai-badge badge-rapide">+25 %</span>
+                      </div>
+                      <span class="delai-timing">Livraison en 48 heures</span>
+                    </div>
+                  </label>
+
+                  <label class="delai-card selected">
+                    <input type="radio" name="orderDelai" value="standard" checked>
+                    <div class="delai-card-content">
+                      <div class="delai-header">
+                        <span class="delai-title"><i class="fa-solid fa-calendar-check"></i> Standard 3 jours</span>
+                        <span class="delai-badge badge-standard">Prix normal</span>
+                      </div>
+                      <span class="delai-timing">3 à 5 jours</span>
+                    </div>
+                  </label>
+
+                  <label class="delai-card">
+                    <input type="radio" name="orderDelai" value="flexible">
+                    <div class="delai-card-content">
+                      <div class="delai-header">
+                        <span class="delai-title"><i class="fa-solid fa-calendar-days"></i> Flexible</span>
+                        <span class="delai-badge badge-flexible">−10 %</span>
+                      </div>
+                      <span class="delai-timing">7 jours ou plus</span>
+                    </div>
+                  </label>
+
+                </div>
+
+                <!-- Express 24h Notice -->
+                <div class="delai-express-alert" id="delaiExpressAlert" style="display: none;" role="alert">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span>Soumis à la disponibilité d'Olivier, confirmée avant tout paiement.</span>
+                </div>
+              </div>
+
+              <!-- 1d. Options complémentaires (montants fixes) -->
+              <div class="form-group wizard-field-group">
+                <label class="form-section-label">
+                  <i class="fa-solid fa-sliders"></i>
+                  <span>Options complémentaires (montants fixes, non soumis au délai)</span>
+                </label>
+                <div class="options-checkboxes-grid">
+                  
+                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="revision">
+                    <input type="checkbox" name="orderOption" value="revision" id="optRevision">
+                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
+                    <div class="opt-details">
+                      <span class="opt-title">Révision supplémentaire</span>
+                      <span class="opt-desc">Cycle d'ajustements & retouches additionnel</span>
+                    </div>
+                    <span class="opt-price-pill" data-option-price="revision">+3 000 FCFA</span>
+                  </div>
+
+                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="format">
+                    <input type="checkbox" name="orderOption" value="format" id="optFormat">
+                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
+                    <div class="opt-details">
+                      <span class="opt-title">Format supplémentaire</span>
+                      <span class="opt-desc">Déclinaison pour story, A3, etc.</span>
+                    </div>
+                    <span class="opt-price-pill" data-option-price="format">+5 000 FCFA</span>
+                  </div>
+
+                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="sources">
+                    <input type="checkbox" name="orderOption" value="sources" id="optSources">
+                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
+                    <div class="opt-details">
+                      <span class="opt-title">Fichiers sources</span>
+                      <span class="opt-desc">Fichiers éditables ouverts PSD, AI ou vectoriels</span>
+                    </div>
+                    <span class="opt-price-pill" data-option-price="sources">+5 000 FCFA</span>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Project Information Details -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="projectName">Nom de votre projet ou marque <span class="req">*</span></label>
+                  <input type="text" id="projectName" class="form-control" placeholder="Ex: SMG Plug, Mon Restaurant, Concert Live..." required>
+                </div>
+
+                <div class="form-group">
+                  <label for="projectFormat">Support ou Format souhaité</label>
+                  <select id="projectFormat" class="form-control">
+                    <option value="Format Digital / Réseaux sociaux (Instagram, WhatsApp, Facebook)">Format Digital / Réseaux sociaux</option>
+                    <option value="Format Impression Print (A3, A4, A5, Roll-up, Bâche)">Format Impression Print Haute Définition</option>
+                    <option value="Format Mixte (Digital + Fichiers d'Impression)">Format Mixte (Web + Impression)</option>
+                    <option value="Format personnalisé / Autre demande">Format personnalisé / Autre demande</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="projectStyle">Style visuel & Couleurs préférées</label>
+                <input type="text" id="projectStyle" class="form-control" placeholder="Ex: Bleu OneSMS moderne, or luxueux, sombre épuré, dynamique...">
+              </div>
+
+              <!-- Brief Text & File Import Area (En bas à droite) -->
+              <div class="form-group brief-group">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                  <label for="projectBrief" style="margin-bottom: 0;">Texte à faire figurer & Détails du brief</label>
+                  <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 500;">
+                    <i class="fa-solid fa-paperclip"></i> Logo, images ou consignes
+                  </span>
+                </div>
+
+                <div class="brief-box-wrapper" id="briefDropZone">
+                  <textarea id="projectBrief" class="form-control brief-textarea" placeholder="Indiquez ici les titres, dates, numéros de téléphone, slogans ou indications spécifiques à intégrer..."></textarea>
+                  
+                  <div class="brief-inner-bottom">
+                    <!-- Petit bouton PLUS dans la section même en bas -->
+                    <div class="brief-plus-container">
+                      <button type="button" class="brief-plus-btn" id="briefPlusBtn" title="Ajouter des photos ou fichiers" aria-haspopup="true" aria-expanded="false" aria-label="Ajouter des fichiers">
+                        <i class="fa-solid fa-plus"></i>
+                        <span class="brief-plus-badge" id="briefPlusBadge" style="display: none;">0</span>
+                      </button>
+
+                      <!-- Pop-up d'action inspiré de l'image -->
+                      <div class="brief-action-popover" id="briefActionPopover" role="menu">
+                        <button type="button" class="popover-action-row" id="popoverAddFilesBtn" role="menuitem">
+                          <div class="popover-action-icon">
+                            <i class="fa-solid fa-paperclip"></i>
+                          </div>
+                          <div class="popover-action-text">
+                            <span class="popover-action-title">Ajouter des photos et fichiers</span>
+                            <span class="popover-action-hint">Importez...</span>
+                          </div>
+                          <div class="popover-action-arrow">
+                            <i class="fa-solid fa-chevron-right"></i>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    <span class="brief-inner-hint">
+                      <i class="fa-solid fa-circle-info"></i> Cliquez sur le <strong>+</strong> pour ajouter vos logos ou images
+                    </span>
+
+                    <input type="file" id="clientFileUpload" multiple accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml,.pdf,.ai,.psd,.eps,.zip" style="display: none;">
+                  </div>
+                </div>
+
+                <!-- Aperçu dynamique des fichiers importés -->
+                <div class="uploaded-files-preview" id="uploadedFilesPreview" style="display: none;">
+                  <div class="uploaded-files-header">
+                    <span class="uploaded-files-count-text">
+                      <i class="fa-solid fa-check-circle" style="color: #2563EB;"></i>
+                      <strong id="uploadedCountLabel">0 fichier sélectionné</strong> pour Olivier
+                    </span>
+                    <button type="button" class="btn-clear-all-files" id="btnClearAllFiles">Tout retirer</button>
+                  </div>
+                  <div class="uploaded-files-list" id="uploadedFilesList"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3: Verification & Summary -->
+            <div class="wizard-step-pane" data-step="3">
+              <h3 class="wizard-step-title">Étape 3 sur 4 — Vérifiez vos informations</h3>
+              <p class="wizard-step-subtitle">Vérifiez le résumé complet et l'estimation de votre demande avant confirmation :</p>
+
+              <div class="summary-box">
+                <div class="summary-section-heading">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Estimation indicative du projet</span>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Région de commande :</div>
+                  <div class="summary-value" id="summaryRegion">Afrique (FCFA)</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Service sélectionné :</div>
+                  <div class="summary-value" id="summaryService">Affiche simple</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Prix de base :</div>
+                  <div class="summary-value" id="summaryPrixBase">15 000 FCFA</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Délai souhaité :</div>
+                  <div class="summary-value" id="summaryDeadline">Standard 3 jours (Prix normal)</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Options complémentaires :</div>
+                  <div class="summary-value" id="summaryOptions">Aucune</div>
+                </div>
+                <div class="summary-row summary-total-row">
+                  <div class="summary-label">Total estimé :</div>
+                  <div class="summary-value summary-total-val" id="summaryTotal">
+                    <span class="sum-total-main" id="summaryTotalMain">15 000 FCFA</span>
+                    <span class="sum-total-equiv" id="summaryTotalEquiv">≈ 23 €</span>
+                  </div>
+                </div>
+                <div class="summary-disclaimer">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
+                </div>
+
+                <div class="summary-section-heading" style="margin-top: 1.75rem;">
+                  <i class="fa-solid fa-pen-nib"></i>
+                  <span>Détails du brief créatif</span>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Nom du projet / Marque :</div>
+                  <div class="summary-value" id="summaryProject">-</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Format / Utilisation :</div>
+                  <div class="summary-value" id="summaryFormat">-</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Style & Couleurs :</div>
+                  <div class="summary-value" id="summaryStyle">-</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Détails du brief :</div>
+                  <div class="summary-value" id="summaryBrief">-</div>
+                </div>
+                <div class="summary-row">
+                  <div class="summary-label">Logo / Fichiers joints :</div>
+                  <div class="summary-value" id="summaryFiles">Aucun fichier joint</div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-outline" id="editServiceBtn">
+                  <i class="fa-solid fa-rotate-left"></i> Modifier le service
+                </button>
+                <button type="button" class="btn btn-outline" id="editSummaryBtn">
+                  <i class="fa-solid fa-pen-to-square"></i> Modifier mon brief
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Confirmation & Instant WhatsApp -->
+            <div class="wizard-step-pane" data-step="4">
+              <div class="wizard-success-box">
+                <div class="wizard-success-icon">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <h3 class="wizard-step-title" style="font-size: 1.6rem;">Votre brief & estimation sont prêts !</h3>
+                <p class="wizard-step-subtitle" style="max-width: 560px; margin: 0 auto 2rem;">
+                  Olivier reçoit directement votre demande avec l'ensemble des données structurées et le calcul estimatif pour vous confirmer le devis final et démarrer la création.
+                </p>
+
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                  <a href="#" class="btn btn-whatsapp btn-lg" id="sendWhatsAppBriefBtn" target="_blank">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i>
+                    <span>Envoyer mon brief sur WhatsApp à Olivier</span>
+                  </a>
+                </div>
+
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.25rem;">
+                  <i class="fa-solid fa-lock"></i> Aucune inscription requise · Traitement direct, confidentiel et réponse rapide.
+                </p>
+              </div>
+            </div>
+
+            <!-- Wizard Navigation Buttons Bar -->
+            <div class="wizard-buttons-bar">
+              <button type="button" class="btn btn-outline" id="prevStepBtn" style="visibility: hidden;">
+                <i class="fa-solid fa-arrow-left"></i> Précédent
+              </button>
+              <button type="button" class="btn btn-primary" id="nextStepBtn">
+                Continuer <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sticky Estimation Card (Desktop Sidebar & Mobile Sticky Bottom Drawer) -->
+        <aside class="order-estimation-card" id="orderEstimationCard" aria-live="polite">
+          <div class="estimation-card-header">
+            <div class="estimation-badge">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Votre estimation</span>
+            </div>
+            <button type="button" class="estimation-toggle-mobile" id="estimationToggleMobile" aria-expanded="false" aria-label="Afficher le détail de l'estimation">
+              <span class="est-mobile-total" id="estMobileTotal">15 000 FCFA</span>
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+          </div>
+
+          <div class="estimation-card-body" id="estimationCardBody">
+            <div class="estimation-row">
+              <span class="est-label">Service choisi :</span>
+              <span class="est-val" id="estServiceNom">Affiche simple</span>
+            </div>
+            <div class="estimation-row">
+              <span class="est-label">Prix de base :</span>
+              <span class="est-val" id="estPrixBase">15 000 FCFA</span>
+            </div>
+            <div class="estimation-row">
+              <span class="est-label">Délai souhaité :</span>
+              <span class="est-val" id="estDelaiLigne">Standard 3 jours (Prix normal)</span>
+            </div>
+            <div class="estimation-row">
+              <span class="est-label">Options :</span>
+              <span class="est-val" id="estOptionsLigne">Aucune</span>
+            </div>
+            <div class="estimation-options-list" id="estOptionsList"></div>
+          </div>
+
+          <div class="estimation-card-footer">
+            <div class="estimation-total-row">
+              <span class="est-total-label">Total estimé</span>
+              <div class="est-total-wrapper">
+                <span class="est-total-main" id="estTotalMain">15 000 FCFA</span>
+                <span class="est-total-equiv" id="estTotalEquiv">≈ 23 €</span>
+              </div>
+            </div>
+            <p class="estimation-disclaimer">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Contact ("Une question ?") -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contact</span>
+        <h2 class="section-title">Une question ? Un projet en tête ?</h2>
+        <p class="section-subtitle">
+          Contactez directement Olivier pour une réponse rapide ou échangez directement sur WhatsApp.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Message Rapide Form -->
+        <div class="contact-card-form">
+          <h3 style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Message rapide</h3>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.75rem;">Olivier vous répond personnellement dans les meilleurs délais.</p>
+
+          <form id="fastContactForm">
+            <div class="form-group">
+              <label for="contactName">Nom complet (facultatif)</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Votre nom ou société">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="contactChannel">Comment vous répondre ? <span class="req">*</span></label>
+                <select id="contactChannel" class="form-control">
+                  <option value="WhatsApp" selected>WhatsApp</option>
+                  <option value="Email">Email</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactCoords">Vos coordonnées <span class="req">*</span></label>
+                <input type="text" id="contactCoords" class="form-control" placeholder="+228 ... ou email@domaine.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Votre message <span class="req">*</span></label>
+              <textarea id="contactMessage" class="form-control" placeholder="Bonjour Olivier, j'aimerais avoir des informations sur..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Envoyer le message</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Direct Contact Card -->
+        <div class="contact-card-direct">
+          <div class="direct-header">
+            <h3>Écrire directement à Olivier</h3>
+            <p>Pour un échange instantané et fluide, choisissez votre canal préféré (WhatsApp ou Email).</p>
+
+            <div class="direct-info-list">
+              <div class="direct-info-item">
+                <div class="direct-info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="direct-info-text">
+                  <h6>Email Professionnel</h6>
+                  <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: none;">aurencreatif@gmail.com <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.25rem;"></i></a></p>
+                </div>
+              </div>
+
+              <div class="direct-info-item">
+                <div class="direct-info-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="direct-info-text">
+                  <h6>Disponibilité</h6>
+                  <p>7j / 7, 24h / 24</p>
+                </div>
+              </div>
+
+              <div class="direct-info-item">
+                <div class="direct-info-icon"><i class="fa-solid fa-globe"></i></div>
+                <div class="direct-info-text">
+                  <h6>Couverture</h6>
+                  <p>International & Afrique (Afrique de l'Ouest, Diaspora...)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="direct-whatsapp-card">
+            <p>Une question ou un projet à discuter ? Choisissez votre canal :</p>
+            <button type="button" class="btn btn-primary btn-lg open-contact-modal" style="width: 100%;">
+              <i class="fa-solid fa-comments"></i>
+              <span>Me contacter</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Choice Modal (WhatsApp or Email) -->
+  <div id="contactChoiceModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="contact-modal-backdrop" id="contactModalBackdrop"></div>
+    <div class="contact-modal-dialog">
+      <button type="button" class="contact-modal-close" id="contactModalClose" aria-label="Fermer la fenêtre">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="contact-modal-header">
+        <div class="contact-modal-badge">
+          <i class="fa-solid fa-headset"></i> Contact direct
+        </div>
+        <h3 id="contactModalTitle" class="contact-modal-title">Comment souhaitez-vous échanger ?</h3>
+        <p class="contact-modal-subtitle">
+          Choisissez votre moyen de communication préféré avec Olivier :
+        </p>
+      </div>
+
+      <div class="contact-modal-options">
+        
+        <!-- Choice 1: WhatsApp -->
+        <a href="https://wa.me/22896990329?text=Bonjour%20Olivier%20!%20Je%20vous%20contacte%20depuis%20votre%20site%20internet%20Auren%20Cr%C3%A9atif%20pour%20un%20projet%20de%20design." target="_blank" class="contact-choice-card contact-choice-whatsapp" id="modalWhatsAppBtn">
+          <div class="choice-icon-wrap icon-wa">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="choice-content">
+            <div class="choice-top">
+              <span class="choice-title">WhatsApp Direct</span>
+              <span class="choice-badge badge-wa">Recommandé · &lt; 2h</span>
+            </div>
+            <p class="choice-desc">Échange rapide, partage d'idées et confirmation immédiate.</p>
+            <span class="choice-val"><i class="fa-brands fa-whatsapp"></i> Messagerie WhatsApp directe</span>
+          </div>
+          <div class="choice-arrow">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+        <!-- Choice 2: Email (Nouveau message Gmail) -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif&body=Bonjour%20Olivier,%0A%0AJe%20souhaite%20vous%20contacter%20concernant%20un%20projet%20de%20design%20graphique.%0A%0AMes%20coordonn%C3%A9es%20:%0A" target="_blank" rel="noopener noreferrer" class="contact-choice-card contact-choice-email" id="modalEmailBtn">
+          <div class="choice-icon-wrap icon-email">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="choice-content">
+            <div class="choice-top">
+              <span class="choice-title">Envoyer un Email (Gmail)</span>
+              <span class="choice-badge badge-email">Nouveau message</span>
+            </div>
+            <p class="choice-desc">Rédigez directement un nouveau message Gmail pré-rempli à destination d'Olivier.</p>
+            <span class="choice-val"><i class="fa-solid fa-at"></i> aurencreatif@gmail.com</span>
+          </div>
+          <div class="choice-arrow">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="contact-modal-footer">
+        <button type="button" class="btn-copy-email" id="copyEmailBtn">
+          <i class="fa-regular fa-copy"></i>
+          <span id="copyEmailText">Copier l'adresse email</span>
+        </button>
+        <div class="contact-modal-disponibilite">
+          <i class="fa-solid fa-clock"></i> 7j / 7, 24h / 24
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" id="lightboxClose" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="lightbox-image-area">
+        <button class="lightbox-nav-prev" id="lightboxPrev" aria-label="Précédent"><i class="fa-solid fa-chevron-left"></i></button>
+        <img id="lightboxImg" src="" alt="Visuel en haute résolution">
+        <button class="lightbox-nav-next" id="lightboxNext" aria-label="Suivant"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+      <div class="lightbox-details-area">
         <div>
-          © 2026 AUREN CRÉATIF. Tous droits réservés. Paiements sécurisés traités via Chariow.
+          <span class="portfolio-cat-badge" id="lightboxCategory">Catégorie</span>
+          <h3 id="lightboxTitle" style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">Titre du projet</h3>
+          <p id="lightboxDesc" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">Description détaillée...</p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
+          <button type="button" class="btn btn-primary" id="lightboxOrderBtn" style="width: 100%;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Commander un projet similaire</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Contact Action Pill (OneSMS Style) -->
+  <div class="floating-whatsapp open-contact-modal" role="button" aria-label="Contacter Olivier">
+    <span class="whatsapp-ping"></span>
+    <div class="floating-whatsapp-icon"><i class="fa-solid fa-comments"></i></div>
+    <span>Me contacter</span>
+  </div>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <img src="assets/images/logo.png?v=3" alt="Logo AUREN CRÃ‰ATIF" class="brand-icon" style="padding:0; border:none; object-fit:cover;">
+            <span class="brand-title" style="color: #ffffff;">AUREN CRÉATIF</span>
+          </div>
+          <p>
+            Création de supports de communication visuelle percutants : affiches, flyers, identité de marque, motion design et réseaux sociaux. +5 ans d'expérience au service de vos ambitions.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul class="footer-links">
+            <li><a href="#services">Affiches publicitaires</a></li>
+            <li><a href="#services">Flyers commerciaux</a></li>
+            <li><a href="#services">Logos & Identités</a></li>
+            <li><a href="#services">Visuels réseaux sociaux</a></li>
+            <li><a href="#services">Cartes de visite & Print</a></li>
+            <li><a href="#services">Motion design & 3D</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#comment-ca-marche">Comment ça marche</a></li>
+            <li><a href="#realisations">Mes réalisations</a></li>
+            <li><a href="#a-propos">À propos d'Olivier</a></li>
+            <li><a href="#avis">Avis clients</a></li>
+            <li><a href="#commander">Commander un projet</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact Direct</h5>
+          <ul class="footer-links">
+            <li><a href="#" class="open-contact-modal"><i class="fa-brands fa-whatsapp"></i> Échanger sur WhatsApp</a></li>
+            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1;"><i class="fa-solid fa-envelope"></i> aurencreatif@gmail.com</a></li>
+            <li><span style="color: #cbd5e1;"><i class="fa-solid fa-clock"></i> 7j / 7, 24h / 24 — Devis en &lt; 2h</span></li>
+            <li><span style="color: #cbd5e1;"><i class="fa-solid fa-location-dot"></i> Disponible partout à distance</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 <strong>AUREN CRÉATIF</strong> · Olivier, Graphiste Designer. Tous droits réservés.
         </div>
         <div class="footer-legal-links">
-          <a href="#" data-open-modal="modal-mentions">Mentions Légales</a>
-          <a href="#" data-open-modal="modal-cgv">CGV</a>
-          <a href="#" data-open-modal="modal-confidentialite">Confidentialité</a>
+          <a href="#legalModal" class="open-legal-modal" data-legal-tab="mentions">Mentions légales</a>
+          <a href="#legalModal" class="open-legal-modal" data-legal-tab="cgv">Conditions Générales (CGV)</a>
+          <a href="#legalModal" class="open-legal-modal" data-legal-tab="confidentialite">Politique de confidentialité</a>
+          <a href="#legalModal" class="open-legal-modal" data-legal-tab="propriete">Propriété intellectuelle</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ==========================================================================
-       POPUP TOAST TÉMOIGNAGES (Format Rectangle Compact & Discret, Pays & Drapeau)
-       ========================================================================== -->
-  <aside class="social-proof-toast" id="social-proof-toast" role="status" aria-live="polite">
-    <button class="toast-close-btn" id="toast-close-btn" aria-label="Fermer la notification">
-      <svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-
-    <div class="toast-avatar-box">
-      <div class="toast-avatar" id="toast-avatar">KM</div>
-      <span class="toast-live-dot" title="Avis vérifié"></span>
-    </div>
-
-    <div class="toast-content">
-      <!-- Ligne 1 : Nom + Pays avec Drapeau juste à côté + Temps variable -->
-      <div class="toast-top-row">
-        <span class="toast-name" id="toast-name">Koffi Mensah</span>
-        <span class="toast-country-badge" id="toast-country-wrapper">
-          <span class="toast-country-label" id="toast-country-name">Togo</span>
-          <span class="toast-flag-box" id="toast-flag-box"></span>
-        </span>
-        <span class="toast-sep">·</span>
-        <span class="toast-time-badge" id="toast-time">il y a 30 min</span>
+  <!-- Modal des Documents Légaux & Conditions Internationalisées -->
+  <div id="legalModal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+    <div class="legal-modal-backdrop" id="legalModalBackdrop"></div>
+    <div class="legal-modal-dialog">
+      <div class="legal-modal-header">
+        <div class="legal-modal-title-wrap">
+          <div class="legal-modal-badge"><i class="fa-solid fa-scale-balanced"></i> Cadre Juridique & International</div>
+          <h3 id="legalModalTitle">Conditions & Informations Légales</h3>
+        </div>
+        <button type="button" class="legal-modal-close" id="legalModalClose" aria-label="Fermer la fenêtre légale">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
 
-      <!-- Ligne 2 : Étoiles dorées + Témoignage client compact -->
-      <div class="toast-quote-row">
-        <span class="toast-stars" aria-label="5 étoiles">★★★★★</span>
-        <p class="toast-quote" id="toast-quote">« J'ai appris à caler mes coupes en 2 jours. Vues doublées ! »</p>
+      <!-- Onglets de navigation entre les 4 documents légaux -->
+      <div class="legal-modal-tabs">
+        <button type="button" class="legal-tab-btn active" data-tab="mentions">
+          <i class="fa-solid fa-building-columns"></i> <span>Mentions Légales</span>
+        </button>
+        <button type="button" class="legal-tab-btn" data-tab="cgv">
+          <i class="fa-solid fa-file-contract"></i> <span>Conditions Générales (CGV)</span>
+        </button>
+        <button type="button" class="legal-tab-btn" data-tab="confidentialite">
+          <i class="fa-solid fa-shield-halved"></i> <span>Confidentialité & Données</span>
+        </button>
+        <button type="button" class="legal-tab-btn" data-tab="propriete">
+          <i class="fa-solid fa-copyright"></i> <span>Propriété Intellectuelle</span>
+        </button>
       </div>
-    </div>
-  </aside>
 
-  <!-- ==========================================================================
-       MODALES LÉGALES
-       ========================================================================== -->
-  <div class="modal-overlay" id="modal-mentions" role="dialog" aria-modal="true" aria-labelledby="title-mentions">
-    <div class="modal-card">
-      <button class="modal-close-btn" aria-label="Fermer">&times;</button>
-      <h3 class="modal-title" id="title-mentions">Mentions Légales</h3>
-      <div class="modal-body">
-        <h4>Éditeur du site</h4>
-        <p>Le présent site est édité par la marque <strong>AUREN CRÉATIF</strong> (Lomé, Togo). Contact via la plateforme officielle.</p>
-        <h4>Passerelle de paiement</h4>
-        <p>Les transactions et la délivrance des produits numériques sont gérées via la plateforme e-commerce sécurisée <strong>Chariow</strong>.</p>
-        <h4>Propriété intellectuelle</h4>
-        <p>Tous les contenus, visuels et programmes de formation sont la propriété exclusive d'AUREN CRÉATIF.</p>
+      <!-- Corps du document légal -->
+      <div class="legal-modal-body">
+        
+        <!-- 1. MENTIONS LÉGALES -->
+        <div class="legal-tab-panel active" id="panel-mentions">
+          <h4>1. Présentation & Édition du Site</h4>
+          <p>Le présent site vitrine et configurateur de commande en ligne est édité par la marque indépendante de création graphique <strong>AUREN CRÉATIF</strong> :</p>
+          <ul>
+            <li><strong>Marque commerciale :</strong> AUREN CRÉATIF</li>
+            <li><strong>Fondateur & Directeur Artistique :</strong> Olivier, Graphiste Designer indépendant (+5 ans d’expérience professionnelle)</li>
+            <li><strong>Contact électronique officiel :</strong> <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a></li>
+            <li><strong>Canal de messagerie directe :</strong> Ligne WhatsApp officielle Auren Créatif (+228 96 99 03 29)</li>
+            <li><strong>Champ d'activité :</strong> Conception de supports de communication visuelle (affiches, flyers, logos, identités visuelles complètes, chartes graphiques, visuels pour réseaux sociaux, supports print, bannières et animations motion design).</li>
+            <li><strong>Rayonnement géographique :</strong> Prestations délivrées à distance à l'international (Togo, Afrique de l'Ouest, zone UEMOA / OHADA, France, Europe, diaspora et clients internationaux).</li>
+          </ul>
+
+          <h4>2. Hébergement & Sécurité technique</h4>
+          <p>Le site est déployé sur une architecture de serveurs cloud haute performance avec certificat SSL/TLS (protocole HTTPS sécurisé), assurant l'intégrité, la confidentialité des échanges et une disponibilité 7j/7, 24h/24.</p>
+
+          <h4>3. Nature des informations & Devis</h4>
+          <p>Les estimations de prix générées en temps réel via le configurateur de commande ont une valeur <strong>indicative et prévisionnelle</strong>. Tout engagement contractuel définitif requiert la validation formelle du devis et des délais par Olivier.</p>
+        </div>
+
+        <!-- 2. CONDITIONS GÉNÉRALES DE VENTE (CGV) -->
+        <div class="legal-tab-panel" id="panel-cgv">
+          <h4>1. Objet & Portée internationale</h4>
+          <p>Les présentes Conditions Générales de Vente (CGV) s'appliquent à toutes les prestations de conception graphique conclues entre <strong>AUREN CRÉATIF</strong> (Olivier) et ses clients (entreprises, commerçants, artistes, créateurs de contenus, associations ou particuliers), quel que soit leur pays d’établissement (Afrique, Europe ou international).</p>
+
+          <h4>2. Processus de Commande & Validation du Devis</h4>
+          <ul>
+            <li><strong>Étape 1 :</strong> Le client renseigne son besoin, sa région (Afrique / Europe / Autre), son service, son délai et ses options via le formulaire.</li>
+            <li><strong>Étape 2 :</strong> Olivier analyse le brief, vérifie la faisabilité technique et la disponibilité du calendrier de production, puis confirme le devis final.</li>
+            <li><strong>Étape 3 :</strong> La commande entre en production dès encaissement de l'<strong>acompte obligatoire de 50 %</strong> du montant total.</li>
+            <li><strong>Étape 4 :</strong> Le solde de 50 % est exigible à la validation finale du projet, préalablement à la livraison des fichiers définitifs en haute définition sans filigrane.</li>
+          </ul>
+
+          <h4>3. Grille Tarifaire & Devises</h4>
+          <p>Les tarifs sont clairs, transparents et appliqués selon la région de commande :</p>
+          <ul>
+            <li><strong>Zone Afrique (FCFA) :</strong> Devise principale en Francs CFA (XOF), arrondis au multiple de 500 FCFA le plus proche. Règlements acceptés par Mobile Money (T-Money, Moov Money, Wave, Orange Money) ou virement bancaire.</li>
+            <li><strong>Zone Europe & Reste du Monde (€) :</strong> Devise principale en Euros (€), arrondis à l'euro supérieur. Conversion appliquée au taux fixe institutionnel de 1 € = 655,957 FCFA. Règlements acceptés par virement SEPA, carte bancaire ou transfert international (Sendwave, TapTap Send, Ria, Western Union).</li>
+          </ul>
+
+          <h4>4. Délais de Livraison & Coefficients</h4>
+          <ul>
+            <li><strong>Standard (3 à 5 jours) :</strong> Délai de conception normal (coefficient 1.00).</li>
+            <li><strong>Rapide (48 heures) :</strong> Traitement accéléré prioritaire (coefficient 1.25).</li>
+            <li><strong>Express (24 heures) :</strong> Conception d'extrême urgence (coefficient 1.50). <em>Ce délai est soumis à la confirmation expresse de disponibilité d'Olivier avant tout paiement.</em></li>
+            <li><strong>Flexible (7 jours ou plus) :</strong> Pour les projets anticipés, avec une remise de 10 % (coefficient 0.90).</li>
+          </ul>
+          <p>Le décompte du délai débute à réception conjointe de l'acompte de 50 % et des éléments complets du brief (textes définitifs, logo vectoriel ou HD, photos sources).</p>
+
+          <h4>5. Politique de Révisions & Retouches</h4>
+          <p>Auren Créatif s'engage à une <strong>satisfaction garantie</strong>. Les prestations incluent des ajustements raisonnables (harmonisation des teintes, repositionnement d'éléments, calibrage des typographies). Toute refonte intégrale du concept postérieurement à la validation du brief ou toute révision supplémentaire au-delà du cycle standard fera l'objet de l'option « Révision supplémentaire ».</p>
+
+          <h4>6. Annulation & Rétractation</h4>
+          <p>Compte tenu de la nature personnalisée et sur-mesure des créations graphiques (art. L221-28 du Code de la consommation et dispositions équivalentes internationales), aucun droit de rétractation ne peut s'exercer une fois le travail de conception entamé. En cas d'annulation demandée par le client en cours de projet, l'acompte de 50 % demeure acquis à Auren Créatif à titre de dédommagement pour le temps consacré et la réservation du planning.</p>
+        </div>
+
+        <!-- 3. POLITIQUE DE CONFIDENTIALITÉ (RGPD & INTERNATIONAL) -->
+        <div class="legal-tab-panel" id="panel-confidentialite">
+          <h4>1. Respect & Confidentialité Absolue</h4>
+          <p>Auren Créatif s'engage formellement à protéger la vie privée de ses utilisateurs conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> européen et aux législations applicables en Afrique (notamment les actes uniformes de l'UEMOA sur la cyber-sécurité et les données à caractère personnel).</p>
+
+          <h4>2. Données Traitées</h4>
+          <p>Dans le cadre strict du traitement des commandes, les données collectées sont limitées aux informations strictement nécessaires :</p>
+          <ul>
+            <li>Identité (nom complet ou nom commercial de la marque/entreprise).</li>
+            <li>Coordonnées de liaison (numéro WhatsApp, adresse email).</li>
+            <li>Éléments de brief (slogans, dates d'événements, coordonnées à insérer dans le visuel).</li>
+            <li>Fichiers importés (logos, photos de produits, maquettes, chartes graphiques).</li>
+          </ul>
+          <p><strong>Zéro donnée bancaire :</strong> Aucun numéro de carte bancaire n'est enregistré sur ce site. Les paiements s'effectuent exclusivement via les plateformes bancaires et opérateurs de paiement officiels.</p>
+
+          <h4>3. Finalité & Absence de Revente</h4>
+          <p>Ces données sont utilisées uniquement pour exécuter votre commande, vous transmettre vos livrables et communiquer sur l'avancement de votre projet. Vos informations personnelles et fichiers ne font <strong>l'objet d'aucune revente, cession ou échange avec des tiers publicitaires</strong>.</p>
+
+          <h4>4. Sécurité des Fichiers & Archivage</h4>
+          <p>Vos fichiers (logos, photos, documents) sont traités sur des postes de travail professionnels sécurisés et sauvegardés de façon confidentielle. Ils ne sont jamais exploités à d'autres fins que votre commande.</p>
+
+          <h4>5. Droit d'Accès & de Suppression</h4>
+          <p>Vous conservez la maîtrise intégrale de vos données. Vous pouvez solliciter à tout moment la consultation, la modification ou l'effacement définitif de vos coordonnées sur simple demande par courriel à : <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
+        </div>
+
+        <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
+        <div class="legal-tab-panel" id="panel-propriete">
+          <h4>1. Droits d'Auteur & Propriété des Œuvres</h4>
+          <p>Toute création graphique (affiche, logo, identité, flyer, vidéo motion) constitue une œuvre de l'esprit protégée par les conventions internationales sur le droit d'auteur (Convention de Berne) :</p>
+          <ul>
+            <li>Olivier demeure le créateur originel de l'œuvre.</li>
+            <li>La pleine propriété et les droits d'exploitation commerciale du visuel final sont cédés au client <strong>dès le paiement intégral (100 %)</strong> du montant convenu.</li>
+            <li>Tant que le solde n'a pas été réglé, toute utilisation, diffusion ou reproduction publique du projet demeure strictement interdite.</li>
+          </ul>
+
+          <h4>2. Formats Livrés & Fichiers Sources</h4>
+          <p>La commande comprend la livraison des fichiers finaux prêts à la diffusion et à l'impression :</p>
+          <ul>
+            <li><strong>Pour le web :</strong> Formats PNG haute résolution et JPEG optimisés pour les réseaux sociaux et écrans Retina.</li>
+            <li><strong>Pour l'imprimerie :</strong> Formats PDF Haute Définition vectoriels conformes aux normes d'impression (CMJN 300 DPI, repères et traits de coupe).</li>
+            <li><strong>Fichiers sources éditables (.PSD, .AI) :</strong> Les fichiers de travail natifs avec calques ouverts font l'objet d'une cession distincte via l'option contractuelle « Fichiers sources ».</li>
+          </ul>
+
+          <h4>3. Droit de Référence & Portfolio</h4>
+          <p>À titre d'illustration de son savoir-faire, Auren Créatif se réserve la faculté de présenter les visuels achevés au sein de son portfolio en ligne et de ses réseaux professionnels, sauf demande de confidentialité expresse formulée par le client lors de la validation du devis.</p>
+        </div>
+
+      </div>
+
+      <!-- Pied du modal -->
+      <div class="legal-modal-footer">
+        <div class="legal-modal-footer-info">
+          <i class="fa-solid fa-globe"></i> International Legal Framework · Afrique (OHADA/UEMOA) & Europe (RGPD)
+        </div>
+        <button type="button" class="btn btn-primary" id="legalModalOkBtn">
+          <span>J'ai pris connaissance</span>
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="modal-overlay" id="modal-cgv" role="dialog" aria-modal="true" aria-labelledby="title-cgv">
-    <div class="modal-card">
-      <button class="modal-close-btn" aria-label="Fermer">&times;</button>
-      <h3 class="modal-title" id="title-cgv">Conditions Générales de Vente (CGV)</h3>
-      <div class="modal-body">
-        <h4>Produits numériques</h4>
-        <p>Les offres proposées concernent des formations en ligne et fichiers numériques téléchargeables immédiatement après validation du paiement sur Chariow.</p>
-        <h4>Rétractation</h4>
-        <p>Conformément aux règles applicables aux contenus numériques à accès direct, aucun droit de rétractation ne s'applique après téléchargement ou accès au cours.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="modal-confidentialite" role="dialog" aria-modal="true" aria-labelledby="title-confidentialite">
-    <div class="modal-card">
-      <button class="modal-close-btn" aria-label="Fermer">&times;</button>
-      <h3 class="modal-title" id="title-confidentialite">Politique de Confidentialité</h3>
-      <div class="modal-body">
-        <p>Vos données personnelles (nom, email, téléphone) sont utilisées uniquement pour le traitement de votre commande et la livraison de vos accès via Chariow. Elles ne sont jamais revendues ni cédées à des tiers.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
+  <!-- Main JavaScript File -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
