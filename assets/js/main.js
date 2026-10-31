@@ -5,21 +5,20 @@
  */
 
 // ==========================================
-// 1. LIENS DE PAIEMENT DIRECTS (SYSTEME.IO / CHARIOW)
-// Collez ici vos liens de page de paiement :
+// 1. LIENS DE PAIEMENT DIRECTS (CHARIOW)
 // ==========================================
 const CHECKOUT_LINKS = {
   // Offre Principale : Formation CapCut sur smartphone (7 500 FCFA)
-  FORMATION_CAPCUT: "https://systeme.io", // Coller votre page de paiement Systeme.io
+  FORMATION_CAPCUT: "https://tuvdexdr.mychariow.store/prd_c04chs9p",
 
-  // Offre 1 : Pack de polices typographiques (2 500 FCFA)
-  PACK_POLICES: "https://systeme.io",     // Coller votre page de paiement Systeme.io
+  // Offre 1 : Pack de polices (+ de 3 600 polices) (2 500 FCFA)
+  PACK_POLICES: "https://tuvdexdr.mychariow.store/prd_iw3ffe09",
 
-  // Offre 2 : Templates After Effects & Photoshop (5 000 FCFA)
-  TEMPLATES_AE_PS: "https://systeme.io",  // Coller votre page de paiement Systeme.io
+  // Offre 2 : Templates After Effects & Photoshop (+ de 10 000 templates) (5 000 FCFA)
+  TEMPLATES_AE_PS: "https://tuvdexdr.mychariow.store/prd_tgdw7n98",
 
   // Pack Complet : Bundle 3 en 1 (12 000 FCFA)
-  BUNDLE_COMPLET: "https://systeme.io"    // Coller votre page de paiement Systeme.io
+  BUNDLE_COMPLET: "https://tuvdexdr.mychariow.store/prd_4jzd6cl0"
 };
 
 // Rétrocompatibilité
