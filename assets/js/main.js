@@ -460,13 +460,33 @@ function initLegalModals() {
 }
 
 // ==========================================
-// 10. DÉFILEMENT FLUIDE
+// 10. DÉFILEMENT FLUIDE & RETOUR EN HAUT (LOGO / ACCUEIL)
 // ==========================================
 function initSmoothScroll() {
+  // Clic sur le logo / marque pour retour immédiat et fluide en haut de page
+  document.querySelectorAll('.logo-wrapper').forEach(logo => {
+    logo.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href === '#' || this.hasAttribute('data-open-modal')) {
+        return;
+      }
+
+      if (href === '#header' || href === '#top' || href === '#hero' || this.classList.contains('logo-wrapper')) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
         return;
       }
 

@@ -617,6 +617,86 @@ button {
   filter: drop-shadow(0 14px 28px rgba(16, 42, 86, 0.12));
 }
 
+/* FONT MOCKUP 3D CONTAINER & FLOATING BADGE */
+.font-mockup-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.font-float-badge {
+  position: absolute;
+  bottom: 22px;
+  right: 14px;
+  background: #FFFFFF;
+  border: 2px solid #2563EB;
+  border-radius: 16px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 28px rgba(16, 42, 86, 0.18);
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+  animation: floatSlow 5s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+.font-float-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #EEF2FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.font-float-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.font-float-badge-title {
+  font-family: var(--font-primary, system-ui, sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0B192C;
+  line-height: 1.2;
+}
+
+.font-float-badge-sub {
+  font-family: var(--font-primary, system-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748B;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .font-float-badge {
+    bottom: 12px;
+    right: 8px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+  .font-float-badge-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .font-float-badge-title {
+    font-size: 0.82rem;
+  }
+  .font-float-badge-sub {
+    font-size: 0.65rem;
+  }
+}
+
 /* REAL CAPCUT PHONE CONTAINER */
 .capcut-real-phone-wrapper {
   display: flex;
