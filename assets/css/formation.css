@@ -27,6 +27,7 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --transition-normal: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   --container-width: 1200px;
 }
@@ -44,6 +45,7 @@ html {
   color-scheme: light;
   overflow-x: hidden;
   max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -52,10 +54,69 @@ body {
   color: var(--color-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
   padding-top: 76px;
+  position: relative;
+}
+
+/* Barre de progression de lecture au scroll */
+.scroll-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #2563EB 0%, #00D2FF 50%, #38BDF8 100%);
+  z-index: 1001;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
+}
+
+/* Backdrop flou pour menu mobile */
+.nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 17, 32, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Animations d'apparition dynamiques au scroll (Expert) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 a {
@@ -295,6 +356,10 @@ button {
   gap: 2.2rem;
 }
 
+.mobile-nav-cta {
+  display: none;
+}
+
 .nav-list {
   display: flex;
   list-style: none;
@@ -496,6 +561,8 @@ button {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  overflow: hidden;
+  contain: paint;
 }
 
 .ae-ps-ambient-glow {
@@ -1068,8 +1135,11 @@ button {
   color: #FFFFFF;
   font-size: 0.8rem;
   font-weight: 800;
-  padding: 0.25rem 0.85rem;
+  padding: 0.3rem 0.95rem;
   border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  animation: badgePulse 3s ease-in-out infinite;
+  display: inline-block;
 }
 
 /* ==========================================================================
@@ -1747,6 +1817,22 @@ button {
   .nav-link {
     font-size: 1.05rem;
     padding: 0.35rem 0;
+  }
+
+  .mobile-nav-cta {
+    display: block;
+    width: 100%;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.85);
+  }
+
+  .mobile-nav-cta .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.25rem;
+    font-size: 0.98rem;
+    font-weight: 700;
   }
 
   /* Hero Section Mobile - Plus de vide inutile */

@@ -172,16 +172,18 @@ const TESTIMONIALS_DATA = [
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
+  initScrollProgressBar();
   initMobileNav();
   initFaqAccordion();
   initDirectCheckoutRedirects();
   initLegalModals();
   initSmoothScroll();
   initSocialProofToast();
+  initScrollReveal();
 });
 
 // ==========================================
-// 4. HEADER COLLANT
+// 4. HEADER COLLANT & BARRE DE DÉFILEMENT
 // ==========================================
 function initStickyHeader() {
   const header = document.querySelector('.site-header');
@@ -198,35 +200,68 @@ function initStickyHeader() {
   window.addEventListener('scroll', handleScroll, { passive: true });
 }
 
+function initScrollProgressBar() {
+  const bar = document.getElementById('scrollProgressBar');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+  }, { passive: true });
+}
+
 // ==========================================
-// 5. MENU MOBILE ACCESSIBLE
+// 5. MENU MOBILE FLUIDE & RESPONSIVE
 // ==========================================
 function initMobileNav() {
   const toggleBtn = document.querySelector('.mobile-toggle');
   const mainNav = document.querySelector('.main-nav');
+  const navBackdrop = document.getElementById('navBackdrop');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileCta = document.querySelector('.mobile-nav-cta');
 
   if (!toggleBtn || !mainNav) return;
 
-  const toggleMenu = () => {
-    const isOpen = mainNav.classList.toggle('open');
-    toggleBtn.setAttribute('aria-expanded', isOpen);
-    toggleBtn.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  const openMenu = () => {
+    mainNav.classList.add('open');
+    if (navBackdrop) navBackdrop.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    toggleBtn.setAttribute('aria-label', 'Fermer le menu');
   };
 
-  toggleBtn.addEventListener('click', toggleMenu);
+  const closeMenu = () => {
+    mainNav.classList.remove('open');
+    if (navBackdrop) navBackdrop.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', 'Ouvrir le menu');
+  };
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (mainNav.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', closeMenu);
+  }
 
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (mainNav.classList.contains('open')) {
-        toggleMenu();
-      }
-    });
+    link.addEventListener('click', closeMenu);
   });
+
+  if (mobileCta) {
+    mobileCta.addEventListener('click', closeMenu);
+  }
 
   document.addEventListener('click', (e) => {
     if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
-      toggleMenu();
+      closeMenu();
     }
   });
 }
@@ -329,13 +364,13 @@ function initSocialProofToast() {
 
       toast.classList.remove('show');
 
-      // Pause courte de transition avant le témoignage suivant
+      // Pause élégante avant le témoignage suivant (non intrusive)
       setTimeout(() => {
         if (!isClosed && !isPaused) {
           currentIndex = (currentIndex + 1) % TESTIMONIALS_DATA.length;
           showToast();
         }
-      }, 1200);
+      }, 7500);
     }, delayMs);
   }
 
@@ -344,7 +379,7 @@ function initSocialProofToast() {
 
     updateToastContent(currentIndex);
     toast.classList.add('show');
-    scheduleNext(5000); // Durée d'affichage exacte : 5 secondes
+    scheduleNext(4800); // Durée d'affichage idéale : 4.8 secondes
   }
 
   // Premier affichage 1.5 secondes après l'arrivée sur la page
@@ -493,15 +528,43 @@ function initSmoothScroll() {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const headerOffset = 80;
+        const header = document.querySelector('.site-header');
+        const headerOffset = header ? header.offsetHeight + 10 : 76;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
-          top: offsetPosition,
+          top: Math.max(0, offsetPosition),
           behavior: 'smooth'
         });
       }
     });
   });
+}
+
+// ==========================================
+// 11. ANIMATIONS D'APPARITION FLUIDES AU SCROLL (EXPERT)
+// ==========================================
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.product-row, .bundle-highlight-card, .testimonial-card, .faq-item, .section-header');
+  elements.forEach(el => el.classList.add('reveal-on-scroll'));
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.12
+  });
+
+  elements.forEach(el => observer.observe(el));
 }
