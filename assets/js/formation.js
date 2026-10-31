@@ -220,7 +220,6 @@ function initMobileNav() {
   const mainNav = document.querySelector('.main-nav');
   const navBackdrop = document.getElementById('navBackdrop');
   const navLinks = document.querySelectorAll('.nav-link');
-  const mobileCta = document.querySelector('.mobile-nav-cta');
 
   if (!toggleBtn || !mainNav) return;
 
@@ -254,10 +253,6 @@ function initMobileNav() {
   navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
-
-  if (mobileCta) {
-    mobileCta.addEventListener('click', closeMenu);
-  }
 
   document.addEventListener('click', (e) => {
     if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {

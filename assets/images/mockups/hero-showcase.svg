@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 20 940 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#102A56" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="heroShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#102A56" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" rx="24" fill="url(#bgGlow)" />
+  <ellipse cx="480" cy="500" rx="420" ry="20" fill="#0F172A" opacity="0.16" />
+
+  <!-- LEFT: Pack Polices Card Preview -->
+  <g transform="translate(40, 80) rotate(-4)" filter="url(#heroShadow)">
+    <rect width="260" height="360" rx="18" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="2" />
+    <rect x="0" y="0" width="260" height="140" rx="18" fill="#102A56" />
+    <rect x="20" y="20" width="80" height="22" rx="6" fill="#2563EB" />
+    <text x="60" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">OFFRE 1</text>
+    <text x="130" y="85" font-family="'Georgia', serif" font-size="54" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Aa</text>
+    <text x="130" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#93C5FD" text-anchor="middle">PACK POLICES PRO</text>
+    <!-- Card Body -->
+    <text x="24" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#102A56">Typographies</text>
+    <text x="24" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#2563EB">à fort impact</text>
+    <text x="24" y="225" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">Styles variés : serif, display,</text>
+    <text x="24" y="243" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">brutalist, édito &amp; moderne.</text>
+    <line x1="24" y1="265" x2="236" y2="265" stroke="#E2E8F0" />
+    <text x="24" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748B">Prix conseillé :</text>
+    <text x="24" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="900" fill="#102A56">2 500 FCFA</text>
+    <text x="145" y="324" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">(≈ 3,81 €)</text>
+  </g>
+
+  <!-- CENTER / MAIN: Templates AE & Photoshop Preview -->
+  <g transform="translate(325, 40)" filter="url(#heroShadow)">
+    <rect width="310" height="420" rx="20" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5" />
+    <!-- Top badge -->
+    <rect x="0" y="0" width="310" height="170" rx="20" fill="#0B1324" />
+    <rect x="24" y="20" width="80" height="22" rx="6" fill="#2563EB" />
+    <text x="64" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">OFFRE 2</text>
+    <!-- Logos Ps + Ae -->
+    <g transform="translate(85, 60)">
+      <rect x="0" y="0" width="48" height="48" rx="8" fill="#001E36" stroke="#31A8FF" stroke-width="2" />
+      <text x="24" y="33" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#31A8FF" text-anchor="middle">Ps</text>
+      <text x="68" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">+</text>
+      <rect x="90" y="0" width="48" height="48" rx="8" fill="#1A002E" stroke="#9999FF" stroke-width="2" />
+      <text x="114" y="33" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#9999FF" text-anchor="middle">Ae</text>
+    </g>
+    <text x="155" y="140" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="middle">TEMPLATES GRAPHIQUES &amp; MOTION</text>
+    
+    <!-- Body -->
+    <text x="26" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="800" fill="#102A56">After Effects &amp; Photoshop</text>
+    <text x="26" y="235" font-family="'Plus Jakarta Sans', sans-serif" font-size="12.5" fill="#475569">Modèles d'affiches, carrousels,</text>
+    <text x="26" y="255" font-family="'Plus Jakarta Sans', sans-serif" font-size="12.5" fill="#475569">titres animés &amp; motion design.</text>
+    <rect x="24" y="275" width="262" height="30" rx="6" fill="#FEF3C7" stroke="#FDE68A" />
+    <text x="155" y="294" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#92400E" text-anchor="middle">⚠️ Fichiers prêts à l'emploi (logiciels non inclus)</text>
+    <line x1="26" y1="325" x2="284" y2="325" stroke="#E2E8F0" />
+    <text x="26" y="355" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748B">Prix conseillé :</text>
+    <text x="26" y="385" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="900" fill="#2563EB">5 000 FCFA</text>
+    <text x="175" y="384" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#64748B">(≈ 7,62 €)</text>
+  </g>
+
+  <!-- RIGHT: Formation CapCut Phone Preview -->
+  <g transform="translate(660, 80) rotate(4)" filter="url(#heroShadow)">
+    <rect width="260" height="360" rx="18" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="2" />
+    <rect x="0" y="0" width="260" height="140" rx="18" fill="#1E3A8A" />
+    <rect x="20" y="20" width="80" height="22" rx="6" fill="#00E5FF" />
+    <text x="60" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#0F172A" text-anchor="middle">OFFRE 3</text>
+    <!-- Smartphone icon -->
+    <g transform="translate(115, 52)">
+      <rect x="0" y="0" width="30" height="52" rx="6" fill="#0F172A" stroke="#93C5FD" stroke-width="1.5" />
+      <rect x="4" y="8" width="22" height="36" rx="2" fill="#2563EB" />
+      <polygon points="12,20 18,25 12,30" fill="#FFFFFF" />
+    </g>
+    <text x="130" y="125" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">FORMATION CAPCUT MOBILE</text>
+    <!-- Body -->
+    <text x="24" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#102A56">Montage Vidéo</text>
+    <text x="24" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#2563EB">sur Smartphone</text>
+    <text x="24" y="225" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">Apprends à monter depuis zéro</text>
+    <text x="24" y="243" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">directement sur ton téléphone.</text>
+    <line x1="24" y1="265" x2="236" y2="265" stroke="#E2E8F0" />
+    <text x="24" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748B">Prix conseillé :</text>
+    <text x="24" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="900" fill="#102A56">7 500 FCFA</text>
+    <text x="145" y="324" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" fill="#64748B">(≈ 11,43 €)</text>
+  </g>
+</svg>
