@@ -244,34 +244,126 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  /* ==========================================================================
+     Portfolio Filter & Pagination "Voir plus d'affiches" (Limite à 4 affiches)
+     ========================================================================== */
   const tabButtons = document.querySelectorAll('.tab-btn');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const portfolioMoreWrapper = document.getElementById('portfolioMoreWrapper');
+  const portfolioToggleBtn = document.getElementById('portfolioToggleBtn');
+  const portfolioToggleText = document.getElementById('portfolioToggleText');
+  const portfolioToggleIcon = document.getElementById('portfolioToggleIcon');
 
+  const INITIAL_LIMIT = 4;
+  let isExpanded = false;
+  let currentFilter = 'all';
+
+  function updatePortfolioDisplay(shouldScroll = false) {
+    let visibleCount = 0;
+
+    portfolioItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      const matchesFilter = (currentFilter === 'all' || itemCategory === currentFilter);
+
+      if (!matchesFilter) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(15px)';
+        item.style.display = 'none';
+        return;
+      }
+
+      // Quand on est sur "Tous les visuels" : limiter aux 4 premières affiches sauf si déplié
+      if (currentFilter === 'all') {
+        if (!isExpanded && visibleCount >= INITIAL_LIMIT) {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(15px)';
+          item.style.display = 'none';
+        } else {
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 30);
+          visibleCount++;
+        }
+      } else {
+        // Catégorie spécifique : afficher tous les visuels de cette catégorie
+        item.style.display = 'flex';
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 30);
+        visibleCount++;
+      }
+    });
+
+    // Gestion du bouton "Voir plus / Réduire"
+    if (portfolioMoreWrapper) {
+      if (currentFilter === 'all') {
+        portfolioMoreWrapper.style.display = 'flex';
+        if (isExpanded) {
+          if (portfolioToggleText) portfolioToggleText.textContent = "Réduire / Voir moins d'affiches";
+          if (portfolioToggleIcon) {
+            portfolioToggleIcon.className = "fa-solid fa-chevron-up btn-icon";
+          }
+          if (portfolioToggleBtn) {
+            portfolioToggleBtn.setAttribute('aria-expanded', 'true');
+          }
+        } else {
+          const remaining = Math.max(0, portfolioItems.length - INITIAL_LIMIT);
+          if (portfolioToggleText) portfolioToggleText.textContent = `Voir plus d'affiches (+${remaining})`;
+          if (portfolioToggleIcon) {
+            portfolioToggleIcon.className = "fa-solid fa-chevron-down btn-icon";
+          }
+          if (portfolioToggleBtn) {
+            portfolioToggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      } else {
+        // En dehors de "Tous les visuels", masquer le bouton "Voir plus"
+        portfolioMoreWrapper.style.display = 'none';
+      }
+    }
+
+    if (shouldScroll) {
+      const realisationsSection = document.getElementById('realisations');
+      if (realisationsSection) {
+        const headerOffset = 80;
+        const elementPosition = realisationsSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // Clic sur le bouton Voir plus / Réduire
+  if (portfolioToggleBtn) {
+    portfolioToggleBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      updatePortfolioDisplay(!isExpanded); // Scroll si réduction
+    });
+  }
+
+  // Clic sur les onglets de catégories
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
-
-      portfolioItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filter === 'all' || itemCategory === filter) {
-          item.style.display = 'flex';
-          setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            item.style.display = 'none';
-          }, 250);
-        }
-      });
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      // Si on revient sur "all", on garde la page compacte à 4 éléments
+      if (currentFilter === 'all') {
+        isExpanded = false;
+      }
+      updatePortfolioDisplay(false);
     });
   });
+
+  // Initialisation au chargement de la page
+  updatePortfolioDisplay(false);
 
   /* ==========================================================================
      Lightbox Modal

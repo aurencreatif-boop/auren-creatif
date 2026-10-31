@@ -1176,6 +1176,58 @@ section[id] {
 }
 
 /* ==========================================================================
+   Bouton "Voir plus d'affiches" (Pagination / Réduction de la page)
+   ========================================================================== */
+.portfolio-more-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.25rem;
+  width: 100%;
+}
+
+.portfolio-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--primary-600);
+  border: 1.5px solid var(--primary-600);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+  font-family: inherit;
+}
+
+.portfolio-more-btn:hover {
+  background: var(--primary-600);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.25);
+}
+
+.portfolio-more-btn .btn-icon {
+  font-size: 0.85rem;
+  transition: transform 0.25s ease;
+}
+
+@media (max-width: 600px) {
+  .portfolio-more-wrapper {
+    margin-top: 1.5rem;
+  }
+  .portfolio-more-btn {
+    padding: 0.6rem 1.35rem;
+    font-size: 0.84rem;
+    gap: 0.5rem;
+  }
+}
+
+/* ==========================================================================
    About Section ("À PROPOS - Olivier, graphiste designer")
    ========================================================================== */
 .about-grid {
@@ -4828,23 +4880,87 @@ textarea.form-control {
 
 @media (max-width: 600px) {
   .social-proof-toast {
-    bottom: 14px;
+    bottom: 12px;
     left: 12px;
-    max-width: calc(100% - 76px);
-    padding: 0.4rem 0.6rem;
+    max-width: 235px;
+    width: auto;
+    padding: 0.35rem 0.5rem;
     gap: 0.45rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px -2px rgba(16, 42, 86, 0.16), 0 0 0 1px rgba(37, 99, 235, 0.08);
   }
   .toast-avatar {
-    width: 28px;
-    height: 28px;
-    font-size: 0.68rem;
+    width: 25px;
+    height: 25px;
+    font-size: 0.62rem;
+  }
+  .toast-live-dot {
+    width: 6px;
+    height: 6px;
+    bottom: -1px;
+    right: -1px;
+    border-width: 1.5px;
+  }
+  .toast-content {
+    padding-right: 12px;
+  }
+  .toast-top-row {
+    gap: 0.25rem;
   }
   .toast-name {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+  .toast-country-badge {
+    font-size: 0.54rem;
+    padding: 0.02rem 0.22rem;
+    gap: 0.15rem;
+  }
+  .toast-country-label {
+    display: none !important; /* Cache le texte du pays sur mobile pour gagner en compacité */
+  }
+  .toast-flag-box .flag-svg {
+    width: 12px;
+    height: 8px;
+  }
+  .toast-sep,
+  .toast-time-badge {
+    display: none !important; /* Cache le délai sur mobile pour réduire drastiquement la longueur */
+  }
+  .toast-quote-row {
+    gap: 0.25rem;
+    margin-top: 1px;
+  }
+  .toast-stars {
+    font-size: 0.56rem;
+    letter-spacing: 0;
   }
   .toast-quote {
-    font-size: 0.64rem;
-    max-width: 175px;
+    font-size: 0.60rem;
+    max-width: 145px;
+    line-height: 1.2;
+  }
+  .toast-close-btn {
+    top: 4px;
+    right: 4px;
+    width: 14px;
+    height: 14px;
+  }
+  .toast-close-btn svg {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .social-proof-toast {
+    max-width: 205px;
+    left: 8px;
+    bottom: 10px;
+    padding: 0.3rem 0.45rem;
+  }
+  .toast-quote {
+    max-width: 120px;
   }
 }
 
