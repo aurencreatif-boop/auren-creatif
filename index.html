@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#2563EB">
 
   <!-- Favicon & Icons -->
-  <link rel="icon" type="image/png" href="assets/images/logo.png?v=3">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Google Fonts: Outfit & Plus Jakarta Sans (OneSMS Typography) -->
@@ -19,7 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261025a">
+  <link rel="stylesheet" href="assets/css/commande.css?v=20261025c">
 </head>
 <body>
 
@@ -28,7 +29,7 @@
     <div class="container">
       <nav class="navbar">
         <a href="#accueil" class="brand-logo" aria-label="Auren Créatif Accueil">
-          <img src="assets/images/logo.png?v=3" alt="Logo AUREN CRÃ‰ATIF" class="brand-icon" style="padding:0; border:none; object-fit:cover;">
+          <img src="assets/images/logo.png" alt="AUREN CRÃ‰ATIF" class="brand-icon" style="object-fit:cover; display:block;">
           <span class="brand-title">AUREN CRÉATIF</span>
         </a>
 
@@ -39,7 +40,7 @@
           <li><a href="#realisations" class="nav-link">Réalisations</a></li>
           <li><a href="#a-propos" class="nav-link">À propos</a></li>
           <li><a href="#avis" class="nav-link">Avis</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#garantie" class="nav-link">Garantie</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -78,10 +79,6 @@
               <i class="fa-solid fa-images"></i>
               <span>Voir mes réalisations</span>
             </a>
-            <button type="button" class="btn btn-outline btn-lg open-contact-modal">
-              <i class="fa-solid fa-comments"></i>
-              <span>Me contacter</span>
-            </button>
           </div>
         </div>
 
@@ -356,9 +353,9 @@
             <div class="step-number">4</div>
             <div class="step-icon-subtle"><i class="fa-solid fa-comments"></i></div>
           </div>
-          <h4 class="step-title">Échangez</h4>
+          <h4 class="step-title">Payez en deux fois</h4>
           <p class="step-desc">
-            Olivier reçoit votre demande et vous répond rapidement pour confirmer le devis et démarrer la création.
+            50 % à la commande pour démarrer, 50 % après validation de l’aperçu. Vos fichiers finaux arrivent par lien Google Drive.
           </p>
         </div>
       </div>
@@ -378,7 +375,7 @@
 
       <!-- Filter Tabs -->
       <div class="portfolio-tabs">
-        <button class="tab-btn active" data-filter="all">Tous les visuels (14)</button>
+        <button class="tab-btn active" data-filter="all">Tous les visuels (15)</button>
         <button class="tab-btn" data-filter="affiches">Affiches & Publicité</button>
         <button class="tab-btn" data-filter="flyers">Flyers & Promotions</button>
         <button class="tab-btn" data-filter="branding">Branding & Logos</button>
@@ -606,6 +603,24 @@
           </div>
         </div>
 
+        <!-- Item 15: Glow Esthétique -->
+        <div class="portfolio-item" data-id="15" data-category="print">
+          <div class="portfolio-thumb open-lightbox-trigger">
+            <img src="assets/images/carte-visite-glow-esthetique.webp" alt="Carte de visite Glow Esthétique - Activer votre beauté" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-overlay-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="portfolio-body">
+            <span class="portfolio-cat-badge">Carte de Visite & Print</span>
+            <h4 class="portfolio-name">Glow Esthétique — Carte de Visite Recto-Verso</h4>
+            <p class="portfolio-desc-short">Carte noir et or pour institut de beauté : logo, prestations et contacts.</p>
+            <div class="portfolio-footer-action">
+              <span class="portfolio-link open-lightbox-trigger">Voir le projet <i class="fa-solid fa-chevron-right fa-xs"></i></span>
+            </div>
+          </div>
+        </div>
+
         <!-- Item 10: Showcase Team Joh 3D -->
         <div class="portfolio-item" data-id="10" data-category="motion">
           <div class="portfolio-thumb open-lightbox-trigger">
@@ -689,7 +704,7 @@
               <div class="about-value-icon"><i class="fa-solid fa-handshake"></i></div>
               <div>
                 <h5>Accompagnement sur-mesure</h5>
-                <p>Échange direct sur WhatsApp pour affiner chaque retouche jusqu'à satisfaction totale.</p>
+                <p>Vos modifications se demandent directement dans votre espace client, jusqu'à satisfaction totale.</p>
               </div>
             </div>
             <div class="about-value-item">
@@ -797,651 +812,97 @@
     </div>
   </section>
 
-  <!-- Interactive Order Wizard ("COMMANDER - Décrivez votre projet") -->
+  <!-- Commander : chaque service ouvre sa page de commande -->
   <section id="commander" class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Commander un projet</span>
-        <h2 class="section-title">Décrivez votre projet</h2>
+        <h2 class="section-title">Choisissez votre projet</h2>
         <p class="section-subtitle">
-          Remplissez le formulaire guidé en quelques clics. Olivier reçoit votre brief complet et vous répond sur-le-champ pour confirmer les détails.
+          Cliquez sur un service : vous remplissez votre brief, ajoutez vos fichiers, puis réglez 50 % pour lancer la création. Le solde se règle à la livraison, par e-mail.
         </p>
       </div>
-
-      <div class="order-wizard-wrapper">
-        <!-- Main Form Wizard Column -->
-        <div class="order-wizard-container">
-          <!-- Wizard Stepper Header -->
-          <div class="wizard-stepper-header">
-            <div class="stepper-progress-bar" id="stepperProgressBar" style="width: 0%;"></div>
-            
-            <div class="stepper-step active" data-step-target="1">
-              <div class="step-circle">1</div>
-              <span class="step-label">Service</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="2">
-              <div class="step-circle">2</div>
-              <span class="step-label">Brief & Options</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="3">
-              <div class="step-circle">3</div>
-              <span class="step-label">Vérification</span>
-            </div>
-
-            <div class="stepper-step" data-step-target="4">
-              <div class="step-circle">4</div>
-              <span class="step-label">Finalisation</span>
-            </div>
-          </div>
-
-          <!-- Wizard Form Body -->
-          <div class="wizard-form-body">
-            
-            <!-- STEP 1: Région & Service Selection -->
-            <div class="wizard-step-pane active" data-step="1">
-              
-              <!-- 1a. Région de commande -->
-              <div class="form-region-section">
-                <label class="form-region-heading">
-                  <i class="fa-solid fa-earth-africa"></i>
-                  <span>Je commande depuis : <span class="req">*</span></span>
-                </label>
-                <div class="region-radio-group" role="radiogroup" aria-label="Région de commande">
-                  <label class="region-pill selected">
-                    <input type="radio" name="orderRegion" value="afrique" checked>
-                    <span class="region-flag">🌍</span>
-                    <span class="region-title">Afrique</span>
-                    <span class="region-curr">(FCFA)</span>
-                  </label>
-                  <label class="region-pill">
-                    <input type="radio" name="orderRegion" value="europe">
-                    <span class="region-flag">🇪🇺</span>
-                    <span class="region-title">Europe</span>
-                    <span class="region-curr">(€)</span>
-                  </label>
-                  <label class="region-pill">
-                    <input type="radio" name="orderRegion" value="autre">
-                    <span class="region-flag">🌐</span>
-                    <span class="region-title">Autre</span>
-                    <span class="region-curr">(€)</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="wizard-step-header-text">
-                <h3 class="wizard-step-title">Étape 1 sur 4 — Quel service souhaitez-vous ? <span class="req">*</span></h3>
-                <p class="wizard-step-subtitle">Sélectionnez la prestation graphique correspondant à votre projet :</p>
-              </div>
-
-              <!-- 1b. Services Grid (10 services + 1 sur devis) -->
-              <div class="services-radio-grid" role="radiogroup" aria-label="Services disponibles">
-                
-                <!-- 1. Affiche simple -->
-                <label class="service-option-card selected">
-                  <input type="radio" name="serviceType" value="affiche_simple" data-label="Affiche simple" checked>
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-panorama"></i></div>
-                  <div class="service-option-name">Affiche simple</div>
-                  <div class="service-option-desc">Événement, concert, culte, promo</div>
-                  <div class="service-option-price-tag" data-price-tag="affiche_simple">15 000 FCFA</div>
-                </label>
-
-                <!-- 2. Affiche premium -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="affiche_premium" data-label="Affiche premium (illustration ou photomontage)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                  <div class="service-option-name">Affiche premium</div>
-                  <div class="service-option-desc">Illustration poussée ou photomontage</div>
-                  <div class="service-option-price-tag" data-price-tag="affiche_premium">30 000 FCFA</div>
-                </label>
-
-                <!-- 3. Flyer recto -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="flyer_recto" data-label="Flyer recto">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-file"></i></div>
-                  <div class="service-option-name">Flyer recto</div>
-                  <div class="service-option-desc">Support imprimé ou digital, 1 face</div>
-                  <div class="service-option-price-tag" data-price-tag="flyer_recto">12 000 FCFA</div>
-                </label>
-
-                <!-- 4. Flyer recto-verso -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="flyer_rectoverso" data-label="Flyer recto-verso">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                  <div class="service-option-name">Flyer recto-verso</div>
-                  <div class="service-option-desc">Support imprimé ou digital, 2 faces</div>
-                  <div class="service-option-price-tag" data-price-tag="flyer_rectoverso">20 000 FCFA</div>
-                </label>
-
-                <!-- 5. Visuel réseaux sociaux -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="visuel_reseaux" data-label="Visuel réseaux sociaux (1 visuel)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                  <div class="service-option-name">Visuel réseaux</div>
-                  <div class="service-option-desc">1 visuel pour post ou story</div>
-                  <div class="service-option-price-tag" data-price-tag="visuel_reseaux">7 500 FCFA</div>
-                </label>
-
-                <!-- 6. Pack 5 visuels réseaux -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="pack_5_visuels" data-label="Pack 5 visuels réseaux sociaux">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-layer-group"></i></div>
-                  <div class="service-option-name">Pack 5 visuels</div>
-                  <div class="service-option-desc">Pack cohérent de 5 publications</div>
-                  <div class="service-option-price-tag" data-price-tag="pack_5_visuels">30 000 FCFA</div>
-                </label>
-
-                <!-- 7. Carte de visite -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="carte_visite" data-label="Carte de visite">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-address-card"></i></div>
-                  <div class="service-option-name">Carte de visite</div>
-                  <div class="service-option-desc">Design professionnel prêt à imprimer</div>
-                  <div class="service-option-price-tag" data-price-tag="carte_visite">10 000 FCFA</div>
-                </label>
-
-                <!-- 8. Logo simple -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="logo_simple" data-label="Logo simple">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-bullseye"></i></div>
-                  <div class="service-option-name">Logo simple</div>
-                  <div class="service-option-desc">Création de logo sur-mesure</div>
-                  <div class="service-option-price-tag" data-price-tag="logo_simple">35 000 FCFA</div>
-                </label>
-
-                <!-- 9. Identité visuelle complète -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="identite_complete" data-label="Identité visuelle complète (logo + charte)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-gem"></i></div>
-                  <div class="service-option-name">Identité complète</div>
-                  <div class="service-option-desc">Logo, typographies & charte de marque</div>
-                  <div class="service-option-price-tag" data-price-tag="identite_complete">100 000 FCFA</div>
-                </label>
-
-                <!-- 10. Animation motion design -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="motion_design" data-label="Animation motion design (logo ou visuel)">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-film"></i></div>
-                  <div class="service-option-name">Motion design</div>
-                  <div class="service-option-desc">Animation de logo ou teaser vidéo</div>
-                  <div class="service-option-price-tag" data-price-tag="motion_design">40 000 FCFA</div>
-                </label>
-
-                <!-- 11. Format personnalisé / Sur devis -->
-                <label class="service-option-card">
-                  <input type="radio" name="serviceType" value="sur_devis" data-label="Format personnalisé / Autre demande">
-                  <div class="service-option-check"><i class="fa-solid fa-check"></i></div>
-                  <div class="service-option-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-                  <div class="service-option-name">Sur devis</div>
-                  <div class="service-option-desc">Format personnalisé ou demande spéciale</div>
-                  <div class="service-option-price-tag service-tag-devis">Sur devis</div>
-                </label>
-
-              </div>
-            </div>
-
-            <!-- STEP 2: Description, Délai & Options -->
-            <div class="wizard-step-pane" data-step="2">
-              <h3 class="wizard-step-title">Étape 2 sur 4 — Décrivez votre besoin</h3>
-              <p class="wizard-step-subtitle">Ajustez votre délai, vos options et précisez votre brief créatif :</p>
-
-              <!-- 1c. Délai souhaité (4 clickable cards) -->
-              <div class="form-group wizard-field-group">
-                <label class="form-section-label">
-                  <i class="fa-solid fa-stopwatch"></i>
-                  <span>Délai de livraison souhaité <span class="req">*</span></span>
-                </label>
-                <div class="delai-cards-grid" role="radiogroup" aria-label="Délai de réalisation souhaité">
-                  
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="express">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-bolt"></i> Express 24 h</span>
-                        <span class="delai-badge badge-express">+50 %</span>
-                      </div>
-                      <span class="delai-timing">Livraison en 24 heures</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="rapide">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-gauge-high"></i> Rapide 48 h</span>
-                        <span class="delai-badge badge-rapide">+25 %</span>
-                      </div>
-                      <span class="delai-timing">Livraison en 48 heures</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card selected">
-                    <input type="radio" name="orderDelai" value="standard" checked>
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-check"></i> Standard 3 jours</span>
-                        <span class="delai-badge badge-standard">Prix normal</span>
-                      </div>
-                      <span class="delai-timing">3 à 5 jours</span>
-                    </div>
-                  </label>
-
-                  <label class="delai-card">
-                    <input type="radio" name="orderDelai" value="flexible">
-                    <div class="delai-card-content">
-                      <div class="delai-header">
-                        <span class="delai-title"><i class="fa-solid fa-calendar-days"></i> Flexible</span>
-                        <span class="delai-badge badge-flexible">−10 %</span>
-                      </div>
-                      <span class="delai-timing">7 jours ou plus</span>
-                    </div>
-                  </label>
-
-                </div>
-
-                <!-- Express 24h Notice -->
-                <div class="delai-express-alert" id="delaiExpressAlert" style="display: none;" role="alert">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  <span>Soumis à la disponibilité d'Olivier, confirmée avant tout paiement.</span>
-                </div>
-              </div>
-
-              <!-- 1d. Options complémentaires (montants fixes) -->
-              <div class="form-group wizard-field-group">
-                <label class="form-section-label">
-                  <i class="fa-solid fa-sliders"></i>
-                  <span>Options complémentaires (montants fixes, non soumis au délai)</span>
-                </label>
-                <div class="options-checkboxes-grid">
-                  
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="revision">
-                    <input type="checkbox" name="orderOption" value="revision" id="optRevision">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Révision supplémentaire</span>
-                      <span class="opt-desc">Cycle d'ajustements & retouches additionnel</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="revision">+3 000 FCFA</span>
-                  </div>
-
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="format">
-                    <input type="checkbox" name="orderOption" value="format" id="optFormat">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Format supplémentaire</span>
-                      <span class="opt-desc">Déclinaison pour story, A3, etc.</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="format">+5 000 FCFA</span>
-                  </div>
-
-                  <div class="option-check-card" role="checkbox" aria-checked="false" tabindex="0" data-option-key="sources">
-                    <input type="checkbox" name="orderOption" value="sources" id="optSources">
-                    <div class="opt-check-box"><i class="fa-solid fa-check"></i></div>
-                    <div class="opt-details">
-                      <span class="opt-title">Fichiers sources</span>
-                      <span class="opt-desc">Fichiers éditables ouverts PSD, AI ou vectoriels</span>
-                    </div>
-                    <span class="opt-price-pill" data-option-price="sources">+5 000 FCFA</span>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- Project Information Details -->
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="projectName">Nom de votre projet ou marque <span class="req">*</span></label>
-                  <input type="text" id="projectName" class="form-control" placeholder="Ex: SMG Plug, Mon Restaurant, Concert Live..." required>
-                </div>
-
-                <div class="form-group">
-                  <label for="projectFormat">Support ou Format souhaité</label>
-                  <select id="projectFormat" class="form-control">
-                    <option value="Format Digital / Réseaux sociaux (Instagram, WhatsApp, Facebook)">Format Digital / Réseaux sociaux</option>
-                    <option value="Format Impression Print (A3, A4, A5, Roll-up, Bâche)">Format Impression Print Haute Définition</option>
-                    <option value="Format Mixte (Digital + Fichiers d'Impression)">Format Mixte (Web + Impression)</option>
-                    <option value="Format personnalisé / Autre demande">Format personnalisé / Autre demande</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="projectStyle">Style visuel & Couleurs préférées</label>
-                <input type="text" id="projectStyle" class="form-control" placeholder="Ex: Bleu OneSMS moderne, or luxueux, sombre épuré, dynamique...">
-              </div>
-
-              <!-- Brief Text & File Import Area (En bas à droite) -->
-              <div class="form-group brief-group">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                  <label for="projectBrief" style="margin-bottom: 0;">Texte à faire figurer & Détails du brief</label>
-                  <span style="font-size: 0.775rem; color: var(--text-muted); font-weight: 500;">
-                    <i class="fa-solid fa-paperclip"></i> Logo, images ou consignes
-                  </span>
-                </div>
-
-                <div class="brief-box-wrapper" id="briefDropZone">
-                  <textarea id="projectBrief" class="form-control brief-textarea" placeholder="Indiquez ici les titres, dates, numéros de téléphone, slogans ou indications spécifiques à intégrer..."></textarea>
-                  
-                  <div class="brief-inner-bottom">
-                    <!-- Petit bouton PLUS dans la section même en bas -->
-                    <div class="brief-plus-container">
-                      <button type="button" class="brief-plus-btn" id="briefPlusBtn" title="Ajouter des photos ou fichiers" aria-haspopup="true" aria-expanded="false" aria-label="Ajouter des fichiers">
-                        <i class="fa-solid fa-plus"></i>
-                        <span class="brief-plus-badge" id="briefPlusBadge" style="display: none;">0</span>
-                      </button>
-
-                      <!-- Pop-up d'action inspiré de l'image -->
-                      <div class="brief-action-popover" id="briefActionPopover" role="menu">
-                        <button type="button" class="popover-action-row" id="popoverAddFilesBtn" role="menuitem">
-                          <div class="popover-action-icon">
-                            <i class="fa-solid fa-paperclip"></i>
-                          </div>
-                          <div class="popover-action-text">
-                            <span class="popover-action-title">Ajouter des photos et fichiers</span>
-                            <span class="popover-action-hint">Importez...</span>
-                          </div>
-                          <div class="popover-action-arrow">
-                            <i class="fa-solid fa-chevron-right"></i>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-
-                    <span class="brief-inner-hint">
-                      <i class="fa-solid fa-circle-info"></i> Cliquez sur le <strong>+</strong> pour ajouter vos logos ou images
-                    </span>
-
-                    <input type="file" id="clientFileUpload" multiple accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml,.pdf,.ai,.psd,.eps,.zip" style="display: none;">
-                  </div>
-                </div>
-
-                <!-- Aperçu dynamique des fichiers importés -->
-                <div class="uploaded-files-preview" id="uploadedFilesPreview" style="display: none;">
-                  <div class="uploaded-files-header">
-                    <span class="uploaded-files-count-text">
-                      <i class="fa-solid fa-check-circle" style="color: #2563EB;"></i>
-                      <strong id="uploadedCountLabel">0 fichier sélectionné</strong> pour Olivier
-                    </span>
-                    <button type="button" class="btn-clear-all-files" id="btnClearAllFiles">Tout retirer</button>
-                  </div>
-                  <div class="uploaded-files-list" id="uploadedFilesList"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- STEP 3: Verification & Summary -->
-            <div class="wizard-step-pane" data-step="3">
-              <h3 class="wizard-step-title">Étape 3 sur 4 — Vérifiez vos informations</h3>
-              <p class="wizard-step-subtitle">Vérifiez le résumé complet et l'estimation de votre demande avant confirmation :</p>
-
-              <div class="summary-box">
-                <div class="summary-section-heading">
-                  <i class="fa-solid fa-receipt"></i>
-                  <span>Estimation indicative du projet</span>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Région de commande :</div>
-                  <div class="summary-value" id="summaryRegion">Afrique (FCFA)</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Service sélectionné :</div>
-                  <div class="summary-value" id="summaryService">Affiche simple</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Prix de base :</div>
-                  <div class="summary-value" id="summaryPrixBase">15 000 FCFA</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Délai souhaité :</div>
-                  <div class="summary-value" id="summaryDeadline">Standard 3 jours (Prix normal)</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Options complémentaires :</div>
-                  <div class="summary-value" id="summaryOptions">Aucune</div>
-                </div>
-                <div class="summary-row summary-total-row">
-                  <div class="summary-label">Total estimé :</div>
-                  <div class="summary-value summary-total-val" id="summaryTotal">
-                    <span class="sum-total-main" id="summaryTotalMain">15 000 FCFA</span>
-                    <span class="sum-total-equiv" id="summaryTotalEquiv">≈ 23 €</span>
-                  </div>
-                </div>
-                <div class="summary-disclaimer">
-                  <i class="fa-solid fa-circle-info"></i>
-                  <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
-                </div>
-
-                <div class="summary-section-heading" style="margin-top: 1.75rem;">
-                  <i class="fa-solid fa-pen-nib"></i>
-                  <span>Détails du brief créatif</span>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Nom du projet / Marque :</div>
-                  <div class="summary-value" id="summaryProject">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Format / Utilisation :</div>
-                  <div class="summary-value" id="summaryFormat">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Style & Couleurs :</div>
-                  <div class="summary-value" id="summaryStyle">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Détails du brief :</div>
-                  <div class="summary-value" id="summaryBrief">-</div>
-                </div>
-                <div class="summary-row">
-                  <div class="summary-label">Logo / Fichiers joints :</div>
-                  <div class="summary-value" id="summaryFiles">Aucun fichier joint</div>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                <button type="button" class="btn btn-outline" id="editServiceBtn">
-                  <i class="fa-solid fa-rotate-left"></i> Modifier le service
-                </button>
-                <button type="button" class="btn btn-outline" id="editSummaryBtn">
-                  <i class="fa-solid fa-pen-to-square"></i> Modifier mon brief
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 4: Confirmation & Instant WhatsApp -->
-            <div class="wizard-step-pane" data-step="4">
-              <div class="wizard-success-box">
-                <div class="wizard-success-icon">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </div>
-                <h3 class="wizard-step-title" style="font-size: 1.6rem;">Votre brief & estimation sont prêts !</h3>
-                <p class="wizard-step-subtitle" style="max-width: 560px; margin: 0 auto 2rem;">
-                  Olivier reçoit directement votre demande avec l'ensemble des données structurées et le calcul estimatif pour vous confirmer le devis final et démarrer la création.
-                </p>
-
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                  <a href="#" class="btn btn-whatsapp btn-lg" id="sendWhatsAppBriefBtn" target="_blank">
-                    <i class="fa-brands fa-whatsapp fa-xl"></i>
-                    <span>Envoyer mon brief sur WhatsApp à Olivier</span>
-                  </a>
-                </div>
-
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.25rem;">
-                  <i class="fa-solid fa-lock"></i> Aucune inscription requise · Traitement direct, confidentiel et réponse rapide.
-                </p>
-              </div>
-            </div>
-
-            <!-- Wizard Navigation Buttons Bar -->
-            <div class="wizard-buttons-bar">
-              <button type="button" class="btn btn-outline" id="prevStepBtn" style="visibility: hidden;">
-                <i class="fa-solid fa-arrow-left"></i> Précédent
-              </button>
-              <button type="button" class="btn btn-primary" id="nextStepBtn">
-                Continuer <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Sticky Estimation Card (Desktop Sidebar & Mobile Sticky Bottom Drawer) -->
-        <aside class="order-estimation-card" id="orderEstimationCard" aria-live="polite">
-          <div class="estimation-card-header">
-            <div class="estimation-badge">
-              <i class="fa-solid fa-calculator"></i>
-              <span>Votre estimation</span>
-            </div>
-            <button type="button" class="estimation-toggle-mobile" id="estimationToggleMobile" aria-expanded="false" aria-label="Afficher le détail de l'estimation">
-              <span class="est-mobile-total" id="estMobileTotal">15 000 FCFA</span>
-              <i class="fa-solid fa-chevron-up"></i>
-            </button>
-          </div>
-
-          <div class="estimation-card-body" id="estimationCardBody">
-            <div class="estimation-row">
-              <span class="est-label">Service choisi :</span>
-              <span class="est-val" id="estServiceNom">Affiche simple</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Prix de base :</span>
-              <span class="est-val" id="estPrixBase">15 000 FCFA</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Délai souhaité :</span>
-              <span class="est-val" id="estDelaiLigne">Standard 3 jours (Prix normal)</span>
-            </div>
-            <div class="estimation-row">
-              <span class="est-label">Options :</span>
-              <span class="est-val" id="estOptionsLigne">Aucune</span>
-            </div>
-            <div class="estimation-options-list" id="estOptionsList"></div>
-          </div>
-
-          <div class="estimation-card-footer">
-            <div class="estimation-total-row">
-              <span class="est-total-label">Total estimé</span>
-              <div class="est-total-wrapper">
-                <span class="est-total-main" id="estTotalMain">15 000 FCFA</span>
-                <span class="est-total-equiv" id="estTotalEquiv">≈ 23 €</span>
-              </div>
-            </div>
-            <p class="estimation-disclaimer">
-              <i class="fa-solid fa-circle-info"></i>
-              <span>Estimation indicative. Le devis final est confirmé par Olivier. Acompte de 50 % à la commande.</span>
-            </p>
-          </div>
-        </aside>
+      <div class="order-services-grid">
+        <a class="order-service-link" href="commande.html?service=affiche_simple">
+          <i class="fa-solid fa-panorama"></i>
+          <strong>Affiche simple</strong>
+          <span>Événement, concert, culte, promo</span>
+          <em>15 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=affiche_premium">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <strong>Affiche premium</strong>
+          <span>Illustration poussée ou photomontage</span>
+          <em>30 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=flyer_recto">
+          <i class="fa-solid fa-file"></i>
+          <strong>Flyer recto</strong>
+          <span>Support imprimé ou digital, 1 face</span>
+          <em>12 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=flyer_rectoverso">
+          <i class="fa-solid fa-file-invoice"></i>
+          <strong>Flyer recto-verso</strong>
+          <span>Support imprimé ou digital, 2 faces</span>
+          <em>20 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=visuel_reseaux">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <strong>Visuel réseaux sociaux</strong>
+          <span>1 visuel pour post ou story</span>
+          <em>7 500 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=pack_5_visuels">
+          <i class="fa-solid fa-layer-group"></i>
+          <strong>Pack 5 visuels réseaux</strong>
+          <span>Pack cohérent de 5 publications</span>
+          <em>30 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=carte_visite">
+          <i class="fa-solid fa-address-card"></i>
+          <strong>Carte de visite</strong>
+          <span>Design professionnel prêt à imprimer</span>
+          <em>10 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=logo_simple">
+          <i class="fa-solid fa-bullseye"></i>
+          <strong>Logo simple</strong>
+          <span>Création de logo sur mesure</span>
+          <em>35 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=identite_complete">
+          <i class="fa-solid fa-gem"></i>
+          <strong>Identité visuelle complète</strong>
+          <span>Logo, typographies et charte de marque</span>
+          <em>100 000 FCFA</em>
+        </a>
+        <a class="order-service-link" href="commande.html?service=motion_design">
+          <i class="fa-solid fa-film"></i>
+          <strong>Animation motion design</strong>
+          <span>Animation de logo ou teaser vidéo</span>
+          <em>40 000 FCFA</em>
+        </a>
+        <a class="order-service-link order-service-premium" href="devis.html">
+          <i class="fa-solid fa-crown"></i>
+          <strong>Service VIP · sur mesure</strong>
+          <span>Votre directeur artistique dédié pour les grands projets : marque, campagne, packaging…</span>
+          <em>Plus de 100 000 FCFA</em>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Section Contact ("Une question ?") -->
-  <section id="contact" class="section section-alt">
+  <!-- Garantie : slogan seul -->
+  <section id="garantie" class="section section-alt garantie-slogan">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Contact</span>
-        <h2 class="section-title">Une question ? Un projet en tête ?</h2>
-        <p class="section-subtitle">
-          Contactez directement Olivier pour une réponse rapide ou échangez directement sur WhatsApp.
-        </p>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Message Rapide Form -->
-        <div class="contact-card-form">
-          <h3 style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Message rapide</h3>
-          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.75rem;">Olivier vous répond personnellement dans les meilleurs délais.</p>
-
-          <form id="fastContactForm">
-            <div class="form-group">
-              <label for="contactName">Nom complet (facultatif)</label>
-              <input type="text" id="contactName" class="form-control" placeholder="Votre nom ou société">
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="contactChannel">Comment vous répondre ? <span class="req">*</span></label>
-                <select id="contactChannel" class="form-control">
-                  <option value="WhatsApp" selected>WhatsApp</option>
-                  <option value="Email">Email</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="contactCoords">Vos coordonnées <span class="req">*</span></label>
-                <input type="text" id="contactCoords" class="form-control" placeholder="+228 ... ou email@domaine.com" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="contactMessage">Votre message <span class="req">*</span></label>
-              <textarea id="contactMessage" class="form-control" placeholder="Bonjour Olivier, j'aimerais avoir des informations sur..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>Envoyer le message</span>
-            </button>
-          </form>
-        </div>
-
-        <!-- Direct Contact Card -->
-        <div class="contact-card-direct">
-          <div class="direct-header">
-            <h3>Écrire directement à Olivier</h3>
-            <p>Pour un échange instantané et fluide, choisissez votre canal préféré (WhatsApp ou Email).</p>
-
-            <div class="direct-info-list">
-              <div class="direct-info-item">
-                <div class="direct-info-icon"><i class="fa-solid fa-envelope"></i></div>
-                <div class="direct-info-text">
-                  <h6>Email Professionnel</h6>
-                  <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: none;">aurencreatif@gmail.com <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.25rem;"></i></a></p>
-                </div>
-              </div>
-
-              <div class="direct-info-item">
-                <div class="direct-info-icon"><i class="fa-solid fa-clock"></i></div>
-                <div class="direct-info-text">
-                  <h6>Disponibilité</h6>
-                  <p>7j / 7, 24h / 24</p>
-                </div>
-              </div>
-
-              <div class="direct-info-item">
-                <div class="direct-info-icon"><i class="fa-solid fa-globe"></i></div>
-                <div class="direct-info-text">
-                  <h6>Couverture</h6>
-                  <p>International & Afrique (Afrique de l'Ouest, Diaspora...)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="direct-whatsapp-card">
-            <p>Une question ou un projet à discuter ? Choisissez votre canal :</p>
-            <button type="button" class="btn btn-primary btn-lg open-contact-modal" style="width: 100%;">
-              <i class="fa-solid fa-comments"></i>
-              <span>Me contacter</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <span class="section-tag">Garantie</span>
+      <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> Satisfaction ou remboursement</h2>
+      <p class="garantie-note">Selon nos <a href="#legalModal" class="open-legal-modal" data-legal-tab="cgv">conditions générales</a>.</p>
     </div>
   </section>
 
-  <!-- Contact Choice Modal (WhatsApp or Email) -->
+  <!-- Fenêtre « Signaler un problème » (e-mail) -->
   <div id="contactChoiceModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="contact-modal-backdrop" id="contactModalBackdrop"></div>
     <div class="contact-modal-dialog">
@@ -1451,45 +912,27 @@
 
       <div class="contact-modal-header">
         <div class="contact-modal-badge">
-          <i class="fa-solid fa-headset"></i> Contact direct
+          <i class="fa-solid fa-triangle-exclamation"></i> Assistance
         </div>
-        <h3 id="contactModalTitle" class="contact-modal-title">Comment souhaitez-vous échanger ?</h3>
+        <h3 id="contactModalTitle" class="contact-modal-title">Signaler un problème</h3>
         <p class="contact-modal-subtitle">
-          Choisissez votre moyen de communication préféré avec Olivier :
+          Un souci avec une commande, un paiement, un fichier ou le site ? Décrivez-le par e-mail, Olivier vous répond rapidement.
         </p>
       </div>
 
       <div class="contact-modal-options">
-        
-        <!-- Choice 1: WhatsApp -->
-        <a href="https://wa.me/22896990329?text=Bonjour%20Olivier%20!%20Je%20vous%20contacte%20depuis%20votre%20site%20internet%20Auren%20Cr%C3%A9atif%20pour%20un%20projet%20de%20design." target="_blank" class="contact-choice-card contact-choice-whatsapp" id="modalWhatsAppBtn">
-          <div class="choice-icon-wrap icon-wa">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <div class="choice-content">
-            <div class="choice-top">
-              <span class="choice-title">WhatsApp Direct</span>
-              <span class="choice-badge badge-wa">Recommandé · &lt; 2h</span>
-            </div>
-            <p class="choice-desc">Échange rapide, partage d'idées et confirmation immédiate.</p>
-            <span class="choice-val"><i class="fa-brands fa-whatsapp"></i> Messagerie WhatsApp directe</span>
-          </div>
-          <div class="choice-arrow">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
 
-        <!-- Choice 2: Email (Nouveau message Gmail) -->
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif&body=Bonjour%20Olivier,%0A%0AJe%20souhaite%20vous%20contacter%20concernant%20un%20projet%20de%20design%20graphique.%0A%0AMes%20coordonn%C3%A9es%20:%0A" target="_blank" rel="noopener noreferrer" class="contact-choice-card contact-choice-email" id="modalEmailBtn">
+        <!-- Signalement par e-mail (nouveau message Gmail prérempli) -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Signalement%20d%27un%20probl%C3%A8me%20-%20Auren%20Cr%C3%A9atif&body=Bonjour%20Olivier,%0A%0AJe%20souhaite%20signaler%20un%20probl%C3%A8me.%0A%0ARéférence%20de%20commande%20(si%20vous%20en%20avez%20une)%20:%20AC-%0AProbl%C3%A8me%20rencontr%C3%A9%20:%20%0A%0AMerci%20!" target="_blank" rel="noopener noreferrer" class="contact-choice-card contact-choice-email" id="modalEmailBtn">
           <div class="choice-icon-wrap icon-email">
             <i class="fa-solid fa-envelope"></i>
           </div>
           <div class="choice-content">
             <div class="choice-top">
-              <span class="choice-title">Envoyer un Email (Gmail)</span>
-              <span class="choice-badge badge-email">Nouveau message</span>
+              <span class="choice-title">Signaler un problème par e-mail</span>
+              <span class="choice-badge badge-email">Réponse rapide</span>
             </div>
-            <p class="choice-desc">Rédigez directement un nouveau message Gmail pré-rempli à destination d'Olivier.</p>
+            <p class="choice-desc">Un message Gmail s’ouvre, déjà adressé à Olivier : indiquez votre référence de commande et décrivez le problème.</p>
             <span class="choice-val"><i class="fa-solid fa-at"></i> aurencreatif@gmail.com</span>
           </div>
           <div class="choice-arrow">
@@ -1539,11 +982,11 @@
     </div>
   </div>
 
-  <!-- Floating Contact Action Pill (OneSMS Style) -->
-  <div class="floating-whatsapp open-contact-modal" role="button" aria-label="Contacter Olivier">
+  <!-- Bouton flottant « Signaler un problème » -->
+  <div class="floating-whatsapp open-contact-modal" role="button" tabindex="0" aria-label="Signaler un problème">
     <span class="whatsapp-ping"></span>
-    <div class="floating-whatsapp-icon"><i class="fa-solid fa-comments"></i></div>
-    <span>Me contacter</span>
+    <div class="floating-whatsapp-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+    <span>Signaler un problème</span>
   </div>
 
   <!-- Modern Footer -->
@@ -1552,7 +995,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand-logo" style="margin-bottom: 1rem;">
-            <img src="assets/images/logo.png?v=3" alt="Logo AUREN CRÃ‰ATIF" class="brand-icon" style="padding:0; border:none; object-fit:cover;">
+            <img src="assets/images/logo.png" alt="AUREN CRÃ‰ATIF" class="brand-icon" style="object-fit:cover; display:block;">
             <span class="brand-title" style="color: #ffffff;">AUREN CRÉATIF</span>
           </div>
           <p>
@@ -1587,7 +1030,6 @@
         <div class="footer-col">
           <h5>Contact Direct</h5>
           <ul class="footer-links">
-            <li><a href="#" class="open-contact-modal"><i class="fa-brands fa-whatsapp"></i> Échanger sur WhatsApp</a></li>
             <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurencreatif@gmail.com&su=Demande%20de%20projet%20-%20Auren%20Cr%C3%A9atif" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1;"><i class="fa-solid fa-envelope"></i> aurencreatif@gmail.com</a></li>
             <li><span style="color: #cbd5e1;"><i class="fa-solid fa-clock"></i> 7j / 7, 24h / 24 — Devis en &lt; 2h</span></li>
             <li><span style="color: #cbd5e1;"><i class="fa-solid fa-location-dot"></i> Disponible partout à distance</span></li>
@@ -1650,7 +1092,6 @@
             <li><strong>Marque commerciale :</strong> AUREN CRÉATIF</li>
             <li><strong>Fondateur & Directeur Artistique :</strong> Olivier, Graphiste Designer indépendant (+5 ans d’expérience professionnelle)</li>
             <li><strong>Contact électronique officiel :</strong> <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a></li>
-            <li><strong>Canal de messagerie directe :</strong> Ligne WhatsApp officielle Auren Créatif (+228 96 99 03 29)</li>
             <li><strong>Champ d'activité :</strong> Conception de supports de communication visuelle (affiches, flyers, logos, identités visuelles complètes, chartes graphiques, visuels pour réseaux sociaux, supports print, bannières et animations motion design).</li>
             <li><strong>Rayonnement géographique :</strong> Prestations délivrées à distance à l'international (Togo, Afrique de l'Ouest, zone UEMOA / OHADA, France, Europe, diaspora et clients internationaux).</li>
           </ul>
@@ -1675,11 +1116,12 @@
             <li><strong>Étape 4 :</strong> Le solde de 50 % est exigible à la validation finale du projet, préalablement à la livraison des fichiers définitifs en haute définition sans filigrane.</li>
           </ul>
 
-          <h4>3. Grille Tarifaire & Devises</h4>
-          <p>Les tarifs sont clairs, transparents et appliqués selon la région de commande :</p>
+          <h4>3. Prix, devises & paiement</h4>
           <ul>
-            <li><strong>Zone Afrique (FCFA) :</strong> Devise principale en Francs CFA (XOF), arrondis au multiple de 500 FCFA le plus proche. Règlements acceptés par Mobile Money (T-Money, Moov Money, Wave, Orange Money) ou virement bancaire.</li>
-            <li><strong>Zone Europe & Reste du Monde (€) :</strong> Devise principale en Euros (€), arrondis à l'euro supérieur. Conversion appliquée au taux fixe institutionnel de 1 € = 655,957 FCFA. Règlements acceptés par virement SEPA, carte bancaire ou transfert international (Sendwave, TapTap Send, Ria, Western Union).</li>
+            <li>Les prix sont fixés en <strong>Francs CFA (FCFA)</strong>, arrondis à 500 FCFA. L’équivalent en euros affiché est indicatif (taux fixe 1 € = 655,957 FCFA) ; la conversion éventuelle est faite par la plateforme de paiement au moment du règlement.</li>
+            <li>Les paiements s’effectuent sur la plateforme sécurisée <strong>Chariow</strong>, avec les moyens de paiement qu’elle propose au moment du règlement. Aucune donnée bancaire n’est saisie sur ce site.</li>
+            <li>Chaque commande se règle en <strong>deux paiements de 50 %</strong> avec le même lien et la même référence de commande. Les options (révision supplémentaire, format supplémentaire, fichiers sources) se règlent avant la livraison, en plus des deux paiements.</li>
+            <li>Un paiement n’est considéré comme reçu qu’après confirmation par Olivier.</li>
           </ul>
 
           <h4>4. Délais de Livraison & Coefficients</h4>
@@ -1691,36 +1133,32 @@
           </ul>
           <p>Le décompte du délai débute à réception conjointe de l'acompte de 50 % et des éléments complets du brief (textes définitifs, logo vectoriel ou HD, photos sources).</p>
 
-          <h4>5. Politique de Révisions & Retouches</h4>
-          <p>Auren Créatif s'engage à une <strong>satisfaction garantie</strong>. Les prestations incluent des ajustements raisonnables (harmonisation des teintes, repositionnement d'éléments, calibrage des typographies). Toute refonte intégrale du concept postérieurement à la validation du brief ou toute révision supplémentaire au-delà du cycle standard fera l'objet de l'option « Révision supplémentaire ».</p>
+          <h4>5. Révisions, formats & livraison</h4>
+          <ul>
+            <li>Deux tours de modifications sont inclus. Au-delà, l’option « Révision supplémentaire » s’applique (3 000 FCFA).</li>
+            <li>Formats livrés : PNG ou JPG, et PDF pour l’impression. Format supplémentaire (5 000 FCFA) et fichiers sources (5 000 FCFA) en option.</li>
+            <li>Le solde de 50 % est dû à la validation de l’aperçu. Les fichiers finaux sont envoyés par lien Google Drive après confirmation du solde.</li>
+            <li>L’estimation de prix est valable 7 jours. Le devis final est confirmé par Olivier.</li>
+          </ul>
 
           <h4>6. Annulation & Rétractation</h4>
+          <p>Annulation avant le début du travail : l’acompte est remboursé. Annulation après le début du travail : l’acompte est conservé.</p>
           <p>Compte tenu de la nature personnalisée et sur-mesure des créations graphiques (art. L221-28 du Code de la consommation et dispositions équivalentes internationales), aucun droit de rétractation ne peut s'exercer une fois le travail de conception entamé. En cas d'annulation demandée par le client en cours de projet, l'acompte de 50 % demeure acquis à Auren Créatif à titre de dédommagement pour le temps consacré et la réservation du planning.</p>
         </div>
 
         <!-- 3. POLITIQUE DE CONFIDENTIALITÉ (RGPD & INTERNATIONAL) -->
         <div class="legal-tab-panel" id="panel-confidentialite">
-          <h4>1. Respect & Confidentialité Absolue</h4>
-          <p>Auren Créatif s'engage formellement à protéger la vie privée de ses utilisateurs conformément au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> européen et aux législations applicables en Afrique (notamment les actes uniformes de l'UEMOA sur la cyber-sécurité et les données à caractère personnel).</p>
+          <h4>1. Utilisation de vos informations</h4>
+          <p>Les informations saisies (nom, coordonnées, détails du projet) servent uniquement à répondre à votre demande, établir un devis, réaliser et livrer la création.</p>
 
-          <h4>2. Données Traitées</h4>
-          <p>Dans le cadre strict du traitement des commandes, les données collectées sont limitées aux informations strictement nécessaires :</p>
-          <ul>
-            <li>Identité (nom complet ou nom commercial de la marque/entreprise).</li>
-            <li>Coordonnées de liaison (numéro WhatsApp, adresse email).</li>
-            <li>Éléments de brief (slogans, dates d'événements, coordonnées à insérer dans le visuel).</li>
-            <li>Fichiers importés (logos, photos de produits, maquettes, chartes graphiques).</li>
-          </ul>
-          <p><strong>Zéro donnée bancaire :</strong> Aucun numéro de carte bancaire n'est enregistré sur ce site. Les paiements s'effectuent exclusivement via les plateformes bancaires et opérateurs de paiement officiels.</p>
+          <h4>2. Conservation & accès</h4>
+          <p>Elles sont conservées dans un tableau privé auquel seul Olivier accède. Durée de conservation : à définir par Olivier.</p>
 
-          <h4>3. Finalité & Absence de Revente</h4>
-          <p>Ces données sont utilisées uniquement pour exécuter votre commande, vous transmettre vos livrables et communiquer sur l'avancement de votre projet. Vos informations personnelles et fichiers ne font <strong>l'objet d'aucune revente, cession ou échange avec des tiers publicitaires</strong>.</p>
+          <h4>3. Partage</h4>
+          <p>Elles ne sont ni vendues ni partagées, sauf avec les services nécessaires au traitement : <strong>Google</strong> (formulaire) et <strong>Chariow</strong> (paiement). Aucune donnée bancaire n’est saisie ni conservée sur ce site.</p>
 
-          <h4>4. Sécurité des Fichiers & Archivage</h4>
-          <p>Vos fichiers (logos, photos, documents) sont traités sur des postes de travail professionnels sécurisés et sauvegardés de façon confidentielle. Ils ne sont jamais exploités à d'autres fins que votre commande.</p>
-
-          <h4>5. Droit d'Accès & de Suppression</h4>
-          <p>Vous conservez la maîtrise intégrale de vos données. Vous pouvez solliciter à tout moment la consultation, la modification ou l'effacement définitif de vos coordonnées sur simple demande par courriel à : <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
+          <h4>4. Vos droits</h4>
+          <p>Vous pouvez demander l’accès, la correction ou la suppression de vos données en écrivant à <a href="mailto:aurencreatif@gmail.com">aurencreatif@gmail.com</a>.</p>
         </div>
 
         <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
@@ -1760,6 +1198,8 @@
   </div>
 
   <!-- Main JavaScript File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/config.js?v=20261024u"></script>
+  <script src="assets/js/main.js?v=20261025b"></script>
+  <script src="assets/js/carrousel.js?v=20261024w"></script>
 </body>
 </html>
