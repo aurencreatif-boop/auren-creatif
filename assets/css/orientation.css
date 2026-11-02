@@ -1,0 +1,575 @@
+/* ==========================================================================
+   AUREN CRÉATIF · LANDING PAGE D'ORIENTATION (PAGE 3)
+   Charte graphique : #281270 (Indigo Royal AUREN), #2563EB (Bleu Électrique)
+   Typographies : Outfit (Titres) & Plus Jakarta Sans (Corps)
+   ========================================================================== */
+
+:root {
+  /* Couleurs de référence AUREN CRÉATIF */
+  --color-primary-brand: #281270;
+  --color-primary-dark: #1b0a50;
+  --color-primary-electric: #2563eb;
+  --color-primary-cyan: #00d2ff;
+  --color-primary-light: #f3f0ff;
+  --color-primary-tint: #eaf1ff;
+  
+  /* Neutres */
+  --color-bg-page: #f8fafc;
+  --color-surface-card: #ffffff;
+  --color-text-title: #110d29;
+  --color-text-body: #475569;
+  --color-text-subtle: #8492a6;
+  --color-border: #e2e8f0;
+  --color-border-card: rgba(40, 18, 112, 0.08);
+
+  /* Typographies */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Ombres & Lueurs */
+  --shadow-card: 0 20px 45px -12px rgba(40, 18, 112, 0.12), 0 0 1px 1px rgba(40, 18, 112, 0.04);
+  --shadow-btn-primary: 0 10px 25px -4px rgba(40, 18, 112, 0.4), 0 4px 10px -2px rgba(37, 99, 235, 0.3);
+  --shadow-btn-primary-hover: 0 16px 32px -4px rgba(40, 18, 112, 0.5), 0 8px 16px -2px rgba(37, 99, 235, 0.4);
+  --shadow-btn-secondary: 0 6px 18px -4px rgba(40, 18, 112, 0.08);
+  --shadow-btn-secondary-hover: 0 12px 26px -4px rgba(40, 18, 112, 0.16);
+
+  /* Rayons */
+  --radius-card: 26px;
+  --radius-btn: 18px;
+  --radius-icon: 14px;
+
+  /* Transition fluide */
+  --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset de base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-page);
+  color: var(--color-text-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 1.5rem 1rem;
+}
+
+/* ==========================================================================
+   Effets d'arrière-plan lumineux (Doux et épurés)
+   ========================================================================== */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.ambient-glow-1 {
+  width: 480px;
+  height: 480px;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(40, 18, 112, 0.15) 0%, rgba(37, 99, 235, 0.1) 50%, transparent 70%);
+}
+
+.ambient-glow-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  right: 10%;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, rgba(40, 18, 112, 0.05) 50%, transparent 70%);
+}
+
+/* ==========================================================================
+   Conteneur de la carte d'orientation
+   ========================================================================== */
+.page-container {
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  z-index: 1;
+  margin: auto;
+}
+
+.orientation-card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2.75rem 2.25rem 2rem 2.25rem;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: var(--transition);
+  animation: cardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   En-tête & Logo Officiel AUREN CRÉATIF avec Animation Dynamique
+   ========================================================================== */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  perspective: 800px;
+}
+
+.logo-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  box-shadow: 0 10px 25px -4px rgba(40, 18, 112, 0.22), 0 0 20px rgba(37, 99, 235, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  animation: logoFloat 4.5s ease-in-out infinite, logoAuraPulse 3.5s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+/* Halo lumineux animé derrière le logo */
+.logo-halo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(40, 18, 112, 0.4), rgba(0, 210, 255, 0.5), rgba(37, 99, 235, 0.4));
+  filter: blur(8px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: haloSpin 6s linear infinite;
+}
+
+@keyframes haloSpin {
+  0% { transform: rotate(0deg) scale(0.98); opacity: 0.4; }
+  50% { transform: rotate(180deg) scale(1.04); opacity: 0.65; }
+  100% { transform: rotate(360deg) scale(0.98); opacity: 0.4; }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.2deg);
+  }
+}
+
+@keyframes logoAuraPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px -4px rgba(40, 18, 112, 0.22), 0 0 20px rgba(37, 99, 235, 0.2);
+  }
+  50% {
+    box-shadow: 0 18px 38px -2px rgba(40, 18, 112, 0.35), 0 0 35px rgba(0, 210, 255, 0.45);
+  }
+}
+
+.logo-wrapper:hover {
+  transform: translateY(-5px) scale(1.05) rotate(-2deg);
+  box-shadow: 0 20px 40px -4px rgba(40, 18, 112, 0.4), 0 0 40px rgba(0, 210, 255, 0.6);
+}
+
+.brand-logo {
+  display: block;
+  width: 82px;
+  height: 82px;
+  border-radius: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-wrapper:hover .brand-logo {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   Section Principale : Slogan Badge, Titre & Sous-titre
+   ========================================================================== */
+.content-section {
+  margin-bottom: 2.25rem;
+}
+
+/* Badge Slogan officiel : IDENTITÉ · CRÉATIVITÉ · IMPACT */
+.slogan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(40, 18, 112, 0.05);
+  border: 1px solid rgba(40, 18, 112, 0.16);
+  color: var(--color-primary-brand);
+  padding: 0.42rem 1.05rem;
+  border-radius: 9999px;
+  margin-bottom: 1.15rem;
+  box-shadow: 0 2px 8px rgba(40, 18, 112, 0.04);
+  transition: var(--transition);
+}
+
+.slogan-badge:hover {
+  background: rgba(40, 18, 112, 0.08);
+  border-color: rgba(40, 18, 112, 0.25);
+  transform: translateY(-1px);
+}
+
+.slogan-badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-primary-electric);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.85);
+  animation: pulseDot 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+.slogan-badge-text {
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-text-title);
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.015em;
+}
+
+.brand-accent {
+  color: var(--color-primary-brand);
+  background: linear-gradient(135deg, #281270 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: 0.96rem;
+  color: var(--color-text-body);
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Les Deux Boutons d'Orientation (Clairement Différenciés)
+   ========================================================================== */
+.buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 1.15rem 1.4rem;
+  border-radius: var(--radius-btn);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.action-btn:active {
+  transform: scale(0.985);
+}
+
+/* Contenu textuel et icônes dans les boutons */
+.btn-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-icon);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.btn-text-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 1.1rem;
+}
+
+.btn-label {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.18rem;
+}
+
+.btn-hint {
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+/* --------------------------------------------------------------------------
+   BOUTON 1 : COMMANDER UN SERVICE (Signature Principale Royal / Indigo)
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  background: linear-gradient(135deg, #281270 0%, #1e2875 45%, #2563eb 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-btn-primary);
+}
+
+.btn-primary .btn-icon-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary .btn-label {
+  color: #ffffff;
+}
+
+.btn-primary .btn-hint {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.btn-primary .btn-arrow {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Effet Shimmer de lumière sur Bouton 1 */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: btnGleam 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btnGleam {
+  0%, 75% { left: -70%; opacity: 0; }
+  80% { opacity: 1; }
+  92%, 100% { left: 150%; opacity: 0; }
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-btn-primary-hover);
+  background: linear-gradient(135deg, #1f0c5c 0%, #172166 45%, #1d4ed8 100%);
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+  background: #ffffff;
+  color: var(--color-primary-brand);
+}
+
+.btn-primary:hover .btn-icon-wrapper {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   BOUTON 2 : ACHETER DES PACKS & FORMATIONS (Contraste Premium Lumineux)
+   -------------------------------------------------------------------------- */
+.btn-secondary {
+  background: #ffffff;
+  color: var(--color-primary-brand);
+  border: 2px solid var(--color-primary-brand);
+  box-shadow: var(--shadow-btn-secondary);
+}
+
+.btn-secondary .btn-icon-wrapper {
+  background: var(--color-primary-light);
+  color: var(--color-primary-brand);
+  border: 1px solid rgba(40, 18, 112, 0.1);
+}
+
+.btn-secondary .btn-label {
+  color: var(--color-primary-brand);
+}
+
+.btn-secondary .btn-hint {
+  color: var(--color-text-body);
+}
+
+.btn-secondary .btn-arrow {
+  background: var(--color-primary-light);
+  color: var(--color-primary-brand);
+}
+
+.btn-secondary:hover {
+  background: #faf8ff;
+  border-color: #1e0b59;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-btn-secondary-hover);
+}
+
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(4px);
+  background: var(--color-primary-brand);
+  color: #ffffff;
+}
+
+.btn-secondary:hover .btn-icon-wrapper {
+  transform: scale(1.06);
+  background: var(--color-primary-brand);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Pied de carte
+   ========================================================================== */
+.footer-note {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.footer-note p {
+  font-size: 0.78rem;
+  color: var(--color-text-subtle);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Responsive Mobile (< 520px)
+   ========================================================================== */
+@media (max-width: 520px) {
+  body {
+    padding: 1.2rem 0.85rem;
+  }
+
+  .orientation-card {
+    padding: 2.25rem 1.25rem 1.75rem 1.25rem;
+    border-radius: 22px;
+  }
+
+  .brand-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 17px;
+  }
+
+  .slogan-badge {
+    padding: 0.38rem 0.85rem;
+    gap: 0.45rem;
+  }
+
+  .slogan-badge-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .main-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .action-btn {
+    padding: 1rem 1.1rem;
+    border-radius: 16px;
+  }
+
+  .btn-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+  }
+
+  .btn-text-content {
+    padding: 0 0.85rem;
+  }
+
+  .btn-label {
+    font-size: 0.98rem;
+  }
+
+  .btn-hint {
+    font-size: 0.72rem;
+  }
+
+  .btn-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}
