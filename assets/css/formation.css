@@ -563,56 +563,54 @@ button {
 }
 
 /* ==========================================================================
-   Dual Laptop 3D Floating Showcase (Photoshop & After Effects - Session PS)
+   Dual Laptop Showcase (Photoshop & After Effects - Photo Relle Unifie Stagnante)
    ========================================================================== */
 .ae-ps-showcase {
   position: relative;
   width: 100%;
-  max-width: 540px;
-  min-height: 420px;
+  max-width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  overflow: hidden;
-  contain: paint;
+  background: transparent;
 }
 
-.ae-ps-ambient-glow {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(0, 229, 255, 0.08) 50%, transparent 70%);
-  filter: blur(55px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.laptop-floating-item {
-  position: absolute;
-  filter: drop-shadow(0 20px 30px rgba(16, 42, 86, 0.25));
-}
-
-/* Laptops stagnants / fixes (aucune collision ni dformation) */
-.laptop-ae-wrap {
-  width: 84%;
-  top: -10px;
-  right: -6%;
-  z-index: 1;
-}
-
-.laptop-ps-wrap {
-  width: 84%;
-  bottom: -15px;
-  left: -6%;
-  z-index: 2;
-}
-
-.laptop-floating-item img {
+.unified-laptops-img {
   width: 100%;
+  max-width: 480px;
   height: auto;
   display: block;
+  filter: drop-shadow(0 18px 30px rgba(16, 42, 86, 0.16));
+  transition: transform 0.3s ease;
+}
+
+.laptop-badge-tag {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  padding: 0.45rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 8px 18px rgba(16, 42, 86, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  z-index: 3;
+}
+
+.badge-ae {
+  top: 15px;
+  right: 12px;
+}
+
+.badge-ps {
+  bottom: 25px;
+  left: 10px;
 }
 
 /* Animation dynamique et lgante sur le texte de l'offre Templates */
@@ -2052,34 +2050,21 @@ button {
     left: 0;
   }
 
-  /* Dual Laptops After Effects & Photoshop */
+  /* Dual Laptops After Effects & Photoshop (Photo Unifie Stagnante) */
   .ae-ps-showcase {
     max-width: 100%;
-    min-height: 290px;
-    overflow: hidden;
+    min-height: auto;
   }
 
-  .ae-ps-ambient-glow {
-    width: 220px;
-    height: 220px;
-  }
-
-  .laptop-ae-wrap {
-    width: 84%;
-    top: 4px;
-    right: 0;
-  }
-
-  .laptop-ps-wrap {
-    width: 84%;
-    bottom: 4px;
-    left: 0;
+  .unified-laptops-img {
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .laptop-badge-tag {
     font-size: 0.7rem;
     padding: 0.35rem 0.6rem;
-    border-radius: 8px;
+    border-radius: 9999px;
   }
 
   .badge-ae {
@@ -2365,7 +2350,7 @@ button {
   }
 
   .ae-ps-showcase {
-    min-height: 250px;
+    min-height: auto;
   }
 
   .bundle-highlight-card {
@@ -2431,7 +2416,7 @@ button {
   }
 
   .ae-ps-showcase {
-    min-height: 220px;
+    min-height: auto;
   }
 
   .bundle-main-price {
